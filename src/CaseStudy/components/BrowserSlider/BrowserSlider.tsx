@@ -36,6 +36,7 @@ const BrowserSlider = ({
     onNextButtonClick,
     onPreviousButtonClick,
     sliderDirection,
+    scrollContainerRef,
   } = useSlider(totalSlides);
 
   // Show a dark overlay over the screen (for example, to showcase a modal)
@@ -119,6 +120,7 @@ const BrowserSlider = ({
       <FullScreenImageContainer
         currentSlideIndex={currentSlideIndex}
         helpToggleTipCopy="Use the next and previous arrows to navigate the carousel."
+        containerRef={scrollContainerRef}
         {...imageContainerProps}
       >
         <section className="imgSlider" aria-labelledby="carouselHeading">

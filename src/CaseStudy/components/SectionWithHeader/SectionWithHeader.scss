@@ -13,12 +13,20 @@
     margin-right: auto;
   }
 
-  & > p,
-  h1 {
-    & + .imgWrapper,
-    & + .imgContainer-isFullScreen {
+  h1,
+  & > p {
+    & + .imgWrapper {
       @include breakpoint(800) {
         margin-top: 6.4rem;
+      }
+    }
+  }
+
+  & > p,
+  h1 {
+    & + .imgContainer-isFullScreen {
+      @include breakpoint(800) {
+        margin-top: 4rem;
       }
     }
   }

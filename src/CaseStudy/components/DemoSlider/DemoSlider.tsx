@@ -28,6 +28,7 @@ const DemoSlider = ({
     onNextButtonClick,
     onPreviousButtonClick,
     sliderDirection,
+    scrollContainerRef,
   } = useSlider(totalSlides);
 
   return (
@@ -36,6 +37,7 @@ const DemoSlider = ({
         currentSlideIndex={currentSlideIndex}
         fullScreenSlides
         helpToggleTipCopy="Use the next and previous arrows to navigate the carousel."
+        containerRef={scrollContainerRef}
         {...imageContainerProps}
       >
         <section className="imgSlider" aria-labelledby="carouselHeading">
