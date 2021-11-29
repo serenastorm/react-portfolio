@@ -76,7 +76,7 @@ const LandingPage = () => {
         website on my{" "}
         <ScrenReaderLink
           text="Github."
-          url="https://stormideas.com/"
+          url="https://github.com/serenastorm/react-portfolio"
           label="View source code on Github"
         />{" "}
       </motion.h1>

@@ -57,3 +57,35 @@ $i: 0;
     transition-duration: #{nth($image-heights, $i) * 1.5}ms;
   }
 }
+
+.img-landing-3 {
+  position: relative;
+
+  img {
+    transition: 250ms opacity ease;
+
+    &:nth-of-type(n + 2) {
+      position: absolute;
+      width: 100%;
+      height: auto;
+      inset: 0;
+      opacity: 0;
+    }
+  }
+
+  &.img-hasStepAnimation-step2 {
+    img {
+      &:nth-of-type(2) {
+        opacity: 1;
+      }
+    }
+  }
+
+  &.img-hasStepAnimation-step3 {
+    img {
+      &:nth-of-type(3) {
+        opacity: 1;
+      }
+    }
+  }
+}

@@ -94,17 +94,40 @@ const Landing = () => {
               {screens.map((screen, i) => {
                 const { img, alt, className } = screen;
 
-                if (typeof img !== "string") {
-                  return null;
+                if (Array.isArray(img)) {
+                  return (
+                    <ImageWithStepAnimation
+                      animationClassName={`landing-${i}`}
+                      totalSteps={img.length}
+                      intervalInMs={1500}
+                    >
+                      {(
+                        animationStep,
+                        setAnimationStep,
+                        pauseOnUserInteraction
+                      ) => (
+                        <>
+                          {img.map((imgSrc, imgIndex: number) => (
+                            <img
+                              src={imgSrc}
+                              alt={imgIndex === 0 ? alt : ""}
+                              key={`${imageContainerProps.imageClassName}-animated-visual-${i}-${imgIndex}`}
+                            />
+                          ))}
+                        </>
+                      )}
+                    </ImageWithStepAnimation>
+                  );
+                } else {
+                  return (
+                    <img
+                      key={`${imageContainerProps.imageClassName}-visual-${i}`}
+                      src={img}
+                      alt={alt}
+                      className={className || ""}
+                    />
+                  );
                 }
-                return (
-                  <img
-                    key={`${imageContainerProps.imageClassName}-visual-${i}`}
-                    src={img}
-                    alt={alt}
-                    className={className || ""}
-                  />
-                );
                 // {
                 //   Array.isArray(img) && animationProps && (
                 //     <ImageWithStepAnimation {...animationProps}>
