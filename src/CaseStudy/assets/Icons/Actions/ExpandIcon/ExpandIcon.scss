@@ -1,0 +1,12 @@
+.caret {
+  transition: transform 250ms ease;
+  will-change: transform;
+
+  &[data-direction="down"] {
+    transform: rotate(0deg);
+  }
+
+  &[data-direction="up"] {
+    transform: rotate(180deg);
+  }
+}

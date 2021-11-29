@@ -1,0 +1,119 @@
+@import "~styles/modules/mixins.scss";
+
+$mobile-img-transition: all 400ms ease-in;
+
+.imgContainer-responsiveness {
+  @include breakpoint(800) {
+    --container-min-height: 120vh;
+  }
+}
+
+.img-responsiveness {
+  .desktopMock-screen {
+    // aspect-ratio: 428 / 926;
+    img {
+      position: absolute;
+      width: 100%;
+      height: auto;
+      inset: 0;
+      transition: all 200ms ease-in-out;
+    }
+  }
+
+  &.img-responsiveness-desktopCalendarIsVisible {
+    .desktopMock-screen {
+      img {
+        &:nth-of-type(2) {
+          opacity: 1;
+        }
+      }
+    }
+  }
+
+  &.img-responsiveness-desktopCalendarIsHidden {
+    .desktopMock-screen {
+      img {
+        &:nth-of-type(2) {
+          opacity: 0;
+        }
+      }
+    }
+  }
+
+  .mobileMock-wrapper {
+    width: auto;
+    height: 80vh;
+    // height: 926px;
+    min-height: 300px;
+
+    .img-responsiveness-mobile-screen {
+      position: absolute;
+      top: 0;
+      left: 0;
+      display: flex;
+      width: 100%;
+      height: 100%;
+
+      .img-responsiveness-mobile-sideBar {
+        height: 100%;
+        width: auto;
+        position: relative;
+        z-index: 3;
+      }
+    }
+
+    .img-responsiveness-mobile-dashBoard {
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+      position: relative;
+
+      .img-responsiveness-mobile-header,
+      .img-responsiveness-mobile-dashBoardScreen {
+        width: 100%;
+        height: auto;
+      }
+
+      .img-responsiveness-mobile-header {
+        position: relative;
+        z-index: 2;
+      }
+
+      .img-responsiveness-mobile-buttons {
+        position: absolute;
+        left: calc((24 / 371) * 100%);
+        top: 0;
+        width: calc((469 / 371) * 100%);
+        z-index: 1;
+        transition: $mobile-img-transition;
+      }
+    }
+
+    .img-responsiveness-mobile-calendar {
+      height: 100%;
+      width: auto;
+      position: relative;
+      z-index: 5;
+      transition: $mobile-img-transition;
+    }
+  }
+}
+
+.img-responsiveness {
+  .img-responsiveness-mobile-calendar {
+    opacity: 0;
+  }
+}
+
+.img-responsiveness-mobileButtonsAreScrolled,
+.img-responsiveness-mobileCalendarIsVisible {
+  .img-responsiveness-mobile-buttons {
+    transform: translateX(calc((-110 / 349) * 100%));
+  }
+}
+
+.img-responsiveness-mobileCalendarIsVisible {
+  .img-responsiveness-mobile-calendar {
+    opacity: 1;
+  }
+}

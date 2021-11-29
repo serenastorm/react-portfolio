@@ -1,0 +1,149 @@
+@import "~styles/modules/mixins.scss";
+
+#buttonsForm {
+  @include breakpoint(0, 799.99) {
+    .checkbox-container {
+      order: 1;
+    }
+
+    fieldset {
+      // Reorder radio buttons so they're equally distributed between columns
+      &:nth-of-type(1) {
+        order: 4;
+      }
+
+      &:nth-of-type(2) {
+        order: 3;
+      }
+
+      &:nth-of-type(3) {
+        order: 2;
+      }
+
+      &:nth-of-type(4) {
+        order: 5;
+      }
+    }
+  }
+}
+
+.imgSlider > *:not(.imgSlider-button) {
+  position: relative;
+  z-index: 2;
+}
+
+.imgSlider-button {
+  --button-width: 6.4rem;
+
+  text-align: center;
+  padding: 0;
+  width: 30vw;
+  height: 100%;
+  border: none;
+  background-color: transparent;
+
+  position: absolute;
+  cursor: pointer;
+  z-index: 1;
+  transition: all 500ms ease-in-out;
+
+  @include removeFocusOutline;
+
+  @include onHoverAndFocus {
+    .imgSlider-button-text {
+      opacity: 1;
+    }
+
+    path {
+      fill: var(--myqr-text-light);
+    }
+
+    circle {
+      &:not([stroke="#fff"]) {
+        stroke-dashoffset: var(--progress-dashoffset-max);
+      }
+    }
+  }
+
+  .imgSlider-button-text {
+    position: absolute;
+    z-index: 3;
+    color: var(--myqr-primary);
+    top: 50%;
+    font-family: var(--myqr-type-paragraph);
+    font-weight: 600;
+    font-size: 1.4rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    transition: inherit;
+    opacity: 0;
+  }
+
+  svg {
+    position: absolute;
+    width: var(--button-width);
+    height: var(--button-width);
+    background-repeat: no-repeat;
+    background-size: cover;
+    z-index: 2;
+    transform-origin: 50% 50%;
+    transition: inherit;
+
+    path {
+      transition: inherit;
+      fill: var(--myqr-primary);
+    }
+
+    circle {
+      transition: inherit;
+
+      &:not([stroke="#fff"]) {
+        stroke: var(--myqr-primary);
+        stroke-dashoffset: var(--progress-dashoffset-min);
+      }
+    }
+  }
+
+  &.imgSlider-button-isPrev {
+    left: 0;
+
+    .imgSlider-button-text {
+      left: 0;
+      transform: translate(0, -50%);
+    }
+
+    svg {
+      left: 0;
+      transform: rotate(180deg) translateY(50%);
+    }
+
+    @include onHoverAndFocus {
+      .imgSlider-button-text {
+        transform: translate(calc(#{var(--button-width)} + 0.8rem), -50%);
+      }
+    }
+  }
+
+  &.imgSlider-button-isNext {
+    right: 0;
+
+    .imgSlider-button-text {
+      right: 0;
+      transform: translate(0, -50%);
+    }
+
+    svg {
+      right: 0;
+      transform: translateY(-50%);
+    }
+
+    @include onHoverAndFocus {
+      .imgSlider-button-text {
+        transform: translate(
+          calc((#{var(--button-width)} + 0.8rem) * -1),
+          -50%
+        );
+      }
+    }
+  }
+}

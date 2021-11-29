@@ -1,0 +1,67 @@
+@import "~styles/modules/mixins.scss";
+
+.caseStudyPage-marketing {
+  // background-color: #00003c;
+
+  .caseStudyPage-intro p,
+  .text-isFullScreen p,
+  .listItem {
+    color: rgba(#{var(--myqr-primary-light-rgb)}, 0.85);
+  }
+
+  .section-hasHeader h1,
+  .text-isFullScreen h1,
+  .contentRow h1 {
+    color: var(--myqr-primary-light);
+  }
+
+  .caseStudyPage-header-isSticky {
+    background-color: #0a0a3c;
+  }
+
+  .caseStudyPage-header:not(.caseStudyPage-header-isSticky) {
+    h1 {
+      color: var(--myqr-gray-100);
+    }
+  }
+
+  .caseStudyPage-navbar-iSticky[data-expanded="false"]
+    .caseStudyPage-header-isSticky {
+    box-shadow: none;
+
+    h1,
+    .caseStudyPage-nav-caret {
+      color: var(--myqr-primary-light);
+    }
+
+    .caseStudyPage-nav-button {
+      @include onHoverAndFocus {
+        & ~ header {
+          .caseStudyPage-nav-caret {
+            background-color: var(--myqr-primary);
+            color: var(--myqr-text);
+          }
+        }
+      }
+    }
+
+    .progressIndicator {
+      .progressIndicator-track {
+        stroke: var(--myqr-primary-light);
+        opacity: 0.2;
+      }
+    }
+  }
+
+  .caseStudyPage-sectionId {
+    color: var(--myqr-primary);
+  }
+
+  .toggletip-container {
+    display: none;
+  }
+
+  .text-isFullScreen {
+    background-color: var(--myqr-primary);
+  }
+}

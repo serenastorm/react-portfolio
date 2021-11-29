@@ -1,0 +1,67 @@
+@import "~styles/modules/mixins.scss";
+@import "~CaseStudy/styles/placeholders.scss";
+
+.tech-stacks {
+  display: grid;
+  grid-auto-rows: minmax(min-content, max-content);
+  grid-column-gap: var(--page-padding-sides);
+  grid-row-gap: var(--page-padding-sides);
+
+  @include breakpoint(0, 799.99) {
+    padding: var(--container-padding-top) var(--page-padding-sides);
+    grid-template-columns: repeat(2, 1fr);
+
+    h2 {
+      grid-area: 1 / 1 / 2 / 3;
+    }
+
+    .tech-stack {
+      &:first-of-type {
+        grid-area: 2 / 1 / 3 / 2;
+      }
+
+      &:nth-of-type(2) {
+        grid-area: 2 / 2 / 3 / 3;
+      }
+    }
+  }
+
+  @include breakpoint(800) {
+    padding: var(--container-padding-top) var(--container-padding-sides);
+    grid-template-columns: repeat(6, 1fr);
+
+    h2 {
+      grid-area: 1 / 5 / 2 / 7;
+    }
+
+    .tech-stack {
+      &:first-of-type {
+        grid-area: 2 / 5 / 3 / 6;
+      }
+
+      &:nth-of-type(2) {
+        grid-area: 2 / 6 / 3 / 7;
+      }
+    }
+  }
+}
+
+.tech-stack {
+  list-style-type: none;
+  padding-left: 0;
+
+  li {
+    @extend %myqr-paragraph;
+    line-height: 180%;
+    font-weight: var(--font-weight-semibold);
+    color: var(--myqr-text);
+
+    @include breakpoint(0, 799.99) {
+      font-size: 2.2rem;
+    }
+
+    @include breakpoint(800) {
+      font-size: 3.2rem;
+    }
+  }
+}

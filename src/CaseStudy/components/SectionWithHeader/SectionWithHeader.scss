@@ -1,0 +1,29 @@
+@import "~styles/modules/mixins.scss";
+
+.section-hasHeader {
+  // Use flex layout to disable margins collapsing and ensure consistent spacing between children
+  display: flex;
+  flex-direction: column;
+  padding-bottom: calc(#{var(--container-padding-top)} * 1.5);
+
+  & > p,
+  & > h1 {
+    width: var(--max-text-width);
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  & > p,
+  h1 {
+    & + .imgWrapper,
+    & + .imgContainer-isFullScreen {
+      @include breakpoint(800) {
+        margin-top: 6.4rem;
+      }
+    }
+  }
+
+  .list-isFullScreen:last-child {
+    padding-bottom: 0;
+  }
+}

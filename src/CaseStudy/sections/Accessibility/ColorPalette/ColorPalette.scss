@@ -1,0 +1,154 @@
+@import "~styles/modules/mixins.scss";
+
+.colorPalette {
+  max-width: var(--max-container-width);
+  margin: 0 auto;
+
+  @include breakpoint(0, 799.99) {
+    padding: var(--container-padding-top) var(--page-padding-sides);
+  }
+
+  @include breakpoint(800) {
+    padding: var(--container-padding-top) var(--container-padding-sides);
+  }
+
+  & + .list-isFullScreen {
+    padding-top: 0;
+  }
+
+  @include breakpoint(0, 799.99) {
+    --colors-gap: 1.2rem;
+  }
+
+  @include breakpoint(800) {
+    --colors-gap: 6.4rem;
+  }
+}
+
+.colorPalette-header {
+  display: flex;
+
+  h2 {
+    margin: 0;
+  }
+
+  @include breakpoint(0, 799.99) {
+    flex-direction: column;
+    gap: 0.8rem;
+    margin-bottom: 3.2rem;
+  }
+
+  @include breakpoint(800) {
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 3.2rem;
+    margin-bottom: 6.4rem;
+  }
+}
+
+.colorPalette-colors {
+  display: flex;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: var(--colors-gap);
+}
+
+.colorPalette-color {
+  @include breakpoint(0, 799.99) {
+    width: calc((100% - #{var(--colors-gap)}) / 2);
+    max-width: 24rem;
+  }
+
+  @include breakpoint(800) {
+    width: calc((100% - (#{var(--colors-gap)} * 3)) / 4);
+    max-width: 24rem;
+  }
+
+  h2 {
+    word-spacing: -0.2em;
+
+    @include breakpoint(0, 799.99) {
+      font-size: 2.2rem;
+      margin: 1.6rem 0 0.8rem;
+    }
+  }
+
+  p {
+    line-height: 120%;
+
+    @include breakpoint(0, 799.99) {
+      font-size: 1.4rem;
+    }
+  }
+
+  &:nth-of-type(-n + 4) {
+    @include breakpoint(0, 799.99) {
+      max-width: 14rem;
+    }
+  }
+
+  &:nth-of-type(n + 5) {
+    @include breakpoint(0, 799.99) {
+      max-width: 8rem;
+    }
+
+    @include breakpoint(800) {
+      max-width: 16rem;
+    }
+
+    h2 {
+      @include breakpoint(0, 799.99) {
+        font-size: 1.6rem;
+      }
+
+      @include breakpoint(800) {
+        font-size: 2.4rem;
+      }
+    }
+
+    p {
+      font-size: 1.6rem;
+    }
+  }
+}
+
+.colorPalette-color-hex {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  position: relative;
+  transition: all 300ms ease-in-out;
+
+  @include breakpoint(0, 799.99) {
+    border-radius: 0.4rem;
+  }
+
+  @include breakpoint(800) {
+    border-radius: 0.8rem;
+  }
+
+  h2 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin: 0;
+  }
+}
+
+.colorPalette-color-rating {
+  font-size: 60%;
+  text-transform: uppercase;
+  padding: 2px 6px;
+  border-radius: 2px;
+  white-space: nowrap;
+
+  &.colorPalette-color-rating-AA {
+    background-color: var(--myqr-primary-light);
+    color: var(--myqr-primary);
+  }
+
+  &.colorPalette-color-rating-AAA {
+    background-color: var(--myqr-text);
+    color: var(--white);
+  }
+}

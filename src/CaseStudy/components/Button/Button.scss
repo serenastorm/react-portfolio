@@ -1,0 +1,102 @@
+@import "~styles/modules/mixins.scss";
+
+/* Base button style */
+
+$button-transition-duration: 0.15s;
+
+.button {
+  font-family: var(--myqr-type-sans-serif);
+  font-weight: var(--font-weight-regular);
+  line-height: normal;
+  border-radius: 0.4rem;
+  padding: 0.8rem 1.6rem;
+  font-size: 1.6rem;
+  letter-spacing: 0.025em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.8rem;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  -webkit-user-select: none;
+  user-select: none;
+  transition: color $button-transition-duration ease-in-out,
+    background-color $button-transition-duration ease-in-out,
+    border-color $button-transition-duration ease-in-out,
+    box-shadow $button-transition-duration ease-in-out;
+  border-width: 1px;
+  border-style: solid;
+  background-color: rgba(var(--background-color), 1);
+  border-color: rgba(var(--border-color), 1);
+  color: var(--text-color);
+
+  &:disabled {
+    opacity: 0.8;
+    cursor: not-allowed;
+  }
+
+  &:not(:disabled) {
+    cursor: pointer;
+
+    @include onHoverAndTouch {
+      color: var(--text-color-hover);
+      background-color: var(--background-color-hover);
+      border-color: var(--border-color-hover);
+    }
+
+    @include onHover {
+      box-shadow: 0rem 0.4rem 0.8rem rgba(var(--border-color), 0.2);
+    }
+
+    @include removeFocusOutline;
+
+    @include onKeyboardFocus {
+      background-color: var(--myqr-focus-bg);
+      border-color: var(--myqr-focus-bg);
+      box-shadow: var(--myqr-focus-shadow);
+      color: var(--white);
+    }
+
+    @include onMouseFocus {
+      background-color: var(--background-color-hover);
+      border-color: var(--border-color-hover);
+      box-shadow: 0 0 0 0.2rem rgba(var(--background-color), 0.3);
+      color: var(--text-color-hover);
+    }
+  }
+
+  &.button-block {
+    width: 100%;
+  }
+
+  svg {
+    width: 1.2rem;
+    height: auto;
+
+    path,
+    circle {
+      fill: currentColor;
+    }
+  }
+}
+
+.button-dark {
+  --background-color: var(--myqr-text-rgb);
+  --border-color: var(--myqr-text-rgb);
+  --background-color-hover: var(--myqr-text);
+  --border-color-hover: var(--myqr-text);
+  --text-color: var(--white);
+  --text-color-hover: var(--white);
+
+  --myqr-focus-bg: var(--myqr-primary);
+  --myqr-focus-shadow: 0 0 0 0.2rem rgba(var(--myqr-primary-rgb), 0.3);
+
+  // &:not(:disabled) {
+  //   @include onMouseFocus {
+  //     background-color: var(--myqr-primary);
+  //     border-color: var(--myqr-primary);
+  //     box-shadow: 0 0 0 0.2rem rgba(var(--myqr-primary-rgb), 0.3);
+  //   }
+  // }
+}

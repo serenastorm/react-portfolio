@@ -1,0 +1,90 @@
+@import "~styles/modules/mixins.scss";
+@import "~CaseStudy/styles/placeholders.scss";
+
+.caseStudyPage {
+  padding-bottom: var(--page-padding-sides);
+
+  &:not(.caseStudyPage-home) {
+    padding-top: var(--container-padding-top);
+  }
+
+  &.caseStudyPage-home {
+    padding-top: var(--page-padding-sides);
+  }
+}
+
+.caseStudyPage-intro {
+  margin: 0 auto var(--container-padding-top) auto;
+  max-width: calc(
+    #{var(--max-text-width)} + (#{var(--page-padding-sides)} * 2)
+  );
+  padding-left: var(--page-padding-sides);
+  padding-right: var(--page-padding-sides);
+
+  p {
+    margin-top: var(--page-padding-sides);
+
+    .endNote-link {
+      @include onFocus {
+        color: var(--myqr-primary);
+        background-color: var(--myqr-primary-light);
+      }
+    }
+  }
+}
+
+.caseStudyPage-sectionId {
+  color: var(--myqr-primary-light);
+  font-family: var(--type-numbers);
+  font-weight: var(--font-weight-medium);
+}
+
+.caseStudyPage-features {
+  @include breakpoint(0, 799.99) {
+    // --container-min-height: 120vh;
+  }
+
+  @include breakpoint(800) {
+    --container-min-height: 120vh;
+  }
+}
+
+.endNotes {
+  padding-left: 0;
+  list-style-type: none;
+
+  @include breakpoint(0, 799.99) {
+    margin-top: var(--container-padding-top);
+  }
+
+  @include breakpoint(800) {
+    margin-top: calc(#{var(--container-padding-top)} / 2);
+  }
+
+  li {
+    @extend %myqr-paragraph;
+
+    position: relative;
+    font-size: 1.6rem;
+    color: var(--myqr-gray-400);
+
+    &::before {
+      content: attr(data-emoji);
+      position: relative;
+      margin-right: 0.4rem;
+      top: -0.5em;
+      line-height: 0;
+      vertical-align: baseline;
+    }
+
+    .underline-link {
+      opacity: 0;
+      pointer-events: none;
+
+      @include onFocus {
+        opacity: 1;
+        color: var(--myqr-primary);
+      }
+    }
+  }
+}

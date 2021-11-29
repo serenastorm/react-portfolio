@@ -1,0 +1,39 @@
+$steps: 4;
+
+.img-modularItem {
+  .imgWrapper {
+    background-color: var(--myqr-bg-light);
+    border-radius: var(--img-border-radius);
+    position: relative;
+
+    .img-modularItem-choice {
+      transition: opacity 300ms ease-in-out;
+
+      &:nth-of-type(1) {
+        width: auto;
+        max-height: 60vh;
+        border-radius: 8px;
+        filter: var(--myqr-img-shadow);
+      }
+
+      &:not(:nth-of-type(1)) {
+        position: absolute;
+        width: 100%;
+        height: auto;
+        top: 0;
+        left: 0;
+        border-radius: 8px;
+      }
+    }
+  }
+
+  @for $i from 1 through $steps {
+    &.img-hasStepAnimation-step#{$i} {
+      .img-modularItem-choice {
+        &:not(:nth-of-type(1)):not(:nth-of-type(#{$i + 1})) {
+          opacity: 0;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,59 @@
+// The height of each image, in pixels
+$image-height-0: 347;
+$image-height-1: 426;
+$image-height-2: 465;
+$image-height-3: 563;
+$image-height-4: 493;
+$image-height-5: 516;
+$image-height-6: 620;
+
+$image-heights: $image-height-0, $image-height-1, $image-height-2,
+  $image-height-3, $image-height-4, $image-height-5, $image-height-6;
+
+// The total screen height, in pixels
+$total-screen-height: calc(
+  $image-height-0 + $image-height-1 + $image-height-2 + $image-height-3 +
+    $image-height-4 + $image-height-5 + $image-height-6
+);
+
+$sum-of-previous-screens: 0;
+$i: 0;
+
+.imgContainer-landing {
+  .landing-screen {
+    transition-property: transform;
+    transition-timing-function: ease;
+  }
+
+  .desktopMock-screen {
+    overflow: hidden;
+  }
+}
+
+.imgContainer-isSlider-slide1 {
+  .landing-screen {
+    transform: translate(0, 0);
+  }
+}
+
+@for $i from 2 through length($image-heights) {
+  // For each slide, the Y position is calculated from the sum of previous image heights
+  $sum-of-previous-screens: $sum-of-previous-screens +
+    nth($image-heights, $i - 1);
+
+  .imgContainer-isSlider-slide#{$i} {
+    .landing-screen {
+      transform: translate(
+        0,
+        calc((#{$sum-of-previous-screens} / #{$total-screen-height}) * -100%)
+      );
+    }
+  }
+}
+
+@for $i from 1 through length($image-heights) {
+  // Make sure the transition duration is proportional to the scroll distance
+  .landing-screen {
+    transition-duration: #{nth($image-heights, $i) * 1.5}ms;
+  }
+}

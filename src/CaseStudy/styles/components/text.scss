@@ -1,0 +1,105 @@
+@import "~styles/modules/mixins.scss";
+
+.caseStudyPage {
+  --text: var(--myqr-text);
+
+  p,
+  label:not(.form-label) {
+    @extend %myqr-paragraph;
+    color: var(--myqr-text-light);
+
+    @include breakpoint(0, 799.99) {
+      font-size: 1.8rem;
+    }
+
+    @include breakpoint(800) {
+      font-size: 2.4rem;
+    }
+  }
+
+  p {
+    line-height: 180%;
+  }
+
+  h1 {
+    @extend %myqr-paragraph;
+  }
+
+  h2 {
+    @extend %myqr-paragraph;
+    line-height: 140%;
+    color: var(--myqr-text);
+
+    @include breakpoint(0, 799.99) {
+      font-size: 2.4rem;
+    }
+
+    @include breakpoint(800) {
+      font-size: 3.2rem;
+    }
+  }
+
+  h5 {
+    @extend %myqr-paragraph;
+    font-size: 2rem;
+    line-height: 180%;
+    text-transform: uppercase;
+    color: var(--myqr-primary);
+  }
+
+  code {
+    font-family: var(--myqr-type-code);
+    font-weight: var(--font-weight-medium);
+    padding: 0 0.8rem;
+
+    @include breakpoint(0, 799.99) {
+      font-size: 1.4rem;
+    }
+
+    @include breakpoint(800) {
+      font-size: 1.6rem;
+    }
+  }
+
+  .bold {
+    font-weight: var(--font-weight-bold);
+  }
+
+  dd {
+    @extend %myqr-paragraph;
+    line-height: 180%;
+    color: var(--myqr-text-light);
+
+    @include breakpoint(0, 799.99) {
+      font-size: 2rem;
+    }
+
+    @include breakpoint(800) {
+      font-size: 2.4rem;
+    }
+  }
+
+  dt {
+    @extend %myqr-paragraph;
+    font-size: 1.6rem;
+    color: var(--myqr-text);
+    font-weight: var(--font-weight-semibold);
+  }
+
+  p {
+    max-width: var(--max-text-width);
+  }
+
+  .underline-link {
+    @include onFocus {
+      color: var(--myqr-primary);
+    }
+  }
+
+  .new-tab-link {
+    --arrow-bg-color: var(--myqr-gray-200);
+    --arrow-pointer-color: var(--myqr-gray-400);
+    --arrow-bg-color-hover: var(--myqr-primary-light);
+    --arrow-pointer-color-hover: var(--myqr-primary);
+  }
+}

@@ -1,0 +1,122 @@
+@import "~styles/modules/mixins.scss";
+
+.designSystem-preview-buttons {
+  .button {
+    min-width: 12em;
+    position: relative;
+
+    @include breakpoint(0, 799.99) {
+      --button-caption-height: 1.1rem;
+      --button-caption-spacing: 0.2rem;
+      margin-bottom: calc(
+        #{var(--button-caption-height)} + #{var(--button-caption-spacing)}
+      );
+    }
+
+    @include breakpoint(800) {
+      --button-caption-height: 1.2rem;
+      --button-caption-spacing: 1.2rem;
+    }
+
+    &::after {
+      position: absolute;
+      top: calc(100% + #{var(--button-caption-spacing)});
+      content: attr(data-caption);
+      color: var(--myqr-text-light);
+      font-family: var(--myqr-type-paragraph);
+      font-size: var(--button-caption-height);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    &.button-pill {
+      border-radius: 3.2rem;
+    }
+  }
+}
+
+// Styles for preview only (if used anywhere else, these should be in Button.scss)
+.button-lg {
+  font-size: 2rem;
+
+  svg {
+    width: 1.6rem;
+  }
+}
+
+.button-hover {
+  color: var(--text-color-hover);
+  background-color: var(--background-color-hover);
+  border-color: var(--border-color-hover);
+  box-shadow: 0rem 0.4rem 0.8rem rgba(var(--border-color), 0.2);
+}
+
+.button-focus {
+  background-color: var(--myqr-focus-bg);
+  border-color: var(--myqr-focus-bg);
+  box-shadow: var(--myqr-focus-shadow);
+  color: var(--white);
+}
+
+.button-primary {
+  --background-color: var(--myqr-primary-rgb);
+  --border-color: var(--myqr-primary-rgb);
+  --background-color-hover: var(--myqr-text);
+  --border-color-hover: var(--myqr-text);
+  --text-color: var(--white);
+  --text-color-hover: var(--white);
+}
+
+.button-primary-light {
+  --background-color: var(--myqr-primary-light-rgb);
+  --border-color: var(--myqr-primary-light-rgb);
+  --background-color-hover: var(--myqr-primary);
+  --border-color-hover: var(--myqr-primary);
+  --text-color: var(--myqr-primary);
+  --text-color-hover: var(--white);
+}
+
+.button-outline-primary {
+  --background-color: transparent;
+  --border-color: var(--myqr-primary-rgb);
+  --background-color-hover: #{var(--myqr-primary-light)};
+  --border-color-hover: var(--myqr-primary-hover);
+  --text-color: var(--myqr-primary);
+  --text-color-hover: var(--myqr-primary-hover);
+}
+
+.button-outline-dark {
+  --background-color: transparent;
+  --border-color: #{var(--myqr-text-rgb)};
+  --background-color-hover: #{var(--myqr-gray-100)};
+  --border-color-hover: #{var(--myqr-text)};
+  --text-color: #{var(--myqr-text)};
+  --text-color-hover: #{var(--myqr-text)};
+}
+
+.button-success {
+  --background-color: var(--myqr-success-rgb);
+  --border-color: var(--myqr-success-rgb);
+  --background-color-hover: var(--myqr-success-hover);
+  --border-color-hover: var(--myqr-success-hover);
+  --text-color: var(--white);
+  --text-color-hover: var(--white);
+}
+
+.button-danger {
+  --background-color: var(--myqr-danger-rgb);
+  --border-color: var(--myqr-danger-rgb);
+  --background-color-hover: var(--myqr-danger-hover);
+  --border-color-hover: var(--myqr-danger-hover);
+  --text-color: var(--white);
+  --text-color-hover: var(--white);
+}
+
+.button-danger-light {
+  --background-color: var(--myqr-danger-light-rgb);
+  --border-color: var(--myqr-danger-light-rgb);
+  --background-color-hover: var(--myqr-danger);
+  --border-color-hover: var(--myqr-danger);
+  --text-color: var(--myqr-danger);
+  --text-color-hover: var(--white);
+}

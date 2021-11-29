@@ -1,0 +1,119 @@
+@import "~styles/modules/mixins.scss";
+@import "~CaseStudy/styles/placeholders.scss";
+
+$tab-padding: 0.4rem;
+$tab-width: 10rem;
+$tab-border-radius: 20rem;
+$tab-transition: all 250ms ease-in;
+
+.tabs {
+  border-radius: $tab-border-radius;
+  padding: $tab-padding;
+  gap: $tab-padding;
+
+  display: flex;
+  align-items: center;
+  position: relative;
+
+  &::after {
+    content: "";
+    position: absolute;
+    z-index: 1;
+    width: $tab-width;
+    height: calc(100% - (#{$tab-padding} * 2));
+    top: $tab-padding;
+    left: $tab-padding;
+    border-radius: $tab-border-radius;
+    transition: $tab-transition;
+  }
+
+  &.tabs-activeTab-2 {
+    &::after {
+      transform: translate(
+        calc(100% + (#{$tab-padding} * (#{var(--total-tabs)} - 1))),
+        0
+      );
+    }
+  }
+
+  @for $i from 0 through 5 {
+    &.tabs-activeTab-#{$i} {
+      &::after {
+        transform: translate(
+          calc((100% * (#{$i} - 1)) + (#{$tab-padding} * (#{$i} - 1))),
+          0
+        );
+      }
+    }
+  }
+
+  button {
+    @extend %myqr-paragraph;
+    position: relative;
+    z-index: 2;
+    padding: 0.8rem 1.6rem;
+    font-size: 1.6rem;
+    border: none;
+    transition: $tab-transition;
+    background-color: transparent;
+    width: $tab-width;
+    border-radius: $tab-border-radius;
+
+    // @include removeFocusOutline;
+
+    &[aria-selected="false"] {
+      cursor: pointer;
+    }
+
+    @include removeFocusOutline;
+
+    @include onKeyboardFocus {
+      background-color: var(--myqr-primary);
+      color: var(--white);
+    }
+  }
+}
+
+.tabs-bgLight {
+  background: var(--myqr-text);
+
+  &::after {
+    background-color: var(--myqr-gray-100);
+  }
+
+  button {
+    &[aria-selected="true"] {
+      color: var(--myqr-text);
+    }
+
+    &[aria-selected="false"] {
+      color: white;
+
+      @include onHoverAndFocus {
+        background: rgba(255, 255, 255, 0.15);
+      }
+    }
+  }
+}
+
+.tabs-bgDark {
+  background: var(--myqr-gray-100);
+
+  &::after {
+    background-color: var(--myqr-text);
+  }
+
+  button {
+    &[aria-selected="true"] {
+      color: white;
+    }
+
+    &[aria-selected="false"] {
+      color: var(--myqr-text);
+
+      &:hover {
+        background: rgba(29, 26, 90, 0.1);
+      }
+    }
+  }
+}

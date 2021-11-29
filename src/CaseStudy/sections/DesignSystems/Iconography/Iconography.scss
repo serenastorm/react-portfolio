@@ -1,0 +1,295 @@
+@import "~styles/modules/mixins.scss";
+
+.section-iconography {
+  padding-left: var(--container-padding-sides);
+  padding-right: var(--container-padding-sides);
+
+  @include breakpoint(0, 799.99) {
+    --icon-gap: 1.6rem;
+    --icons-per-row: 4;
+  }
+
+  @include breakpoint(800) {
+    --icon-gap: 4rem;
+    --icons-per-row: 8;
+  }
+
+  .listItem {
+    color: var(--myqr-text);
+  }
+
+  .icons-category {
+    width: var(--max-text-width);
+
+    @include breakpoint(0, 799.99) {
+      margin: var(--page-padding-sides) auto 0 auto;
+    }
+
+    @include breakpoint(800) {
+      margin: var(--container-padding-sides) auto 0 auto;
+    }
+  }
+
+  .icons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--icon-gap);
+    padding-left: 0;
+    list-style-type: none;
+
+    @include breakpoint(0, 799.99) {
+      margin-top: 3.2rem;
+    }
+
+    @include breakpoint(800) {
+      margin-top: 6.4rem;
+    }
+  }
+
+  .icon-hasCaption {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: calc(#{var(--icon-gap)} / 2);
+    width: calc(
+      (100% - (#{var(--icon-gap)} * (#{var(--icons-per-row)} - 1))) / #{var(
+          --icons-per-row
+        )}
+    );
+
+    p {
+      line-height: 140%;
+      font-size: 1.6rem;
+    }
+  }
+}
+
+// Duotone icons animations
+.cardWithIcon-icon {
+  position: relative;
+
+  @include breakpoint(0, 799.99) {
+    width: 3.2rem;
+  }
+
+  @include breakpoint(800) {
+    width: 4rem;
+  }
+
+  svg {
+    width: 100%;
+    height: auto;
+    position: relative;
+    z-index: 10;
+  }
+
+  &:not(.cardWithIcon-icon-isDuotone) {
+    svg {
+      path,
+      circle {
+        fill: var(--myqr-text-light);
+      }
+    }
+  }
+}
+
+.cardWithIcon-icon-analytics-line {
+  display: block;
+  width: 0.8rem;
+  bottom: 0;
+  height: 40%;
+  background-color: var(--myqr-primary);
+  border-radius: 10%;
+  position: absolute;
+  transform-origin: bottom center;
+  animation-duration: 4s;
+  animation-timing-function: ease;
+  animation-fill-mode: forwards;
+
+  animation-name: analyticsLine;
+  animation-iteration-count: infinite;
+
+  @for $i from 0 through 5 {
+    &:nth-of-type(#{$i}) {
+      animation-delay: ($i - 1) * 200ms;
+      left: calc(0.2rem + (0.8rem * #{$i - 1}) + (0.2rem * (#{$i} - 1)));
+    }
+  }
+
+  &:nth-of-type(1) {
+    height: 1.2rem;
+  }
+
+  &:nth-of-type(2) {
+    height: 2.1rem;
+  }
+
+  &:nth-of-type(3) {
+    height: 1.6rem;
+  }
+
+  &:nth-of-type(4) {
+    height: 1.9rem;
+  }
+}
+
+.cardWithIcon-icon-orders-priceTag {
+  transform-origin: 72.5% 27.5%;
+  animation-duration: 2s;
+  animation-timing-function: ease;
+  animation-iteration-count: infinite;
+
+  &:first-of-type {
+    animation-name: priceTagBottom;
+  }
+
+  &:nth-of-type(2) {
+    animation-name: priceTagTop;
+  }
+}
+
+.cardWithIcon-icon-restaurants-spoon,
+.cardWithIcon-icon-orders-priceTag:nth-of-type(2) {
+  position: absolute !important;
+  inset: 0;
+}
+
+.cardWithIcon-icon-qrCode-area {
+  animation-duration: 500ms;
+  animation-timing-function: ease;
+  animation-fill-mode: forwards;
+  animation-iteration-count: infinite;
+  opacity: 0;
+
+  animation-name: qrCode;
+
+  @for $i from 0 through 11 {
+    &:nth-of-type(#{$i}) {
+      animation-delay: ($i - 1) * 150ms;
+    }
+  }
+}
+
+.cardWithIcon-icon-schedule-circle {
+  display: block;
+  width: 0.4rem;
+  height: 0.4rem;
+  border-radius: 50%;
+  left: 0;
+  background-color: #15dbcd;
+  border-radius: 50%;
+  position: absolute;
+  z-index: 15;
+  transform-origin: center left;
+  opacity: 0;
+  animation-duration: 1s;
+  animation-timing-function: ease;
+  animation-fill-mode: forwards;
+
+  animation-iteration-count: infinite;
+  animation-name: qrCode;
+
+  @for $i from 0 through 9 {
+    &:nth-of-type(#{$i}) {
+      animation-delay: ($i - 1) * 50ms;
+    }
+  }
+
+  @for $i from 0 through 2 {
+    &:nth-of-type(#{$i}) {
+      top: 1.7rem;
+      left: calc(0.8rem + (#{$i + 1} * 0.4rem) + (#{$i + 1} * 0.3rem));
+    }
+  }
+
+  @for $i from 3 through 6 {
+    &:nth-of-type(#{$i}) {
+      top: 2.3rem;
+      left: calc(0.8rem + (#{$i - 3} * 0.4rem) + (#{$i - 3} * 0.3rem));
+    }
+  }
+
+  @for $i from 7 through 9 {
+    &:nth-of-type(#{$i}) {
+      top: 2.9rem;
+      left: calc(0.8rem + (#{$i - 7} * 0.4rem) + (#{$i - 7} * 0.3rem));
+    }
+  }
+}
+
+@include animation(analyticsLine) {
+  0% {
+    @include prefix(transform, scaleY(1));
+  }
+
+  20% {
+    @include prefix(transform, scaleY(0.4));
+  }
+
+  50% {
+    @include prefix(transform, scaleY(1.2));
+  }
+
+  75% {
+    @include prefix(transform, scaleY(0.6));
+  }
+
+  100% {
+    @include prefix(transform, scaleY(1));
+  }
+}
+
+@include animation(priceTagBottom) {
+  0% {
+    opacity: 0;
+    @include prefix(transform, rotate(0deg));
+  }
+
+  25% {
+    opacity: 1;
+    @include prefix(transform, rotate(-15deg));
+  }
+
+  50% {
+    opacity: 1;
+    @include prefix(transform, rotate(0deg));
+  }
+
+  100% {
+    opacity: 0;
+    @include prefix(transform, rotate(0deg));
+  }
+}
+
+@include animation(priceTagTop) {
+  0% {
+    @include prefix(transform, rotate(0deg));
+  }
+
+  25% {
+    @include prefix(transform, rotate(15deg));
+  }
+
+  50% {
+    @include prefix(transform, rotate(0deg));
+  }
+
+  100% {
+    @include prefix(transform, rotate(0deg));
+  }
+}
+
+@include animation(qrCode) {
+  0% {
+    opacity: 0;
+  }
+
+  50% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}

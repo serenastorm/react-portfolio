@@ -1,0 +1,22 @@
+@import "~styles/modules/mixins.scss";
+
+.text-isFullScreen {
+  background-color: var(--myqr-primary-light);
+  width: calc(100vw - (#{var(--page-padding-sides)} * 2));
+  margin-left: var(--page-padding-sides);
+  padding: 4rem var(--container-padding-sides);
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+
+  @include breakpoint(0, 799.99) {
+    min-height: calc(80vh - (#{var(--page-padding-sides)} * 2));
+  }
+
+  @include breakpoint(800) {
+    min-height: calc(100vh - (#{var(--page-padding-sides)} * 2));
+  }
+}

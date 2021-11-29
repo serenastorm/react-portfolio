@@ -1,0 +1,16 @@
+@import "~styles/modules/mixins.scss";
+
+.imgContainer-itemReordering {
+  --img-padding: 16px;
+  --img-border-radius: var(--border-radius-md);
+
+  .img-hasStepAnimation {
+    display: grid;
+    align-content: center;
+
+    @include breakpoint(800) {
+      // Prevent jumping in between visuals by making the container as tall as the tallest visual
+      min-height: calc(564px + (#{var(--img-padding)} * 2));
+    }
+  }
+}

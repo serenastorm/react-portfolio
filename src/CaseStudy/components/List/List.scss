@@ -1,0 +1,63 @@
+@import "~styles/modules/mixins.scss";
+
+.list {
+  list-style-type: none;
+
+  li {
+    font-family: var(--myqr-type-paragraph);
+
+    & > p {
+      &:first-child {
+        color: var(--myqr-text);
+      }
+    }
+  }
+}
+
+.list-isFullScreen {
+  margin: 0 auto;
+  max-width: var(--max-container-width);
+
+  @include breakpoint(0, 799.99) {
+    padding: var(--container-padding-top) var(--page-padding-sides);
+  }
+
+  @include breakpoint(800) {
+    padding: var(--container-padding-top) var(--container-padding-sides);
+  }
+}
+
+.caseStudyPage-intro + main {
+  .list-isFullScreen:first-child {
+    padding-top: 0;
+  }
+}
+
+.listItem,
+.list li > p:first-child {
+  position: relative;
+
+  &::before {
+    content: "";
+    background-image: url("data:image/svg+xml,%3Csvg width='32' height='33' viewBox='0 0 32 33' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M22.7837 16.5L17.1236 22.2043L15.7038 20.7956L18.974 17.5L10.625 17.5L10.625 15.5L18.974 15.5L15.7038 12.2044L17.1236 10.7957L22.7837 16.5Z' fill='%233365FF'/%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M16 3.5C23.1773 3.5 29 9.32271 29 16.5C29 23.6773 23.1773 29.5 16 29.5C8.82272 29.5 3 23.6773 3 16.5C3 9.32271 8.82272 3.5 16 3.5ZM27 16.5C27 10.4273 22.0727 5.5 16 5.5C9.92729 5.5 5 10.4273 5 16.5C5 22.5727 9.92729 27.5 16 27.5C22.0727 27.5 27 22.5727 27 16.5Z' fill='%233365FF'/%3E%3C/svg%3E%0A");
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    @include breakpoint(0, 799.99) {
+      display: inline-block;
+      width: 2rem;
+      height: 2rem;
+      margin: 0 0.2rem 0 -0.8rem;
+      transform: translateY(0.1em);
+    }
+
+    @include breakpoint(800) {
+      position: absolute;
+      display: block;
+      width: 3.2rem;
+      height: 3.2rem;
+      right: calc(100% + 8px);
+      top: 0.4rem;
+    }
+  }
+}

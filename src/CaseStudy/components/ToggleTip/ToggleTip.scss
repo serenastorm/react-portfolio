@@ -1,0 +1,54 @@
+@import "~styles/modules/mixins.scss";
+@import "~CaseStudy/styles/placeholders.scss";
+
+$toggletip-transition: all 250ms ease;
+
+.toggletip-container {
+  button {
+    width: 4rem;
+    height: 4rem;
+    background-color: var(--white);
+    border-width: 0;
+    border-radius: 50%;
+    box-shadow: var(--myqr-img-container-shadow);
+    color: var(--myqr-primary);
+    cursor: help;
+
+    @include removeFocusOutline;
+
+    @include onHoverAndFocus {
+      svg {
+        transform: translateY(-2px) rotate(2deg) scale(1.2);
+      }
+    }
+  }
+
+  svg {
+    width: 2rem;
+    height: auto;
+    transition: $toggletip-transition;
+
+    path {
+      fill: currentColor;
+    }
+  }
+
+  .toggletip-bubble {
+    @extend %myqr-paragraph;
+
+    z-index: 20;
+    position: absolute;
+    right: 0;
+    bottom: calc(100% + 8px);
+    padding: 0.8rem;
+    background-color: var(--white);
+    border: 1px solid var(--myqr-gray-100);
+    border-radius: 0.4rem;
+    box-shadow: var(--myqr-img-container-shadow);
+    width: max-content;
+    max-width: 32rem;
+    font-size: 1.6rem;
+    line-height: 160%;
+    color: var(--text);
+  }
+}

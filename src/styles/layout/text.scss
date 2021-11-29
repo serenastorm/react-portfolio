@@ -1,0 +1,47 @@
+@import "~styles/modules/placeholders.scss";
+
+h1 {
+  // @extend %myqr-paragraph;
+  line-height: 140%;
+  color: var(--text);
+
+  @include breakpoint(0, 799.99) {
+    font-size: 3.2rem;
+  }
+
+  @include breakpoint(800) {
+    font-size: 4rem;
+  }
+}
+
+a {
+  cursor: pointer;
+  text-decoration: none;
+  color: currentColor;
+
+  @include removeFocusOutline;
+
+  svg path {
+    fill: currentColor;
+  }
+}
+
+.smaller {
+  font-size: 0.8em;
+}
+
+.underline-link {
+  --underline-color: currentColor;
+
+  border-bottom-width: 0.08em;
+  border-bottom-style: solid;
+  border-bottom-color: currentColor;
+
+  @extend %link-with-underline;
+
+  @include onHoverAndFocus {
+    &::after {
+      opacity: 1;
+    }
+  }
+}

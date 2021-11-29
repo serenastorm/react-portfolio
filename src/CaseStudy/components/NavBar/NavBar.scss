@@ -1,0 +1,305 @@
+@import "~CaseStudy/styles/placeholders.scss";
+@import "~styles/modules/mixins.scss";
+
+$link-hover-transition: all 250ms ease;
+
+.caseStudyPage-navbar {
+  z-index: 30;
+  top: 0;
+  left: 0;
+}
+
+nav {
+  position: fixed;
+  z-index: 35;
+  width: 100vw;
+  min-height: calc(100vh - #{var(--myqr-header-height)});
+  left: 0;
+  top: var(--myqr-header-height);
+  background-color: var(--myqr-gray-100);
+  padding: 8vh calc((100vw - #{var(--max-text-width)}) / 2);
+  display: flex;
+  gap: 3.2rem;
+
+  @include breakpoint(0, 799.99) {
+    flex-direction: column;
+    gap: 2.4rem;
+  }
+
+  @include breakpoint(800) {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 3.2rem;
+  }
+
+  ol {
+    list-style-type: none;
+    counter-reset: nav-counter;
+    padding: 0 var(--page-padding-sides);
+
+    .caseStudyPage-navLink {
+      @extend %myqr-paragraph;
+      counter-increment: nav-counter;
+      color: var(--myqr-text);
+      font-weight: var(--font-weight-bold);
+      font-size: 4vh;
+
+      // @include breakpoint(900, 2900) {
+      //   font-size: 4vh;
+      // }
+
+      &:nth-of-type(1) {
+        counter-set: nav-counter 0;
+
+        a::before {
+          opacity: 0.05;
+        }
+      }
+
+      &:nth-of-type(n + 2) {
+        border-top: 1px solid var(--myqr-gray-100);
+      }
+
+      a {
+        display: block;
+        padding: 2vh 0;
+        transition: $link-hover-transition;
+
+        &::before {
+          content: "0" counter(nav-counter);
+          display: inline-block;
+          font-size: inherit;
+          font-family: var(--type-numbers);
+          font-weight: var(--font-weight-medium);
+          color: currentColor;
+          margin-right: 1.6rem;
+          background-image: linear-gradient(
+            90deg,
+            var(--myqr-primary-light) 49.99%,
+            rgba(255, 255, 255, 0) 50%
+          );
+          background-repeat: no-repeat;
+          background-size: 200% 50%;
+          background-position: 100% 100%;
+          transition: $link-hover-transition;
+        }
+      }
+
+      .caseStudyPage-sectionId {
+        font-size: inherit;
+      }
+
+      svg {
+        width: 1em;
+        height: auto;
+        margin-left: 1.6rem;
+
+        .arrowIcon-circle {
+          transition: stroke-dashoffset 500ms ease;
+          stroke-dasharray: 1500;
+          stroke-dashoffset: 1500;
+          stroke: var(--myqr-primary);
+        }
+      }
+
+      &[aria-current="page"] {
+        color: var(--myqr-gray-400);
+
+        svg {
+          opacity: 0;
+        }
+
+        .caseStudyPage-navLink-label[data-completed="true"]::after {
+          background-image: linear-gradient(
+            90deg,
+            var(--myqr-gray-400) 49.99%,
+            rgba(255, 255, 255, 0) 50%
+          );
+        }
+      }
+
+      &[aria-current="false"] {
+        a {
+          @include onHoverAndFocus {
+            &::before {
+              background-position: 0% 100%;
+              color: var(--myqr-primary);
+            }
+
+            .arrowIcon-circle {
+              stroke-dashoffset: 0;
+            }
+
+            .caseStudyPage-navLink-label[data-completed="true"]::after {
+              background-position: 100% 0%;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .projectLink {
+    align-items: flex-start;
+    text-align: left;
+    background-color: var(--white);
+    border-radius: 2px;
+
+    @include breakpoint(0, 799.99) {
+      width: 100%;
+    }
+
+    @include breakpoint(800) {
+      width: 64rem;
+      max-width: 50%;
+      padding: 3.2rem;
+    }
+
+    h2 {
+      font-size: 2.2rem;
+    }
+
+    p {
+      font-size: 1.8rem;
+      line-height: 160%;
+    }
+  }
+}
+
+.caseStudyPage-navLink-label {
+  position: relative;
+
+  &[data-completed="true"]::after {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: calc(100% + 0.2em);
+    height: 2px;
+    background: linear-gradient(
+      90deg,
+      var(--myqr-primary) 49.99%,
+      rgba(255, 255, 255, 0) 50%
+    );
+    background-size: 200% 100%;
+    background-position: 0% 0%;
+    transform: translate(-50%, 100%);
+    transition: $link-hover-transition;
+  }
+}
+
+.caseStudyPage-nav-button {
+  position: absolute;
+  z-index: 5;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+  background-color: transparent;
+  text-decoration: none;
+  -webkit-user-select: none;
+  user-select: none;
+  border-width: 0;
+
+  @include removeFocusOutline;
+
+  @include onHoverAndFocus {
+    & ~ header {
+      .caseStudyPage-nav-caret {
+        background-color: var(--myqr-primary-light);
+        color: var(--myqr-primary);
+
+        &[data-direction="down"] {
+          transform: rotate(0deg) translateY(0.1rem);
+        }
+      }
+    }
+  }
+}
+
+.caseStudyPage-nav-caret {
+  width: 2.4rem;
+  height: auto;
+  transition: $link-hover-transition;
+  margin-left: 2.4rem;
+  padding: 0.6rem;
+  border-radius: 50%;
+
+  path {
+    fill: currentColor;
+  }
+}
+
+.caseStudyPage-header {
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+
+header {
+  width: calc(#{var(--max-text-width)} + (#{var(--page-padding-sides)} * 2));
+  padding-left: var(--page-padding-sides);
+  padding-right: var(--page-padding-sides);
+  display: flex;
+  align-items: center;
+}
+
+.caseStudyPage-header-isSticky {
+  position: fixed;
+  z-index: 40;
+  width: 100vw;
+  top: 0;
+  left: 0;
+  height: var(--myqr-header-height);
+  background-color: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(0.6rem);
+
+  h1,
+  .caseStudyPage-sectionId {
+    font-size: 1.8rem;
+    transition: all 500ms ease;
+  }
+}
+
+.caseStudyPage-header:not(.caseStudyPage-header-isSticky) {
+  .caseStudyPage-sectionId {
+    @include breakpoint(0, 799.99) {
+      display: block;
+      font-size: 8rem;
+      margin-top: calc(#{var(--container-padding-top)} * 2);
+      margin-bottom: 1.6rem;
+    }
+
+    @include breakpoint(800) {
+      font-size: 14rem;
+      margin-right: 1.6rem;
+    }
+  }
+}
+
+.caseStudyPage-navbar-iSticky {
+  .caseStudyPage-header-isSticky {
+    .caseStudyPage-sectionId {
+      margin-right: 1.6rem;
+    }
+
+    .caseStudyPage-sectionId {
+      color: var(--myqr-primary);
+    }
+  }
+
+  &[data-expanded="false"] {
+    .caseStudyPage-header-isSticky {
+      box-shadow: var(--container-shadow-sm);
+    }
+  }
+
+  &[data-expanded="true"] {
+    .caseStudyPage-header-isSticky {
+      background-color: rgba(255, 255, 255, 1);
+      backdrop-filter: blur(0);
+    }
+  }
+}

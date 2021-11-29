@@ -1,0 +1,23 @@
+@import "mixins.scss";
+
+@include animation(fadeIn) {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@include animation(fadeInDown) {
+  0% {
+    @include prefix(transform, translateY(-10px * 2));
+    opacity: 0;
+  }
+
+  100% {
+    @include prefix(transform, translateY(0));
+    opacity: 1;
+  }
+}

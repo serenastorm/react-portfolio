@@ -1,0 +1,24 @@
+.imgContainer-uiKit {
+  img {
+    width: var(--max-text-width);
+  }
+
+  .imgWrapper-uiKit {
+    position: relative;
+
+    img {
+      &:first-of-type {
+        width: var(--max-text-width);
+        height: auto;
+        filter: var(--myqr-img-shadow);
+      }
+
+      &:nth-of-type(n + 2) {
+        position: absolute;
+        width: 100%;
+        height: auto;
+        inset: 0;
+      }
+    }
+  }
+}

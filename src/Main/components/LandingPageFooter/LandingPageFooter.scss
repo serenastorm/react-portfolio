@@ -1,0 +1,57 @@
+@import "~styles/modules/mixins.scss";
+@import "~styles/modules/placeholders.scss";
+
+.landingPage {
+  footer {
+    background-color: #eeeeee;
+    padding: 2.4rem;
+    text-align: center;
+    width: 100%;
+    grid-column: 1 / 4;
+    margin-top: var(--landing-padding-top);
+
+    p {
+      @extend %landing-paragraph;
+      line-height: 160%;
+      color: var(--text);
+      margin: 0;
+
+      &:not(.smaller) {
+        font-size: 1.8rem;
+      }
+
+      a {
+        --underline-color: #{var(--link-sm)};
+        --arrow-pointer-color-hover: #{var(--link-sm)};
+        color: var(--link-sm);
+      }
+    }
+
+    .email-link {
+      --underline-color: currentColor;
+
+      border: none;
+      text-decoration: none;
+      -webkit-user-select: none;
+      user-select: none;
+      padding: 0;
+      cursor: pointer;
+      color: currentColor;
+      font: inherit;
+
+      &:after {
+        top: calc(100% - 0.2em);
+      }
+
+      @extend %link-with-underline;
+
+      @include removeFocusOutline;
+
+      @include onHoverAndFocus {
+        &:after {
+          opacity: 1;
+        }
+      }
+    }
+  }
+}

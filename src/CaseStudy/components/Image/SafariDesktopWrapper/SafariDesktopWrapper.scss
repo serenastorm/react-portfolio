@@ -1,0 +1,63 @@
+@import "~styles/modules/animations.scss";
+
+.desktopMock-wrapper {
+  overflow: hidden;
+  border-radius: var(--border-radius-md);
+  width: var(--image-width);
+  max-width: var(--max-text-width);
+  // min-width: 80rem;
+  aspect-ratio: 1126 / 750;
+  box-shadow: var(--container-shadow-md);
+
+  .desktopMock-browserBar {
+    width: 100%;
+    height: auto;
+  }
+
+  .desktopMock-screen {
+    position: relative;
+    aspect-ratio: 1126 / 698;
+    background-color: var(--myqr-bg-light);
+
+    .slide {
+      position: absolute;
+      width: 100%;
+      aspect-ratio: inherit;
+      transition: all 100ms ease-in;
+
+      .desktopMock-modal {
+        position: absolute;
+        inset: 0;
+        z-index: 3;
+      }
+    }
+
+    img {
+      width: 100%;
+      height: auto;
+    }
+
+    &.desktopMock-screen-hasOverlay {
+      &::after {
+        position: absolute;
+        content: "";
+        display: block;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.3);
+        z-index: 2;
+        pointer-events: none;
+        opacity: 0;
+        animation: fadeIn 0.5s 0.2s ease;
+        animation-fill-mode: forwards;
+      }
+    }
+  }
+}
+
+.imgContainer-bgDark {
+  .desktopMock-wrapper {
+    box-shadow: none;
+  }
+}

@@ -1,0 +1,19 @@
+:root {
+  // Colors
+  --white: #ffffff;
+  --text: #5e5252;
+  --text-light: #856b6b;
+  --link: #ed5497;
+  --link-sm: #833deb;
+
+  // Typography
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+
+  // TODO: Add fallback fonts
+  --type-paragraph: "Rockhill Sans";
+  // Use a monospace font for numbers
+  --type-numbers: "Azeret Mono", monospace;
+}

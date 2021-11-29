@@ -1,0 +1,200 @@
+@import "~styles/modules/mixins.scss";
+
+$input-padding-top: 0.8rem;
+$input-font-size: 1.6rem;
+$input-line-height: 1.9rem;
+$input-border-width: 1px;
+$input-transition-duration: 0.15s;
+
+.form-label {
+  font-family: var(--myqr-type-paragraph);
+  font-weight: var(--font-weight-regular);
+  letter-spacing: 0.02em;
+  line-height: 100%;
+  font-size: 1.4rem;
+  color: var(--myqr-text);
+  padding-left: 0.08rem;
+  margin-bottom: 0.6rem;
+
+  &.form-label-with-content {
+    display: flex;
+    justify-content: space-between;
+
+    .reset-password {
+      color: var(--myqr-primary);
+      font-size: 1.2rem;
+    }
+  }
+}
+
+.input-group {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;
+  width: 100%;
+
+  &.input-group-with-append {
+    .form-control {
+      padding-right: calc(1.2rem + 3.8rem);
+    }
+
+    .input-group-append {
+      position: absolute;
+      right: 0;
+      z-index: 5;
+      height: 100%;
+
+      .button {
+        padding: 0.8rem;
+        height: 100%;
+        border-color: transparent;
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+        min-width: calc((#{$input-padding-top} * 2) + #{$input-line-height});
+
+        --background-color: transparent;
+        --border-color: transparent;
+        --background-color-hover: #{var(--myqr-text-light)};
+        --border-color-hover: transparent;
+        --text-color: #{var(--myqr-text-light)};
+        --text-color-hover: #{var(--myqr-gray-100)};
+      }
+    }
+  }
+
+  &.input-group-with-prepend {
+    .form-control {
+      padding-left: calc(1.2rem + 3.8rem);
+    }
+
+    .input-group-prepend {
+      position: absolute;
+      z-index: 4;
+      left: $input-border-width;
+      top: $input-border-width;
+
+      .input-group-text {
+        min-height: calc((#{$input-padding-top} * 2) + #{$input-line-height});
+        min-width: calc((#{$input-padding-top} * 2) + #{$input-line-height});
+        border-color: var(--myqr-gray-200);
+        background-color: var(--myqr-gray-200);
+        border-width: $input-border-width;
+        border-style: solid;
+        color: var(--white);
+        padding: 0;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        transition: color $input-transition-duration ease-in-out,
+          background-color $input-transition-duration ease-in-out,
+          border-color $input-transition-duration ease-in-out,
+          box-shadow $input-transition-duration ease-in-out;
+        border-radius: calc(0.4rem - 1px) 0 0 calc(0.4rem - 1px);
+
+        svg {
+          height: 2.4rem;
+          width: auto;
+
+          path {
+            fill: var(--myqr-gray-300);
+          }
+        }
+      }
+    }
+
+    &.input-group-with-prepend-isValid {
+      .input-group-text {
+        border-color: var(--myqr-text-light);
+        background-color: var(--myqr-text-light);
+
+        svg {
+          path {
+            fill: var(--myqr-gray-100);
+          }
+        }
+      }
+    }
+  }
+}
+
+.invalid-feedback {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin-top: 0.4rem;
+  font-family: var(--myqr-type-sans-serif);
+  font-weight: var(--font-weight-regular);
+  color: var(--myqr-danger);
+  font-size: 1.2rem;
+  line-height: 100%;
+  transition: opacity 150ms ease-in;
+
+  &:before {
+    position: relative;
+    display: inline-block;
+    content: "";
+    width: 1.2rem;
+    height: 1.2rem;
+    margin-right: 0.2rem;
+    background-image: url("data:image/svg+xml,%3Csvg width='12' height='12' viewBox='0 0 12 12' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M6 10.5C8.48528 10.5 10.5 8.48528 10.5 6C10.5 3.51472 8.48528 1.5 6 1.5C3.51472 1.5 1.5 3.51472 1.5 6C1.5 8.48528 3.51472 10.5 6 10.5Z' stroke='%23E70853'/%3E%3Cpath d='M5.80005 3.59998H6.20005L6.00005 6.49998L5.80005 3.59998Z' stroke='%23E70853' stroke-linejoin='round'/%3E%3Cpath d='M5.9999 8.79998C6.33127 8.79998 6.5999 8.53135 6.5999 8.19998C6.5999 7.8686 6.33127 7.59998 5.9999 7.59998C5.66853 7.59998 5.3999 7.8686 5.3999 8.19998C5.3999 8.53135 5.66853 8.79998 5.9999 8.79998Z' fill='%23E70853'/%3E%3C/svg%3E%0A");
+    background-size: cover;
+  }
+}
+
+.form-control {
+  font-family: var(--myqr-type-sans-serif);
+  font-weight: var(--font-weight-regular);
+  font-size: $input-font-size;
+  line-height: $input-line-height;
+  color: var(--myqr-text-light);
+  padding: $input-padding-top 1.2rem;
+  min-height: calc((#{$input-padding-top} * 2) + #{$input-line-height});
+  height: auto;
+  appearance: none;
+  background-color: var(--white);
+  border: $input-border-width solid var(--myqr-gray-200);
+  border-radius: 0.4rem;
+  display: block;
+  width: 100%;
+  max-width: 32rem;
+  background-clip: padding-box;
+  transition: all 150ms ease-in;
+
+  @include removeFocusOutline;
+
+  &.form-control-isInvalid {
+    background-image: none;
+    border-color: var(--myqr-danger);
+
+    &:placeholder-shown {
+      background-color: var(--myqr-gray-100);
+    }
+
+    @include onKeyboardFocus {
+      border-color: var(--myqr-danger);
+      box-shadow: 0 0 0 0.3rem rgba(254, 231, 239, 1) !important;
+    }
+
+    &.form-control-isFocused {
+      border-color: var(--myqr-danger);
+      box-shadow: 0 0 0 0.3rem rgba(254, 231, 239, 1) !important;
+    }
+  }
+
+  &.form-control-isEmpty {
+    background-color: var(--myqr-gray-100);
+  }
+
+  @include onKeyboardFocus {
+    border-color: var(--myqr-primary);
+    box-shadow: 0 0 0 0.3rem rgba(224, 232, 255, 1) !important;
+    background-color: var(--white);
+  }
+
+  &.form-control-isFocused {
+    border-color: var(--myqr-primary);
+    box-shadow: 0 0 0 0.3rem rgba(224, 232, 255, 1) !important;
+    background-color: var(--white);
+  }
+}

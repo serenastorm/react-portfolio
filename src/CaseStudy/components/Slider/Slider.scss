@@ -1,0 +1,111 @@
+@import "~styles/modules/mixins.scss";
+
+.imgSlider {
+  position: relative;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+
+  @include breakpoint(0, 799.99) {
+    flex-wrap: wrap;
+    justify-content: space-around;
+
+    ul {
+      order: 1;
+    }
+
+    .imgSlider-button-isPrev {
+      order: 2;
+    }
+
+    .imgSlider-button-isNext {
+      order: 3;
+    }
+
+    .imgSlider-button-isPrev,
+    .imgSlider-button-isNext {
+      margin-top: 2.4rem;
+    }
+  }
+
+  @include breakpoint(800) {
+    justify-content: space-between;
+  }
+}
+
+.imgContainer-isFullScreen {
+  --img-container-gap: 3.2vh;
+
+  &:not(.imgContainer-isSlider-isFullScreen) {
+    gap: var(--img-container-gap);
+
+    .imgSlider {
+      gap: var(--img-container-gap);
+    }
+  }
+
+  .listItem {
+    text-align: center;
+  }
+}
+
+.imgContainer-isSlider-isFullScreen {
+  width: 100vw;
+
+  .slide {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
+
+    @include breakpoint(0, 799.99) {
+      gap: 1.6rem;
+    }
+
+    @include breakpoint(800) {
+      gap: 4rem;
+    }
+  }
+}
+
+.imgContainer-bgDark {
+  .imgSlider-button {
+    .imgSlider-button-text {
+      color: var(--myqr-primary-light);
+    }
+
+    circle {
+      &[stroke="#fff"] {
+        stroke: var(--myqr-primary-light);
+        stroke-opacity: 0.2;
+      }
+    }
+
+    @include onHoverAndFocus {
+      path {
+        fill: var(--myqr-primary-light);
+      }
+    }
+  }
+}
+
+/* If the background is the same as the page's, 
+remove padding on mobile since it just looks like spacing */
+$image-backgrounds: "Dark", "Light";
+
+@include breakpoint(0, 799.99) {
+  .imgContainer-bgNone {
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+
+  @each $image-background in $image-backgrounds {
+    .caseStudyPage-bg#{$image-background} {
+      & + .caseStudyPage .imgContainer-bg#{$image-background} {
+        padding-top: 0;
+        padding-bottom: 0;
+      }
+    }
+  }
+}

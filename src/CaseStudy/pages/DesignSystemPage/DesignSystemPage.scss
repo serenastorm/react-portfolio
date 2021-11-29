@@ -1,0 +1,87 @@
+@import "~styles/modules/mixins.scss";
+@import "~CaseStudy/styles/placeholders.scss";
+
+.designSystem-section {
+  width: var(--max-container-width);
+  display: flex;
+
+  @include breakpoint(0, 799.99) {
+    padding-left: var(--page-padding-sides);
+    padding-right: var(--page-padding-sides);
+  }
+
+  @include breakpoint(800) {
+    margin: 0 auto;
+    padding-left: var(--container-padding-sides);
+    padding-right: var(--container-padding-sides);
+  }
+
+  @include breakpoint(0, 799.99) {
+    flex-direction: column;
+    gap: 2.4rem;
+
+    output {
+      order: 1;
+    }
+
+    form {
+      order: 2;
+      display: flex;
+      flex-wrap: wrap;
+
+      .checkbox-container {
+        width: 100%;
+      }
+
+      fieldset {
+        width: 50%;
+      }
+    }
+  }
+
+  @include breakpoint(800) {
+    gap: 8rem;
+  }
+
+  legend {
+    @extend %myqr-paragraph;
+    color: var(--myqr-text);
+    font-weight: var(--font-weight-semibold);
+
+    @include breakpoint(0, 799.99) {
+      font-size: 2rem;
+      margin-bottom: 1.2rem;
+    }
+
+    @include breakpoint(800) {
+      font-size: 2.4rem;
+      margin-bottom: 1.6rem;
+    }
+  }
+
+  fieldset {
+    @include breakpoint(0, 799.99) {
+      margin-top: 1.2rem;
+    }
+
+    @include breakpoint(800) {
+      margin-top: 2.4rem;
+    }
+  }
+}
+
+.designSystem-preview {
+  flex: 1;
+  padding: 1.6rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--myqr-gray-100);
+  border-radius: 4px;
+  gap: 0.8rem;
+
+  @include breakpoint(0, 799.99) {
+    flex-direction: column;
+  }
+}

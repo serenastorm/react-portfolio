@@ -1,0 +1,181 @@
+@import "~styles/modules/mixins.scss";
+@import "~styles/modules/placeholders.scss";
+
+$link-hover-gradient: linear-gradient(125deg, var(--link), var(--link-sm));
+
+.landingPage {
+  --landing-padding-top: 8vh;
+  --landing-padding-sides: 6vw;
+
+  padding-top: var(--landing-padding-top);
+  background-color: #f5f7fb;
+  min-height: 100%;
+
+  display: grid;
+  grid-template-columns:
+    1fr
+    min(calc(100% - (#{var(--landing-padding-sides)} * 2)), 100%)
+    1fr;
+  grid-template-rows: auto max-content;
+
+  & > *:not(footer) {
+    grid-column: 2;
+  }
+
+  h1 {
+    @extend %landing-paragraph;
+    max-width: 40ch;
+
+    .link {
+      color: var(--link);
+      position: relative;
+      cursor: pointer;
+
+      .link-text {
+        --underline-color: #{$link-hover-gradient};
+        @extend %link-with-underline;
+        pointer-events: none;
+      }
+
+      @include onHoverAndTouch {
+        .link-text {
+          background: $link-hover-gradient;
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+
+          &::after {
+            opacity: 1;
+          }
+        }
+      }
+
+      a {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        inset: 0;
+        overflow: hidden;
+        opacity: 0;
+        @include removeFocusOutline;
+
+        @include onFocus {
+          & + .link-text {
+            background: $link-hover-gradient;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+
+            &::after {
+              opacity: 1;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  h1,
+  dt {
+    @include breakpoint(0, 859.99) {
+      /* Don't go lower for h1, otherwise the links wouldn't pass contrast requirements
+      (Large text = 18.66px bold, 24px regular)
+      Tbh this font could be considered bold but best to be safe */
+      font-size: 2.4rem;
+    }
+
+    @include breakpoint(860) {
+      font-size: 2.8vw;
+    }
+  }
+
+  abbr[title] {
+    position: relative;
+    text-decoration: none;
+
+    &::after {
+      content: "";
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 100%;
+      height: 0.1em;
+      border-top: 0.1em dotted var(--text-light);
+    }
+
+    &:hover {
+      &::after {
+        border-color: var(--link);
+      }
+    }
+  }
+}
+
+.projects {
+  margin-top: 4vh;
+
+  .project {
+    display: flex;
+    gap: 0.8rem;
+    align-items: baseline;
+
+    @include breakpoint(0, 509.99) {
+      flex-direction: column;
+    }
+
+    & + .project {
+      margin-top: 1.2rem;
+    }
+  }
+
+  dt {
+    a {
+      color: var(--text);
+
+      @include onFocus {
+        color: var(--link);
+      }
+
+      @include onHoverAndTouch {
+        color: var(--link);
+      }
+    }
+  }
+
+  dd {
+    font-size: 2.2vw;
+    color: var(--text-light);
+
+    @include breakpoint(0, 859.99) {
+      font-size: 1.6rem;
+    }
+
+    @include breakpoint(860) {
+      font-size: 2.2vw;
+    }
+  }
+
+  dd,
+  dt {
+    @extend %landing-paragraph;
+  }
+
+  .new-tab-link {
+    --arrow-bg-color: #d5cdcf;
+    --arrow-pointer-color: var(--text);
+    --arrow-bg-color-hover: #f8c0d8;
+    --arrow-pointer-color-hover: var(--link);
+
+    @include onHoverAndTouch {
+      svg {
+        path[fill="#EAF0F5"] {
+          fill: var(--arrow-bg-color-hover);
+        }
+
+        .icon-arrow {
+          path {
+            fill: var(--arrow-pointer-color-hover);
+          }
+        }
+      }
+    }
+  }
+}

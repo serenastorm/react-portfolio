@@ -1,0 +1,69 @@
+@import "~styles/modules/mixins.scss";
+
+.img-skipToContent {
+  position: relative;
+  overflow: hidden;
+  border-radius: 0.2rem var(--img-border-radius) var(--img-border-radius)
+    var(--img-border-radius);
+  box-shadow: var(--myqr-img-container-shadow);
+
+  @include breakpoint(0, 799.99) {
+    max-width: var(--max-text-width);
+  }
+
+  @include breakpoint(800) {
+    min-width: 40rem;
+  }
+}
+
+.accessibility-skipToContent-img {
+  height: auto;
+
+  &:first-of-type {
+    width: 100%;
+  }
+
+  &:nth-of-type(2) {
+    position: absolute;
+    width: 40%;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    border-radius: 0.2rem 0 0.4rem 0;
+    animation: fadeUpAndDown 3.5s ease;
+    animation-iteration-count: infinite;
+    animation-fill-mode: forwards;
+  }
+}
+
+@include animation(fadeUpAndDown) {
+  0% {
+    @include prefix(transform, translateY(-10px * 2));
+    opacity: 0;
+  }
+
+  10% {
+    @include prefix(transform, translateY(-10px * 2));
+    opacity: 0;
+  }
+
+  40% {
+    @include prefix(transform, translateY(0));
+    opacity: 1;
+  }
+
+  60% {
+    @include prefix(transform, translateY(0));
+    opacity: 1;
+  }
+
+  90% {
+    @include prefix(transform, translateY(-10px * 2));
+    opacity: 0;
+  }
+
+  100% {
+    @include prefix(transform, translateY(-10px * 2));
+    opacity: 0;
+  }
+}

@@ -1,0 +1,25 @@
+@import "~styles/modules/mixins.scss";
+
+.projectLink {
+  padding: var(--container-padding-top) var(--page-padding-sides);
+
+  @include breakpoint(800) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+}
+
+.projectLink,
+.text-isFullScreen {
+  .button {
+    margin-top: 2.4rem;
+  }
+}
+
+.projectLink h2,
+.text-isFullScreen h2:first-child {
+  margin-bottom: 0.4rem;
+  margin-top: 0;
+}

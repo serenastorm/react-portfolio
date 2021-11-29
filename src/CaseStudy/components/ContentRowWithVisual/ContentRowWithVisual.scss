@@ -1,0 +1,37 @@
+@import "~styles/modules/mixins.scss";
+
+.contentRow {
+  margin: var(--container-padding-top) auto;
+  padding-left: var(--container-padding-sides);
+  padding-right: var(--container-padding-sides);
+  width: var(--max-container-width);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  @include breakpoint(0, 799.99) {
+    flex-direction: column;
+    gap: 3.2rem;
+
+    .contentRow-copy {
+      order: 1;
+    }
+
+    & > div:not(.contentRow-copy) {
+      order: 2;
+    }
+  }
+
+  @include breakpoint(800) {
+    gap: 6.4rem;
+  }
+
+  h1 {
+    @include breakpoint(800) {
+      position: absolute;
+      top: calc(#{var(--section-padding-top)} * -1);
+      margin: 0;
+      transform: translate(0, -50%);
+    }
+  }
+}

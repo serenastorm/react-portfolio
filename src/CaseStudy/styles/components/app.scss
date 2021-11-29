@@ -1,0 +1,10 @@
+::-moz-selection {
+  /* Code for Firefox */
+  color: var(--white);
+  background: var(--myqr-primary);
+}
+
+::selection {
+  color: var(--white);
+  background: var(--myqr-primary);
+}
