@@ -9,10 +9,8 @@ type SliderButtonProps = {
 const SliderButton = ({ direction, onClick }: SliderButtonProps) => {
   const radius = 256;
   const stroke = 32;
-  const progress = 50;
   const normalizedRadius = radius - stroke * 2;
   const circumference = normalizedRadius * 2 * Math.PI;
-  const strokeDashoffset = circumference - (progress / 100) * circumference;
 
   const startDashoffset = circumference;
   const endDashoffset = circumference - circumference;

@@ -1,6 +1,4 @@
 import {
-  useCallback,
-  useEffect,
   useState,
   Dispatch,
   SetStateAction,
@@ -35,12 +33,6 @@ const useSlider = (totalSlides: number): SliderProps => {
       });
     }
   };
-
-  // const scrollToTopOfContainer = useCallback(() => {
-  //   if (scrollContainerRef.current) {
-  //     scrollContainerRef.current.scrollIntoView();
-  //   }
-  // }, [scrollContainerRef]);
 
   const onPreviousButtonClick = () => {
     setCurrentSlideIndex((currentSlide) =>
