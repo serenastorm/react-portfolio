@@ -2,7 +2,7 @@
 @import "~CaseStudy/styles/placeholders.scss";
 
 $tab-padding: 0.4rem;
-$tab-width: 10rem;
+$tab-width: 12rem;
 $tab-border-radius: 20rem;
 $tab-transition: all 250ms ease-in;
 
@@ -15,6 +15,8 @@ $tab-transition: all 250ms ease-in;
   align-items: center;
   position: relative;
 
+  background: var(--myqr-text);
+
   &::after {
     content: "";
     position: absolute;
@@ -23,6 +25,7 @@ $tab-transition: all 250ms ease-in;
     height: calc(100% - (#{$tab-padding} * 2));
     top: $tab-padding;
     left: $tab-padding;
+    background-color: var(--myqr-gray-100);
     border-radius: $tab-border-radius;
     transition: $tab-transition;
   }
@@ -51,68 +54,58 @@ $tab-transition: all 250ms ease-in;
     @extend %myqr-paragraph;
     position: relative;
     z-index: 2;
+    width: $tab-width;
     padding: 0.8rem 1.6rem;
+
     font-size: 1.6rem;
-    border: none;
     transition: $tab-transition;
     background-color: transparent;
-    width: $tab-width;
     border-radius: $tab-border-radius;
+    border: none;
 
-    // @include removeFocusOutline;
-
-    &[aria-selected="false"] {
-      cursor: pointer;
+    &::before {
+      content: "";
+      display: block;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      left: 0.8rem;
+      width: 1.6rem;
+      height: 1.6rem;
+      background-image: url("data:image/svg+xml,%3Csvg width='512' height='512' viewBox='0 0 512 512' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M256 512C397.385 512 512 397.385 512 256C512 114.615 397.385 0 256 0C114.615 0 0 114.615 0 256C0 397.385 114.615 512 256 512ZM204.487 312.216L366.75 150.316C369.846 147.228 374.774 147.228 377.238 150.316L395.152 167.615C397.616 170.672 397.616 175.587 395.152 178.045L210.016 362.696C209.35 363.422 208.54 364.002 207.637 364.399C206.734 364.795 205.758 365 204.772 365C203.785 365 202.809 364.795 201.906 364.399C201.004 364.002 200.193 363.422 199.527 362.696L116.848 280.801C114.384 277.744 114.384 272.797 116.848 270.339L134.73 252.504C137.194 250.046 142.154 250.046 145.219 252.504L204.487 312.216Z' fill='%231D1A5A'/%3E%3C/svg%3E%0A");
+      background-size: cover;
+      background-repeat: no-repeat;
+      transition: $tab-transition;
     }
 
-    @include removeFocusOutline;
-
-    @include onKeyboardFocus {
-      background-color: var(--myqr-primary);
+    &[aria-selected="false"] {
       color: var(--white);
-    }
-  }
-}
+      cursor: pointer;
 
-.tabs-bgLight {
-  background: var(--myqr-text);
-
-  &::after {
-    background-color: var(--myqr-gray-100);
-  }
-
-  button {
-    &[aria-selected="true"] {
-      color: var(--myqr-text);
-    }
-
-    &[aria-selected="false"] {
-      color: white;
+      &::before {
+        opacity: 0;
+      }
 
       @include onHoverAndFocus {
         background: rgba(255, 255, 255, 0.15);
       }
     }
-  }
-}
 
-.tabs-bgDark {
-  background: var(--myqr-gray-100);
-
-  &::after {
-    background-color: var(--myqr-text);
-  }
-
-  button {
     &[aria-selected="true"] {
-      color: white;
-    }
-
-    &[aria-selected="false"] {
       color: var(--myqr-text);
 
-      &:hover {
-        background: rgba(29, 26, 90, 0.1);
+      &::before {
+        opacity: 1;
+      }
+    }
+
+    @include removeFocusOutline;
+
+    @include onKeyboardFocus {
+      color: var(--myqr-primary);
+
+      &::before {
+        background-image: url("data:image/svg+xml,%3Csvg width='512' height='512' viewBox='0 0 512 512' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M256 512C397.385 512 512 397.385 512 256C512 114.615 397.385 0 256 0C114.615 0 0 114.615 0 256C0 397.385 114.615 512 256 512ZM204.487 312.216L366.75 150.316C369.846 147.228 374.774 147.228 377.238 150.316L395.152 167.615C397.616 170.672 397.616 175.587 395.152 178.045L210.016 362.696C209.35 363.422 208.54 364.002 207.637 364.399C206.734 364.795 205.758 365 204.772 365C203.785 365 202.809 364.795 201.906 364.399C201.004 364.002 200.193 363.422 199.527 362.696L116.848 280.801C114.384 277.744 114.384 272.797 116.848 270.339L134.73 252.504C137.194 250.046 142.154 250.046 145.219 252.504L204.487 312.216Z' fill='%233365FF'/%3E%3C/svg%3E%0A");
       }
     }
   }

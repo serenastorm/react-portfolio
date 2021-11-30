@@ -1,27 +1,45 @@
+import { useState } from "react";
 import { SkipToContentImage } from "CaseStudy/assets/Accessibility/SkipToContentLink";
 import { ImageWrapper } from "CaseStudy/components/Image";
-import ContentRowWithVisual from "CaseStudy/components/ContentRowWithVisual/ContentRowWithVisual";
+import { TabProps } from "CaseStudy/components/Tabs/types";
+import { ContentRowWithVisual, Tabs } from "CaseStudy/components";
 
 import "./SkipToContentLink.scss";
 
 const SkipToContentLink = () => {
+  const tabs: TabProps[] = [
+    {
+      value: "default",
+      label: "Default",
+    },
+    {
+      value: "focused",
+      label: "Focused",
+    },
+  ];
+  const [tab, setTab] = useState<TabProps>(tabs[1]);
+
   return (
     <ContentRowWithVisual
       imageBefore
       listItem="Keyboard users should be able to skip to the main content easily. Each page has a link at the top that isn’t visible unless focused with a keyboard."
     >
-      <ImageWrapper className="img-skipToContent">
-        <img
-          src={SkipToContentImage.Bg}
-          alt="Animation of the dashboard, zoomed in on the top left corner. A 'Skip to main content' link fades in and out of the screen."
-          className="accessibility-skipToContent-img"
-        />
-        <img
-          src={SkipToContentImage.Link}
-          alt=""
-          className="accessibility-skipToContent-img"
-        />
-      </ImageWrapper>
+      <div className="accessibility-skipToContent-visual">
+        <Tabs bg="Light" currentTab={tab} tabs={tabs} setTab={setTab}>
+          <ImageWrapper className="img-skipToContent">
+            <img
+              src={SkipToContentImage.Bg}
+              alt="Animation of the dashboard, zoomed in on the top left corner. A 'Skip to main content' link fades in and out of the screen."
+              className="accessibility-skipToContent-img"
+            />
+            <img
+              src={SkipToContentImage.Link}
+              alt=""
+              className="accessibility-skipToContent-img"
+            />
+          </ImageWrapper>
+        </Tabs>
+      </div>
     </ContentRowWithVisual>
   );
 };

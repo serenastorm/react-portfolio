@@ -1,5 +1,17 @@
 @import "~styles/modules/mixins.scss";
 
+.accessibility-skipToContent-visual {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2.4rem;
+
+  .tabs {
+    order: 2;
+    box-shadow: var(--myqr-img-container-shadow);
+  }
+}
+
 .img-skipToContent {
   position: relative;
   overflow: hidden;
@@ -30,40 +42,24 @@
     left: 0;
     opacity: 0;
     border-radius: 0.2rem 0 0.4rem 0;
-    animation: fadeUpAndDown 3.5s ease;
-    animation-iteration-count: infinite;
-    animation-fill-mode: forwards;
+    transition: all 500ms ease;
   }
 }
 
-@include animation(fadeUpAndDown) {
-  0% {
-    @include prefix(transform, translateY(-10px * 2));
-    opacity: 0;
+.tabs-activeTab-1 {
+  & + div[role="tabpanel"] {
+    .accessibility-skipToContent-img:nth-of-type(2) {
+      @include prefix(transform, translateY(-10px * 2));
+      opacity: 0;
+    }
   }
+}
 
-  10% {
-    @include prefix(transform, translateY(-10px * 2));
-    opacity: 0;
-  }
-
-  40% {
-    @include prefix(transform, translateY(0));
-    opacity: 1;
-  }
-
-  60% {
-    @include prefix(transform, translateY(0));
-    opacity: 1;
-  }
-
-  90% {
-    @include prefix(transform, translateY(-10px * 2));
-    opacity: 0;
-  }
-
-  100% {
-    @include prefix(transform, translateY(-10px * 2));
-    opacity: 0;
+.tabs-activeTab-2 {
+  & + div[role="tabpanel"] {
+    .accessibility-skipToContent-img:nth-of-type(2) {
+      @include prefix(transform, translateY(0));
+      opacity: 1;
+    }
   }
 }
