@@ -88,24 +88,7 @@ $link-hover-gradient: linear-gradient(125deg, var(--link), var(--link-sm));
   }
 
   abbr[title] {
-    position: relative;
-    text-decoration: none;
-
-    &::after {
-      content: "";
-      position: absolute;
-      top: 100%;
-      left: 0;
-      width: 100%;
-      height: 0.1em;
-      border-top: 0.1em dotted var(--text-light);
-    }
-
-    &:hover {
-      &::after {
-        border-color: var(--link);
-      }
-    }
+    --underline-hover-color: var(--link);
   }
 }
 

@@ -66,14 +66,14 @@ export const darkModeColors: Color[] = [
   },
   {
     hex: "#1D1A5A",
-    label: "Text/Headings",
+    label: "Text / Headings",
     labelColor: "#ffffff",
     contrast: "15.58:1",
     wcagRating: "AAA",
   },
   {
     hex: "#4F4D7F",
-    label: "Text/Paragraphs",
+    label: "Text / Paragraphs",
     labelColor: "#ffffff",
     contrast: "7.77:1",
     wcagRating: "AAA",
@@ -87,7 +87,7 @@ export const darkModeColors: Color[] = [
   },
   {
     hex: "#E0E8FF",
-    label: "Primary/Light",
+    label: "Primary / Light",
     labelColor: "#2631D1",
     contrast: "7.02:1",
     wcagRating: "AAA",
@@ -108,7 +108,7 @@ export const darkModeColors: Color[] = [
   },
   {
     hex: "#F5F7FB",
-    label: "Danger/Light",
+    label: "Danger / Light",
     labelColor: "#A30000",
     contrast: "7.65:1",
     wcagRating: "AAA",

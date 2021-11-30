@@ -1,13 +1,9 @@
 @import "~styles/modules/mixins.scss";
 
 .imgContainer-isFullScreen {
-  --container-padding-top: var(--page-padding-sides);
-
-  // --container-padding-sides: var(--page-padding-sides);
-
   position: relative;
   min-height: var(--container-min-height);
-  padding: calc(#{var(--page-padding-sides)} * 2.5) var(--page-padding-sides);
+  padding: calc(#{var(--myqr-header-height)} + 0.8rem) var(--page-padding-sides);
 
   display: flex;
   flex-direction: column;
@@ -101,13 +97,5 @@
       flex-direction: inherit;
       align-items: inherit;
     }
-  }
-}
-
-.caseStudyPage-bg.caseStudyPage-bgDark ~ .caseStudyPage .imgContainer-bgDark,
-.imgContainer-bgNone {
-  @media (min-height: 750px) {
-    padding-top: calc(#{var(--myqr-header-height)} + 0.8rem);
-    padding-bottom: calc(#{var(--myqr-header-height)} + 0.8rem);
   }
 }

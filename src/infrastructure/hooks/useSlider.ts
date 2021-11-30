@@ -27,9 +27,12 @@ const useSlider = (totalSlides: number): SliderProps => {
   const slides = totalSlides || 0;
 
   const scrollToTopOfContainer = () => {
+    const mediaQuery = "(prefers-reduced-motion: reduce)";
+    const userPrefersReducedMotion = window.matchMedia(mediaQuery).matches;
+
     if (scrollContainerRef.current) {
       scrollContainerRef.current.scrollIntoView({
-        behavior: "smooth",
+        behavior: userPrefersReducedMotion ? undefined : "smooth",
       });
     }
   };

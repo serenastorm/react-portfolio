@@ -39,16 +39,6 @@
   font-weight: var(--font-weight-medium);
 }
 
-.caseStudyPage-features {
-  @include breakpoint(0, 799.99) {
-    // --container-min-height: 120vh;
-  }
-
-  @include breakpoint(800) {
-    --container-min-height: 120vh;
-  }
-}
-
 .endNotes {
   padding-left: 0;
   list-style-type: none;

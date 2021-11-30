@@ -102,4 +102,8 @@
     --arrow-bg-color-hover: var(--myqr-primary-light);
     --arrow-pointer-color-hover: var(--myqr-primary);
   }
+
+  abbr[title] {
+    --underline-hover-color: var(--myqr-primary);
+  }
 }
