@@ -3,7 +3,7 @@ import {
   ImageWrapper,
 } from "CaseStudy/components/Image";
 import { ModularItemImages } from "CaseStudy/assets/Features/ModularItem";
-import { useSliderDirectionContext } from "contexts";
+import { useSliderDirectionContext } from "infrastructure/contexts";
 
 import "./ModularItem.scss";
 

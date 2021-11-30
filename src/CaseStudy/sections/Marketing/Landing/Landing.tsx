@@ -4,7 +4,7 @@ import {
   FullScreenImageContainer,
   SafariDesktopWrapper,
 } from "CaseStudy/components/Image";
-import { SliderDirectionContextProvider } from "contexts";
+import { SliderDirectionContextProvider } from "infrastructure/contexts";
 import { Slider } from "CaseStudy/components";
 import { LandingSectionVisuals, LandingSectionsCaptions } from "./constants";
 import { useSlider } from "infrastructure/hooks";

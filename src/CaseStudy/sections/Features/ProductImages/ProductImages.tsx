@@ -1,6 +1,6 @@
 import { ImageWrapper } from "CaseStudy/components/Image";
 import { ProductImage } from "CaseStudy/assets/Features/ProductImages";
-import { useSliderDirectionContext } from "contexts";
+import { useSliderDirectionContext } from "infrastructure/contexts";
 
 import "./ProductImages.scss";
 

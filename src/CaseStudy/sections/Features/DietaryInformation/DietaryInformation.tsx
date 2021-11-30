@@ -3,7 +3,7 @@ import {
   ImageWrapper,
 } from "CaseStudy/components/Image";
 import { DietaryInformationImage } from "CaseStudy/assets/Features/DietaryInformation";
-import { useSliderDirectionContext } from "contexts";
+import { useSliderDirectionContext } from "infrastructure/contexts";
 
 import "./DietaryInformation.scss";
 

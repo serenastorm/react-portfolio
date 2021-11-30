@@ -5,7 +5,7 @@ import { Fragment } from "react";
 import { AnimatePresence } from "framer-motion";
 import { FullScreenImageContainer } from "CaseStudy/components/Image";
 import { ImageContainerProps } from "CaseStudy/components/Image/types";
-import { SliderDirectionContextProvider } from "contexts";
+import { SliderDirectionContextProvider } from "infrastructure/contexts";
 import { SlideProps } from "CaseStudy/components/Slider/types";
 import { Slider } from "CaseStudy/components";
 import { useSlider } from "infrastructure/hooks";

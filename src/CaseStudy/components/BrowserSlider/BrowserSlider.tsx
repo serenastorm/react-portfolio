@@ -8,7 +8,7 @@ import {
   SafariDesktopWrapper,
 } from "CaseStudy/components/Image";
 import { ImageContainerProps } from "CaseStudy/components/Image/types";
-import { SliderDirectionContextProvider } from "contexts";
+import { SliderDirectionContextProvider } from "infrastructure/contexts";
 import { SlideCopy } from "CaseStudy/components/Slider/types";
 import { Slider } from "CaseStudy/components";
 import { useSlider } from "infrastructure/hooks";

@@ -3,7 +3,7 @@ import {
   ImageWrapper,
 } from "CaseStudy/components/Image";
 import { ItemReorderingImages } from "CaseStudy/assets/Features/ItemReordering";
-import { useSliderDirectionContext } from "contexts";
+import { useSliderDirectionContext } from "infrastructure/contexts";
 
 import "./ItemReordering.scss";
 
