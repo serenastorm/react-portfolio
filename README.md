@@ -9,15 +9,9 @@ Made with [React](https://reactjs.org/) & published with [Netlify](https://www.n
 
 ## Contents
 
-- [Installation](#installation)
 - [Available scripts](#available-scripts)
+- [Project structure](#project-structure)
 - [Contact](#contact)
-
-## Installation
-
-```sh
-npm i react-native-side-nav
-```
 
 ## Available scripts
 
@@ -35,6 +29,31 @@ npm run build
 ```
 
 Builds the app for production to the `build` folder.
+
+## Project structure
+
+    .
+    ├── Main                    # Main site
+    │   ├── components          # Shared components and main site components
+    │   ├── pages               # Main site pages (landing, about, etc)
+    │   └── fonts               # Fonts used only in main site
+    │
+    ├── CaseStudy               # Case study files
+    │   ├── assets              # Case study assets, organised by sections (see below)
+    │   ├── components          # Case study shared components (e.g image wrappers, navbar)
+    │   ├── pages               # Case study pages, one of each of the sections below
+    │   ├── styles              # Styles specific to the case study
+    │   └── sections            # Case study sections
+    │       ├── Intro
+    │       ├── DesignSystems
+    │       ├── Marketing
+    │       ├── UserFlows
+    │       ├── Accessibility
+    │       └── Features
+    │
+    ├── helpers
+    ├── infrastructure
+    └── ...
 
 ## Contact
 
