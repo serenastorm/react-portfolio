@@ -3,7 +3,7 @@
 import { useCallback, useEffect } from "react";
 import { motion } from "framer-motion";
 import { useLocation, matchPath } from "react-router-dom";
-import { routes, caseStudySectionsTitles } from "routes/constants";
+import { routes, caseStudySectionsTitles } from "infrastructure/routes/constants";
 import { enterAndExitAnimationProps } from "helpers/animations";
 
 import "./PageBackground.scss";

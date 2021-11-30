@@ -5,8 +5,8 @@ import {
   scrollAnimationVariants,
   scrollAnimationWrapperProps,
 } from "helpers/animations";
-import { RouteProps } from "routes/types";
-import { routes } from "routes/constants";
+import { RouteProps } from "infrastructure/routes/types";
+import { routes } from "infrastructure/routes/constants";
 import {
   NavBar,
   NextPageLink,

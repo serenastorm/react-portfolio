@@ -1,4 +1,4 @@
-import { routes } from "routes/constants";
+import { routes } from "infrastructure/routes/constants";
 import { LinkProps } from "./types";
 
 export const projectLinks: LinkProps[] = [
@@ -22,7 +22,7 @@ export const projectLinks: LinkProps[] = [
   {
     label: "antonettiserena2018",
     description: "2018 UI/UX portfolio",
-    url: "",
+    url: "https://antonettis.github.io/portfolio",
     isExternal: true,
   },
 ];

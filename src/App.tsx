@@ -1,7 +1,7 @@
 import "focus-visible";
 import { BrowserRouter as Router } from "react-router-dom";
 import { Provider } from "react-redux";
-import Routes from "./routes/Routes";
+import Routes from "infrastructure/routes/Routes";
 import { PageTitle } from "Main/components";
 import { PageBackground } from "CaseStudy/components";
 import store from "infrastructure/redux/store";

@@ -17,7 +17,7 @@ import {
   scrollAnimationVariants,
   scrollAnimationWrapperProps,
 } from "helpers/animations";
-import { routes } from "routes/constants";
+import { routes } from "infrastructure/routes/constants";
 import { addSection } from "infrastructure/redux/caseStudyCompletedSectionsReducer";
 
 import "./NavBar.scss";

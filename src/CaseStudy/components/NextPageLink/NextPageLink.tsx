@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { RouteProps } from "routes/types";
+import { RouteProps } from "infrastructure/routes/types";
 import { FullScreenText } from "CaseStudy/components";
 import { scrollAnimationVariants } from "helpers/animations";
 
