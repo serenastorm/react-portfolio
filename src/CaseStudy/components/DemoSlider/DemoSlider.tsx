@@ -8,7 +8,7 @@ import { ImageContainerProps } from "CaseStudy/components/Image/types";
 import { SliderDirectionContextProvider } from "contexts";
 import { SlideProps } from "CaseStudy/components/Slider/types";
 import { Slider } from "CaseStudy/components";
-import { useSlider } from "hooks";
+import { useSlider } from "infrastructure/hooks";
 
 import "CaseStudy/components/Slider/Slider.scss";
 

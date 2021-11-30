@@ -10,7 +10,7 @@ import {
   scrollAnimationVariants,
   scrollAnimationWrapperProps,
 } from "helpers/animations";
-import { useCopyToClipboard } from "hooks";
+import { useCopyToClipboard } from "infrastructure/hooks";
 
 import "./ProjectLink.scss";
 

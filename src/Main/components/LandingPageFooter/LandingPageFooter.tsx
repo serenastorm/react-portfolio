@@ -1,4 +1,4 @@
-import { useCopyToClipboard } from "hooks";
+import { useCopyToClipboard } from "infrastructure/hooks";
 import { NewTabLink } from "Main/components";
 
 import "./LandingPageFooter.scss";

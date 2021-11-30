@@ -2,7 +2,7 @@
 
 import { useEffect, ReactNode, Dispatch, SetStateAction } from "react";
 import { motion } from "framer-motion";
-import { useStepsAnimation } from "hooks";
+import { useStepsAnimation } from "infrastructure/hooks";
 import { enterAndExitAnimationProps } from "helpers/animations";
 import { ImageAnimationProps } from "../types";
 

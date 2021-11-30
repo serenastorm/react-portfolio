@@ -7,7 +7,7 @@ import {
 import { SliderDirectionContextProvider } from "contexts";
 import { Slider } from "CaseStudy/components";
 import { LandingSectionVisuals, LandingSectionsCaptions } from "./constants";
-import { useSlider } from "hooks";
+import { useSlider } from "infrastructure/hooks";
 
 import "CaseStudy/components/Slider/Slider.scss";
 
