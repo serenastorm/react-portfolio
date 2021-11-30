@@ -1,23 +1,14 @@
 import { useState } from "react";
 import { InformationColorImage } from "CaseStudy/assets/Accessibility/InformationColor";
 import { ImageWrapper } from "CaseStudy/components/Image";
-import { TabProps } from "CaseStudy/components/Tabs/types";
 import { ContentRowWithVisual, Tabs } from "CaseStudy/components";
+import { TabProps } from "CaseStudy/components/Tabs/types";
+import { colorFiltersTabs } from "./constants";
 
 import "./InformationColor.scss";
 
 const InformationColor = () => {
-  const tabs: TabProps[] = [
-    {
-      value: "colour",
-      label: "Colour",
-    },
-    {
-      value: "gray",
-      label: "Grayscale",
-    },
-  ];
-  const [tab, setTab] = useState<TabProps>(tabs[0]);
+  const [tab, setTab] = useState<TabProps>(colorFiltersTabs[0]);
 
   return (
     <ContentRowWithVisual
@@ -26,7 +17,7 @@ const InformationColor = () => {
     actions don’t have the same contrast as secondary ones."
     >
       <div className="accessibility-informationColor-visual">
-        <Tabs bg="Light" currentTab={tab} tabs={tabs} setTab={setTab}>
+        <Tabs currentTab={tab} tabs={colorFiltersTabs} setTab={setTab}>
           <ImageWrapper>
             <img
               src={InformationColorImage}

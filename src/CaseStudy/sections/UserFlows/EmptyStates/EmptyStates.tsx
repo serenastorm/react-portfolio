@@ -10,7 +10,7 @@ const EmptyStates = () => {
         The first thing freshly signed up users see is an empty state; so let's
         start by taking a look at some of the errors and empty states. The
         illustrations make them friendlier and the{" "}
-        <abbr title="Call to Actions">CTAs</abbr> lets the user know what's
+        <abbr title="Call to Actions">CTAs</abbr> let the user know what's
         required from them.
       </motion.p>
       <BrowserSlider

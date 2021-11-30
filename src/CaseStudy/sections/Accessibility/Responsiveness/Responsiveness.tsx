@@ -9,22 +9,13 @@ import {
 import { ResponsivenessImages } from "CaseStudy/assets/Accessibility/Responsiveness";
 import { TabProps } from "CaseStudy/components/Tabs/types";
 import { Tabs } from "CaseStudy/components";
+import { screenSizesTabs } from "./constants";
 import { enterAndExitAnimationProps } from "helpers/animations";
 
 import "./Responsiveness.scss";
 
 const Responsiveness = () => {
-  const tabs: TabProps[] = [
-    {
-      value: "desktop",
-      label: "Desktop",
-    },
-    {
-      value: "mobile",
-      label: "Mobile",
-    },
-  ];
-  const [tab, setTab] = useState<TabProps>(tabs[0]);
+  const [tab, setTab] = useState<TabProps>(screenSizesTabs[0]);
   const animationDirection = "right";
   const responsivenessAnimationDesktopSteps = 2;
   const responsivenessAnimationMobileSteps = 4;
@@ -48,7 +39,7 @@ const Responsiveness = () => {
       imageClassName="responsiveness"
       helpToggleTipCopy="Switch between the desktop and mobile tab to preview the date picker component."
     >
-      <Tabs bg="Light" currentTab={tab} tabs={tabs} setTab={setTab}>
+      <Tabs currentTab={tab} tabs={screenSizesTabs} setTab={setTab}>
         <AnimatePresence exitBeforeEnter>
           {tab.value === "desktop" ? (
             <ImageWithStepAnimation

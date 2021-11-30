@@ -4,20 +4,13 @@ import { TabProps } from "./types";
 import "./Tabs.scss";
 
 type TabsProps = {
-  bg?: "Light" | "Dark";
   children: ReactNode;
   currentTab: TabProps;
   tabs: TabProps[];
   setTab: Dispatch<SetStateAction<TabProps>>;
 };
 
-const Tabs = ({
-  bg = "Dark",
-  children,
-  currentTab,
-  tabs,
-  setTab,
-}: TabsProps) => {
+const Tabs = ({ children, currentTab, tabs, setTab }: TabsProps) => {
   const currentTabIndex = tabs.findIndex(
     (tab) => tab.value === currentTab.value
   );
@@ -25,7 +18,7 @@ const Tabs = ({
   return (
     <>
       <div
-        className={`tabs tabs-activeTab-${currentTabIndex + 1} tabs-bg${bg}`}
+        className={`tabs tabs-activeTab-${currentTabIndex + 1}`}
         role="tablist"
         style={{ "--total-tabs": tabs.length } as CSSProperties}
       >
