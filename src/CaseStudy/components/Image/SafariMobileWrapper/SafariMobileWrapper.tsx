@@ -2,7 +2,10 @@
 
 import { ReactNode } from "react";
 import { motion } from "framer-motion";
-import { enterAndExitAnimationProps } from "helpers/animations";
+import {
+  enterAndExitAnimationProps,
+  scrollAnimationVariants,
+} from "helpers/animations";
 
 import "./SafariMobileWrapper.scss";
 
@@ -40,7 +43,9 @@ const SafariMobileWrapper = ({
       {children}
     </motion.div>
   ) : (
-    <div {...wrapperProps}>{children}</div>
+    <motion.div {...wrapperProps} variants={scrollAnimationVariants({})}>
+      {children}
+    </motion.div>
   );
 };
 

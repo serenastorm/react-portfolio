@@ -35,7 +35,7 @@
 }
 
 .imgContainer-isFullScreen {
-  --img-container-gap: 2.4vh;
+  --img-container-gap: 4rem;
 
   &:not(.imgContainer-isSlider-isFullScreen) {
     gap: var(--img-container-gap);

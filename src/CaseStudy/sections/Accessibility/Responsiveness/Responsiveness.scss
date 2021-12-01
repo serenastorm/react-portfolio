@@ -2,11 +2,12 @@
 
 $mobile-img-transition: all 400ms ease-in;
 
-.imgContainer-responsiveness {
-  @include breakpoint(800) {
-    --container-min-height: 120vh;
-  }
+.img-responsiveness-screens {
+  position: relative;
 }
+
+// .imgContainer-responsiveness {
+// }
 
 .img-responsiveness {
   .desktopMock-screen {
@@ -41,10 +42,12 @@ $mobile-img-transition: all 400ms ease-in;
   }
 
   .mobileMock-wrapper {
-    width: auto;
-    height: 80vh;
-    // height: 926px;
-    min-height: 300px;
+    position: absolute;
+    bottom: 0;
+    left: -5%;
+    width: max-content;
+    height: 60vh;
+    min-height: 32rem;
 
     .img-responsiveness-mobile-screen {
       position: absolute;
