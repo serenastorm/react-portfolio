@@ -1,0 +1,75 @@
+@import "~CaseStudy/styles/placeholders.scss";
+@import "~styles/modules/mixins.scss";
+
+.tips {
+  position: relative;
+  width: var(--max-text-width);
+  margin: 0 auto var(--container-padding-top) auto;
+  padding: calc(#{var(--icon-size)} * 1.25) var(--icon-size);
+  border-radius: 0 0.4rem 0.4rem 0;
+  background-color: var(--myqr-primary-light);
+  border-left: 0.3rem solid var(--myqr-primary);
+
+  @include breakpoint(0, 799.99) {
+    --icon-size: 2rem;
+  }
+
+  @include breakpoint(800) {
+    --icon-size: 2.4rem;
+  }
+
+  h3 {
+    margin-bottom: 0.8rem;
+    margin-top: 0;
+  }
+
+  p {
+    margin-top: 0;
+  }
+
+  code {
+    font-size: inherit !important;
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 0.2rem;
+  }
+}
+
+.tips-icon {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: translate(-50%, -50%);
+  color: var(--myqr-primary);
+  background-color: var(--myqr-page-background);
+  border-radius: 50%;
+  padding: calc(#{var(--icon-size)} / 3);
+
+  svg {
+    width: var(--icon-size);
+    height: auto;
+  }
+}
+
+.caseStudyPage-bg[data-theme="dark"] ~ .caseStudyPage {
+  .tips {
+    background-color: rgba(255, 255, 255, 0.1);
+
+    p {
+      color: rgba(var(--myqr-primary-light-rgb), 0.85);
+    }
+  }
+}
+
+.caseStudyPage-bg[data-theme="light"] ~ .caseStudyPage {
+  .tips {
+    background-color: rgba(255, 255, 255, 0.6);
+  }
+}
+
+.caseStudyPage-bg[data-theme="none"] ~ .caseStudyPage {
+  .tips {
+    .new-tab-link {
+      --arrow-bg-color: var(--white);
+    }
+  }
+}

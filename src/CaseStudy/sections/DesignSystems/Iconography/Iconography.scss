@@ -28,6 +28,10 @@
     @include breakpoint(800) {
       margin: var(--container-padding-sides) auto 0 auto;
     }
+
+    & + .tips {
+      margin-top: var(--container-padding-top);
+    }
   }
 
   .icons {

@@ -1,6 +1,6 @@
 import { PricingImage } from "CaseStudy/assets/Marketing/Pricing";
 import { ImageWrapper } from "CaseStudy/components/Image";
-import { ContentRowWithVisual } from "CaseStudy/components";
+import { ContentRowWithVisual, Tips } from "CaseStudy/components";
 
 import "./Pricing.scss";
 
@@ -23,6 +23,16 @@ const Pricing = () => {
           />
         </ImageWrapper>
       </ContentRowWithVisual>
+      <Tips
+        copy={
+          <>
+            If you don't have too many plans, a table is the best way for users
+            to compare features as it's easier to scan. On smaller screens make
+            use of <code>position: sticky</code> to keep the subscription names
+            visible on scroll.
+          </>
+        }
+      />
     </>
   );
 };

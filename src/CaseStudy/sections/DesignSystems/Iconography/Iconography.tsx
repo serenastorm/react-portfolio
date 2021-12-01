@@ -9,6 +9,7 @@ import {
 } from "helpers/animations";
 
 import "./Iconography.scss";
+import { Tips } from "CaseStudy/components";
 
 type IconProps = {
   el: ReactNode;
@@ -105,6 +106,7 @@ const Iconography = () => {
           { el: <DuotoneIcons.QRCode />, label: "QR Codes" },
         ]}
       />
+      <Tips copy="Animations can be overwhelming, so on the actual website, the icons above only animate on hover." />
     </>
   );
 };

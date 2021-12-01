@@ -1,5 +1,10 @@
 import { CaseStudyPage } from "CaseStudy/pages";
-import { DemoSlider, List, Paragraph } from "CaseStudy/components";
+import {
+  DemoSlider,
+  List,
+  Paragraph,
+  TaskTrackerLink,
+} from "CaseStudy/components";
 import { NewFeaturesSections, NewFeaturesListItems } from "CaseStudy/sections";
 
 import "./FeaturesPage.scss";
@@ -46,6 +51,7 @@ const FeaturesPage = () => {
         insight into how I solve problems. Please don't hesitate to contact me
         if you're interested in working together.
       </Paragraph>
+      <TaskTrackerLink />
     </CaseStudyPage>
   );
 };

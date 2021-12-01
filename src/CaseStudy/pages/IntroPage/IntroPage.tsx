@@ -1,5 +1,10 @@
 import { CaseStudyPage } from "CaseStudy/pages";
-import { FullScreenText, Paragraph, ProjectLink } from "CaseStudy/components";
+import {
+  FullScreenText,
+  Paragraph,
+  ProjectLink,
+  TaskTrackerLink,
+} from "CaseStudy/components";
 import { MyQrStudioLogo } from "CaseStudy/assets/Logos";
 import { IntroSections } from "CaseStudy/sections";
 
@@ -28,6 +33,7 @@ const IntroPage = () => {
         give me different perspectives about the work that goes into bringing an
         idea to life. And like most side projects, it was also a lot of fun!
       </Paragraph>
+      <TaskTrackerLink />
     </CaseStudyPage>
   );
 };

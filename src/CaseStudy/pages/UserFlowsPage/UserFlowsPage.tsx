@@ -1,7 +1,6 @@
 import { CaseStudyPage } from "CaseStudy/pages";
 import { UserFlowsSections } from "CaseStudy/sections";
 import { SectionWithHeader } from "CaseStudy/components";
-import { List } from "CaseStudy/components/List";
 
 import "./UserFlowsPage.scss";
 
@@ -19,19 +18,7 @@ const UserFlowsPage = () => {
         </>
       }
     >
-      <SectionWithHeader title="Sign up">
-        <UserFlowsSections.SignUp />
-        <List
-          items={[
-            {
-              title:
-                "Sign up form fields are stripped down to the bare minimum.",
-              copy: "Users only need to enter the information needed to make the site work at this stage. They get asked for additional information later, such as their chosen currency (when they create a menu) or their theme and notifications preferences (from the settings page).",
-            },
-            "Users can choose not to use passwords and request an email link instead.",
-          ]}
-        />
-      </SectionWithHeader>
+      <UserFlowsSections.SignUp />
       <SectionWithHeader title="Errors & empty states">
         <UserFlowsSections.EmptyStates />
       </SectionWithHeader>

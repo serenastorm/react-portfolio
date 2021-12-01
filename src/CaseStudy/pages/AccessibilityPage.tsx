@@ -1,5 +1,5 @@
 import { CaseStudyPage } from "CaseStudy/pages";
-import { List } from "CaseStudy/components";
+import { List, Tips } from "CaseStudy/components";
 import { AccessibilitySections } from "CaseStudy/sections";
 
 const AccessibilityPage = () => {
@@ -53,6 +53,7 @@ const AccessibilityPage = () => {
           },
         ]}
       />
+      <Tips copy="When testing a website with a screen reader, cover your screen to make sure everything is truly keyboard accessible. Also check your website’s contrast in bright sunlight!" />
     </CaseStudyPage>
   );
 };
