@@ -34,10 +34,9 @@ const FullScreenImageContainer = ({
               currentSlideIndex + 1
             }${fullScreenSlides ? " imgContainer-isSlider-isFullScreen" : ""}`
           : ""
-      }${
-        bg ? ` imgContainer-bg${bg}` : ""
       } imgContainer-${imageClassName} ${className}`}
       ref={containerRef}
+      data-bg={bg ? bg.toLowerCase() : ""}
       {...scrollAnimationWrapperProps}
     >
       {helpToggleTipCopy && (

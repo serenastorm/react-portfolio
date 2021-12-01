@@ -56,7 +56,7 @@
   }
 }
 
-.imgContainer-bgDark {
+.imgContainer-isFullScreen[data-bg="dark"] {
   .desktopMock-wrapper {
     box-shadow: none;
   }

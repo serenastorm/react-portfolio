@@ -70,6 +70,8 @@ $myqr-success-hover: darken($myqr-success, 5%);
   --myqr-success-rgb: #{$myqr-success-rgb};
   --myqr-success-hover: #{$myqr-success-hover};
 
+  --myqr-page-background: var(--white);
+
   // Focus states
   --myqr-focus-bg: #b21d91;
   --myqr-focus-shadow: 0 0 0 0.2rem rgba(178, 29, 145, 0.3);

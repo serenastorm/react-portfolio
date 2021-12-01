@@ -69,7 +69,7 @@
   }
 }
 
-.imgContainer-bgDark {
+.imgContainer-isFullScreen[data-bg="dark"] {
   .imgSlider-button {
     .imgSlider-button-text {
       color: var(--myqr-primary-light);
@@ -92,17 +92,17 @@
 
 /* If the background is the same as the page's, 
 remove padding on mobile since it just looks like spacing */
-$image-backgrounds: "Dark", "Light";
+$image-backgrounds: "dark", "light";
 
 @include breakpoint(0, 799.99) {
-  .imgContainer-bgNone {
+  .imgContainer-isFullScreen[data-bg="none"] {
     padding-top: 0;
     padding-bottom: 0;
   }
 
   @each $image-background in $image-backgrounds {
-    .caseStudyPage-bg#{$image-background} {
-      & + .caseStudyPage .imgContainer-bg#{$image-background} {
+    .caseStudyPage-bg[data-theme=#{$image-background}] {
+      & ~ .caseStudyPage .imgContainer-isFullScreen[data-bg=#{$image-background}] {
         padding-top: 0;
         padding-bottom: 0;
       }

@@ -29,13 +29,13 @@
     right: 2rem;
   }
 }
-.caseStudyPage-bg:not(.caseStudyPage-bgDark) {
-  & ~ .caseStudyPage .imgContainer-bgDark {
+.caseStudyPage-bg:not(.caseStudyPage-bg[data-theme="dark"]) {
+  & ~ .caseStudyPage .imgContainer-isFullScreen[data-bg="dark"] {
     background-color: #00003c;
   }
 }
 
-.imgContainer-bgDark {
+.imgContainer-isFullScreen[data-bg="dark"] {
   p {
     color: var(--white);
   }
@@ -47,11 +47,11 @@
   }
 }
 
-.imgContainer-bgLightGray {
+.imgContainer-isFullScreen[data-bg="lightgray"] {
   background-color: var(--myqr-gray-100);
 }
 
-.imgContainer-bgLight {
+.imgContainer-isFullScreen[data-bg="light"] {
   background-color: var(--myqr-primary-light);
 
   &::before {
