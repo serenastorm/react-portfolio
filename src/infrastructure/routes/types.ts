@@ -5,7 +5,7 @@ export type RouteProps = {
 
 export type SectionName =
   | "marketing"
-  | "dashboard"
+  | "user-flows"
   | "accessibility"
   | "features"
   | "design-system";

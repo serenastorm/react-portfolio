@@ -16,7 +16,7 @@ export const caseStudySectionsTitles = {
 
 const caseStudySections = {
   marketing: "marketing" as SectionName,
-  dashboard: "dashboard" as SectionName,
+  dashboard: "user-flows" as SectionName,
   accessibility: "accessibility" as SectionName,
   features: "features" as SectionName,
   designSystem: "design-system" as SectionName,
