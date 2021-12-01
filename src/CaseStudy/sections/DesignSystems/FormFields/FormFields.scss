@@ -6,6 +6,13 @@ $input-line-height: 1.9rem;
 $input-border-width: 1px;
 $input-transition-duration: 0.15s;
 
+.designSystem-preview-form {
+  .form-group {
+    width: 100%;
+    max-width: 32rem;
+  }
+}
+
 .form-label {
   font-family: var(--myqr-type-paragraph);
   font-weight: var(--font-weight-regular);
@@ -157,7 +164,6 @@ $input-transition-duration: 0.15s;
   border-radius: 0.4rem;
   display: block;
   width: 100%;
-  max-width: 32rem;
   background-clip: padding-box;
   transition: all 150ms ease-in;
 

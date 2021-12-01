@@ -39,14 +39,14 @@ export const LandingSectionVisuals: LandingImageProps[] = [
 
 export const LandingSectionsCaptions = [
   [
-    "The visuals are cut off at the bottom of most desktop screens to entice users to scroll",
-    "CTAs are easy to find",
+    "The visuals are cut off to entice users to scroll",
+    "CTAs stand out from each other and the rest of the page",
   ],
   "Show users what the product looks and feels like with a preview of the dashboard and a sample menu",
   "Start by listing the main advantages of using the product",
   [
     "Then a more in-depth explanation of each feature",
-    "The visuals are interactive and give users the chance to feel like they’re using the product",
+    "Interactive visuals give users the chance to feel like they’re using the product",
   ],
   "Bullet points keep the information easy to scan",
   "Make it clear which features are part of a paid plan",

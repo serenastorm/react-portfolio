@@ -88,7 +88,7 @@ const FormFields = () => {
     <>
       <div className="designSystem-section">
         <motion.output
-          className="designSystem-preview"
+          className="designSystem-preview designSystem-preview-form"
           form="buttonsForm"
           variants={scrollAnimationVariants({ delay: 0.5 })}
         >

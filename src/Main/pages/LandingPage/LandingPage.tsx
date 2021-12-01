@@ -73,7 +73,7 @@ const LandingPage = () => {
         where most of my projects were under{" "}
         <abbr title="Non Disclosure Agreements">NDAs</abbr>, but you can find
         some of my public works below. You can also check out the code for this
-        website on my{" "}
+        portfolio on my{" "}
         <ScrenReaderLink
           text="Github."
           url="https://github.com/serenastorm/react-portfolio"
