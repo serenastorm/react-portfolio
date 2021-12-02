@@ -1,3 +1,5 @@
+@import "~styles/modules/mixins.scss";
+
 .accessibility-informationColor-visual {
   display: flex;
   flex-direction: column;
@@ -8,13 +10,27 @@
     order: 2;
     box-shadow: var(--myqr-img-container-shadow);
   }
+
+  .imgWrapper {
+    @include breakpoint(0, 799.99) {
+      max-width: 80%;
+      margin: 0 auto;
+    }
+  }
 }
 
 .accessibility-informationColor-img {
   border-radius: var(--img-border-radius);
   filter: var(--myqr-img-shadow);
-  width: 80vw;
-  max-width: 40rem;
+
+  @include breakpoint(0, 799.99) {
+    max-width: 100%;
+  }
+
+  @include breakpoint(800) {
+    width: 80vw;
+    max-width: 40rem;
+  }
 
   &.accessibility-informationColor-img-gray {
     filter: grayscale(1) var(--myqr-img-shadow);
