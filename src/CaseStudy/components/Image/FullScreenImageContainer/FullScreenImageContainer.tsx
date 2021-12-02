@@ -1,4 +1,4 @@
-import { ReactNode, Ref, MouseEventHandler } from "react";
+import { ReactNode, Ref } from "react";
 import { motion } from "framer-motion";
 import { ToggleTip } from "CaseStudy/components";
 import { scrollAnimationWrapperProps } from "helpers/animations";

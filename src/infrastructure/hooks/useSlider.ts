@@ -7,7 +7,6 @@ import {
   useRef,
   MutableRefObject,
   TouchEvent,
-  MouseEvent,
 } from "react";
 import { DragContainerProps } from "CaseStudy/components/Slider/types";
 
