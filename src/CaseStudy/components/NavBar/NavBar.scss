@@ -13,13 +13,14 @@ nav {
   position: fixed;
   z-index: 35;
   width: 100vw;
-  min-height: calc(100vh - #{var(--myqr-header-height)});
+  height: calc(100vh - #{var(--myqr-header-height)});
   left: 0;
   top: var(--myqr-header-height);
   background-color: var(--myqr-gray-100);
   padding: 8vh calc((100vw - #{var(--max-text-width)}) / 2);
   display: flex;
   gap: 3.2rem;
+  overflow-x: auto;
 
   @include breakpoint(0, 799.98) {
     flex-direction: column;
@@ -43,11 +44,15 @@ nav {
       counter-increment: nav-counter;
       color: var(--myqr-text);
       font-weight: var(--font-weight-bold);
-      font-size: 4vh;
 
-      // @include breakpoint(900, 2900) {
-      //   font-size: 4vh;
-      // }
+
+      @media (max-height: 559.98px) {
+        font-size: 2rem;
+      }
+
+      @media (min-height: 560px) {
+        font-size: 4vh;
+      }
 
       &:nth-of-type(1) {
         counter-set: nav-counter 0;

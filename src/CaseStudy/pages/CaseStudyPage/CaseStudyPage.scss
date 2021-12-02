@@ -2,6 +2,7 @@
 @import "~CaseStudy/styles/placeholders.scss";
 
 .caseStudyPage {
+  overflow-y: hidden;
   padding-bottom: var(--page-padding-sides);
 
   &:not(.caseStudyPage-home) {
