@@ -29,12 +29,14 @@ const DemoSlider = ({
     onPreviousButtonClick,
     sliderDirection,
     scrollContainerRef,
+    dragContainerProps,
   } = useSlider(totalSlides);
 
   return (
     <SliderDirectionContextProvider value={sliderDirection}>
       <FullScreenImageContainer
         currentSlideIndex={currentSlideIndex}
+        dragContainerProps={dragContainerProps}
         fullScreenSlides
         helpToggleTipCopy="Use the next and previous arrows to navigate the carousel."
         containerRef={scrollContainerRef}

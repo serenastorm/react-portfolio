@@ -4,7 +4,10 @@ import {
   SetStateAction,
   useRef,
   MutableRefObject,
+  TouchEvent,
+  MouseEvent,
 } from "react";
+import { DragContainerProps } from "CaseStudy/components/Slider/types";
 
 type SliderDirection = "left" | "right";
 
@@ -15,9 +18,11 @@ type SliderProps = {
   onPreviousButtonClick: () => void;
   sliderDirection: SliderDirection;
   scrollContainerRef: MutableRefObject<HTMLElement | null>;
+  dragContainerProps: DragContainerProps;
 };
 
 const useSlider = (totalSlides: number): SliderProps => {
+  const [mousePosition, setMousePosition] = useState<number>(0);
   const [currentSlideIndex, setCurrentSlideIndex] = useState<number>(0);
   const [sliderDirection, setSliderDirection] =
     useState<SliderDirection>("right");
@@ -37,20 +42,46 @@ const useSlider = (totalSlides: number): SliderProps => {
     }
   };
 
-  const onPreviousButtonClick = () => {
+  const goToPreviousSlide = () => {
     setCurrentSlideIndex((currentSlide) =>
       currentSlide <= 0 ? slides - 1 : currentSlide - 1
     );
     setSliderDirection("left");
-    scrollToTopOfContainer();
   };
 
-  const onNextButtonClick = () => {
+  const goToNextSlide = () => {
     setCurrentSlideIndex((currentSlide) =>
       currentSlide >= slides - 1 ? 0 : currentSlide + 1
     );
     setSliderDirection("right");
+  };
+
+  const onPreviousButtonClick = () => {
+    goToPreviousSlide();
     scrollToTopOfContainer();
+  };
+
+  const onNextButtonClick = () => {
+    goToNextSlide();
+    scrollToTopOfContainer();
+  };
+
+  const dragContainerProps = {
+    onTouchStart: (event: TouchEvent<HTMLElement>) => {
+      const startPosition = event.touches[0].pageX;
+      setMousePosition(startPosition);
+    },
+    onTouchEnd: (event: TouchEvent<HTMLElement>) => {
+      const endPosition = event.changedTouches[0].pageX;
+
+      if (endPosition > mousePosition) {
+        goToPreviousSlide();
+        setMousePosition(endPosition);
+      } else if (mousePosition > endPosition) {
+        setMousePosition(endPosition);
+        goToNextSlide();
+      }
+    },
   };
 
   return {
@@ -60,6 +91,7 @@ const useSlider = (totalSlides: number): SliderProps => {
     onPreviousButtonClick,
     sliderDirection,
     scrollContainerRef,
+    dragContainerProps,
   };
 };
 

@@ -1,8 +1,9 @@
-import { ReactNode, Ref } from "react";
+import { ReactNode, Ref, MouseEventHandler } from "react";
 import { motion } from "framer-motion";
 import { ToggleTip } from "CaseStudy/components";
 import { scrollAnimationWrapperProps } from "helpers/animations";
 import { ImageContainerProps } from "../types";
+import { DragContainerProps } from "CaseStudy/components/Slider/types";
 
 import "./FullScreenImageContainer.scss";
 
@@ -11,6 +12,7 @@ interface FullScreenImageContainerProps extends ImageContainerProps {
   children: ReactNode;
   containerRef?: Ref<HTMLElement>;
   currentSlideIndex?: number;
+  dragContainerProps?: DragContainerProps;
   fullScreenSlides?: boolean;
 }
 
@@ -20,6 +22,7 @@ const FullScreenImageContainer = ({
   children,
   containerRef,
   currentSlideIndex = -1,
+  dragContainerProps,
   fullScreenSlides,
   imageClassName,
   helpToggleTipCopy,
@@ -38,6 +41,7 @@ const FullScreenImageContainer = ({
       ref={containerRef}
       data-bg={bg ? bg.toLowerCase() : ""}
       {...scrollAnimationWrapperProps}
+      {...dragContainerProps}
     >
       {helpToggleTipCopy && (
         <ToggleTip content={helpToggleTipCopy} label="Help" />

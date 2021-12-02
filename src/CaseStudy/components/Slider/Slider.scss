@@ -4,8 +4,12 @@
   position: relative;
   display: flex;
   align-items: center;
-  flex-direction: column;
   width: 100%;
+
+  img {
+    // Remove pointer events on images to help with dragging
+    pointer-events: none;
+  }
 
   @include breakpoint(0, 799.99) {
     flex-wrap: wrap;
@@ -22,14 +26,10 @@
     .imgSlider-button-isNext {
       order: 3;
     }
-
-    .imgSlider-button-isPrev,
-    .imgSlider-button-isNext {
-      margin-top: 2.4rem;
-    }
   }
 
   @include breakpoint(800) {
+    flex-direction: column;
     justify-content: space-between;
   }
 }
@@ -101,8 +101,10 @@ $image-backgrounds: "dark", "light";
   }
 
   @each $image-background in $image-backgrounds {
-    .caseStudyPage-bg[data-theme=#{$image-background}] {
-      & ~ .caseStudyPage .imgContainer-isFullScreen[data-bg=#{$image-background}] {
+    .caseStudyPage-bg[data-theme="#{$image-background}"] {
+      &
+        ~ .caseStudyPage
+        .imgContainer-isFullScreen[data-bg="#{$image-background}"] {
         padding-top: 0;
         padding-bottom: 0;
       }
