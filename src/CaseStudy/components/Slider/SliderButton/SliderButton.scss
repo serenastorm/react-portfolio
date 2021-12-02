@@ -198,3 +198,17 @@
     }
   }
 }
+
+.caseStudyPage-bg[data-theme="dark"] {
+  @include breakpoint(0, 799.99) {
+    & ~ .caseStudyPage .imgSlider-button {
+      svg {
+        circle {
+          &[stroke="#fff"] {
+            fill: rgba(var(--myqr-text-rgb), 0.9);
+          }
+        }
+      }
+    }
+  }
+}

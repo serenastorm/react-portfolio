@@ -1,8 +1,15 @@
 @import "~styles/modules/mixins.scss";
 
 .imgContainer-itemReordering {
-  --img-padding: 16px;
   --img-border-radius: var(--border-radius-md);
+
+  @include breakpoint(0, 799.99) {
+    --img-padding: 0.4rem;
+  }
+
+  @include breakpoint(800) {
+    --img-padding: 1.6rem;
+  }
 
   .img-hasStepAnimation {
     display: grid;
