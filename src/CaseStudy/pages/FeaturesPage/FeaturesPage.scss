@@ -10,7 +10,7 @@
 
     @include breakpoint(800) {
       // Prevent jumping in between visuals by making the container as tall as the tallest visual
-      min-height: calc(564px + (#{var(--img-padding)} * 2));
+      min-height: calc(496px + (#{var(--img-padding)} * 2));
     }
   }
 }

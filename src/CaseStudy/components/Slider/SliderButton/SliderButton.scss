@@ -27,7 +27,7 @@
   }
 }
 
-.imgSlider > *:not(.imgSlider-button) {
+.imgSlider > *:not(.imgSlider-button):not(.screenReaderText) {
   position: relative;
   z-index: 2;
 }

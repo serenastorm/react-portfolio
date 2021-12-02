@@ -1,5 +1,11 @@
 $panel-transition-duration: 400ms;
 
+.imgContainer-menus {
+  .desktopMock-screen {
+    background-color: var(--white);
+  }
+}
+
 .img-menuPanel {
   width: 100%;
   background-color: var(--white);
@@ -7,12 +13,12 @@ $panel-transition-duration: 400ms;
   img {
     transition: all $panel-transition-duration ease-in;
 
-    &:nth-of-type(-n + 3) {
+    &:nth-of-type(n + 2) {
       position: absolute;
     }
 
-    // Menu
-    &:first-of-type {
+    // Spacer
+    &:nth-of-type(2) {
       z-index: 1;
       height: 100%;
       width: auto;
@@ -22,47 +28,51 @@ $panel-transition-duration: 400ms;
     }
 
     // Panel
-    &:nth-of-type(2) {
+    &:nth-of-type(3) {
       z-index: 2;
       height: 100%;
       width: auto;
       top: 0;
-      left: 0;
-      aspect-ratio: 278 / 620;
+      left: 100%;
+      aspect-ratio: 440 / 892.09;
     }
 
-    // Panel Button
-    &:nth-of-type(3) {
-      z-index: 3;
-      width: calc((32 / 1000) * 100%);
-      height: auto;
-      top: calc((44 / 620) * 100%);
-      aspect-ratio: 1 / 1;
+    // Back button
+    &:nth-of-type(4) {
+      z-index: 4;
+      height: 100%;
+      width: auto;
+      left: 0;
+      top: 0;
+      aspect-ratio: 179 / 894;
     }
 
     // Actions
-    // &:nth-of-type(3) {
-    //   width: 100%;
-    //   height: auto;
-    // }
+    &:nth-of-type(5) {
+      z-index: 5;
+      height: 100%;
+      width: auto;
+      right: 0;
+      top: 0;
+      aspect-ratio: 713 / 894;
+    }
   }
 
   &.img-menuPanel-isHidden {
     img {
       // Menu
-      &:first-of-type {
-        transform: translateX(-26%);
-      }
-
-      // Panel
       &:nth-of-type(2) {
-        transform: translateX(0);
+        transform: translateX(-50%);
       }
 
-      // Panel Button
+      // // Panel
       &:nth-of-type(3) {
-        left: calc((278 / 1000) * 100%);
-        transform: rotate(0deg);
+        transform: translateX(-9%);
+      }
+
+      // Actions
+      &:nth-of-type(5) {
+        transform: translateX(0);
       }
     }
   }
@@ -70,20 +80,44 @@ $panel-transition-duration: 400ms;
   &.img-menuPanel-isExpanded {
     img {
       // Menu
-      &:first-of-type {
-        transform: translateX(-50%);
+      &:nth-of-type(2) {
+        transform: translateX(-76%);
       }
 
       // Panel
-      &:nth-of-type(2) {
+      &:nth-of-type(3) {
         transform: translateX(-100%);
       }
 
-      // Panel Button
-      &:nth-of-type(3) {
-        left: 0;
-        transform: rotate(180deg);
+      // Actions
+      &:nth-of-type(5) {
+        transform: translateX(-57%);
       }
+    }
+  }
+}
+
+.img-customisation {
+  img {
+    transition: all $panel-transition-duration ease-in;
+
+    &:nth-of-type(2) {
+      position: absolute;
+      width: 100%;
+      height: auto;
+      inset: 0;
+    }
+  }
+
+  &.img-hasStepAnimation-step2 {
+    img:nth-of-type(2) {
+      filter: hue-rotate(45deg);
+    }
+  }
+
+  &.img-hasStepAnimation-step3 {
+    img:nth-of-type(2) {
+      filter: hue-rotate(90deg);
     }
   }
 }

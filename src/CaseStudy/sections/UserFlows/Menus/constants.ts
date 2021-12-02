@@ -23,11 +23,16 @@ export const MenusSectionsVisuals: SlideImageProps[] = [
     },
   },
   {
-    img: MenusImages.Customisation,
+    img: [...MenusImages.Customisation],
     alt: "",
     slides: [2, 3],
     className: "",
     animation: "fade",
+    animationProps: {
+      totalSteps: 3,
+      intervalInMs: 1500,
+      animationClassName: "customisation",
+    },
   },
   {
     img: MenusImages.EditItem,
