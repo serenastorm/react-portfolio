@@ -2,13 +2,7 @@
 @import "~CaseStudy/styles/placeholders.scss";
 
 .resources-list {
-  @include breakpoint(0, 799.99) {
-    padding: var(--container-padding-top) var(--page-padding-sides);
-  }
-
-  @include breakpoint(800) {
-    padding: var(--container-padding-top) var(--container-padding-sides);
-  }
+  padding: var(--container-padding-top) var(--container-padding-sides);
 
   ul {
     list-style-type: none;

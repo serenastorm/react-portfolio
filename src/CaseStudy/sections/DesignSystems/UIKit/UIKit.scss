@@ -7,16 +7,15 @@
     position: relative;
 
     img {
+      width: var(--max-text-width);
+      height: auto;
+
       &:first-of-type {
-        width: var(--max-text-width);
-        height: auto;
         filter: var(--myqr-img-shadow);
       }
 
       &:nth-of-type(n + 2) {
         position: absolute;
-        width: 100%;
-        height: auto;
         inset: 0;
       }
     }

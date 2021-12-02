@@ -239,9 +239,7 @@ nav {
 }
 
 header {
-  width: calc(#{var(--max-text-width)} + (#{var(--page-padding-sides)} * 2));
-  padding-left: var(--page-padding-sides);
-  padding-right: var(--page-padding-sides);
+  width: var(--max-text-width);
   display: flex;
   align-items: center;
 }

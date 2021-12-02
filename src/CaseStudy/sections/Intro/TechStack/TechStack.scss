@@ -4,11 +4,10 @@
 .tech-stacks {
   display: grid;
   grid-auto-rows: minmax(min-content, max-content);
-  grid-column-gap: var(--page-padding-sides);
-  grid-row-gap: var(--page-padding-sides);
+  grid-column-gap: var(--container-padding-sides);
+  padding: var(--container-padding-top) var(--container-padding-sides);
 
   @include breakpoint(0, 799.99) {
-    padding: var(--container-padding-top) var(--page-padding-sides);
     grid-template-columns: repeat(2, 1fr);
 
     h2 {
@@ -27,7 +26,6 @@
   }
 
   @include breakpoint(800) {
-    padding: var(--container-padding-top) var(--container-padding-sides);
     grid-template-columns: repeat(6, 1fr);
 
     h2 {

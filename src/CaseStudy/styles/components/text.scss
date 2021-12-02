@@ -100,10 +100,6 @@
     font-weight: var(--font-weight-semibold);
   }
 
-  p {
-    max-width: var(--max-text-width);
-  }
-
   .underline-link {
     @include onFocus {
       color: var(--myqr-primary);

@@ -1,13 +1,8 @@
 @import "~styles/modules/mixins.scss";
 
 .intro-text {
-  @include breakpoint(0, 799.99) {
-    padding: var(--container-padding-top) var(--page-padding-sides);
-  }
-
-  @include breakpoint(800) {
-    padding: var(--container-padding-top) var(--container-padding-sides);
-  }
+  margin: var(--container-padding-top) auto;
+  width: var(--max-text-width);
 
   dl {
     display: flex;

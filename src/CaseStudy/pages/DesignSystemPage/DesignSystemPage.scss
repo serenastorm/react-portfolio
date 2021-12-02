@@ -2,19 +2,9 @@
 @import "~CaseStudy/styles/placeholders.scss";
 
 .designSystem-section {
-  width: var(--max-container-width);
+  width: var(--max-text-width);
+  margin: 0 auto;
   display: flex;
-
-  @include breakpoint(0, 799.99) {
-    padding-left: var(--page-padding-sides);
-    padding-right: var(--page-padding-sides);
-  }
-
-  @include breakpoint(800) {
-    margin: 0 auto;
-    padding-left: var(--container-padding-sides);
-    padding-right: var(--container-padding-sides);
-  }
 
   @include breakpoint(0, 799.99) {
     flex-direction: column;

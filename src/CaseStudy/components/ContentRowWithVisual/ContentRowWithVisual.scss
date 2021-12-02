@@ -1,10 +1,9 @@
 @import "~styles/modules/mixins.scss";
 
 .contentRow {
+  width: var(--max-text-width);
   margin: var(--container-padding-top) auto;
-  padding-left: var(--container-padding-sides);
-  padding-right: var(--container-padding-sides);
-  width: var(--max-container-width);
+
   display: flex;
   align-items: center;
   justify-content: center;

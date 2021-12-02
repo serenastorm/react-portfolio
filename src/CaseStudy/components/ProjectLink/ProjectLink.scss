@@ -1,7 +1,7 @@
 @import "~styles/modules/mixins.scss";
 
 .projectLink {
-  padding: var(--container-padding-top) var(--page-padding-sides);
+  padding: var(--container-padding-top) var(--container-padding-sides);
 
   @include breakpoint(800) {
     display: flex;

@@ -22,25 +22,19 @@ $myqr-success-rgb: hexToRGB($myqr-success);
 $myqr-success-hover: darken($myqr-success, 5%);
 
 :root {
+  --container-padding-sides: calc((100vw - #{var(--max-text-width)}) / 2);
+
   // Spacing
   @include breakpoint(0, 799.99) {
     --container-padding-top: 4vw;
-    --container-padding-sides: 0;
     --page-padding-sides: 1.6rem;
     --max-text-width: calc(100vw - (#{var(--page-padding-sides)} * 2));
-    --max-container-width: calc(
-      #{var(--max-text-width)} + (#{var(--container-padding-sides)} * 2)
-    );
   }
 
   @include breakpoint(800) {
     --container-padding-top: 8vw;
-    --container-padding-sides: 8vw;
     --page-padding-sides: 3vw;
     --max-text-width: 110rem; /* Roughly 65ch for paragraphs */
-    --max-container-width: calc(
-      #{var(--max-text-width)} + (#{var(--container-padding-sides)} * 2)
-    );
   }
 
   // Colors

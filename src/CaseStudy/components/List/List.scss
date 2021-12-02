@@ -15,16 +15,8 @@
 }
 
 .list-isFullScreen {
-  margin: 0 auto;
-  max-width: var(--max-container-width);
-
-  @include breakpoint(0, 799.99) {
-    padding: var(--container-padding-top) var(--page-padding-sides);
-  }
-
-  @include breakpoint(800) {
-    padding: var(--container-padding-top) var(--container-padding-sides);
-  }
+  width: var(--max-text-width);
+  margin: var(--container-padding-top) auto;
 }
 
 .caseStudyPage-intro + main {

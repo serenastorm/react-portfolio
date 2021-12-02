@@ -1,16 +1,8 @@
 @import "~styles/modules/mixins.scss";
 
 .colorPalette {
-  max-width: var(--max-container-width);
-  margin: 0 auto;
-
-  @include breakpoint(0, 799.99) {
-    padding: var(--container-padding-top) var(--page-padding-sides);
-  }
-
-  @include breakpoint(800) {
-    padding: var(--container-padding-top) var(--container-padding-sides);
-  }
+  width: var(--max-text-width);
+  margin: var(--container-padding-top) auto;
 
   & + .list-isFullScreen {
     padding-top: 0;
