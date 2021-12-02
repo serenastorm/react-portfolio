@@ -13,7 +13,6 @@ interface FullScreenImageContainerProps extends ImageContainerProps {
   containerRef?: Ref<HTMLElement>;
   currentSlideIndex?: number;
   dragContainerProps?: DragContainerProps;
-  fullScreenSlides?: boolean;
 }
 
 const FullScreenImageContainer = ({
@@ -23,7 +22,6 @@ const FullScreenImageContainer = ({
   containerRef,
   currentSlideIndex = -1,
   dragContainerProps,
-  fullScreenSlides,
   imageClassName,
   helpToggleTipCopy,
 }: FullScreenImageContainerProps) => {
@@ -35,7 +33,7 @@ const FullScreenImageContainer = ({
         isSlider
           ? ` imgContainer-isSlider imgContainer-isSlider-slide${
               currentSlideIndex + 1
-            }${fullScreenSlides ? " imgContainer-isSlider-isFullScreen" : ""}`
+            }`
           : ""
       } imgContainer-${imageClassName} ${className}`}
       ref={containerRef}

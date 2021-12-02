@@ -17,7 +17,7 @@ const DietaryInformation = () => {
       intervalInMs={1500}
       animationClassName="dietaryInformation"
     >
-      {(animationStep, setAnimationStep, pauseOnUserInteraction) => (
+      {(...animationProps) => (
         <>
           <ImageWrapper animationDirection={sliderDirection}>
             <img

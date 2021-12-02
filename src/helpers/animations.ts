@@ -98,5 +98,5 @@ export const scrollAnimation = {
 export const scrollAnimationWrapperProps = {
   initial: scrollAnimation.offscreen,
   whileInView: scrollAnimation.onscreen,
-  viewport: { once: false },
+  viewport: { once: true },
 };

@@ -120,7 +120,7 @@ const BrowserSlider = ({
     <SliderDirectionContextProvider value={sliderDirection}>
       <FullScreenImageContainer
         currentSlideIndex={currentSlideIndex}
-        dragContainerProps={dragContainerProps}
+        dragContainerProps={dragContainerProps()}
         helpToggleTipCopy="Use the next and previous arrows to navigate the carousel."
         containerRef={scrollContainerRef}
         {...imageContainerProps}
@@ -169,11 +169,7 @@ const BrowserSlider = ({
                       )}
                       {Array.isArray(img) && animationProps && (
                         <ImageWithStepAnimation {...animationProps}>
-                          {(
-                            animationStep,
-                            setAnimationStep,
-                            pauseOnUserInteraction
-                          ) => (
+                          {(...animationProps) => (
                             <>
                               {img.map((imgSrc, imgIndex: number) => (
                                 <img

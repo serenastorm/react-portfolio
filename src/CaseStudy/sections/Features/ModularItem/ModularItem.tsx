@@ -17,7 +17,7 @@ const ModularItem = () => {
       intervalInMs={1500}
       animationClassName="modularItem"
     >
-      {(animationStep, setAnimationStep, pauseOnUserInteraction) => (
+      {(...animationProps) => (
         <>
           <ImageWrapper animationDirection={sliderDirection}>
             {ModularItemImages.map((imgUrl, imgIndex) => (

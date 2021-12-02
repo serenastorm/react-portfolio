@@ -7,14 +7,6 @@
   & + .list-isFullScreen {
     padding-top: 0;
   }
-
-  @include breakpoint(0, 799.98) {
-    --colors-gap: 1.2rem;
-  }
-
-  @include breakpoint(800) {
-    --colors-gap: 6.4rem;
-  }
 }
 
 .colorPalette-header {
@@ -43,6 +35,37 @@
   align-items: flex-start;
   flex-wrap: wrap;
   gap: var(--colors-gap);
+  max-width: calc(
+    (#{var(--colors-gap)} * (#{var(--colors-per-row)} - 1)) +
+      (#{var(--palette-size-lg)} * #{var(--colors-per-row)})
+  );
+
+  @include breakpoint(0, 799.98) {
+    --palette-size-sm: 8rem;
+    --palette-size-lg: 14rem;
+  }
+
+  @include breakpoint(0, 629.98) {
+    --colors-per-row: 2;
+  }
+
+  @include breakpoint(630) {
+    --colors-per-row: 4;
+  }
+
+  @include breakpoint(900) {
+    --palette-size-sm: 16rem;
+    --palette-size-lg: 24rem;
+    --colors-per-row: 4;
+  }
+
+  @include breakpoint(0, 1199.98) {
+    --colors-gap: 1.2rem;
+  }
+
+  @include breakpoint(1200) {
+    --colors-gap: 6.4rem;
+  }
 }
 
 .colorPalette-color {
@@ -74,19 +97,11 @@
   }
 
   &:nth-of-type(-n + 4) {
-    @include breakpoint(0, 799.98) {
-      max-width: 14rem;
-    }
+    max-width: var(--palette-size-lg);
   }
 
   &:nth-of-type(n + 5) {
-    @include breakpoint(0, 799.98) {
-      max-width: 8rem;
-    }
-
-    @include breakpoint(800) {
-      max-width: 16rem;
-    }
+    max-width: var(--palette-size-sm);
 
     h2 {
       @include breakpoint(0, 799.98) {

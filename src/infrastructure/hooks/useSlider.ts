@@ -8,7 +8,10 @@ import {
   MutableRefObject,
   TouchEvent,
 } from "react";
-import { DragContainerProps } from "CaseStudy/components/Slider/types";
+import {
+  DragContainerWithDirectionProps,
+  TouchDirection,
+} from "CaseStudy/components/Slider/types";
 
 type SliderDirection = "left" | "right";
 
@@ -19,7 +22,7 @@ type SliderProps = {
   onPreviousButtonClick: () => void;
   sliderDirection: SliderDirection;
   scrollContainerRef: MutableRefObject<HTMLElement | null>;
-  dragContainerProps: DragContainerProps;
+  dragContainerProps: DragContainerWithDirectionProps;
 };
 
 const useSlider = (totalSlides: number): SliderProps => {
@@ -37,8 +40,6 @@ const useSlider = (totalSlides: number): SliderProps => {
   const scrollToTopOfContainer = useCallback(() => {
     const mediaQuery = "(prefers-reduced-motion: reduce)";
     const userPrefersReducedMotion = window.matchMedia(mediaQuery).matches;
-
-    console.log(percentageOfContainerInView < 60);
 
     // If 40% of the container is visible, don't scroll to top
     if (scrollContainerRef.current && percentageOfContainerInView < 60) {
@@ -72,22 +73,45 @@ const useSlider = (totalSlides: number): SliderProps => {
     scrollToTopOfContainer();
   };
 
-  const dragContainerProps = {
-    onTouchStart: (event: TouchEvent<HTMLElement>) => {
-      const startPosition = event.touches[0].pageX;
-      setMousePosition(startPosition);
-    },
-    onTouchEnd: (event: TouchEvent<HTMLElement>) => {
-      const endPosition = event.changedTouches[0].pageX;
+  const dragContainerProps = (touchDirection: TouchDirection = "left") => {
+    return {
+      onTouchStart: (event: TouchEvent<HTMLElement>) => {
+        const startPosition =
+          touchDirection === "left"
+            ? event.touches[0].pageX
+            : event.touches[0].pageY;
+        setMousePosition(startPosition);
+      },
+      onTouchEnd: (event: TouchEvent<HTMLElement>) => {
+        const { innerWidth } = window;
+        const endPosition =
+          touchDirection === "left"
+            ? event.changedTouches[0].pageX
+            : event.changedTouches[0].pageY;
 
-      if (endPosition > mousePosition) {
-        goToPreviousSlide();
-        setMousePosition(endPosition);
-      } else if (mousePosition > endPosition) {
-        setMousePosition(endPosition);
-        goToNextSlide();
-      }
-    },
+        if (endPosition > mousePosition) {
+          const swipePercentage =
+            ((endPosition - mousePosition) / innerWidth) * 100;
+
+          setMousePosition(endPosition);
+
+          // Only switch slides if the user dragged more than 20% of the screen
+          if (swipePercentage > 20) {
+            goToPreviousSlide();
+          }
+        } else if (mousePosition > endPosition) {
+          const swipePercentage =
+            ((mousePosition - endPosition) / innerWidth) * 100;
+
+          setMousePosition(endPosition);
+
+          // Only switch slides if the user dragged more than 20% of the screen
+          if (swipePercentage > 20) {
+            goToNextSlide();
+          }
+        }
+      },
+    };
   };
 
   useEffect(() => {

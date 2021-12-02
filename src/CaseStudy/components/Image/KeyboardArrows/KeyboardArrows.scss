@@ -8,11 +8,11 @@
   grid-row-gap: 4px;
   width: calc((#{var(--arrow-key-width)} * 3) + 8px * 2);
 
-  @include breakpoint(0, 799.98) {
-    --arrow-key-width: 6.4rem;
+  @include breakpoint(0, 649.98) {
+    --arrow-key-width: 15vw;
   }
 
-  @include breakpoint(800) {
+  @include breakpoint(650) {
     --arrow-key-width: 10rem;
   }
 }

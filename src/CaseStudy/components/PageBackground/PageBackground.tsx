@@ -7,7 +7,6 @@ import {
   routes,
   caseStudySectionsTitles,
 } from "infrastructure/routes/constants";
-import { enterAndExitAnimationProps } from "helpers/animations";
 
 import "./PageBackground.scss";
 
@@ -31,7 +30,7 @@ const PageBackground = () => {
 
   const currentRouteTitle = getCurrentRoute();
 
-  const getBackgroundColorForCurrentRoute = useCallback(() => {
+  const getBackgroundNameForCurrentRoute = useCallback(() => {
     switch (currentRouteTitle) {
       case caseStudySectionsTitles.marketing:
         return "dark";
@@ -42,9 +41,19 @@ const PageBackground = () => {
     }
   }, [currentRouteTitle]);
 
+  const getBackgroundColorForCurrentRoute = useCallback(() => {
+    switch (currentRouteTitle) {
+      case caseStudySectionsTitles.marketing:
+        return "#00003c";
+      case caseStudySectionsTitles.dashboard:
+        return "#e0e8ff";
+      default:
+        return "#ffffff";
+    }
+  }, [currentRouteTitle]);
+
   useEffect(() => {
-    const bgColor =
-      getBackgroundColorForCurrentRoute() === "dark" ? "#00003c" : "#ffffff";
+    const bgColor = getBackgroundColorForCurrentRoute();
 
     const existingMetaTag = document.querySelectorAll(
       '[name="theme-color"]'
@@ -60,10 +69,9 @@ const PageBackground = () => {
   return (
     <motion.div
       className="caseStudyPage-bg"
-      {...enterAndExitAnimationProps({
-        opacity: [0, 1],
-      })}
-      data-theme={getBackgroundColorForCurrentRoute()}
+      animate={{ backgroundColor: getBackgroundColorForCurrentRoute() }}
+      transition={{ duration: 0.3 }}
+      data-theme={getBackgroundNameForCurrentRoute()}
     />
   );
 };

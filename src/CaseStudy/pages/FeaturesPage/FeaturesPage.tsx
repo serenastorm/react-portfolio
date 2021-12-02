@@ -10,10 +10,10 @@ import { NewFeaturesSections, NewFeaturesListItems } from "CaseStudy/sections";
 import "./FeaturesPage.scss";
 
 export const FeaturesSections = [
-  {
-    el: <NewFeaturesSections.ItemReordering />,
-    copy: "Reordering menu items & categories",
-  },
+  // {
+  //   el: <NewFeaturesSections.ItemReordering />,
+  //   copy: "Reordering menu items & categories",
+  // },
   { el: <NewFeaturesSections.ProductImages />, copy: "Adding product images" },
   {
     el: <NewFeaturesSections.DietaryInformation />,

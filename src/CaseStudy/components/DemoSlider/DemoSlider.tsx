@@ -36,10 +36,9 @@ const DemoSlider = ({
     <SliderDirectionContextProvider value={sliderDirection}>
       <FullScreenImageContainer
         currentSlideIndex={currentSlideIndex}
-        dragContainerProps={dragContainerProps}
-        fullScreenSlides
         helpToggleTipCopy="Use the next and previous arrows to navigate the carousel."
         containerRef={scrollContainerRef}
+        dragContainerProps={dragContainerProps()}
         {...imageContainerProps}
       >
         <section className="imgSlider" aria-labelledby="carouselHeading">
@@ -62,11 +61,7 @@ const DemoSlider = ({
                     sectionIndex={i}
                     key={`${imageContainerProps.imageClassName}-slide-${i}`}
                   >
-                    <Fragment
-                      key={`${imageContainerProps.imageClassName}-visual-${i}`}
-                    >
-                      {el}
-                    </Fragment>
+                    {el}
                   </Slider.Slide>
                 ) : null;
               })}
@@ -87,9 +82,7 @@ const DemoSlider = ({
             const { copy } = slide;
 
             return currentSlideIndex === i ? (
-              <Fragment
-                key={`${imageContainerProps.imageClassName}-visual-${i}`}
-              >
+              <Fragment key={`${imageContainerProps.imageClassName}-copy-${i}`}>
                 {copy && (
                   <figcaption>
                     <Slider.Caption copy={copy} />

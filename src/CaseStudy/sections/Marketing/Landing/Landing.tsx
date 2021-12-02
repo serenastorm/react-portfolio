@@ -30,6 +30,7 @@ const Landing = () => {
     onPreviousButtonClick,
     sliderDirection,
     scrollContainerRef,
+    dragContainerProps,
   } = useSlider(totalSlides);
 
   const renderCaptions = () => {
@@ -79,6 +80,7 @@ const Landing = () => {
         bg="Dark"
         imageClassName="landing"
         containerRef={scrollContainerRef}
+        dragContainerProps={dragContainerProps("top")}
         // helpToggleTipCopy="Use the next and previous buttons to simulate scrolling in the landing page preview container."
       >
         <section className="imgSlider" aria-labelledby="carouselHeading">
@@ -104,11 +106,7 @@ const Landing = () => {
                       intervalInMs={1500}
                       key={`landing-animation-${i}`}
                     >
-                      {(
-                        animationStep,
-                        setAnimationStep,
-                        pauseOnUserInteraction
-                      ) => (
+                      {(...animationProps) => (
                         <>
                           {img.map((imgSrc, imgIndex: number) => (
                             <img

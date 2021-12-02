@@ -1,5 +1,4 @@
 import { PricingImage } from "CaseStudy/assets/Marketing/Pricing";
-import { ImageWrapper } from "CaseStudy/components/Image";
 import { ContentRowWithVisual, Tips } from "CaseStudy/components";
 
 import "./Pricing.scss";
@@ -16,12 +15,11 @@ const Pricing = () => {
         className="section-pricing"
         title="Pricing plans"
       >
-        <ImageWrapper className="img-pricing">
-          <img
-            src={PricingImage}
-            alt="Pricing table with two paid subscription and a free option, listing all the features of each."
-          />
-        </ImageWrapper>
+        <img
+          className="img-pricing"
+          src={PricingImage}
+          alt="Pricing table with two paid subscription and a free option, listing all the features of each."
+        />
       </ContentRowWithVisual>
       <Tips
         copy={

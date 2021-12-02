@@ -9,10 +9,16 @@ export type ScrollRefProps = HTMLDivElement | HTMLLIElement | null;
 
 export type ScrollContainerRefProps = MutableRefObject<ScrollRefProps>;
 
+export type TouchDirection = "left" | "top";
+
 export type DragContainerProps = {
   onTouchStart: TouchEventHandler<HTMLElement>;
   onTouchEnd: TouchEventHandler<HTMLElement>;
 };
+
+export type DragContainerWithDirectionProps = (
+  touchDirection?: TouchDirection
+) => DragContainerProps;
 
 export type ImageContainerProps = {
   bg?: "Dark" | "Light" | "LightGray" | "None";

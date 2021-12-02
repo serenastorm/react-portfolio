@@ -1,8 +1,6 @@
-import { motion } from "framer-motion";
 import { FullScreenImageContainer } from "CaseStudy/components/Image";
 import { ImageWrapper } from "CaseStudy/components/Image";
 import { UIKitImage } from "CaseStudy/assets/DesignSystem/UIKit";
-import { scrollAnimationVariants } from "helpers/animations";
 
 import "./UIKit.scss";
 
@@ -11,7 +9,7 @@ const UIKit = () => {
     <FullScreenImageContainer bg="None" imageClassName="uiKit">
       <ImageWrapper className="imgWrapper-uiKit">
         {UIKitImage.map((imgSrc, imgIndex) => (
-          <motion.img
+          <img
             src={imgSrc}
             key={`uiKit-img-${imgIndex}`}
             alt={
@@ -19,7 +17,6 @@ const UIKit = () => {
                 ? "Mozaic of various UI elements, such as buttons, modals, and form inputs."
                 : ""
             }
-            variants={scrollAnimationVariants({ delay: 0.15 * imgIndex })}
           />
         ))}
       </ImageWrapper>

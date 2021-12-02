@@ -7,29 +7,18 @@ $flex-gap: 8px;
     flex-direction: column;
     justify-content: center;
     gap: $flex-gap;
+  }
 
-    img {
-      width: 100%;
-      height: auto;
-      transition: all 500ms ease-in-out;
-      filter: var(--myqr-img-shadow);
-
-      //   &:nth-of-type(1) {
-      //     transform: translateY(calc((100% - #{$flex-gap}) * 3));
-      //   }
-
-      //   &:nth-of-type(n + 2):not(:nth-of-type(n + 4)) {
-      //     transform: translateY(calc(-100% - #{$flex-gap}));
-      //   }
-
-      //   &:not(:nth-of-type(1)) {
-      //     opacity: 0.5;
-      //   }
-    }
+  img {
+    width: 100%;
+    height: auto;
+    transition: all 500ms ease-in-out;
+    filter: var(--myqr-img-shadow);
+    will-change: transform;
   }
 
   &.img-hasStepAnimation-step2 {
-    .imgWrapper > img {
+    img {
       &:nth-of-type(3) {
         transform: scale(1.05) translateY(calc((-100% - #{$flex-gap}) * 2));
       }
@@ -37,69 +26,55 @@ $flex-gap: 8px;
   }
 
   @for $i from 2 through 3 {
-    &.img-hasStepAnimation-step#{$i} {
-      .imgWrapper > img {
-        &:not(:nth-of-type(3)) {
-          opacity: 0.5;
-        }
+    &.img-hasStepAnimation-step#{$i} img {
+      &:not(:nth-of-type(3)) {
+        opacity: 0.5;
       }
     }
   }
 
   @for $i from 2 through 3 {
-    &.img-hasStepAnimation-step#{$i} {
-      .imgWrapper > img {
-        &:nth-of-type(-n + 2) {
-          transform: translateY(calc(100% + #{$flex-gap}));
-        }
+    &.img-hasStepAnimation-step#{$i} img {
+      &:nth-of-type(-n + 2) {
+        transform: translateY(calc(100% + #{$flex-gap}));
       }
     }
   }
 
   @for $i from 2 through 3 {
-    &.img-hasStepAnimation-step#{$i} {
-      .imgWrapper > img {
-        &:nth-of-type(3) {
-          transform: translateY(calc((-100% - #{$flex-gap}) * 2));
-        }
-      }
-    }
-  }
-
-  &.img-hasStepAnimation-step4 {
-    .imgWrapper > img {
+    &.img-hasStepAnimation-step#{$i} img {
       &:nth-of-type(3) {
-        transform: scale(1.05) translateY(calc((100% + #{$flex-gap})));
+        transform: translateY(calc((-100% - #{$flex-gap}) * 2));
       }
+    }
+  }
+
+  &.img-hasStepAnimation-step4 img {
+    &:nth-of-type(3) {
+      transform: scale(1.05) translateY(calc((100% + #{$flex-gap})));
     }
   }
 
   @for $i from 4 through $steps {
-    &.img-hasStepAnimation-step#{$i} {
-      .imgWrapper > img {
-        &:not(:nth-of-type(3)) {
-          opacity: 0.5;
-        }
+    &.img-hasStepAnimation-step#{$i} img {
+      &:not(:nth-of-type(3)) {
+        opacity: 0.5;
       }
     }
   }
 
   @for $i from 4 through 5 {
-    &.img-hasStepAnimation-step#{$i} {
-      .imgWrapper > img {
-        &:nth-of-type(n + 4):not(:nth-of-type(n + 5)) {
-          transform: translateY(calc(-100% - #{$flex-gap}));
-        }
+    &.img-hasStepAnimation-step#{$i} img {
+      &:nth-of-type(n + 4):not(:nth-of-type(n + 5)) {
+        transform: translateY(calc(-100% - #{$flex-gap}));
       }
     }
   }
 
   @for $i from 4 through 5 {
-    &.img-hasStepAnimation-step#{$i} {
-      .imgWrapper > img {
-        &:nth-of-type(3) {
-          transform: translateY(calc((100% + #{$flex-gap})));
-        }
+    &.img-hasStepAnimation-step#{$i} img {
+      &:nth-of-type(3) {
+        transform: translateY(calc((100% + #{$flex-gap})));
       }
     }
   }
