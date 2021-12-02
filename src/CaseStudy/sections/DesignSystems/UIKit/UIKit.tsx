@@ -13,6 +13,7 @@ const UIKit = () => {
         {UIKitImage.map((imgSrc, imgIndex) => (
           <motion.img
             src={imgSrc}
+            key={`uiKit-img-${imgIndex}`}
             alt={
               imgIndex === 0
                 ? "Mozaic of various UI elements, such as buttons, modals, and form inputs."

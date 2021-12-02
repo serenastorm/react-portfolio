@@ -102,6 +102,7 @@ const Landing = () => {
                       animationClassName={`landing-${i}`}
                       totalSteps={img.length}
                       intervalInMs={1500}
+                      key={`landing-animation-${i}`}
                     >
                       {(
                         animationStep,
