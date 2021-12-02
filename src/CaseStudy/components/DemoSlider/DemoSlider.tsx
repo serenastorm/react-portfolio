@@ -54,7 +54,7 @@ const DemoSlider = ({
           <ul>
             <AnimatePresence exitBeforeEnter>
               {slides.map((slide, i) => {
-                const { el, copy } = slide;
+                const { el } = slide;
 
                 return currentSlideIndex === i ? (
                   <Slider.Slide
@@ -67,14 +67,6 @@ const DemoSlider = ({
                     >
                       {el}
                     </Fragment>
-                    {copy && (
-                      <figcaption>
-                        <Slider.Caption
-                          key={`${imageContainerProps.imageClassName}-caption-${i}`}
-                          copy={copy}
-                        />
-                      </figcaption>
-                    )}
                   </Slider.Slide>
                 ) : null;
               })}
@@ -89,6 +81,24 @@ const DemoSlider = ({
             Item {currentSlideIndex} of {totalSlides}
           </div>
         </section>
+
+        <AnimatePresence exitBeforeEnter>
+          {slides.map((slide, i) => {
+            const { copy } = slide;
+
+            return currentSlideIndex === i ? (
+              <Fragment
+                key={`${imageContainerProps.imageClassName}-visual-${i}`}
+              >
+                {copy && (
+                  <figcaption>
+                    <Slider.Caption copy={copy} />
+                  </figcaption>
+                )}
+              </Fragment>
+            ) : null;
+          })}
+        </AnimatePresence>
       </FullScreenImageContainer>
     </SliderDirectionContextProvider>
   );

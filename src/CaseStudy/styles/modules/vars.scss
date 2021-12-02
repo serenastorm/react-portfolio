@@ -26,7 +26,7 @@ $myqr-success-hover: darken($myqr-success, 5%);
 
   // Spacing
   @include breakpoint(0, 799.99) {
-    --container-padding-top: 4vw;
+    --container-padding-top: 4rem;
     --page-padding-sides: 1.6rem;
     --max-text-width: calc(100vw - (#{var(--page-padding-sides)} * 2));
   }

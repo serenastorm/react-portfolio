@@ -24,9 +24,15 @@
   }
 
   .toggletip-container {
-    position: absolute;
-    bottom: 2rem;
-    right: 2rem;
+    @include breakpoint(0, 799.99) {
+      display: none;
+    }
+
+    @include breakpoint(800) {
+      position: absolute;
+      bottom: 2rem;
+      right: 2rem;
+    }
   }
 }
 .caseStudyPage-bg:not(.caseStudyPage-bg[data-theme="dark"]) {

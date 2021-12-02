@@ -33,17 +33,22 @@
 }
 
 .imgSlider-button {
-  --button-width: 6.4rem;
-
   text-align: center;
   border: none;
   background-color: transparent;
-
+  padding: 0;
   cursor: pointer;
-  z-index: 1;
   transition: all 500ms ease-in-out;
 
+  @include breakpoint(0, 799.99) {
+    --button-width: 4rem;
+    z-index: 10;
+  }
+
   @include breakpoint(800) {
+    --button-width: 6.4rem;
+    z-index: 1;
+
     position: absolute;
     width: 30vw;
     height: 100%;
@@ -80,6 +85,10 @@
     text-transform: uppercase;
     transition: inherit;
     opacity: 0;
+
+    @include breakpoint(0, 799.99) {
+      display: none;
+    }
   }
 
   svg {
@@ -111,7 +120,13 @@
   }
 
   &.imgSlider-button-isPrev {
-    left: 0;
+    @include breakpoint(0, 799.99) {
+      margin-right: calc(#{var(--img-container-gap)} * -2);
+    }
+
+    @include breakpoint(800) {
+      left: 0;
+    }
 
     .imgSlider-button-text {
       left: 0;
@@ -137,7 +152,13 @@
   }
 
   &.imgSlider-button-isNext {
-    right: 0;
+    @include breakpoint(0, 799.99) {
+      margin-left: calc(#{var(--img-container-gap)} * -2);
+    }
+
+    @include breakpoint(800) {
+      right: 0;
+    }
 
     .imgSlider-button-text {
       right: 0;
@@ -157,6 +178,22 @@
           calc((#{var(--button-width)} + 0.8rem) * -1),
           -50%
         );
+      }
+    }
+  }
+}
+
+.caseStudyPage-bg[data-theme="light"],
+.caseStudyPage-bg[data-theme="none"] {
+  @include breakpoint(0, 799.99) {
+    & ~ .caseStudyPage .imgSlider-button {
+      svg {
+        circle {
+          &[stroke="#fff"] {
+            stroke: var(--myqr-primary);
+            fill: var(--white);
+          }
+        }
       }
     }
   }
