@@ -1,9 +1,4 @@
-import {
-  ReactNode,
-  MutableRefObject,
-  MouseEventHandler,
-  TouchEventHandler,
-} from "react";
+import { ReactNode, MutableRefObject, TouchEventHandler } from "react";
 
 type SlideVisual = (() => ReactNode) | ReactNode | JSX.Element;
 export type SlideCopy = string | string[];

@@ -1,4 +1,6 @@
 import {
+  useCallback,
+  useEffect,
   useState,
   Dispatch,
   SetStateAction,
@@ -24,6 +26,8 @@ type SliderProps = {
 const useSlider = (totalSlides: number): SliderProps => {
   const [mousePosition, setMousePosition] = useState<number>(0);
   const [currentSlideIndex, setCurrentSlideIndex] = useState<number>(0);
+  const [percentageOfContainerInView, setPercentageOfContainerInView] =
+    useState<number>(0);
   const [sliderDirection, setSliderDirection] =
     useState<SliderDirection>("right");
 
@@ -31,16 +35,19 @@ const useSlider = (totalSlides: number): SliderProps => {
 
   const slides = totalSlides || 0;
 
-  const scrollToTopOfContainer = () => {
+  const scrollToTopOfContainer = useCallback(() => {
     const mediaQuery = "(prefers-reduced-motion: reduce)";
     const userPrefersReducedMotion = window.matchMedia(mediaQuery).matches;
 
-    if (scrollContainerRef.current) {
+    console.log(percentageOfContainerInView < 60);
+
+    // If 40% of the container is visible, don't scroll to top
+    if (scrollContainerRef.current && percentageOfContainerInView < 60) {
       scrollContainerRef.current.scrollIntoView({
         behavior: userPrefersReducedMotion ? undefined : "smooth",
       });
     }
-  };
+  }, [scrollContainerRef, percentageOfContainerInView]);
 
   const goToPreviousSlide = () => {
     setCurrentSlideIndex((currentSlide) =>
@@ -83,6 +90,56 @@ const useSlider = (totalSlides: number): SliderProps => {
       }
     },
   };
+
+  useEffect(() => {
+    const checkIfContainerIsInView = () => {
+      const { pageYOffset, innerHeight } = window;
+
+      if (scrollContainerRef.current) {
+        const containerBoundingValues =
+          scrollContainerRef.current.getBoundingClientRect();
+
+        const containerTop = containerBoundingValues.top + pageYOffset;
+        const containerHeight = containerBoundingValues.height;
+        const containerBottom = containerTop + containerHeight;
+
+        const windowTop = pageYOffset;
+        const windowBottom = pageYOffset + innerHeight;
+
+        const isFullyInView =
+          windowTop < containerTop && windowBottom > containerBottom;
+        const heightInViewInTopOfScreen = windowBottom - containerTop;
+        const heightInViewInBottomOfScreen = containerBottom - windowTop;
+        const containerHeightInTopOfScreen =
+          heightInViewInBottomOfScreen > 0 &&
+          heightInViewInBottomOfScreen < containerHeight
+            ? heightInViewInBottomOfScreen
+            : 0;
+        const containerHeightInBottomOfScreen =
+          heightInViewInTopOfScreen > 0 &&
+          heightInViewInTopOfScreen < containerHeight
+            ? heightInViewInTopOfScreen
+            : 0;
+
+        const heightInView = isFullyInView
+          ? containerHeight
+          : Math.max(
+              containerHeightInTopOfScreen,
+              containerHeightInBottomOfScreen
+            );
+
+        const visiblePercentageOfContainer =
+          (heightInView / containerHeight) * 100;
+
+        setPercentageOfContainerInView(visiblePercentageOfContainer);
+      }
+    };
+
+    checkIfContainerIsInView();
+
+    window.addEventListener("scroll", checkIfContainerIsInView);
+    return () => window.removeEventListener("scroll", checkIfContainerIsInView);
+  }, [scrollContainerRef]);
 
   return {
     currentSlideIndex,
