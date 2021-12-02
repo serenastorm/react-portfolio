@@ -43,7 +43,7 @@ $scroll-icon-container-height: calc(
     padding-bottom: $scroll-icon-container-height;
 
     &:not(footer) {
-      @include breakpoint(0, 799.99) {
+      @include breakpoint(0, 799.98) {
         min-height: 70vh;
       }
     }

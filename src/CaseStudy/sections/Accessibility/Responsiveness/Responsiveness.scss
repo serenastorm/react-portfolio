@@ -46,7 +46,7 @@ $mobile-img-transition: all 400ms ease-in;
     bottom: 0;
     width: max-content;
 
-    @include breakpoint(0, 799.99) {
+    @include breakpoint(0, 799.98) {
       height: calc(25vw * (926 / 428));
       left: -0.2rem;
       border-radius: calc((25vw * (926 / 428)) * 0.05);

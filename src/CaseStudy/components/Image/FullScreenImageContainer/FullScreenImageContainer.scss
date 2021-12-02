@@ -24,7 +24,7 @@
   }
 
   .toggletip-container {
-    @include breakpoint(0, 799.99) {
+    @include breakpoint(0, 799.98) {
       display: none;
     }
 

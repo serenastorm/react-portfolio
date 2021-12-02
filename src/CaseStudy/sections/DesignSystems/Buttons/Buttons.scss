@@ -2,10 +2,9 @@
 
 .designSystem-preview-buttons {
   .button {
-    min-width: 12em;
     position: relative;
 
-    @include breakpoint(0, 799.99) {
+    @include breakpoint(0, 799.98) {
       --button-caption-height: 1.1rem;
       --button-caption-spacing: 0.2rem;
       margin-bottom: calc(
@@ -14,6 +13,7 @@
     }
 
     @include breakpoint(800) {
+      min-width: 12em;
       --button-caption-height: 1.2rem;
       --button-caption-spacing: 1.2rem;
     }

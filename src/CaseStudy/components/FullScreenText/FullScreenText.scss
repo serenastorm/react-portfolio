@@ -12,7 +12,7 @@
   align-items: center;
   text-align: center;
 
-  @include breakpoint(0, 799.99) {
+  @include breakpoint(0, 799.98) {
     min-height: calc(80vh - (#{var(--page-padding-sides)} * 2));
   }
 

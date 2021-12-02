@@ -4,19 +4,20 @@
   text-align: center;
 
   img {
-    max-height: 100vh;
-    width: auto;
-    height: auto;
     background-color: var(--white);
     filter: var(--myqr-img-shadow);
     border-radius: var(--border-radius-md);
 
-    @include breakpoint(0, 799.99) {
-      max-width: var(--max-text-width);
+    @include breakpoint(0, 799.98) {
+      width: 100%;
+      max-width: 40rem;
     }
 
     @include breakpoint(800) {
       max-width: calc(#{var(--max-text-width)} * 0.5);
+      max-height: 100vh;
+      width: auto;
+      height: auto;
     }
   }
 }

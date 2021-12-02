@@ -19,13 +19,17 @@
     var(--img-border-radius);
   box-shadow: var(--myqr-img-container-shadow);
 
-  @include breakpoint(0, 799.99) {
+  @include breakpoint(0, 799.98) {
     max-width: 80%;
     margin: 0 auto;
   }
 
-  @include breakpoint(800) {
-    min-width: 40rem;
+  @include breakpoint(800, 1199.98) {
+    width: 40vw;
+  }
+
+  @include breakpoint(1200) {
+    max-width: 40rem;
   }
 }
 

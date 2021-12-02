@@ -75,7 +75,7 @@ $link-hover-gradient: linear-gradient(125deg, var(--link), var(--link-sm));
 
   h1,
   dt {
-    @include breakpoint(0, 859.99) {
+    @include breakpoint(0, 859.98) {
       /* Don't go lower for h1, otherwise the links wouldn't pass contrast requirements
       (Large text = 18.66px bold, 24px regular)
       Tbh this font could be considered bold but best to be safe */
@@ -100,7 +100,7 @@ $link-hover-gradient: linear-gradient(125deg, var(--link), var(--link-sm));
     gap: 0.8rem;
     align-items: baseline;
 
-    @include breakpoint(0, 509.99) {
+    @include breakpoint(0, 509.98) {
       flex-direction: column;
     }
 
@@ -127,7 +127,7 @@ $link-hover-gradient: linear-gradient(125deg, var(--link), var(--link-sm));
     font-size: 2.2vw;
     color: var(--text-light);
 
-    @include breakpoint(0, 859.99) {
+    @include breakpoint(0, 859.98) {
       font-size: 1.6rem;
     }
 

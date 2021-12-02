@@ -35,7 +35,7 @@
     background-repeat: no-repeat;
     background-size: cover;
 
-    @include breakpoint(0, 799.99) {
+    @include breakpoint(0, 799.98) {
       display: inline-block;
       width: 2rem;
       height: 2rem;
@@ -46,10 +46,18 @@
     @include breakpoint(800) {
       position: absolute;
       display: block;
-      width: 3.2rem;
-      height: 3.2rem;
       right: calc(100% + 8px);
       top: 0.4rem;
+    }
+
+    @include breakpoint(800, 1199.98) {
+      width: 2.4rem;
+      height: 2.4rem;
+    }
+
+    @include breakpoint(1200) {
+      width: 3.2rem;
+      height: 3.2rem;
     }
   }
 }

@@ -1,7 +1,7 @@
 @import "~styles/modules/mixins.scss";
 
 .img-productImages {
-  @include breakpoint(0, 799.99) {
+  @include breakpoint(0, 799.98) {
     --img-container-gap: 0.8rem;
   }
 

@@ -18,10 +18,10 @@
     user-select: none;
   }
 
-  @include breakpoint(0, 799.99) {
+  @include breakpoint(0, 1199.98) {
   }
 
-  @include breakpoint(800) {
+  @include breakpoint(1200) {
     flex-direction: column;
   }
 }
@@ -29,7 +29,7 @@
 .imgContainer-isFullScreen {
   gap: var(--img-container-gap);
 
-  @include breakpoint(0, 799.99) {
+  @include breakpoint(0, 799.98) {
     --img-container-gap: 1.2rem;
   }
 
@@ -44,7 +44,7 @@
   .listItem {
     text-align: center;
 
-    @include breakpoint(0, 799.99) {
+    @include breakpoint(0, 799.98) {
       margin: 0;
     }
   }
@@ -75,7 +75,7 @@
 remove padding on mobile since it just looks like spacing */
 $image-backgrounds: "dark", "light";
 
-@include breakpoint(0, 799.99) {
+@include breakpoint(0, 799.98) {
   .imgContainer-isFullScreen[data-bg="none"] {
     padding-bottom: 0;
 

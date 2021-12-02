@@ -4,7 +4,7 @@
   padding-left: var(--container-padding-sides);
   padding-right: var(--container-padding-sides);
 
-  @include breakpoint(0, 799.99) {
+  @include breakpoint(0, 799.98) {
     --icon-gap: 1.6rem;
     --icons-per-row: 4;
   }
@@ -21,7 +21,7 @@
   .icons-category {
     width: var(--max-text-width);
 
-    @include breakpoint(0, 799.99) {
+    @include breakpoint(0, 799.98) {
       margin: var(--page-padding-sides) auto 0 auto;
     }
 
@@ -41,7 +41,7 @@
     padding-left: 0;
     list-style-type: none;
 
-    @include breakpoint(0, 799.99) {
+    @include breakpoint(0, 799.98) {
       margin-top: 3.2rem;
     }
 
@@ -73,7 +73,7 @@
 .cardWithIcon-icon {
   position: relative;
 
-  @include breakpoint(0, 799.99) {
+  @include breakpoint(0, 799.98) {
     width: 3.2rem;
   }
 

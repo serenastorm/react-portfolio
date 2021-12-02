@@ -15,7 +15,8 @@ import "./Buttons.scss";
 const Buttons = () => {
   const [selectedVariant, setSelectedVariant] = useState<string>("primary");
   const [selectedSize, setSelectedSize] = useState<string>("sm");
-  const [selectedCornerType, setSelectedCornerType] = useState<string>("default");
+  const [selectedCornerType, setSelectedCornerType] =
+    useState<string>("default");
   const [showIcon, setShowIcon] = useState<boolean>(true);
   const [selectedInteraction, setSelectedInteraction] =
     useState<string>("none");
@@ -81,6 +82,7 @@ const Buttons = () => {
           className="designSystem-preview designSystem-preview-buttons"
           form="buttonsForm"
           variants={scrollAnimationVariants({})}
+          data-content={selectedVariant === "primary" ? "lg" : "sm"}
         >
           <button
             className={`${buttonClassNames} ${`button-${selectedVariant}`}`}

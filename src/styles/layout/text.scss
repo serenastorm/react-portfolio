@@ -5,11 +5,11 @@ h1 {
   line-height: 140%;
   color: var(--text);
 
-  @include breakpoint(0, 799.99) {
+  @include breakpoint(0, 1199.98) {
     font-size: 3.2rem;
   }
 
-  @include breakpoint(800) {
+  @include breakpoint(1200) {
     font-size: 4rem;
   }
 }

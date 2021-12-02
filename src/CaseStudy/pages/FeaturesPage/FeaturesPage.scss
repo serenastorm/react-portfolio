@@ -3,7 +3,7 @@
 .imgContainer-itemReordering {
   --img-border-radius: var(--border-radius-md);
 
-  @include breakpoint(0, 799.99) {
+  @include breakpoint(0, 799.98) {
     --img-padding: 0.4rem;
   }
 

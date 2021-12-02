@@ -7,7 +7,7 @@
   grid-column-gap: var(--container-padding-sides);
   padding: var(--container-padding-top) var(--container-padding-sides);
 
-  @include breakpoint(0, 799.99) {
+  @include breakpoint(0, 799.98) {
     grid-template-columns: repeat(2, 1fr);
 
     h2 {
@@ -54,7 +54,7 @@
     font-weight: var(--font-weight-semibold);
     color: var(--myqr-text);
 
-    @include breakpoint(0, 799.99) {
+    @include breakpoint(0, 799.98) {
       font-size: 2.2rem;
     }
 

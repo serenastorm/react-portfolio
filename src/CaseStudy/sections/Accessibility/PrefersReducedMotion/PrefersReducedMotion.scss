@@ -8,20 +8,25 @@
   margin: 0 auto;
   gap: var(--grid-gap);
 
-  @include breakpoint(0, 799.99) {
+  @include breakpoint(0, 799.98) {
     --preview-size: 28rem;
     --grid-gap: 3.2rem;
 
     flex-direction: column;
   }
 
-  @include breakpoint(800) {
+  @include breakpoint(800, 1199.98) {
+    --preview-size: 28rem;
+    --grid-gap: 2.4rem;
+  }
+
+  @include breakpoint(1200) {
     --preview-size: 48rem;
     --grid-gap: 0.8rem;
   }
 
   .accessibility-prefersReducedMotion {
-    @include breakpoint(0, 799.99) {
+    @include breakpoint(0, 799.98) {
       // --colors-gap: 1.2rem;
     }
 
@@ -49,7 +54,7 @@
   justify-content: center;
   gap: var(--grid-gap);
 
-  @include breakpoint(0, 799.99) {
+  @include breakpoint(0, 799.98) {
     --grid-gap: 0.8rem;
   }
 

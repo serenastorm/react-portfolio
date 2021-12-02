@@ -10,7 +10,7 @@
   background-color: var(--myqr-primary-light);
   border-left: 0.3rem solid var(--myqr-primary);
 
-  @include breakpoint(0, 799.99) {
+  @include breakpoint(0, 799.98) {
     --icon-size: 2rem;
   }
 

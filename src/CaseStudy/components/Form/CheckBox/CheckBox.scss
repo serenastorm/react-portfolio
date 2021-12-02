@@ -11,7 +11,7 @@ $transition-duration: 200ms;
   cursor: pointer;
   user-select: none;
 
-  @include breakpoint(0, 799.99) {
+  @include breakpoint(0, 799.98) {
     margin-bottom: 0.8rem;
   }
 

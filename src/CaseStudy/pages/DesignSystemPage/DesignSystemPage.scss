@@ -6,7 +6,7 @@
   margin: 0 auto;
   display: flex;
 
-  @include breakpoint(0, 799.99) {
+  @include breakpoint(0, 799.98) {
     flex-direction: column;
     gap: 2.4rem;
 
@@ -38,7 +38,7 @@
     color: var(--myqr-text);
     font-weight: var(--font-weight-semibold);
 
-    @include breakpoint(0, 799.99) {
+    @include breakpoint(0, 799.98) {
       font-size: 2rem;
       margin-bottom: 1.2rem;
     }
@@ -50,7 +50,7 @@
   }
 
   fieldset {
-    @include breakpoint(0, 799.99) {
+    @include breakpoint(0, 799.98) {
       margin-top: 1.2rem;
     }
 
@@ -71,7 +71,9 @@
   border-radius: 4px;
   gap: 0.8rem;
 
-  @include breakpoint(0, 799.99) {
-    flex-direction: column;
+  &[data-content="lg"] {
+    @include breakpoint(0, 679.98) {
+      flex-direction: column;
+    }
   }
 }
