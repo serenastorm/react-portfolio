@@ -21,7 +21,7 @@
   }
 
   @include breakpoint(800) {
-    max-width: calc(#{var(--max-text-width)} * 0.5);
+    min-width: calc(#{var(--max-text-width)} * 0.5);
   }
 
   img {
