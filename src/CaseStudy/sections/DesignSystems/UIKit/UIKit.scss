@@ -1,23 +1,17 @@
-.imgContainer-uiKit {
+.imgWrapper-uiKit {
+  position: relative;
+
   img {
     width: var(--max-text-width);
-  }
+    height: auto;
 
-  .imgWrapper-uiKit {
-    position: relative;
-
-    img {
-      width: var(--max-text-width);
-      height: auto;
-
-      &:first-of-type {
-        filter: var(--myqr-img-shadow);
-      }
-
-      &:nth-of-type(n + 2) {
-        position: absolute;
-        inset: 0;
-      }
+    &:first-of-type {
+      /* Image shadows don't work well with framer-motion
+      so we need to add the shadows on the PNG itself then scale */
+      position: absolute;
+      inset: 0;
+      transform: scale(calc(1450 / 1318));
+      transform-origin: center center;
     }
   }
 }

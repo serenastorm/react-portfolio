@@ -35,9 +35,13 @@
     }
   }
 }
-.caseStudyPage-bg:not(.caseStudyPage-bg[data-theme="dark"]) {
-  & ~ .caseStudyPage .imgContainer-isFullScreen[data-bg="dark"] {
-    background-color: #00003c;
+
+.caseStudyPage-bg {
+  &[data-theme="none"],
+  &[data-theme="light"] {
+    & ~ .caseStudyPage .imgContainer-isFullScreen[data-bg="dark"] {
+      background-color: #00003c;
+    }
   }
 }
 

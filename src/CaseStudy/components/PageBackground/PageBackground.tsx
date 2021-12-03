@@ -69,6 +69,7 @@ const PageBackground = () => {
   return (
     <motion.div
       className="caseStudyPage-bg"
+      initial={{ backgroundColor: "#ffffff" }}
       animate={{ backgroundColor: getBackgroundColorForCurrentRoute() }}
       transition={{ duration: 0.3 }}
       data-theme={getBackgroundNameForCurrentRoute()}
