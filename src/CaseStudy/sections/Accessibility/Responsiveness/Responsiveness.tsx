@@ -36,7 +36,6 @@ const Responsiveness = () => {
     <FullScreenImageContainer
       bg="Light"
       imageClassName="responsiveness"
-      helpToggleTipCopy="Switch between the desktop and mobile tab to preview the date picker component."
     >
       <div className="img-responsiveness-screens">
         <AnimatePresence>

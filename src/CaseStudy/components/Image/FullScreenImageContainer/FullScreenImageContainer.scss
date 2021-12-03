@@ -10,11 +10,11 @@
   align-items: center;
   justify-content: center;
 
-  @media (max-height: 749.99px) {
+  @media (max-height: 679.99px) {
     // --image-width: var(--max-text-width);
   }
 
-  @media (min-height: 750px) {
+  @media (min-height: 680px) {
     --image-width: calc(
       (
           100vh - #{var(--myqr-header-height)} - #{var(--img-container-gap)} -
