@@ -20,6 +20,8 @@
 
     img {
       @include breakpoint(425) {
+        width: 100%;
+
         max-width: var(--max-width-modularitems) !important;
       }
     }
