@@ -1,1 +1,1 @@
-export { default as PrefersReducedMotionImage } from "./prefersReducedMotion0.jpg";
+export { default as PrefersReducedMotionImage } from "./prefersReducedMotion0.png";

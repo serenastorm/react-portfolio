@@ -84,10 +84,10 @@
   }
 
   .accessibility-prefersReducedMotion-preview-img {
-    max-width: calc(100% - 8rem);
+    --img-width: var(--preview-size);
+    --img-height: calc((381 / 612) * #{var(--preview-size)});
+    max-width: var(--img-width);
     height: auto;
-    border-radius: 8px;
-    filter: var(--myqr-img-shadow);
 
     &#accessibility-prefersReducedMotion-preview-img-reduce {
       animation: modalAnimationReduced 4s infinite linear;
@@ -156,22 +156,37 @@ code {
 @keyframes modalAnimationEnabled {
   0% {
     opacity: 1;
-    transform: translate(-50%, -50%);
+    transform: translate(
+      calc(#{var(--img-width)} / -2),
+      calc(#{var(--img-height)} / -2)
+    );
   }
   70% {
     opacity: 1;
-    transform: translate(-50%, -50%);
+    transform: translate(
+      calc(#{var(--img-width)} / -2),
+      calc(#{var(--img-height)} / -2)
+    );
   }
   80% {
     opacity: 0;
-    transform: translate(-50%, -70%);
+    transform: translate(
+      calc(#{var(--img-width)} / -2),
+      calc(#{var(--img-height)} * -0.7)
+    );
   }
   90% {
     opacity: 0;
-    transform: translate(-50%, -30%);
+    transform: translate(
+      calc(#{var(--img-width)} / -2),
+      calc(#{var(--img-height)} * -0.3)
+    );
   }
   100% {
     opacity: 1;
-    transform: translate(-50%, -50%);
+    transform: translate(
+      calc(#{var(--img-width)} / -2),
+      calc(#{var(--img-height)} / -2)
+    );
   }
 }

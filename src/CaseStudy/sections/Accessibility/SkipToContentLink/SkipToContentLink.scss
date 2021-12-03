@@ -13,6 +13,7 @@
 }
 
 .img-skipToContent {
+  --img-border-radius: var(--border-radius-md);
   position: relative;
   overflow: hidden;
   border-radius: 0.2rem var(--img-border-radius) var(--img-border-radius)
@@ -24,11 +25,8 @@
     margin: 0 auto;
   }
 
-  @include breakpoint(800, 1199.98) {
+  @include breakpoint(800) {
     width: 40vw;
-  }
-
-  @include breakpoint(1200) {
     max-width: 40rem;
   }
 }

@@ -20,13 +20,16 @@ const InformationColor = () => {
         <Tabs currentTab={tab} tabs={colorFiltersTabs} setTab={setTab}>
           <ImageWrapper>
             <img
-              src={InformationColorImage}
+              src={InformationColorImage.Color}
               alt="Sign up form with an error indicated by a warning icon."
-              className={`accessibility-informationColor-img${
-                tab.value === "colour"
-                  ? ""
-                  : " accessibility-informationColor-img-gray"
-              }`}
+            />
+            {/* We can't use CSS filter here since it messes 
+            up with framer-motion on Safari + Firefox so we 
+            add the black and white image on top */}
+            <img
+              src={InformationColorImage.Bw}
+              alt=""
+              data-visible={tab.value === "colour" ? "false" : "true"}
             />
           </ImageWrapper>
         </Tabs>
