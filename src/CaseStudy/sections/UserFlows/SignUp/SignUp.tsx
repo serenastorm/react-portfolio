@@ -5,6 +5,8 @@ import {
 import { List, Tips, SectionWithHeader } from "CaseStudy/components";
 import { SignUpImage } from "CaseStudy/assets/Marketing/SignUp";
 
+import "./SignUp.scss";
+
 const SignUp = () => {
   return (
     <SectionWithHeader title="Sign up">

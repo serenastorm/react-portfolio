@@ -21,6 +21,7 @@ $i: 0;
 
 .imgContainer-landing {
   .landing-screen {
+    position: absolute;
     transition-property: transform;
     transition-timing-function: ease;
   }

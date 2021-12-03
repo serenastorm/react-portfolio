@@ -2,22 +2,50 @@
 
 .imgContainer-itemReordering {
   --img-border-radius: var(--border-radius-md);
+  --max-width-modularitems: 48rem;
+  --max-width-productimages: 32rem;
 
   @include breakpoint(0, 799.98) {
     --img-padding: 0.4rem;
+    --img-width: calc(
+      100vw - (#{var(--page-padding-sides)} * 2) -
+        (#{var(--img-container-gap)} * 4)
+    );
+  }
+
+  @include breakpoint(0, 424.98) {
+    --img-height: calc((800 / 590.6) * #{var(--img-width)});
+  }
+
+  @include breakpoint(425, 799.98) {
+    --img-height: calc((800 / 590.6) * #{var(--max-width-productimages)});
   }
 
   @include breakpoint(800) {
     --img-padding: 1.6rem;
+    --img-width: 100%;
+    --img-height: calc(
+      (800 / 862.93) *
+        (#{var(--max-width-modularitems)} + (#{var(--img-padding)} * 2))
+    );
+  }
+
+  .imgWrapper {
+    max-width: var(--img-width);
+
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+  }
+
+  ul {
+    justify-content: center;
+    min-height: var(--img-height);
   }
 
   .img-hasStepAnimation {
     display: grid;
     align-content: center;
-
-    @include breakpoint(800) {
-      // Prevent jumping in between visuals by making the container as tall as the tallest visual
-      min-height: calc(496px + (#{var(--img-padding)} * 2));
-    }
   }
 }

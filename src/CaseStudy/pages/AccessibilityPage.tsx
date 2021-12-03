@@ -9,6 +9,7 @@ const AccessibilityPage = () => {
       intro="The web should be accessible to everyone. One thing that matters to me is making sure that no one feels excluded when using something that I've made. I also believe that good accessibility can benefit all users, even those who don't have different usability needs. Here are some the accessibility decisions I made for this project:"
     >
       <List
+        initialDelay={0.6}
         items={[
           {
             title:

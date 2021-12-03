@@ -1,7 +1,7 @@
 @import "~styles/modules/mixins.scss";
 
 #buttonsForm {
-  @include breakpoint(0, 1199.98) {
+  @include breakpoint(0, 1339.98) {
     .checkbox-container {
       order: 1;
     }
@@ -40,7 +40,7 @@
   cursor: pointer;
   transition: all 500ms ease-in-out;
 
-  @include breakpoint(0, 1199.98) {
+  @include breakpoint(0, 1339.98) {
     z-index: 10;
   }
 
@@ -52,7 +52,7 @@
     --button-width: 6.4rem;
   }
 
-  @include breakpoint(1200) {
+  @include breakpoint(1340) {
     z-index: 1;
     position: absolute;
     width: 30vw;
@@ -91,7 +91,7 @@
     transition: inherit;
     opacity: 0;
 
-    @include breakpoint(0, 1199.98) {
+    @include breakpoint(0, 1339.98) {
       display: none;
     }
   }
@@ -105,7 +105,7 @@
     transform-origin: 50% 50%;
     transition: inherit;
 
-    @include breakpoint(1200) {
+    @include breakpoint(1340) {
       position: absolute;
     }
 
@@ -125,11 +125,11 @@
   }
 
   &.imgSlider-button-isPrev {
-    @include breakpoint(0, 1199.98) {
+    @include breakpoint(0, 1339.98) {
       margin-right: calc(#{var(--img-container-gap)} * -2);
     }
 
-    @include breakpoint(1200) {
+    @include breakpoint(1340) {
       left: 0;
     }
 
@@ -139,11 +139,11 @@
     }
 
     svg {
-      @include breakpoint(0, 1199.98) {
+      @include breakpoint(0, 1339.98) {
         transform: rotate(180deg);
       }
 
-      @include breakpoint(1200) {
+      @include breakpoint(1340) {
         left: 0;
         transform: rotate(180deg) translateY(50%);
       }
@@ -157,11 +157,11 @@
   }
 
   &.imgSlider-button-isNext {
-    @include breakpoint(0, 1199.98) {
+    @include breakpoint(0, 1339.98) {
       margin-left: calc(#{var(--img-container-gap)} * -2);
     }
 
-    @include breakpoint(1200) {
+    @include breakpoint(1340) {
       right: 0;
     }
 
@@ -171,7 +171,7 @@
     }
 
     svg {
-      @include breakpoint(1200) {
+      @include breakpoint(1340) {
         right: 0;
         transform: translateY(-50%);
       }
@@ -190,7 +190,7 @@
 
 .caseStudyPage-bg[data-theme="light"],
 .caseStudyPage-bg[data-theme="none"] {
-  @include breakpoint(0, 1199.98) {
+  @include breakpoint(0, 1339.98) {
     & ~ .caseStudyPage .imgSlider-button {
       svg {
         circle {
@@ -205,7 +205,7 @@
 }
 
 .caseStudyPage-bg[data-theme="dark"] {
-  @include breakpoint(0, 1199.98) {
+  @include breakpoint(0, 1339.98) {
     & ~ .caseStudyPage .imgSlider-button {
       svg {
         circle {

@@ -9,16 +9,17 @@ $steps: 8;
 .img-sideBarFocus {
   .desktopMock-screen {
     .img-sideBarFocus-sideBar {
-      transition: opacity 350ms ease-in-out;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: calc((218 / 1054) * 100%);
+      height: auto;
       background-color: var(--white);
-      height: 100%;
-      width: auto;
+      transition: opacity 350ms ease-in-out;
+
 
       &:nth-of-type(n + 2) {
         opacity: 0;
-        position: absolute;
-        top: 0;
-        left: 0;
       }
     }
   }

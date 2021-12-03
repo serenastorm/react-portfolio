@@ -19,8 +19,9 @@
     gap: var(--img-padding);
 
     img {
-      width: 100%;
-      height: auto;
+      @include breakpoint(425) {
+        max-width: var(--max-width-modularitems) !important;
+      }
     }
 
     .img-productImages-img {

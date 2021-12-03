@@ -3,28 +3,38 @@ import {
   scrollAnimationVariants,
   scrollAnimationWrapperProps,
 } from "helpers/animations";
+import { useWindowDimensions } from "infrastructure/hooks";
 
 import "./IntroText.scss";
 
 const IntroText = () => {
+  const { windowWidth } = useWindowDimensions();
+  const isDesktop = windowWidth >= 1200;
+
   return (
     <motion.section className="intro-text" {...scrollAnimationWrapperProps}>
       <dl>
         <div>
           <motion.dt variants={scrollAnimationVariants({})}>Year</motion.dt>
-          <motion.dd variants={scrollAnimationVariants({ delay: 0.25 })}>
+          <motion.dd
+            variants={scrollAnimationVariants({ delay: isDesktop ? 0.25 : 0 })}
+          >
             2021
           </motion.dd>
         </div>
 
         <div>
           <motion.dt variants={scrollAnimationVariants({})}>Roles</motion.dt>
-          <motion.dd variants={scrollAnimationVariants({ delay: 0.25 })}>
+          <motion.dd
+            variants={scrollAnimationVariants({ delay: isDesktop ? 0.25 : 0 })}
+          >
             Everything!
           </motion.dd>
         </div>
       </dl>
-      <motion.p variants={scrollAnimationVariants({})}>
+      <motion.p
+        variants={scrollAnimationVariants({ delay: isDesktop ? 0 : 0.25 })}
+      >
         A few months after the start of the pandemic, a lot of hospitality
         businesses around me started using QR codes to let patrons browse their
         menus while reducing physical contact with paper menus. As a user, I

@@ -5,8 +5,6 @@
   border-radius: var(--border-radius-md);
   width: var(--image-width);
   max-width: var(--max-text-width);
-  // min-width: 80rem;
-  aspect-ratio: 1126 / 750;
   box-shadow: var(--container-shadow-md);
 
   .desktopMock-browserBar {
@@ -16,13 +14,16 @@
 
   .desktopMock-screen {
     position: relative;
-    aspect-ratio: 1126 / 698;
+    /* aspect-ratio doesn't work on old Safari
+    versions so we need to use good old padding-top here
+    https://ontopmarketing.agency/css-aspect-ratio-calculator/ */
+    // aspect-ratio: 1126 / 698;
+    padding-bottom: 61.98934280639432%;
     background-color: var(--myqr-bg-light);
 
     .slide {
       position: absolute;
       width: 100%;
-      aspect-ratio: inherit;
       transition: all 100ms ease-in;
 
       .desktopMock-modal {

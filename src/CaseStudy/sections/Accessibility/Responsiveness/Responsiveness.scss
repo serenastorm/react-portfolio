@@ -6,12 +6,18 @@ $mobile-img-transition: all 400ms ease-in;
   position: relative;
 }
 
-// .imgContainer-responsiveness {
-// }
+.imgContainer-responsiveness {
+  @include breakpoint(0, 799.98) {
+    --img-container-gap: 2.4rem;
+  }
+
+  @include breakpoint(800) {
+    --img-container-gap: 6.4rem;
+  }
+}
 
 .img-responsiveness {
   .desktopMock-screen {
-    // aspect-ratio: 428 / 926;
     img {
       position: absolute;
       width: 100%;

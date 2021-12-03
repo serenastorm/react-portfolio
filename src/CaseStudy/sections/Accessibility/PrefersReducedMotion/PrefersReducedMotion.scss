@@ -26,8 +26,14 @@
   }
 
   .accessibility-prefersReducedMotion {
-    @include breakpoint(0, 799.98) {
-      // --colors-gap: 1.2rem;
+    @include breakpoint(660, 799.98) {
+      &:nth-of-type(-n + 2) {
+        transform: translateX(10%);
+      }
+
+      &:nth-of-type(n + 3) {
+        transform: translateX(-10%);
+      }
     }
 
     @include breakpoint(800) {

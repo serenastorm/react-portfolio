@@ -76,4 +76,9 @@
       flex-direction: column;
     }
   }
+
+  @include breakpoint(0, 799.98) {
+    padding-top: 3.2rem;
+    padding-bottom: 3.2rem;
+  }
 }

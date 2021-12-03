@@ -16,7 +16,7 @@ $link-hover-gradient: linear-gradient(125deg, var(--link), var(--link-sm));
     var(--landing-padding-sides)
     minmax(calc(100% - (2 * #{var(--landing-padding-sides)})), 100%)
     var(--landing-padding-sides);
-  grid-template-rows: auto max-content;
+  grid-template-rows: max-content auto max-content;
 
   & > *:not(footer) {
     grid-column: 2;
