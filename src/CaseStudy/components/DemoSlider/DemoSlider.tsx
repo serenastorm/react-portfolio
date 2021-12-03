@@ -77,21 +77,19 @@ const DemoSlider = ({
           </div>
         </section>
 
-        <AnimatePresence exitBeforeEnter>
-          {slides.map((slide, i) => {
-            const { copy } = slide;
+        {slides.map((slide, i) => {
+          const { copy } = slide;
 
-            return currentSlideIndex === i ? (
-              <Fragment key={`${imageContainerProps.imageClassName}-copy-${i}`}>
-                {copy && (
-                  <figcaption>
-                    <Slider.Caption copy={copy} />
-                  </figcaption>
-                )}
-              </Fragment>
-            ) : null;
-          })}
-        </AnimatePresence>
+          return currentSlideIndex === i ? (
+            <Fragment key={`${imageContainerProps.imageClassName}-copy-${i}`}>
+              {copy && (
+                <figcaption>
+                  <Slider.Caption copy={copy} />
+                </figcaption>
+              )}
+            </Fragment>
+          ) : null;
+        })}
       </FullScreenImageContainer>
     </SliderDirectionContextProvider>
   );

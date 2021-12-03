@@ -30,7 +30,7 @@
   gap: var(--img-container-gap);
 
   @include breakpoint(0, 799.98) {
-    --img-container-gap: 1.2rem;
+    --img-container-gap: 1.6rem;
   }
 
   @include breakpoint(800) {

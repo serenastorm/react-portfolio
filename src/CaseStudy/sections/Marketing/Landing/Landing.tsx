@@ -1,4 +1,3 @@
-import { AnimatePresence } from "framer-motion";
 import {
   ImageWithStepAnimation,
   FullScreenImageContainer,
@@ -39,7 +38,7 @@ const Landing = () => {
     } else if (typeof captions === "string") {
       return (
         <figcaption>
-          <Slider.Caption copy={captions} animated={false} />
+          <Slider.Caption copy={captions} />
         </figcaption>
       );
     } else {
@@ -48,7 +47,7 @@ const Landing = () => {
           captionIndex === currentSlideIndex
       );
       return (
-        <AnimatePresence exitBeforeEnter>
+        <>
           {typeof captionsToRender === "string" && (
             <figcaption>
               <Slider.Caption copy={captionsToRender} />
@@ -61,14 +60,14 @@ const Landing = () => {
                 .map((caption: string[] | string, sectionIndex: number) => {
                   return (
                     <Slider.Caption
-                      key={`${imageContainerProps.imageClassName}-caption-${sectionIndex}`}
                       copy={caption}
+                      key={`${imageContainerProps.imageClassName}-caption-${sectionIndex}`}
                     />
                   );
                 })}
             </figcaption>
           )}
-        </AnimatePresence>
+        </>
       );
     }
   };

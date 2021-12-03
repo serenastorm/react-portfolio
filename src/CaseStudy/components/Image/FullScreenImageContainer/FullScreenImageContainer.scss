@@ -91,6 +91,13 @@
   .listItem {
     width: initial;
     max-width: var(--image-width);
+
+    @include breakpoint(0, 799.98) {
+      --image-width: calc(
+        100vw - (#{var(--page-padding-sides)} * 2) -
+          (#{var(--img-container-gap)} * 4)
+      );
+    }
   }
 
   ul {

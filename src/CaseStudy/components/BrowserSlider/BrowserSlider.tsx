@@ -51,7 +51,7 @@ const BrowserSlider = ({
     } else if (typeof captions === "string") {
       return (
         <figcaption>
-          <Slider.Caption copy={captions} animated={false} />
+          <Slider.Caption copy={captions} />
         </figcaption>
       );
     } else {
@@ -59,7 +59,7 @@ const BrowserSlider = ({
         (caption, captionIndex) => captionIndex === currentSlideIndex
       );
       return (
-        <AnimatePresence exitBeforeEnter>
+        <>
           {typeof captionsToRender === "string" && (
             <figcaption>
               <Slider.Caption copy={captionsToRender} />
@@ -82,7 +82,7 @@ const BrowserSlider = ({
               )}
             </figcaption>
           )}
-        </AnimatePresence>
+        </>
       );
     }
   };
