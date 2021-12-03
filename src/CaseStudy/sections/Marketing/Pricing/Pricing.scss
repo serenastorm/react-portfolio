@@ -1,10 +1,6 @@
 @import "~styles/modules/mixins.scss";
 
 .img-pricing {
-  background-color: var(--white);
-  filter: var(--myqr-img-shadow);
-  border-radius: var(--border-radius-md);
-
   @include breakpoint(0, 799.98) {
     order: 2;
     width: 100%;
