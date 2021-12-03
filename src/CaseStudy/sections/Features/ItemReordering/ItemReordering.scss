@@ -1,5 +1,5 @@
 $steps: 6;
-$flex-gap: 8px;
+$flex-gap: 0.8rem;
 
 .img-itemReordering {
   .imgWrapper {
@@ -13,7 +13,9 @@ $flex-gap: 8px;
     width: 100%;
     height: auto;
     transition: all 500ms ease-in-out;
-    filter: var(--myqr-img-shadow);
+    /* TODO: find a way to add a shadow that doesn't 
+    break framer-motion in Safari + Firefox */
+    // filter: var(--myqr-img-shadow);
     will-change: transform;
   }
 

@@ -2,12 +2,15 @@
 
 .img-dietaryInformation {
   .imgWrapper {
+    overflow: hidden;
+    background-color: var(--white);
+    border-radius: var(--img-border-radius);
+    box-shadow: var(--myqr-img-container-shadow);
+
     img {
       max-height: 70vh;
       width: auto;
       height: auto;
-      border-radius: var(--img-border-radius);
-      filter: var(--myqr-img-shadow);
 
       @include breakpoint(0, 799.98) {
         max-width: 100%;

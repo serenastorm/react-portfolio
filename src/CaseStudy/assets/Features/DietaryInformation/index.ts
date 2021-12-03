@@ -1,1 +1,1 @@
-export { default as DietaryInformationImage } from "./dietaryInformation.jpg";
+export { default as DietaryInformationImage } from "./dietaryInformation.png";
