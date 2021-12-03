@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { isMobile } from "react-device-detect";
 import { AnimatePresence, motion } from "framer-motion";
 import { HelpIcon } from "CaseStudy/assets/Icons/Actions";
 import { enterAndExitAnimationProps } from "helpers/animations";
@@ -12,7 +13,6 @@ type ToggleTipProps = {
 
 const ToggleTip = ({ content, label }: ToggleTipProps) => {
   const [showToggleTip, setShowToggletip] = useState<boolean>(false);
-  const isMobile = false;
   const buttonProps = isMobile
     ? {
         onClick: () => {
