@@ -21,7 +21,7 @@ const userPrefersReducedMotion = window.matchMedia(mediaQuery).matches;
 
 export const enterAndExitAnimationProps = ({
   delay = 0,
-  duration = 1,
+  duration = 0.5,
   opacity = [1, 1],
   enterTransition,
   exitTransition,

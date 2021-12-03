@@ -1,14 +1,6 @@
 @import "~styles/modules/mixins.scss";
 
 .img-productImages {
-  @include breakpoint(0, 799.98) {
-    --img-container-gap: 0.8rem;
-  }
-
-  @include breakpoint(800) {
-    --img-container-gap: 1.6rem;
-  }
-
   .imgWrapper {
     border-radius: var(--img-border-radius);
     background-color: var(--white);

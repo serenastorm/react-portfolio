@@ -41,8 +41,8 @@ const useSlider = (totalSlides: number): SliderProps => {
     const mediaQuery = "(prefers-reduced-motion: reduce)";
     const userPrefersReducedMotion = window.matchMedia(mediaQuery).matches;
 
-    // If 50% of the container is visible, don't scroll to top
-    if (scrollContainerRef.current && percentageOfContainerInView < 50) {
+    // If less than 50% of the container is visible, scroll to top
+    if (scrollContainerRef.current && percentageOfContainerInView < 40) {
       scrollContainerRef.current.scrollIntoView({
         behavior: userPrefersReducedMotion ? undefined : "smooth",
       });
