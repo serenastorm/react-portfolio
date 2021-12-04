@@ -9,8 +9,10 @@ import {
 } from "infrastructure/routes/constants";
 
 import "./PageBackground.scss";
+import { usePrefersReducedMotion } from "infrastructure/hooks";
 
 const PageBackground = () => {
+  const userPrefersReducedMotion = usePrefersReducedMotion();
   const { pathname } = useLocation();
   const caseStudyRoutes = Object.values(routes.myqr);
 
@@ -30,37 +32,27 @@ const PageBackground = () => {
 
   const currentRouteTitle = getCurrentRoute();
 
-  const getBackgroundNameForCurrentRoute = useCallback(() => {
+  const getBackgroundForCurrentRoute = useCallback(() => {
     switch (currentRouteTitle) {
       case caseStudySectionsTitles.marketing:
-        return "dark";
+        return { hex: "#00003c", label: "dark" };
       case caseStudySectionsTitles.dashboard:
-        return "light";
+        return { hex: "#e0e8ff", label: "light" };
       default:
-        return "none";
+        return { hex: "#ffffff", label: "none" };
     }
   }, [currentRouteTitle]);
 
-  const getBackgroundColorForCurrentRoute = useCallback(() => {
-    switch (currentRouteTitle) {
-      case caseStudySectionsTitles.marketing:
-        return "#00003c";
-      case caseStudySectionsTitles.dashboard:
-        return "#e0e8ff";
-      default:
-        return "#ffffff";
-    }
-  }, [currentRouteTitle]);
+  const currentBackground = getBackgroundForCurrentRoute();
 
   useEffect(() => {
-    const bgColor = getBackgroundColorForCurrentRoute();
-
+    // Update the theme colors so the browser bar matches the background
     const existingMetaTag = document.querySelectorAll(
       '[name="theme-color"]'
     )[0];
 
-    existingMetaTag.setAttribute("content", bgColor);
-  }, [pathname, getBackgroundColorForCurrentRoute]);
+    existingMetaTag.setAttribute("content", currentBackground.label);
+  }, [pathname, currentBackground]);
 
   if (!pathname.startsWith("/myqr")) {
     return null;
@@ -70,9 +62,9 @@ const PageBackground = () => {
     <motion.div
       className="caseStudyPage-bg"
       initial={{ backgroundColor: "#ffffff" }}
-      animate={{ backgroundColor: getBackgroundColorForCurrentRoute() }}
-      transition={{ duration: 0.3 }}
-      data-theme={getBackgroundNameForCurrentRoute()}
+      animate={{ backgroundColor: currentBackground.hex }}
+      transition={{ duration: userPrefersReducedMotion ? 0 : 0.3 }}
+      data-theme={currentBackground.label}
     />
   );
 };
