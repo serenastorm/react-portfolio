@@ -14,7 +14,6 @@ const SideBarFocus = () => {
     <FullScreenImageContainer
       bg="Light"
       imageClassName="sideBarFocus"
-      helpToggleTipCopy="Interact with the arrows to check how keyboard focus is handled by the sidebar component."
     >
       <ImageWithStepAnimation
         totalSteps={keyboardAnimationSteps}

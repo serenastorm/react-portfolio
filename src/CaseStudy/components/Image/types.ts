@@ -8,5 +8,4 @@ export type ImageAnimationProps = {
 export type ImageContainerProps = {
   bg?: "Dark" | "Light" | "LightGray" | "None";
   imageClassName: string;
-  helpToggleTipCopy?: string;
 };

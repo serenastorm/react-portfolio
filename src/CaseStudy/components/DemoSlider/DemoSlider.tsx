@@ -36,7 +36,6 @@ const DemoSlider = ({
     <SliderDirectionContextProvider value={sliderDirection}>
       <FullScreenImageContainer
         currentSlideIndex={currentSlideIndex}
-        helpToggleTipCopy="Use the next and previous arrows to navigate the carousel."
         containerRef={scrollContainerRef}
         dragContainerProps={dragContainerProps()}
         {...imageContainerProps}

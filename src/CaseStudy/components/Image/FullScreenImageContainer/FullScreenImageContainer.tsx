@@ -1,6 +1,5 @@
 import { ReactNode, Ref } from "react";
 import { motion } from "framer-motion";
-import { ToggleTip } from "CaseStudy/components";
 import { scrollAnimationWrapperProps } from "helpers/animations";
 import { ImageContainerProps } from "../types";
 import { DragContainerProps } from "CaseStudy/components/Slider/types";
@@ -23,7 +22,6 @@ const FullScreenImageContainer = ({
   currentSlideIndex = -1,
   dragContainerProps,
   imageClassName,
-  helpToggleTipCopy,
 }: FullScreenImageContainerProps) => {
   const isSlider = currentSlideIndex > -1;
 
@@ -41,9 +39,6 @@ const FullScreenImageContainer = ({
       {...scrollAnimationWrapperProps}
       {...dragContainerProps}
     >
-      {helpToggleTipCopy && (
-        <ToggleTip content={helpToggleTipCopy} label="Help" />
-      )}
       {children}
     </motion.figure>
   );

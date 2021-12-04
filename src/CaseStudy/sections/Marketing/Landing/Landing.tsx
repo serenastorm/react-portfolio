@@ -80,7 +80,6 @@ const Landing = () => {
         imageClassName="landing"
         containerRef={scrollContainerRef}
         dragContainerProps={dragContainerProps("top")}
-        // helpToggleTipCopy="Use the next and previous buttons to simulate scrolling in the landing page preview container."
       >
         <section className="imgSlider" aria-labelledby="carouselHeading">
           <h3 id="carouselHeading" className="screenReaderText">

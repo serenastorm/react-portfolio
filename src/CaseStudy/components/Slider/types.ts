@@ -23,5 +23,4 @@ export type DragContainerWithDirectionProps = (
 export type ImageContainerProps = {
   bg?: "Dark" | "Light" | "LightGray" | "None";
   imageClassName: string;
-  helpToggleTipCopy?: string;
 };
