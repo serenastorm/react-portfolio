@@ -174,7 +174,6 @@ const NavBar = ({ currentPageTitle, currentPageSectionIndex }: NavBarProps) => {
               key="nav"
               id="caseStudyPage-nav"
               {...enterAndExitAnimationProps({
-                opacity: [0, 1],
                 y: ["-100%", 0, "-100%"],
               })}
             >
