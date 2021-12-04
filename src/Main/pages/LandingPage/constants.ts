@@ -20,9 +20,9 @@ export const projectLinks: LinkProps[] = [
     isExternal: true,
   },
   {
-    label: "antonettiserena2018",
-    description: "2018 UI/UX portfolio",
-    url: "https://antonettis.github.io/portfolio",
+    label: "2018 portfolio",
+    description: "UI/UX works from 2018",
+    url: "https://silly-ramanujan-4dd4c1.netlify.app/",
     isExternal: true,
   },
 ];
