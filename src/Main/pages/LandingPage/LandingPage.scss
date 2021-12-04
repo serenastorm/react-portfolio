@@ -8,6 +8,7 @@ $link-hover-gradient: linear-gradient(125deg, var(--link), var(--link-sm));
   --landing-padding-sides: 6vw;
 
   padding-top: var(--landing-padding-top);
+  // Also theme-color in index.html
   background-color: #f5f7fb;
   min-height: 100%;
 
