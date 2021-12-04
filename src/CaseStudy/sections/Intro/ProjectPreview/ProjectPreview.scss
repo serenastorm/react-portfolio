@@ -4,7 +4,7 @@
   padding: 0;
   overflow: hidden;
 
-  @media (max-height: 679.99px) {
+  @include breakpoint(0, 799.98) {
     --container-min-height: 80vh;
 
     .imgWrapper-projectPreview {
@@ -12,7 +12,15 @@
     }
   }
 
-  @media (min-height: 680px) {
+  @media (min-width: 800px) and (max-height: 679.99px) {
+    --container-min-height: 80vh;
+
+    .imgWrapper-projectPreview {
+      transform: scale(1.2) rotate(-12deg);
+    }
+  }
+
+  @media (min-width: 800px) and (min-height: 680px) {
     --container-min-height: 120vh;
 
     .imgWrapper-projectPreview {
