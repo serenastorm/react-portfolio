@@ -24,21 +24,7 @@ const AccessibilityPage = () => {
         ]}
       />
       <AccessibilitySections.ColorPalette />
-      <List
-        items={[
-          "I used media queries to remove animations for users who turned on their browser’s reduced motion setting.",
-        ]}
-      />
       <AccessibilitySections.PrefersReducedMotion />
-      <List
-        items={[
-          {
-            title:
-              "Keyboard users can navigate through related elements by using the arrow keys instead of the Tabs key.",
-            copy: "The background of focused elements is a dark purple that isn’t used anywhere else. They also have an outline or underline so as to stand out even more.",
-          },
-        ]}
-      />
       <AccessibilitySections.SideBarFocus />
       <AccessibilitySections.InformationColor />
       <AccessibilitySections.SkipToContentLink />

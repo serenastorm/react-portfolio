@@ -20,12 +20,20 @@ const SkipToContentLink = () => {
           <ImageWrapper className="img-skipToContent">
             <img
               src={SkipToContentImage.Bg}
-              alt="Animation of the dashboard, zoomed in on the top left corner. A 'Skip to main content' link fades in and out of the screen."
               className="accessibility-skipToContent-img"
+              alt={
+                tab.value === "focused"
+                  ? ""
+                  : "Screenshot of the dashboard, zoomed in on the top left corner, without the 'Skip to main content' link."
+              }
             />
             <img
               src={SkipToContentImage.Link}
-              alt=""
+              alt={
+                tab.value === "focused"
+                  ? "Screenshot of the dashboard, zoomed in on the top left corner, with a 'Skip to main content' link."
+                  : ""
+              }
               className="accessibility-skipToContent-img"
             />
           </ImageWrapper>

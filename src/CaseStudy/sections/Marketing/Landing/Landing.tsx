@@ -109,7 +109,11 @@ const Landing = () => {
                           {img.map((imgSrc, imgIndex: number) => (
                             <img
                               src={imgSrc}
-                              alt={imgIndex === 0 ? alt : ""}
+                              alt={
+                                imgIndex === 0 && i === currentSlideIndex
+                                  ? alt
+                                  : ""
+                              }
                               key={`${imageContainerProps.imageClassName}-animated-visual-${i}-${imgIndex}`}
                             />
                           ))}
@@ -122,32 +126,11 @@ const Landing = () => {
                     <img
                       key={`${imageContainerProps.imageClassName}-visual-${i}`}
                       src={img}
-                      alt={alt}
+                      alt={i === currentSlideIndex ? alt : ""}
                       className={className || ""}
                     />
                   );
                 }
-                // {
-                //   Array.isArray(img) && animationProps && (
-                //     <ImageWithStepAnimation {...animationProps}>
-                //       {(
-                //         animationStep,
-                //         setAnimationStep,
-                //         pauseOnUserInteraction
-                //       ) => (
-                //         <>
-                //           {img.map((imgSrc, imgIndex: number) => (
-                //             <img
-                //               src={imgSrc}
-                //               alt=""
-                //               key={`${imageContainerProps.imageClassName}-animated-visual-${i}-${imgIndex}`}
-                //             />
-                //           ))}
-                //         </>
-                //       )}
-                //     </ImageWithStepAnimation>
-                //   );
-                // }
               })}
             </div>
           </SafariDesktopWrapper>

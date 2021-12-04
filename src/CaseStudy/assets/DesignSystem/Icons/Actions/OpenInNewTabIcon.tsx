@@ -7,8 +7,6 @@ const OpenInNewTabIcon = () => {
       height="512"
       fill="none"
       viewBox="0 0 512 512"
-      role="img"
-      aria-label="(Opens in a new tab)"
     >
       <path
         fill="#000"

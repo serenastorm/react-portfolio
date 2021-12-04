@@ -19,6 +19,7 @@ const SliderButton = ({ direction, onClick }: SliderButtonProps) => {
     <button
       onClick={() => onClick()}
       className={`imgSlider-button imgSlider-button-is${direction}`}
+      aria-label={`${direction === "Prev" ? "Previous" : direction} slide`}
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -56,11 +57,8 @@ const SliderButton = ({ direction, onClick }: SliderButtonProps) => {
           clipRule="evenodd"
         ></path>
       </svg>
-      {/* ARIA role="text" prevents 'text splitting' in VoiceOver iOS https://axesslab.com/text-splitting/  */}
-      {/* eslint-disable-next-line jsx-a11y/aria-role */}
-      <span className="imgSlider-button-text" role="text">
-        {direction === "Prev" ? "Previous" : direction}{" "}
-        <span className="screenReaderText">slide</span>
+      <span className="imgSlider-button-text" aria-hidden="true">
+        {direction === "Prev" ? "Previous" : direction}
       </span>
     </button>
   );

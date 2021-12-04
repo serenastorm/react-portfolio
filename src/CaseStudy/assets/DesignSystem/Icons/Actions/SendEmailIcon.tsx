@@ -1,7 +1,6 @@
 const SendEmailIcon = () => {
   return (
     <>
-      <span className="screenReaderText">(Opens in your mail client)</span>
       <svg
         xmlns="http://www.w3.org/2000/svg"
         preserveAspectRatio="xMidYMid meet"
@@ -9,7 +8,6 @@ const SendEmailIcon = () => {
         height="512"
         fill="none"
         viewBox="0 0 512 512"
-        aria-hidden="true"
       >
         <path
           fill="#000"

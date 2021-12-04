@@ -132,9 +132,10 @@ const NavBar = ({ currentPageTitle, currentPageSectionIndex }: NavBarProps) => {
 
   const renderHeader = () => (
     <>
-      <span className="caseStudyPage-sectionId">
+      <span className="caseStudyPage-sectionId" aria-hidden="true">
         0{currentPageSectionIndex}
-      </span>{" "}
+      </span>
+      <span aria-hidden="true"> </span>
       {currentPageTitle}
     </>
   );

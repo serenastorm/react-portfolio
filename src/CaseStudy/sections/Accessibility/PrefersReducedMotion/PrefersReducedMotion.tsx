@@ -1,4 +1,5 @@
 import { ReactNode } from "react";
+import { List } from "CaseStudy/components";
 import { PrefersReducedMotionImage } from "CaseStudy/assets/Accessibility/PrefersReducedMotion";
 
 import "./PrefersReducedMotion.scss";
@@ -41,42 +42,49 @@ const PrefersReducedMotionCaption = ({
 
 const PrefersReducedMotion = () => {
   return (
-    <div id="accessibility-prefersReducedMotion-container">
-      <PrefersReducedMotionContainer>
-        <PrefersReducedMotionPreviewContainer>
-          <h5>Loading...</h5>
-        </PrefersReducedMotionPreviewContainer>
-        <PrefersReducedMotionCaption preference="reduce" />
-      </PrefersReducedMotionContainer>
-      <PrefersReducedMotionContainer>
-        <PrefersReducedMotionPreviewContainer>
-          <div className="circleLoader" aria-label="Animated loader" />
-        </PrefersReducedMotionPreviewContainer>
-        <PrefersReducedMotionCaption preference="no-preference" />
-      </PrefersReducedMotionContainer>
-      <PrefersReducedMotionContainer>
-        <PrefersReducedMotionPreviewContainer>
-          <img
-            src={PrefersReducedMotionImage}
-            alt="Modal appearing on the screen with no transition."
-            className="accessibility-prefersReducedMotion-preview-img"
-            id="accessibility-prefersReducedMotion-preview-img-reduce"
-          />
-        </PrefersReducedMotionPreviewContainer>
-        <PrefersReducedMotionCaption preference="reduce" />
-      </PrefersReducedMotionContainer>
-      <PrefersReducedMotionContainer>
-        <PrefersReducedMotionPreviewContainer>
-          <img
-            src={PrefersReducedMotionImage}
-            alt="Modal appearing on the screen with a fade in transition from the bottom."
-            className="accessibility-prefersReducedMotion-preview-img"
-            id="accessibility-prefersReducedMotion-preview-img-noPreference"
-          />
-        </PrefersReducedMotionPreviewContainer>
-        <PrefersReducedMotionCaption preference="no-preference" />
-      </PrefersReducedMotionContainer>
-    </div>
+    <section aria-label="Media queries">
+      <List
+        items={[
+          "I used media queries to remove animations for users who turned on their browser’s reduced motion setting.",
+        ]}
+      />
+      <div id="accessibility-prefersReducedMotion-container">
+        <PrefersReducedMotionContainer>
+          <PrefersReducedMotionPreviewContainer>
+            <h5>Loading...</h5>
+          </PrefersReducedMotionPreviewContainer>
+          <PrefersReducedMotionCaption preference="reduce" />
+        </PrefersReducedMotionContainer>
+        <PrefersReducedMotionContainer>
+          <PrefersReducedMotionPreviewContainer>
+            <div className="circleLoader" aria-label="Animated loader" />
+          </PrefersReducedMotionPreviewContainer>
+          <PrefersReducedMotionCaption preference="no-preference" />
+        </PrefersReducedMotionContainer>
+        <PrefersReducedMotionContainer>
+          <PrefersReducedMotionPreviewContainer>
+            <img
+              src={PrefersReducedMotionImage}
+              alt="Modal appearing on the screen with no transition."
+              className="accessibility-prefersReducedMotion-preview-img"
+              id="accessibility-prefersReducedMotion-preview-img-reduce"
+            />
+          </PrefersReducedMotionPreviewContainer>
+          <PrefersReducedMotionCaption preference="reduce" />
+        </PrefersReducedMotionContainer>
+        <PrefersReducedMotionContainer>
+          <PrefersReducedMotionPreviewContainer>
+            <img
+              src={PrefersReducedMotionImage}
+              alt="Modal appearing on the screen with a fade in transition from the bottom."
+              className="accessibility-prefersReducedMotion-preview-img"
+              id="accessibility-prefersReducedMotion-preview-img-noPreference"
+            />
+          </PrefersReducedMotionPreviewContainer>
+          <PrefersReducedMotionCaption preference="no-preference" />
+        </PrefersReducedMotionContainer>
+      </div>
+    </section>
   );
 };
 

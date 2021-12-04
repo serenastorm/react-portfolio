@@ -13,12 +13,17 @@ const ColorPaletteColor = ({
   wcagRating,
 }: Color) => {
   return (
-    <div className="colorPalette-color">
+    <li className="colorPalette-color">
       <div className="colorPalette-color-hex" style={{ backgroundColor: hex }}>
-        <h2 style={{ color: labelColor }}>{hex}</h2>
+        <h2 style={{ color: labelColor }} aria-hidden="true">
+          {hex}
+        </h2>
       </div>
       <h2>{label}</h2>
-      <p>
+      {/* ARIA role="text" prevents 'text splitting' in VoiceOver iOS https://axesslab.com/text-splitting/  */}
+      {/* eslint-disable-next-line jsx-a11y/aria-role */}
+      <p role="text">
+        <span className="screenReaderText">Contrast:</span>
         {contrast}
         {wcagRating && (
           <>
@@ -26,12 +31,13 @@ const ColorPaletteColor = ({
             <span
               className={`colorPalette-color-rating colorPalette-color-rating-${wcagRating}`}
             >
-              WCAG {wcagRating}
+              WCAG <span className="screenReaderText">Rating:</span>
+              {wcagRating}
             </span>
           </>
         )}
       </p>
-    </div>
+    </li>
   );
 };
 
@@ -39,16 +45,16 @@ const ColorPalette = () => {
   const [isHighContrastMode, setIsHighContrastMode] = useState<boolean>(false);
   const colorsArray = isHighContrastMode ? darkModeColors : colors;
   return (
-    <section className="colorPalette">
+    <section className="colorPalette" aria-labelledby="colorPaletteHeading">
       <div className="colorPalette-header">
-        <h2>Colour palette</h2>
+        <h2 id="colorPaletteHeading">Colour palette</h2>
         <Switch
           isChecked={isHighContrastMode}
           setIsChecked={setIsHighContrastMode}
         />
       </div>
 
-      <div className="colorPalette-colors">
+      <ul className="colorPalette-colors">
         {colorsArray.map((color) => (
           <ColorPaletteColor
             hex={color.hex}
@@ -59,7 +65,7 @@ const ColorPalette = () => {
             key={color.label}
           />
         ))}
-      </div>
+      </ul>
     </section>
   );
 };
