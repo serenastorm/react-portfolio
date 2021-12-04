@@ -53,14 +53,14 @@ const ScrollProgress = ({
     cy: radius,
   };
 
-  const progressCopy = `You have read ${scrollYPercentage}% of this section.`;
+  const progressCopy = `You have read ${Math.round(scrollYPercentage)}% of this section.`;
 
   return (
     <>
       <div
         role="progressbar"
         className="screenReaderText"
-        aria-valuenow={scrollYPercentage}
+        aria-valuenow={Math.round(scrollYPercentage)}
         aria-valuemin={0}
         aria-valuemax={100}
         aria-valuetext={progressCopy}
