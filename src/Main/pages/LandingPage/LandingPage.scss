@@ -27,6 +27,10 @@ $link-hover-gradient: linear-gradient(125deg, var(--link), var(--link-sm));
     @extend %landing-paragraph;
     max-width: 40ch;
 
+    @include breakpoint(860) {
+      font-size: 2.8vw;
+    }
+
     .link {
       color: var(--link);
       position: relative;
@@ -81,10 +85,6 @@ $link-hover-gradient: linear-gradient(125deg, var(--link), var(--link-sm));
       (Large text = 18.66px bold, 24px regular)
       Tbh this font could be considered bold but best to be safe */
       font-size: 2.4rem;
-    }
-
-    @include breakpoint(860) {
-      font-size: 2.4vw;
     }
   }
 
@@ -143,6 +143,24 @@ $link-hover-gradient: linear-gradient(125deg, var(--link), var(--link-sm));
 
   @include onHoverAndFocus {
     transform: translateY(-2.5%) !important;
+
+    a {
+      color: var(--link);
+
+      svg {
+        path[fill="#EAF0F5"] {
+          fill: var(--arrow-bg-color-hover);
+        }
+
+        .icon-arrow {
+          transform: translate(1.2em, -1.2em);
+
+          path {
+            fill: var(--arrow-pointer-color-hover);
+          }
+        }
+      }
+    }
   }
 
   & > *:not(.project-link) {
@@ -178,6 +196,10 @@ $link-hover-gradient: linear-gradient(125deg, var(--link), var(--link-sm));
   }
 
   dt {
+    @include breakpoint(860) {
+      font-size: 2.4vw;
+    }
+
     a {
       color: var(--text);
 

@@ -211,7 +211,7 @@ const NavBar = ({ currentPageTitle, currentPageSectionIndex }: NavBarProps) => {
                         opacity: [0, 1],
                         enterTransition: {
                           duration: 0.75,
-                          delay: routeIndex * 0.15 + 0.25,
+                          delay: routeIndex * 0.1 + 0.1,
                         },
                         exitTransition: { duration: 0.25, delay: 0 },
                       })}
