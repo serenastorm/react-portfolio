@@ -52,7 +52,7 @@
     --button-width: 6.4rem;
   }
 
-  @include breakpoint(1340) {
+  @include breakpoint(1340, 1599.98) {
     z-index: 1;
     position: absolute;
     width: 30vw;
@@ -105,7 +105,7 @@
     transform-origin: 50% 50%;
     transition: inherit;
 
-    @include breakpoint(1340) {
+    @include breakpoint(1340, 1599.98) {
       position: absolute;
     }
 

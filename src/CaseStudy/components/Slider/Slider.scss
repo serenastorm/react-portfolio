@@ -21,8 +21,12 @@
   @include breakpoint(0, 1199.98) {
   }
 
-  @include breakpoint(1340) {
+  @include breakpoint(1340, 1599.98) {
     flex-direction: column;
+  }
+
+  @include breakpoint(1600) {
+    justify-content: center;
   }
 }
 
