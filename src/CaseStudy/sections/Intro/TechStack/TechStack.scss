@@ -8,7 +8,10 @@
   padding: var(--container-padding-top) var(--container-padding-sides);
 
   @include breakpoint(0, 799.98) {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: minmax(min-content, max-content) minmax(
+        min-content,
+        max-content
+      );
 
     h2 {
       grid-area: 1 / 1 / 2 / 3;
@@ -26,19 +29,22 @@
   }
 
   @include breakpoint(800) {
-    grid-template-columns: repeat(6, 1fr);
+    grid-template-columns: auto minmax(min-content, max-content) minmax(
+        min-content,
+        max-content
+      );
 
     h2 {
-      grid-area: 1 / 5 / 2 / 7;
+      grid-area: 1 / 2 / 2 / 4;
     }
 
     .tech-stack {
       &:first-of-type {
-        grid-area: 2 / 5 / 3 / 6;
+        grid-area: 2 / 2 / 3 / 3;
       }
 
       &:nth-of-type(2) {
-        grid-area: 2 / 6 / 3 / 7;
+        grid-area: 2 / 3 / 3 / 4;
       }
     }
   }
