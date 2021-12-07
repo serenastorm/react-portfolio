@@ -53,7 +53,9 @@ const ScrollProgress = ({
     cy: radius,
   };
 
-  const progressCopy = `You have read ${Math.round(scrollYPercentage)}% of this section.`;
+  const progressCopy = `You have read ${Math.round(
+    scrollYPercentage
+  )}% of this section.`;
 
   return (
     <>
@@ -64,9 +66,8 @@ const ScrollProgress = ({
         aria-valuemin={0}
         aria-valuemax={100}
         aria-valuetext={progressCopy}
-      >
-        {progressCopy}
-      </div>
+        title={progressCopy}
+      />
 
       {shape === "bar" ? (
         <div className="progressIndicator-container">

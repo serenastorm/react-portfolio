@@ -20,7 +20,7 @@ const ProjectLink = ({
     variants={scrollAnimationVariants({ delay: animationDelay })}
   >
     <div className="project-img" />
-    <div className="project-description">
+    <dl className="project-description">
       <dt>
         {isExternal ? (
           <NewTabLink copy={label} to={url} shouldOpenInNewTab />
@@ -31,7 +31,7 @@ const ProjectLink = ({
         )}
       </dt>
       <dd>{description}</dd>
-    </div>
+    </dl>
     {isExternal ? (
       // eslint-disable-next-line jsx-a11y/anchor-has-content
       <a
