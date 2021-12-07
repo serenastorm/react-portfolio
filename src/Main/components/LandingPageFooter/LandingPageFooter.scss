@@ -26,33 +26,5 @@
         color: var(--link-sm);
       }
     }
-
-    .email-link {
-      --underline-color: currentColor;
-
-      border: none;
-      text-decoration: none;
-      -webkit-user-select: none;
-      user-select: none;
-      padding: 0;
-      cursor: pointer;
-      color: currentColor;
-      font: inherit;
-      line-height: 160%;
-
-      &:after {
-        top: calc(100% - 0.2em);
-      }
-
-      @extend %link-with-underline;
-
-      @include removeFocusOutline;
-
-      @include onHoverAndFocus {
-        &:after {
-          opacity: 1;
-        }
-      }
-    }
   }
 }
