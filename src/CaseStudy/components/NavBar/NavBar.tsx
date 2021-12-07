@@ -30,7 +30,10 @@ type NavBarProps = {
 const NavBar = ({ currentPageTitle, currentPageSectionIndex }: NavBarProps) => {
   const { pathname } = useLocation();
 
-  const routesArray = Object.values(routes.myqr);
+  const routesArray = [
+    ...Object.values(routes.myqr),
+    { url: "/", title: "Back to main site" },
+  ];
   const routesWithoutCurrentRoute = routesArray.filter((route) => {
     const match = matchPath(pathname, {
       path: route.url,

@@ -7,6 +7,45 @@ $link-hover-transition: all 250ms ease;
   z-index: 30;
   top: 0;
   left: 0;
+
+  .caseStudyPage-navLink {
+    &:last-of-type {
+      list-style-type: none;
+      color: var(--link);
+
+      a {
+        @include breakpoint(1000) {
+          white-space: nowrap;
+        }
+
+        svg {
+          @include breakpoint(0, 379.98) {
+            display: none;
+          }
+        }
+
+        &::before {
+          opacity: 0.1;
+          background-image: linear-gradient(
+            90deg,
+            rgba(var(--link-rgb), 0.2) 49.99%,
+            rgba(255, 255, 255, 0) 50%
+          );
+        }
+
+        .arrowIcon-circle {
+          stroke: currentColor;
+        }
+
+        @include onHoverAndFocus {
+          &::before {
+            color: currentColor !important;
+            opacity: 1;
+          }
+        }
+      }
+    }
+  }
 }
 
 nav {
@@ -45,7 +84,6 @@ nav {
       color: var(--myqr-text);
       font-weight: var(--font-weight-bold);
 
-
       @media (max-height: 559.98px) {
         font-size: 2rem;
       }
@@ -65,10 +103,6 @@ nav {
           font-size: 4rem;
         }
       }
-
-      // @include breakpoint() {
-      //   font-size: 4rem;
-      // }
 
       &:nth-of-type(1) {
         counter-set: nav-counter 0;

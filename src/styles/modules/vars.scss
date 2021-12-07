@@ -1,9 +1,15 @@
+@import "~styles/modules/functions.scss";
+
+$link: #ed5497;
+$link-rgb: hexToRGB($link);
+
 :root {
   // Colors
   --white: #ffffff;
   --text: #5e5252;
   --text-light: #856b6b;
-  --link: #ed5497;
+  --link: #{$link};
+  --link-rgb: #{$link-rgb};
   --link-sm: #833deb;
 
   // Typography
