@@ -84,7 +84,7 @@ $link-hover-gradient: linear-gradient(125deg, var(--link), var(--link-sm));
     }
 
     @include breakpoint(860) {
-      font-size: 2.8vw;
+      font-size: 2.4vw;
     }
   }
 
@@ -94,19 +94,85 @@ $link-hover-gradient: linear-gradient(125deg, var(--link), var(--link-sm));
 }
 
 .projects {
-  margin-top: 4vh;
+  --projects-per-row: 2;
+  --project-radius: 0.8rem;
+  margin-top: 8vh;
+  max-width: 200rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--project-gap);
 
-  .project {
-    display: flex;
-    gap: 0.8rem;
-    align-items: baseline;
+  @include breakpoint(0, 859.98) {
+    --project-gap: 1.6rem;
+  }
 
-    @include breakpoint(0, 509.98) {
-      flex-direction: column;
+  @include breakpoint(860) {
+    --project-gap: 3.2rem;
+  }
+}
+
+.project {
+  --project-width: calc(
+    (
+      (100% - (#{var(--project-gap)} * (#{var(--projects-per-row)} - 1))) / #{var(
+          --projects-per-row
+        )}
+    )
+  );
+  --project-padding: 1.6rem;
+  position: relative;
+  display: flex;
+  width: var(--project-width);
+  gap: var(--project-padding);
+  padding: var(--project-padding);
+  background: var(--white);
+  border-radius: var(--project-radius);
+  box-shadow: 0px 1rem 1rem 0px rgba(176, 181, 244, 0.1);
+  transform: translateY(0);
+  transition: transform 250ms ease;
+
+  @include breakpoint(0, 779.98) {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  @include breakpoint(780) {
+    align-items: center;
+  }
+
+  @include onHoverAndFocus {
+    transform: translateY(-2.5%) !important;
+  }
+
+  & > *:not(.project-link) {
+    position: relative;
+    z-index: 2;
+  }
+
+  &:nth-of-type(1) {
+    .project-img {
+      background-color: #e0e8ff;
+      background-image: url("~Main/assets/Landing/landing-projectImg1.svg");
     }
+  }
 
-    & + .project {
-      margin-top: 1.2rem;
+  &:nth-of-type(2) {
+    .project-img {
+      background-color: #7fb3b1;
+      background-image: url("~Main/assets/Landing/landing-projectImg2.png");
+    }
+  }
+
+  &:nth-of-type(3) {
+    .project-img {
+      background-color: #231f20;
+      background-image: url("~Main/assets/Landing/landing-projectImg3.svg");
+    }
+  }
+
+  &:nth-of-type(4) {
+    .project-img {
+      background-image: url("~Main/assets/Landing/landing-projectImg4.jpg");
     }
   }
 
@@ -125,7 +191,7 @@ $link-hover-gradient: linear-gradient(125deg, var(--link), var(--link-sm));
   }
 
   dd {
-    font-size: 2.2vw;
+    margin-top: 1.2rem;
     color: var(--text-light);
 
     @include breakpoint(0, 859.98) {
@@ -133,7 +199,7 @@ $link-hover-gradient: linear-gradient(125deg, var(--link), var(--link-sm));
     }
 
     @include breakpoint(860) {
-      font-size: 2.2vw;
+      font-size: 2vw;
     }
   }
 
@@ -143,6 +209,8 @@ $link-hover-gradient: linear-gradient(125deg, var(--link), var(--link-sm));
   }
 
   .new-tab-link {
+    white-space: initial;
+
     --arrow-bg-color: #d5cdcf;
     --arrow-pointer-color: var(--text);
     --arrow-bg-color-hover: #f8c0d8;
@@ -162,4 +230,46 @@ $link-hover-gradient: linear-gradient(125deg, var(--link), var(--link-sm));
       }
     }
   }
+}
+
+.project-img {
+  background: #e0e8ff;
+  border-radius: calc(#{var(--project-radius)} / 2);
+  background-size: cover;
+  background-position: center center;
+  pointer-events: none;
+
+  @include breakpoint(0, 399.98) {
+    width: 100%;
+    padding-bottom: 100%;
+  }
+
+  @include breakpoint(400, 539.98) {
+    width: 14rem;
+    height: 14rem;
+  }
+
+  @include breakpoint(540, 779.98) {
+    width: 100%;
+    height: 16rem;
+  }
+
+  @include breakpoint(780, 1049.98) {
+    width: 8rem;
+    height: 8rem;
+  }
+
+  @include breakpoint(1050) {
+    width: 14rem;
+    height: 14rem;
+  }
+}
+
+.project-link {
+  position: absolute;
+  display: block;
+  width: 100%;
+  height: 100%;
+  inset: 0;
+  z-index: 1;
 }

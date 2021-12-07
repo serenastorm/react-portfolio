@@ -19,16 +19,37 @@ const ProjectLink = ({
     className="project"
     variants={scrollAnimationVariants({ delay: animationDelay })}
   >
-    <dt>
-      {isExternal ? (
-        <NewTabLink copy={label} to={url} shouldOpenInNewTab />
-      ) : (
-        <Link to={url} className="underline-link">
-          {label}
-        </Link>
-      )}
-    </dt>
-    <dd>{description}</dd>
+    <div className="project-img" />
+    <div className="project-description">
+      <dt>
+        {isExternal ? (
+          <NewTabLink copy={label} to={url} shouldOpenInNewTab />
+        ) : (
+          <Link to={url} className="underline-link">
+            {label}
+          </Link>
+        )}
+      </dt>
+      <dd>{description}</dd>
+    </div>
+    {isExternal ? (
+      // eslint-disable-next-line jsx-a11y/anchor-has-content
+      <a
+        href={url}
+        target="blank"
+        rel="noopener noreferrer"
+        className="project-link"
+        tabIndex={-1}
+        aria-hidden="true"
+      />
+    ) : (
+      <Link
+        to={url}
+        className="project-link"
+        tabIndex={-1}
+        aria-hidden="true"
+      />
+    )}
   </motion.div>
 );
 
