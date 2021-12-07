@@ -97,9 +97,10 @@ $link-hover-gradient: linear-gradient(125deg, var(--link), var(--link-sm));
   --projects-per-row: 2;
   --project-radius: 0.8rem;
   margin-top: 8vh;
-  max-width: 200rem;
+  max-width: 140rem;
   display: flex;
   flex-wrap: wrap;
+  align-content: flex-start;
   gap: var(--project-gap);
 
   @include breakpoint(0, 859.98) {
@@ -188,6 +189,10 @@ $link-hover-gradient: linear-gradient(125deg, var(--link), var(--link-sm));
         color: var(--link);
       }
     }
+
+    @include breakpoint(1630) {
+      font-size: 4rem;
+    }
   }
 
   dd {
@@ -198,8 +203,12 @@ $link-hover-gradient: linear-gradient(125deg, var(--link), var(--link-sm));
       font-size: 1.6rem;
     }
 
-    @include breakpoint(860) {
+    @include breakpoint(860, 1629.98) {
       font-size: 2vw;
+    }
+
+    @include breakpoint(1630) {
+      font-size: 3.2rem;
     }
   }
 

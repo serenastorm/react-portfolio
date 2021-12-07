@@ -5,6 +5,7 @@ import {
   ProjectLink,
   TaskTrackerLink,
 } from "CaseStudy/components";
+import { TableOfContents } from "CaseStudy/components";
 import { MyQrStudioLogo } from "CaseStudy/assets/Logos";
 import { IntroSections } from "CaseStudy/sections";
 
@@ -19,7 +20,7 @@ const IntroPage = () => {
       </FullScreenText>
       <IntroSections.IntroText />
       <IntroSections.ProjectPreview />
-
+      <TableOfContents />
       <IntroSections.TechStack />
       <IntroSections.ResourcesList />
       <ProjectLink />

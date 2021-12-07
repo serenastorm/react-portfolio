@@ -12,6 +12,7 @@ export { ProjectLink } from "./ProjectLink";
 export { ScrollProgress } from "./ScrollProgress";
 export { SectionWithHeader } from "./SectionWithHeader";
 export { Slider } from "./Slider";
+export { TableOfContents } from "./TableOfContents";
 export { Tabs } from "./Tabs";
 export { TaskTrackerLink } from "./TaskTrackerLink";
 export { Tips } from "./Tips";
