@@ -51,7 +51,7 @@ const PageBackground = () => {
       '[name="theme-color"]'
     )[0];
 
-    existingMetaTag.setAttribute("content", currentBackground.label);
+    existingMetaTag.setAttribute("content", currentBackground.hex);
   }, [pathname, currentBackground]);
 
   if (!pathname.startsWith("/myqr")) {
