@@ -1,6 +1,12 @@
 // A wrapper for animations that are made of multiple images/components
 
-import { useEffect, ReactNode, Dispatch, SetStateAction } from "react";
+import {
+  createElement,
+  useEffect,
+  ReactNode,
+  Dispatch,
+  SetStateAction,
+} from "react";
 import { motion } from "framer-motion";
 import { useStepsAnimation } from "infrastructure/hooks";
 import { enterAndExitAnimationProps } from "helpers/animations";
@@ -50,7 +56,16 @@ const ImageWithStepAnimation = ({
       ? ` img-${animationClassName}-${animationStages[animationStep]}`
       : ""
   }`}`;
-  const wrapperProps = { className: wrapperClassName };
+  const animationProps = shouldAnimate
+    ? enterAndExitAnimationProps({
+        opacity: [0, 1],
+        x: [
+          `${animationDirection === "left" ? "-" : ""}10%`,
+          0,
+          `${animationDirection === "left" ? "" : "-"}10%`,
+        ],
+      })
+    : {};
 
   useEffect(() => {
     startStepAnimation();
@@ -58,24 +73,13 @@ const ImageWithStepAnimation = ({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  return shouldAnimate ? (
-    <motion.div
-      {...wrapperProps}
-      {...enterAndExitAnimationProps({
-        opacity: [0, 1],
-        x: [
-          `${animationDirection === "left" ? "-" : ""}10%`,
-          0,
-          `${animationDirection === "left" ? "" : "-"}10%`,
-        ],
-      })}
-    >
-      {children(animationStep, setAnimationStep, pauseOnUserInteraction)}
-    </motion.div>
-  ) : (
-    <div {...wrapperProps}>
-      {children(animationStep, setAnimationStep, pauseOnUserInteraction)}
-    </div>
+  return createElement(
+    shouldAnimate ? motion.div : "div",
+    {
+      className: wrapperClassName,
+      ...animationProps,
+    },
+    children(animationStep, setAnimationStep, pauseOnUserInteraction)
   );
 };
 

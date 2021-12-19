@@ -56,7 +56,7 @@ const DemoSlider = ({
 
                 return currentSlideIndex === i ? (
                   <Slider.Slide
-                    asList
+                    as="li"
                     sectionIndex={i}
                     key={`${imageContainerProps.imageClassName}-slide-${i}`}
                   >

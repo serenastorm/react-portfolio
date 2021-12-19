@@ -82,7 +82,7 @@ const ProjectLinkContent = () => {
 
 const ProjectLink = ({ isFooter }: ProjectLinkProps) => {
   return isFooter ? (
-    <FullScreenText isFooter>
+    <FullScreenText as="footer">
       <ProjectLinkWrapper isFooter>
         <ProjectLinkContent />
       </ProjectLinkWrapper>

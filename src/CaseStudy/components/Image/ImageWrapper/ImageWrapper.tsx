@@ -1,4 +1,4 @@
-import { ReactNode } from "react";
+import { createElement, ReactNode } from "react";
 import { motion } from "framer-motion";
 import { enterAndExitAnimationProps } from "helpers/animations";
 
@@ -16,25 +16,24 @@ const ImageWrapper = ({
   className = "",
 }: ImageWrapperProps) => {
   const shouldAnimate = animationDirection !== "none";
-  const wrapperClassName = `imgWrapper ${className}`;
-  const wrapperProps = { className: wrapperClassName };
-
-  return shouldAnimate ? (
-    <motion.div
-      {...wrapperProps}
-      {...enterAndExitAnimationProps({
+  const animationProps = shouldAnimate
+    ? enterAndExitAnimationProps({
         opacity: [0, 1],
         x: [
           `${animationDirection === "left" ? "-" : ""}10%`,
           0,
           `${animationDirection === "left" ? "" : "-"}10%`,
         ],
-      })}
-    >
-      {children}
-    </motion.div>
-  ) : (
-    <div {...wrapperProps}>{children}</div>
+      })
+    : {};
+
+  return createElement(
+    shouldAnimate ? motion.div : "div",
+    {
+      className: `imgWrapper ${className}`,
+      ...animationProps,
+    },
+    children
   );
 };
 

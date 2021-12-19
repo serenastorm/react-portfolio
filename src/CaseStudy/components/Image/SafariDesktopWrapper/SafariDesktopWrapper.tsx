@@ -25,11 +25,17 @@ const SafariDesktopWrapper = ({
   children,
   overlay,
 }: SafariDesktopWrapperProps) => {
-  const shouldAnimate = animationDirection !== "none";
-  const wrapperClassName = `desktopMock-wrapper ${className}`;
-  const wrapperProps = {
-    className: wrapperClassName,
-  };
+  const animationProps =
+    animationDirection === "none"
+      ? { variants: scrollAnimationVariants({}) }
+      : enterAndExitAnimationProps({
+          opacity: [0, 1],
+          x: [
+            `${animationDirection === "left" ? "-" : ""}10%`,
+            0,
+            `${animationDirection === "left" ? "" : "-"}10%`,
+          ],
+        });
 
   const renderScreen = () => (
     <>
@@ -48,22 +54,11 @@ const SafariDesktopWrapper = ({
     </>
   );
 
-  return shouldAnimate ? (
+  return (
     <motion.div
-      {...wrapperProps}
-      {...enterAndExitAnimationProps({
-        opacity: [0, 1],
-        x: [
-          `${animationDirection === "left" ? "-" : ""}10%`,
-          0,
-          `${animationDirection === "left" ? "" : "-"}10%`,
-        ],
-      })}
+      className={`desktopMock-wrapper ${className}`}
+      {...animationProps}
     >
-      {renderScreen()}
-    </motion.div>
-  ) : (
-    <motion.div {...wrapperProps} variants={scrollAnimationVariants({})}>
       {renderScreen()}
     </motion.div>
   );

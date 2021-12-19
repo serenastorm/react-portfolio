@@ -1,22 +1,27 @@
-import { ReactNode } from "react";
-import { motion } from "framer-motion";
+import { createElement, ReactNode } from "react";
+import { motion, HTMLMotionProps, ForwardRefComponent } from "framer-motion";
 import { scrollAnimationWrapperProps } from "helpers/animations";
 
 import "./FullScreenText.scss";
 
+type FullScreenTextContainerProps = "div" | "footer";
+
 type FullScreenTextProps = {
+  as?: FullScreenTextContainerProps;
   children: ReactNode;
-  isFooter?: boolean;
 };
 
-const FullScreenText = ({ children, isFooter }: FullScreenTextProps) => {
-  const className = "text-isFullScreen";
-  const props = { className, ...scrollAnimationWrapperProps };
-
-  return isFooter ? (
-    <motion.footer {...props}>{children}</motion.footer>
-  ) : (
-    <motion.div {...props}>{children}</motion.div>
+const FullScreenText = ({ as = "div", children }: FullScreenTextProps) => {
+  return createElement(
+    motion[`${as}`] as ForwardRefComponent<
+      HTMLElement,
+      HTMLMotionProps<FullScreenTextContainerProps>
+    >,
+    {
+      className: "text-isFullScreen",
+      ...scrollAnimationWrapperProps,
+    },
+    children
   );
 };
 

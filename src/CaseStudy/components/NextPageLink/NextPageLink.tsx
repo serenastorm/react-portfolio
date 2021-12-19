@@ -8,7 +8,7 @@ import "./NextPageLink.scss";
 
 const NextPageLink = ({ nextPage }: { nextPage: RouteProps }) => {
   return (
-    <FullScreenText isFooter>
+    <FullScreenText as="footer">
       <motion.p variants={scrollAnimationVariants({})}>Next page</motion.p>
       <motion.h1 variants={scrollAnimationVariants({ delay: 0.15 })}>
         <span>{nextPage.title}</span>

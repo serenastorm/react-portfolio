@@ -1,4 +1,4 @@
-import { ReactNode } from "react";
+import { createElement, ReactNode } from "react";
 
 import "./ContentRowWithVisual.scss";
 
@@ -24,8 +24,6 @@ const ContentRowWithVisual = ({
   imageBefore,
   title,
 }: ContentRowWithVisualProps) => {
-  const wrapperProps = { className: `contentRow ${className}` };
-
   const renderTitle = () => {
     if (title) {
       return <h1>{title}</h1>;
@@ -62,10 +60,12 @@ const ContentRowWithVisual = ({
     </>
   );
 
-  return title ? (
-    <section {...wrapperProps}>{renderContent()}</section>
-  ) : (
-    <div {...wrapperProps}>{renderContent()}</div>
+  return createElement(
+    title ? "section" : "div",
+    {
+      className: `contentRow ${className}`,
+    },
+    renderContent()
   );
 };
 

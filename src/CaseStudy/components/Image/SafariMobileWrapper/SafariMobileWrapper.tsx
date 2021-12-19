@@ -1,4 +1,4 @@
-// A wrapper for browser screenshots that has the Safari browser bar at the top
+// A wrapper for mobile browser screenshots
 
 import { ReactNode } from "react";
 import { motion } from "framer-motion";
@@ -15,35 +15,30 @@ type SafariMobileWrapperProps = {
   animationDirection?: AnimationDirection;
   className?: string;
   children: ReactNode;
-  overlay?: boolean;
 };
 
 const SafariMobileWrapper = ({
   animationDirection = "none",
   className = "",
   children,
-  overlay,
 }: SafariMobileWrapperProps) => {
-  const shouldAnimate = animationDirection !== "none";
-  const wrapperClassName = `mobileMock-wrapper ${className}`;
-  const wrapperProps = { className: wrapperClassName };
+  const animationProps =
+    animationDirection === "none"
+      ? { variants: scrollAnimationVariants({}) }
+      : enterAndExitAnimationProps({
+          opacity: [0, 1],
+          x: [
+            `${animationDirection === "left" ? "-" : ""}10%`,
+            0,
+            `${animationDirection === "left" ? "" : "-"}10%`,
+          ],
+        });
 
-  return shouldAnimate ? (
+  return (
     <motion.div
-      {...wrapperProps}
-      {...enterAndExitAnimationProps({
-        opacity: [0, 1],
-        x: [
-          `${animationDirection === "left" ? "-" : ""}10%`,
-          0,
-          `${animationDirection === "left" ? "" : "-"}10%`,
-        ],
-      })}
+      className={`mobileMock-wrapper ${className}`}
+      {...animationProps}
     >
-      {children}
-    </motion.div>
-  ) : (
-    <motion.div {...wrapperProps} variants={scrollAnimationVariants({})}>
       {children}
     </motion.div>
   );

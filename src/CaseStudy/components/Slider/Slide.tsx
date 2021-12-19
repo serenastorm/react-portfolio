@@ -1,21 +1,18 @@
-import { ReactNode } from "react";
+import { createElement, ReactNode } from "react";
 
 type SlideProps = {
-  asList?: boolean;
+  as?: "li" | "div";
   children: ReactNode;
   sectionIndex: number;
 };
 
-const Slide = ({ asList, children, sectionIndex }: SlideProps) => {
-  const wrapperClassName = `slide slide${sectionIndex + 1}`;
-  const wrapperProps = {
-    className: wrapperClassName,
-  };
-
-  return asList ? (
-    <li {...wrapperProps}>{children}</li>
-  ) : (
-    <div {...wrapperProps}>{children}</div>
+const Slide = ({ as = "div", children, sectionIndex }: SlideProps) => {
+  return createElement(
+    as,
+    {
+      className: `slide slide${sectionIndex + 1}`,
+    },
+    children
   );
 };
 

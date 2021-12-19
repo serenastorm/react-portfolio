@@ -1,4 +1,4 @@
-import { MouseEventHandler, ReactNode } from "react";
+import { createElement, MouseEventHandler, ReactNode } from "react";
 import { motion } from "framer-motion";
 import {
   scrollAnimationVariants,
@@ -31,18 +31,18 @@ const Button = ({
     onClick,
   };
 
-  return animationProps ? (
-    <motion.button
-      {...buttonProps}
-      type="button"
-      variants={scrollAnimationVariants(animationProps)}
-    >
-      {children}
-    </motion.button>
-  ) : (
-    <button {...buttonProps} type="button">
-      {children}
-    </button>
+  const animatedButtonProps = animationProps
+    ? { variants: scrollAnimationVariants(animationProps) }
+    : {};
+
+  return createElement(
+    animationProps ? motion.button : "button",
+    {
+      ...animatedButtonProps,
+      ...buttonProps,
+      type: "button",
+    },
+    children
   );
 };
 
