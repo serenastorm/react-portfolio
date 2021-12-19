@@ -1,9 +1,2 @@
-@import "./modules/typography.scss";
-@import "./modules/reboot.scss";
-@import "./modules/mixins.scss";
-@import "./modules/vars.scss";
-@import "./modules/placeholders.scss";
-@import "./modules/accessibility.scss";
-
-@import "./layout/app.scss";
-@import "./layout/text.scss";
+@import "modules/all";
+@import "layout/all";
