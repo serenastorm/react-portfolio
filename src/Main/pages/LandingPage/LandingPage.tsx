@@ -23,11 +23,14 @@ const ProjectLink = ({
     <dl className="project-description">
       <dt>
         {isExternal ? (
-          <NewTabLink copy={label} to={url} shouldOpenInNewTab />
+          <NewTabLink
+            copy={label}
+            to={url}
+            shouldOpenInNewTab
+            withUnderline={false}
+          />
         ) : (
-          <Link to={url} className="underline-link">
-            {label}
-          </Link>
+          <Link to={url}>{label}</Link>
         )}
       </dt>
       <dd>{description}</dd>

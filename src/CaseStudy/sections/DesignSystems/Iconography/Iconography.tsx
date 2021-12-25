@@ -106,7 +106,7 @@ const Iconography = () => {
           { el: <DuotoneIcons.QRCode />, label: "QR Codes" },
         ]}
       />
-      <Tips copy="Animations can be overwhelming, so on the actual website, the icons above only animate on hover." />
+      <Tips copy="Animations can be overwhelming, so on the actual website, the icons above only animate on hover or focus." />
     </>
   );
 };

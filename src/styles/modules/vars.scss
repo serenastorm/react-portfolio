@@ -19,7 +19,7 @@ $link-rgb: hexToRGB($link);
   --font-weight-bold: 700;
 
   // TODO: Add fallback fonts
-  --type-paragraph: "Rockhill Sans";
+  --type-paragraph: "IBM Plex Sans", sans-serif;
   // Use a monospace font for numbers
   --type-numbers: "Azeret Mono", monospace;
 }

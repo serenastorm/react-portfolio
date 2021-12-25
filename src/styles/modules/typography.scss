@@ -1,16 +1,2 @@
 @import url("https://fonts.googleapis.com/css2?family=Azeret+Mono:wght@500&display=swap");
-
-@font-face {
-  font-family: "Rockhill Sans";
-  src: url("~Main/fonts/RockhillSansRegular.eot");
-  src: url("~Main/fonts/RockhillSansRegular.eot?#iefix")
-      format("embedded-opentype"),
-    url("~Main/fonts/RockhillSansRegular.woff2") format("woff2"),
-    url("~Main/fonts/RockhillSansRegular.woff") format("woff"),
-    url("~Main/fonts/RockhillSansRegular.ttf") format("truetype"),
-    url("~Main/fonts/RockhillSansRegular.svg#RockhillSansRegular")
-      format("svg");
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-}
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&display=swap");

@@ -196,8 +196,12 @@ $link-hover-gradient: linear-gradient(125deg, var(--link), var(--link-sm));
   }
 
   dt {
-    @include breakpoint(860) {
+    @include breakpoint(860, 1199.99) {
       font-size: 2.4vw;
+    }
+
+    @include breakpoint(1200) {
+      font-size: 2.2vw;
     }
 
     a {
@@ -218,15 +222,19 @@ $link-hover-gradient: linear-gradient(125deg, var(--link), var(--link-sm));
   }
 
   dd {
-    margin-top: 1.2rem;
+    margin-top: 0.8rem;
     color: var(--text-light);
 
     @include breakpoint(0, 859.98) {
       font-size: 1.6rem;
     }
 
-    @include breakpoint(860, 1629.98) {
+    @include breakpoint(860, 1199.99) {
       font-size: 2vw;
+    }
+
+    @include breakpoint(1200, 1629.98) {
+      font-size: 1.8vw;
     }
 
     @include breakpoint(1630) {
