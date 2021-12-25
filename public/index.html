@@ -32,6 +32,14 @@
     -->
   <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
   <!--
+      We're loading IBM Plex Sans here since we need it for our noscript styles
+    -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+  <link href="%PUBLIC_URL%/style.css" rel="stylesheet">
+  <!--
       Notice the use of %PUBLIC_URL% in the tags above.
       It will be replaced with the URL of the `public` folder during the build.
       Only files inside the `public` folder can be referenced from the HTML.
@@ -44,7 +52,10 @@
 </head>
 
 <body>
-  <noscript>You need to enable JavaScript to run this app.</noscript>
+  <noscript>
+    <h1>Javascript is not available :(</h1>
+    <p>Please enable Javascript or switch to a supported browser to visit this website.</p>
+  </noscript>
   <div id="root"></div>
   <!--
       This HTML file is a template.
