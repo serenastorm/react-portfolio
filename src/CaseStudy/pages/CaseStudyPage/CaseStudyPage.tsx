@@ -5,14 +5,8 @@ import {
   scrollAnimationVariants,
   scrollAnimationWrapperProps,
 } from "helpers/animations";
-import { RouteProps } from "infrastructure/routes/types";
 import { routes } from "infrastructure/routes/constants";
-import {
-  NavBar,
-  NextPageLink,
-  ProjectLink,
-  ScrollProgress,
-} from "CaseStudy/components";
+import { NavBar, NextPageLink, ProjectLink } from "CaseStudy/components";
 import { Page } from "Main/components";
 
 import "CaseStudy/styles/styles.scss";
@@ -28,7 +22,6 @@ type PageProps = {
     id: string;
   }[];
   intro?: string | ReactNode;
-  nextPage?: RouteProps;
   title: string;
 };
 
@@ -37,7 +30,6 @@ const CaseStudyPage = ({
   className = "",
   endNotes,
   intro,
-  nextPage,
   title,
 }: PageProps) => {
   const { pathname } = useLocation();
@@ -85,8 +77,6 @@ const CaseStudyPage = ({
 
   return (
     <>
-      {isIntroPage && <ScrollProgress />}
-
       <Page
         className={`${className} caseStudyPage caseStudyPage-${camelCaseTitle()}`}
       >

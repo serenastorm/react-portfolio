@@ -269,7 +269,6 @@ const NavBar = ({ currentPageTitle, currentPageSectionIndex }: NavBarProps) => {
 
                 <header>
                   <ScrollProgress
-                    shape="circle"
                     onScrollComplete={() =>
                       updateCompletedSections(currentPageSectionIndex)
                     }

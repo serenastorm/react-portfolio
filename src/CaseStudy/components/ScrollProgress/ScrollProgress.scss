@@ -1,19 +1,5 @@
 $progress-transition-duration: 350ms;
 
-.progressIndicator-container {
-  position: fixed;
-  top: 0;
-  background-color: var(--myqr-primary-light);
-  z-index: 30;
-  width: 100%;
-  height: 0.4rem;
-
-  .progressBar-track {
-    background-color: var(--myqr-primary);
-    height: 100%;
-  }
-}
-
 .progressIndicator {
   position: relative;
   margin-right: 1.6rem;

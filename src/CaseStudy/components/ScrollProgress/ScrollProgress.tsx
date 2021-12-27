@@ -3,14 +3,10 @@ import { useState, useEffect } from "react";
 import "./ScrollProgress.scss";
 
 type ScrollProgressProps = {
-  shape?: "bar" | "circle";
   onScrollComplete?: () => void;
 };
 
-const ScrollProgress = ({
-  shape = "bar",
-  onScrollComplete,
-}: ScrollProgressProps) => {
+const ScrollProgress = ({ onScrollComplete }: ScrollProgressProps) => {
   const [scrollYPercentage, setScrollYPercentage] = useState<number>(0);
   const radius = 16;
   const stroke = 2;
@@ -68,34 +64,24 @@ const ScrollProgress = ({
         aria-valuetext={progressCopy}
         title={progressCopy}
       />
-
-      {shape === "bar" ? (
-        <div className="progressIndicator-container">
-          <div
-            className="progressBar-track"
-            style={{ width: `${scrollYPercentage}%` }}
-          ></div>
-        </div>
-      ) : (
-        <div
-          className="progressIndicator"
-          data-complete={progress >= 100 ? "true" : "false"}
-        >
-          <svg height={radius * 2} width={radius * 2}>
-            <circle
-              className="progressIndicator-track"
-              fill="transparent"
-              {...progressCircleProps}
-            />
-            <circle
-              className="progressIndicator-thumb"
-              fill="transparent"
-              strokeDasharray={circumference + " " + circumference}
-              {...progressCircleProps}
-            />
-          </svg>
-        </div>
-      )}
+      <div
+        className="progressIndicator"
+        data-complete={progress >= 100 ? "true" : "false"}
+      >
+        <svg height={radius * 2} width={radius * 2}>
+          <circle
+            className="progressIndicator-track"
+            fill="transparent"
+            {...progressCircleProps}
+          />
+          <circle
+            className="progressIndicator-thumb"
+            fill="transparent"
+            strokeDasharray={circumference + " " + circumference}
+            {...progressCircleProps}
+          />
+        </svg>
+      </div>
     </>
   );
 };
