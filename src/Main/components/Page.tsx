@@ -1,6 +1,7 @@
 import { ReactNode } from "react";
 import { motion } from "framer-motion";
 import { scrollAnimationWrapperProps } from "helpers/animations";
+import { NavButton } from ".";
 
 type PageProps = {
   children: ReactNode;
@@ -10,6 +11,7 @@ type PageProps = {
 const Page = ({ children, className = "" }: PageProps) => {
   return (
     <motion.div className={className} {...scrollAnimationWrapperProps}>
+      <NavButton />
       {children}
     </motion.div>
   );

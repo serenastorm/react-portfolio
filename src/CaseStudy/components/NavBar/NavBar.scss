@@ -18,7 +18,7 @@ $link-hover-transition: all 250ms ease;
           white-space: nowrap;
         }
 
-        svg {
+        .icon-goToLink {
           @include breakpoint(0, 379.98) {
             display: none;
           }
@@ -145,15 +145,11 @@ nav {
         font-size: inherit;
       }
 
-      svg {
+      .icon-goToLink {
         width: 1em;
-        height: auto;
         margin-left: 1.6rem;
 
         .arrowIcon-circle {
-          transition: stroke-dashoffset 500ms ease;
-          stroke-dasharray: 1500;
-          stroke-dashoffset: 1500;
           stroke: var(--myqr-primary);
         }
       }
@@ -161,7 +157,7 @@ nav {
       &[aria-current="page"] {
         color: var(--myqr-gray-400);
 
-        svg {
+        .icon-goToLink {
           opacity: 0;
         }
 

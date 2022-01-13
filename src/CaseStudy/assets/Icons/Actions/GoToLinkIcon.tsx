@@ -7,6 +7,7 @@ const GoToLinkIcon = () => {
       height="512"
       fill="none"
       viewBox="0 0 512 512"
+      className="icon-goToLink"
     >
       <path
         fill="#000"

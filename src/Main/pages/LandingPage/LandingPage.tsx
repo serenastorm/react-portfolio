@@ -1,12 +1,18 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { NewTabLink, Page } from "Main/components";
+import { BlogArticleLink, NewTabLink, Page } from "Main/components";
 import { LandingPageFooter } from "Main/components/LandingPageFooter";
-import { scrollAnimationVariants } from "helpers/animations";
+import {
+  scrollAnimationVariants,
+  scrollAnimationWrapperProps,
+} from "helpers/animations";
 import { projectLinks } from "./constants";
+import { usePosts } from "infrastructure/hooks";
 import { AnimatedLinkProps, LinkProps, ScreenReaderLinkProps } from "./types";
 
 import "./LandingPage.scss";
+import { GoToLinkIcon } from "CaseStudy/assets/Icons/Actions";
+import { routes } from "infrastructure/routes/constants";
 
 const ProjectLink = ({
   animationDelay,
@@ -77,6 +83,11 @@ const ScrenReaderLink = ({ text, url, label }: ScreenReaderLinkProps) => (
 );
 
 const LandingPage = () => {
+  const { posts, isLoading, isEmpty } = usePosts({
+    category: "snippets",
+  });
+  const postsToDisplay = posts[0];
+
   return (
     <Page className="landingPage">
       {/* ARIA role="text" prevents 'text splitting' in VoiceOver iOS https://axesslab.com/text-splitting/  */}
@@ -113,6 +124,26 @@ const LandingPage = () => {
           />
         ))}
       </dl>
+      <div className="blog">
+        <motion.div className="blog-meta" {...scrollAnimationWrapperProps}>
+          <motion.h2 variants={scrollAnimationVariants({})}>
+            Last snippet
+          </motion.h2>
+          <motion.span variants={scrollAnimationVariants({})}>
+            <Link to={routes.blog.snippets.url}>
+              View all snippets <GoToLinkIcon />
+            </Link>
+          </motion.span>
+        </motion.div>
+        <motion.ul className="blogPosts" {...scrollAnimationWrapperProps}>
+          <BlogArticleLink
+            posts={[{ ...postsToDisplay }]}
+            isLoading={isLoading}
+            isEmpty={isEmpty}
+          />
+        </motion.ul>
+      </div>
+
       <LandingPageFooter />
     </Page>
   );

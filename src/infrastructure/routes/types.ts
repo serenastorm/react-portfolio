@@ -16,3 +16,5 @@ export type SectionTitle =
   | "Accessibility"
   | "Features"
   | "Design System";
+
+export type CategoryName = "accessibility";

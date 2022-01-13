@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { Switch, Route, useHistory, Redirect } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
-import { LandingPage } from "Main/pages";
+import { BlogArticlePage, BlogCategoryPage, LandingPage } from "Main/pages";
 import {
   AccessibilityPage,
   DesignSystemPage,
@@ -71,6 +71,18 @@ const Routes = () => {
               path={routes.myqr.features.url}
               component={FeaturesPage}
               key="caseStudyFeatures"
+            />
+            <Route
+              exact
+              path={routes.blog.snippets.url}
+              component={BlogCategoryPage}
+              key="blogCategory"
+            />
+            <Route
+              exact
+              path={routes.blog.snippet.url()}
+              component={BlogArticlePage}
+              key="blogArticle"
             />
             <Redirect to={routes.home} />
           </Switch>
