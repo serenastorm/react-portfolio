@@ -75,11 +75,9 @@ export const scrollAnimationVariants = ({
   return {
     offscreen: {
       opacity: userPrefersReducedMotion ? 1 : 0,
-      y: userPrefersReducedMotion ? 0 : 50,
     },
     onscreen: {
       opacity: 1,
-      y: 0,
       transition: {
         type: "spring",
         bounce: 0,

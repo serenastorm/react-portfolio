@@ -32,10 +32,7 @@ a {
 
 .underline-link {
   --underline-color: currentColor;
-
-  border-bottom-width: 0.08em;
-  border-bottom-style: solid;
-  border-bottom-color: currentColor;
+  border-bottom: 0.08em solid currentColor;
 
   @extend %link-with-underline;
 
@@ -65,5 +62,32 @@ abbr[title] {
     &::after {
       border-color: var(--underline-hover-color);
     }
+  }
+}
+
+.italic {
+  font-style: italic;
+  font-family: "Cormorant Garamond", serif;
+}
+
+.regular {
+  font-weight: var(--font-weight-regular);
+}
+
+.medium {
+  font-weight: var(--font-weight-medium);
+}
+
+.bold {
+  font-weight: var(--font-weight-bold);
+}
+
+.icon-goToLink {
+  height: auto;
+
+  .arrowIcon-circle {
+    transition: stroke-dashoffset 500ms ease;
+    stroke-dasharray: 1500;
+    stroke-dashoffset: 1500;
   }
 }

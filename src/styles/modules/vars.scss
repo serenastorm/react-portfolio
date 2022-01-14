@@ -6,6 +6,7 @@ $link-rgb: hexToRGB($link);
 :root {
   // Colors
   --white: #ffffff;
+  --light-gray: #f5f7fb;
   --text: #5e5252;
   --text-light: #856b6b;
   --link: #{$link};
@@ -20,6 +21,7 @@ $link-rgb: hexToRGB($link);
 
   // TODO: Add fallback fonts
   --type-paragraph: "IBM Plex Sans", sans-serif;
+  --type-code: "Ubuntu Mono", monospace;
   // Use a monospace font for numbers
   --type-numbers: "Azeret Mono", monospace;
 }

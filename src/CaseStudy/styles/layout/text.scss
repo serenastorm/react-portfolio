@@ -75,10 +75,6 @@
     }
   }
 
-  .bold {
-    font-weight: var(--font-weight-bold);
-  }
-
   dd {
     @extend %myqr-paragraph;
     line-height: 180%;

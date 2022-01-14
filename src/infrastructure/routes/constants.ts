@@ -1,10 +1,11 @@
-import { SectionName, SectionTitle } from "./types";
+import { CategoryName, SectionName, SectionTitle } from "./types";
 
 const baseUrl = "/";
-
 const caseStudyBaseUrl = `${baseUrl}myqr`;
 const caseStudySectionUrl = (section?: SectionName) =>
   `${caseStudyBaseUrl}/${section}`;
+const codeSnippetsBaseUrl = `${baseUrl}snippets`;
+const codeSnippetUrl = (slug: string) => `${codeSnippetsBaseUrl}/${slug}`;
 
 export const caseStudySectionsTitles = {
   marketing: "Marketing" as SectionTitle,
@@ -45,6 +46,16 @@ export const routes = {
     features: {
       title: caseStudySectionsTitles.features,
       url: caseStudySectionUrl(caseStudySections.features),
+    },
+  },
+  blog: {
+    snippet: {
+      title: "Snippet",
+      url: (slug: string = ":slug") => codeSnippetUrl(slug),
+    },
+    snippets: {
+      title: "Snippets",
+      url: codeSnippetsBaseUrl,
     },
   },
 };

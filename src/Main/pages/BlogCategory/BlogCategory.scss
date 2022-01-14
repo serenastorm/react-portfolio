@@ -1,0 +1,53 @@
+@import "~styles/modules/mixins.scss";
+@import "~styles/modules/placeholders.scss";
+
+.blogPost {
+  border-top: 2px solid var(--light-gray);
+
+  @include breakpoint(0, 399.98) {
+    padding: 1.6rem 0;
+  }
+
+  @include breakpoint(400) {
+    padding: 3.2rem 1.6rem;
+  }
+
+  .blogArticle-meta {
+    margin-top: 4rem;
+  }
+
+  a {
+    h3 {
+      text-decoration: underline;
+    }
+
+    @include onHoverAndFocus {
+      h3 {
+        color: var(--link);
+      }
+    }
+  }
+
+  .icon-goToLink {
+    width: 1.2em;
+    margin-left: 0.25em;
+
+    .arrowIcon-circle {
+      stroke: currentColor;
+    }
+  }
+}
+
+.blogCategory {
+  h1 {
+    font-weight: var(--font-weight-regular);
+
+    @include breakpoint(400) {
+      padding: 0 1.6rem;
+    }
+
+    span {
+      color: var(--text-light);
+    }
+  }
+}
