@@ -23,4 +23,4 @@ yarn-debug.log*
 yarn-error.log*
 
 ## Secrets
-/src/infrastructure/blog/contentful.ts
+/src/infrastructure/blog/constants.ts
