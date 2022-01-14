@@ -13,7 +13,7 @@ export default function useSinglePost(category: string, slug: string): Post {
   const [isEmpty, setIsEmpty] = useState<boolean>(true);
 
   useEffect(() => {
-    fetch(`/api/snippet/${category}/${slug}`)
+    fetch(`https://antonettiserena-api.herokuapp.com/api/snippet/${category}/${slug}`)
       .then((res) => res.json())
       .then((blogPosts: BlogPostResponse[]) => {
         setPost(blogPosts[0]?.fields);

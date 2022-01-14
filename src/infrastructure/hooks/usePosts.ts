@@ -17,7 +17,7 @@ export default function usePosts({
   const [isEmpty, setIsEmpty] = useState<boolean>(true);
 
   useEffect(() => {
-    fetch(`/api/${category}/all`)
+    fetch(`https://antonettiserena-api.herokuapp.com/api/${category}/all`)
       .then((res) => res.json())
       .then((blogPosts: BlogPostResponse[]) => {
         const shouldFilterByCategory = !!category;

@@ -17,7 +17,7 @@ export const usePostNavigation = (
     setPreviousPost(null);
     setNextPost(null);
 
-    fetch(`/api/snippet/${category}/${slug}/prev`)
+    fetch(`https://antonettiserena-api.herokuapp.com/api/snippet/${category}/${slug}/prev`)
       .then((res) => res.json())
       .then((response: BlogPostResponse[]) => {
         if (response[0]) {
@@ -26,7 +26,7 @@ export const usePostNavigation = (
       })
       .catch((error) => console.log(error));
 
-    fetch(`/api/snippet/${category}/${slug}/next`)
+    fetch(`https://antonettiserena-api.herokuapp.com/api/snippet/${category}/${slug}/next`)
       .then((res) => res.json())
       .then((response: BlogPostResponse[]) => {
         if (response[0]) {
