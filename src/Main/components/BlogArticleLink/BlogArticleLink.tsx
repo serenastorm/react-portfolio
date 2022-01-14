@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Pills } from "Main/components";
@@ -46,7 +45,7 @@ const BlogArticleLink = ({ posts, isLoading, isEmpty }: BlogPosts) => {
     }
   };
 
-  if (isLoading) return <p className="italic medium">Loading...</p>;
+  if (isLoading) return <p className="loading">Loading...</p>;
 
   return isEmpty ? (
     <li className="blogPost">

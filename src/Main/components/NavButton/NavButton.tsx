@@ -1,4 +1,5 @@
 import { routes } from "infrastructure/routes/constants";
+import { SVGAttributes } from "react";
 import { Link, useLocation } from "react-router-dom";
 
 import "./NavButton.scss";
@@ -11,8 +12,8 @@ const NavButton = () => {
     height: "24",
     fill: "none",
     stroke: "currentColor",
-    strokeLinecap: "round",
-    strokeLinejoin: "round",
+    strokeLinecap: "round" as SVGAttributes<SVGSVGElement>["strokeLinecap"],
+    strokeLinejoin: "round" as SVGAttributes<SVGSVGElement>["strokeLinejoin"],
     strokeWidth: "2",
     viewBox: "0 0 24 24",
   };

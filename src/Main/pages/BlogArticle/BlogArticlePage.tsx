@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import { motion } from "framer-motion";
 import ReactMarkdown from "react-markdown";
@@ -36,22 +36,20 @@ const BlogArticlePage = () => {
   const hideDevTools = true;
 
   useEffect(() => {
-    if (post?.title) {
-      document.title = `${post.title}${
+    if (title) {
+      document.title = `${title}${
         subcategory ? ` | ${getCategory(subcategory).label}` : ""
       }`;
     }
-  }, [post]);
-
-  if (isLoading) {
-    return null;
-  }
+  }, [title, subcategory]);
 
   return (
     <>
-      <a id="skiptocontent" href="#mainContent">
-        Skip to main content
-      </a>
+      {!isLoading && (
+        <a id="skiptocontent" href="#mainContent">
+          Skip to main content
+        </a>
+      )}
       <Page className="blog blogPage blogArticle">
         <motion.div
           className="blogArticle-meta"
@@ -77,9 +75,9 @@ const BlogArticlePage = () => {
           </motion.p>
           {tags && <Pills types={tags} />}
         </motion.div>
-        {isEmpty || !content ? (
+        {isEmpty || !content || isLoading ? (
           <motion.h1 variants={scrollAnimationVariants({})}>
-            No article here.
+            {isLoading ? "Loading..." : "No article here."}
           </motion.h1>
         ) : (
           <motion.main

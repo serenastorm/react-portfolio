@@ -1,4 +1,4 @@
-import { CategoryName, SectionName, SectionTitle } from "./types";
+import { SectionName, SectionTitle } from "./types";
 
 const baseUrl = "/";
 const caseStudyBaseUrl = `${baseUrl}myqr`;

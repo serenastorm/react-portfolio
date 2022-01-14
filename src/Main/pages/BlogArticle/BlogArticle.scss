@@ -95,8 +95,17 @@ $task-list-checkmark-size: 2.4rem;
   }
 
   p {
-    & + pre {
-      margin-top: 1.2rem;
+    & + pre,
+    & + .codeTabs {
+      margin-top: 2rem;
+    }
+  }
+
+  .codeTab {
+    p {
+      & + pre {
+        margin-top: 1.2rem;
+      }
     }
   }
 
@@ -122,10 +131,12 @@ $task-list-checkmark-size: 2.4rem;
   }
 
   ul.contains-task-list {
-    margin-left: calc((#{$task-list-checkmark-size} * -1) - 0.8rem);
-
     li + li {
       margin-top: 0.8rem;
+    }
+
+    @include breakpoint(800) {
+      margin-left: calc((#{$task-list-checkmark-size} * -1) - 0.8rem);
     }
   }
 
@@ -143,6 +154,7 @@ $task-list-checkmark-size: 2.4rem;
     input {
       position: relative;
       width: $task-list-checkmark-size;
+      min-width: $task-list-checkmark-size;
       height: $task-list-checkmark-size;
       margin-right: calc(0.8rem - 0.25em);
 

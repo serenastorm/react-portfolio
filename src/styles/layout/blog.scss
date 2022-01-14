@@ -26,6 +26,31 @@
     }
   }
 
+  .loading {
+    font-style: italic;
+    font-family: var(--type-italic);
+    font-weight: var(--font-weight-medium);
+    font-size: 2.4rem;
+  }
+
+  .blogPosts {
+    .loading {
+      @include breakpoint(400) {
+        padding: 0 1.6rem;
+      }
+    }
+
+    .blogPost {
+      @include breakpoint(0, 399.98) {
+        padding: 1.6rem 0;
+      }
+
+      @include breakpoint(400) {
+        padding: 3.2rem 1.6rem;
+      }
+    }
+  }
+
   .blog-meta {
     display: flex;
     justify-content: space-between;

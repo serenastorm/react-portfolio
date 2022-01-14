@@ -1,23 +1,12 @@
-import { useEffect, useState } from "react";
-import { Link, useLocation, useParams } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import { motion } from "framer-motion";
-import {
-  BlogArticleLink,
-  NewTabLink,
-  Page,
-  Pill,
-  Pills,
-} from "Main/components";
-import { LandingPageFooter } from "Main/components/LandingPageFooter";
+import { BlogArticleLink, Page } from "Main/components";
 import {
   scrollAnimationWrapperProps,
   scrollAnimationVariants,
 } from "helpers/animations";
 import { usePosts } from "infrastructure/hooks";
-import { BlogPostResponse } from "infrastructure/blog/types";
-import { GoToLinkIcon } from "CaseStudy/assets/Icons/Actions";
 import { getCategory } from "Main/pages/BlogCategory/constants";
-import { routes } from "infrastructure/routes/constants";
 
 import "./BlogCategory.scss";
 
@@ -26,7 +15,6 @@ const BlogCategoryPage = () => {
   const subcategory = new URLSearchParams(search).get("cat");
   const tag = new URLSearchParams(search).get("tag");
 
-  const isDesktop = true;
   const category = "snippets";
 
   const { posts, isLoading, isEmpty } = usePosts({

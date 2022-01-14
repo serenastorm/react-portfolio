@@ -54,9 +54,13 @@ $navButton-transition: all 200ms ease-in;
       transition: $navButton-transition;
     }
 
-    a:hover + p {
-      opacity: 1;
-      transform: translate(-50%, 0.4rem);
+    a {
+      @include onHoverAndFocus {
+        & + p {
+          opacity: 1;
+          transform: translate(-50%, 0.4rem);
+        }
+      }
     }
   }
 

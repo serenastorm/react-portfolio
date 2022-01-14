@@ -45,7 +45,7 @@ $link-hover-gradient: linear-gradient(125deg, var(--link), var(--link-sm));
         @extend %link-with-underline;
         pointer-events: none;
         font-style: italic;
-        font-family: "Cormorant Garamond", serif;
+        font-family: var(--type-italic);
         font-weight: var(--font-weight-medium);
         font-size: 1.2em;
         line-height: calc(100 / 120 * 1em);

@@ -16,6 +16,10 @@
     @include breakpoint(400) {
       gap: 0.8rem;
     }
+
+    li {
+      line-height: initial;
+    }
   }
 
   .pill {

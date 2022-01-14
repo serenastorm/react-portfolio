@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { BlogPostResponse, BlogPosts } from "infrastructure/blog/types";
 
 import { getAllPosts } from "infrastructure/blog/contentful";

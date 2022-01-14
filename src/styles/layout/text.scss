@@ -67,7 +67,7 @@ abbr[title] {
 
 .italic {
   font-style: italic;
-  font-family: "Cormorant Garamond", serif;
+  font-family: var(--type-italic);
 }
 
 .regular {

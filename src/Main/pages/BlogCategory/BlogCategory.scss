@@ -4,14 +4,6 @@
 .blogPost {
   border-top: 2px solid var(--light-gray);
 
-  @include breakpoint(0, 399.98) {
-    padding: 1.6rem 0;
-  }
-
-  @include breakpoint(400) {
-    padding: 3.2rem 1.6rem;
-  }
-
   .blogArticle-meta {
     margin-top: 4rem;
   }

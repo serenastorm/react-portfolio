@@ -41,7 +41,7 @@ const Pill = ({ animationDelay, as = "div", type }: PillProps) => {
   const getPillColor = (): {
     color: Color;
     label: CategoryLabels | string;
-    url: CategoryUrls;
+    url: CategoryUrls | "";
   } => {
     switch (type) {
       case "accessibility":
@@ -67,22 +67,21 @@ const Pill = ({ animationDelay, as = "div", type }: PillProps) => {
 
   const shouldPillBeLink = as === "li";
 
-  const renderLinkProps = shouldPillBeLink
-    ? {
-        to: {
-          pathname: routes.blog.snippets.url,
-          search: `?tag=${url}`,
-        },
-        title: `Snippets tagged ${label}`,
-      }
-    : {};
-
   const renderChildren = () =>
-    createElement(
-      shouldPillBeLink ? Link : "div",
-      { ...renderLinkProps },
-      label
-    );
+    shouldPillBeLink
+      ? createElement(
+          Link,
+          {
+            to: {
+              pathname: routes.blog.snippets.url,
+              search: `?tag=${url}`,
+            },
+            title: `Snippets tagged ${label}`,
+            className: `pill pill-${color}`,
+          },
+          label
+        )
+      : createElement("div", { className: `pill pill-${color}` }, label);
 
   const animationProps =
     shouldPillBeLink && animationDelay
@@ -91,7 +90,7 @@ const Pill = ({ animationDelay, as = "div", type }: PillProps) => {
 
   return createElement(
     shouldPillBeLink ? motion.li : as,
-    { ...animationProps, className: `pill pill-${color}` },
+    { ...animationProps },
     renderChildren()
   );
 };
