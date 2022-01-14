@@ -29,7 +29,6 @@ const BlogArticlePage = () => {
     tags,
     codeSandboxId,
     codeSandboxSettings,
-    date,
   } = post || {};
 
   const hideNavigation = true;
