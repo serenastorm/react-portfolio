@@ -2,8 +2,9 @@ import { BlogPostResponse } from "./types";
 import { accessToken, spaceId } from "./constants";
 
 export const client = require("contentful").createClient({
-  space: spaceId,
-  accessToken: accessToken.publishedContent,
+  space: process.env.CONTENTFUL_SPACE_ID || spaceId,
+  accessToken:
+    process.env.CONTENTFUL_ACCESS_TOKEN || accessToken.publishedContent,
 });
 
 const getPreviousPost = (currentPostDate: Date) =>
