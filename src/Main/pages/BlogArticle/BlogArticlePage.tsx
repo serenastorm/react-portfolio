@@ -15,6 +15,7 @@ import {
 import { getCategory } from "Main/pages/BlogCategory/constants";
 
 import "./BlogArticle.scss";
+import { ElementContent } from "react-markdown/lib/ast-to-react";
 
 const BlogArticlePage = () => {
   const category = "snippets";
@@ -122,9 +123,14 @@ const BlogArticlePage = () => {
 
                     const isExternalLink = indexOfExternalLink > -1;
 
-                    return isExternalLink && href ? (
+                    const nodeChildren: Array<
+                      ElementContent & { value?: string }
+                    > = node.children;
+                    const linkCopy = nodeChildren[indexOfExternalLink]?.value;
+
+                    return isExternalLink && href && !!linkCopy ? (
                       <NewTabLink
-                        copy={node.children[indexOfExternalLink].value}
+                        copy={linkCopy}
                         to={href}
                         shouldOpenInNewTab
                         className="bold"
