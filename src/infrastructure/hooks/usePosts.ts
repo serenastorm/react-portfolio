@@ -1,15 +1,11 @@
 import { useEffect, useState } from "react";
 import { BlogPostResponse, BlogPosts } from "infrastructure/blog/types";
 
-import { getAllPosts } from "infrastructure/blog/contentful";
-
 type BlogPostFilters = {
   category?: string | null;
   subcategory?: string | null;
   tag?: string | null;
 };
-
-const promise = getAllPosts();
 
 export default function usePosts({
   category,
@@ -21,33 +17,36 @@ export default function usePosts({
   const [isEmpty, setIsEmpty] = useState<boolean>(true);
 
   useEffect(() => {
-    promise.then((blogPosts: BlogPostResponse[]) => {
-      const shouldFilterByCategory = !!category;
-      const shouldFilterBySubCategory = !!subcategory;
-      const shouldFilterByTag = !!tag;
+    fetch(`/api/${category}/all`)
+      .then((res) => res.json())
+      .then((blogPosts: BlogPostResponse[]) => {
+        const shouldFilterByCategory = !!category;
+        const shouldFilterBySubCategory = !!subcategory;
+        const shouldFilterByTag = !!tag;
 
-      const filteredPostsByCategory = shouldFilterByCategory
-        ? blogPosts.filter(
-            (post: BlogPostResponse) => post.fields.category === category
-          )
-        : blogPosts;
+        const filteredPostsByCategory = shouldFilterByCategory
+          ? blogPosts.filter(
+              (post: BlogPostResponse) => post.fields.category === category
+            )
+          : blogPosts;
 
-      const filteredPostsBySubCategory = shouldFilterBySubCategory
-        ? filteredPostsByCategory?.filter(
-            (post: BlogPostResponse) => post.fields.subcategory === subcategory
-          )
-        : filteredPostsByCategory;
+        const filteredPostsBySubCategory = shouldFilterBySubCategory
+          ? filteredPostsByCategory?.filter(
+              (post: BlogPostResponse) =>
+                post.fields.subcategory === subcategory
+            )
+          : filteredPostsByCategory;
 
-      const filteredPostsByTag = shouldFilterByTag
-        ? filteredPostsBySubCategory?.filter((post: BlogPostResponse) =>
-            post.fields.tags?.includes(tag)
-          )
-        : filteredPostsBySubCategory;
+        const filteredPostsByTag = shouldFilterByTag
+          ? filteredPostsBySubCategory?.filter((post: BlogPostResponse) =>
+              post.fields.tags?.includes(tag)
+            )
+          : filteredPostsBySubCategory;
 
-      setPosts(filteredPostsByTag);
-      setLoading(false);
-      setIsEmpty(filteredPostsByTag.length === 0);
-    });
+        setPosts(filteredPostsByTag);
+        setLoading(false);
+        setIsEmpty(filteredPostsByTag.length === 0);
+      });
   }, [category, subcategory, tag]);
 
   return { posts, isLoading, isEmpty };

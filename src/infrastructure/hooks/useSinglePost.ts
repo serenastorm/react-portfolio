@@ -1,8 +1,6 @@
 import { useEffect, useState } from "react";
 import { BlogPost, BlogPostResponse } from "infrastructure/blog/types";
 
-import { getSinglePost } from "infrastructure/blog/contentful";
-
 type Post = {
   post: BlogPost | null;
   isLoading: boolean;
@@ -10,24 +8,23 @@ type Post = {
 };
 
 export default function useSinglePost(category: string, slug: string): Post {
-  const promise = getSinglePost(category, slug);
-
   const [post, setPost] = useState<BlogPost | null>(null);
   const [isLoading, setLoading] = useState<boolean>(true);
   const [isEmpty, setIsEmpty] = useState<boolean>(true);
 
   useEffect(() => {
-    if (!post || post.category !== category || post.slug !== slug) {
-      setLoading(true);
-      setIsEmpty(true);
-
-      promise.then((result: BlogPostResponse[]) => {
-        setPost(result[0]?.fields);
+    fetch(`/api/snippet/${category}/${slug}`)
+      .then((res) => res.json())
+      .then((blogPosts: BlogPostResponse[]) => {
+        setPost(blogPosts[0]?.fields);
         setLoading(false);
-        setIsEmpty(result.length === 0);
+        setIsEmpty(blogPosts.length === 0);
+      })
+      .catch(() => {
+        setLoading(false);
+        setIsEmpty(true);
       });
-    }
-  }, [post, promise, category, slug]);
+  }, [category, slug]);
 
   return { post, isLoading, isEmpty };
 }

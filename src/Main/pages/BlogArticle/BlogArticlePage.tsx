@@ -12,15 +12,16 @@ import {
   scrollAnimationWrapperProps,
   scrollAnimationVariants,
 } from "helpers/animations";
+import { ElementContent } from "react-markdown/lib/ast-to-react";
 import { getCategory } from "Main/pages/BlogCategory/constants";
 
 import "./BlogArticle.scss";
-import { ElementContent } from "react-markdown/lib/ast-to-react";
 
 const BlogArticlePage = () => {
   const category = "snippets";
   const { slug }: { slug: string } = useParams();
   const { post, isLoading, isEmpty } = useSinglePost(category, slug);
+  const { previousPost, nextPost } = usePostNavigation(category, slug);
   const {
     title,
     subcategory,
@@ -30,7 +31,6 @@ const BlogArticlePage = () => {
     codeSandboxSettings,
     date,
   } = post || {};
-  const { previousPost, nextPost } = usePostNavigation(date);
 
   const hideNavigation = true;
   const forceRefresh = true;

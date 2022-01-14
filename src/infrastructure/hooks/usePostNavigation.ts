@@ -4,40 +4,39 @@ import {
   NavigationBlogPosts,
 } from "infrastructure/blog/types";
 
-import { client } from "infrastructure/blog/contentful";
-
-export default function usePostNavigation(
-  currentPostDate?: Date
-): NavigationBlogPosts {
+export const usePostNavigation = (
+  category: string,
+  slug: string
+): NavigationBlogPosts => {
   const [previousPost, setPreviousPost] = useState<BlogPostResponse | null>(
     null
   );
   const [nextPost, setNextPost] = useState<BlogPostResponse | null>(null);
 
   useEffect(() => {
-    if (currentPostDate) {
-      client
-        .getEntries({
-          order: "fields.date",
-          content_type: "blogPost",
-          limit: 1,
-          "fields.date[gt]": currentPostDate,
-        })
-        .then((response: { items: BlogPostResponse[] }) => {
-          setNextPost(response.items[0]);
-        });
-      client
-        .getEntries({
-          order: "-fields.date",
-          content_type: "blogPost",
-          limit: 1,
-          "fields.date[lt]": currentPostDate,
-        })
-        .then((response: { items: BlogPostResponse[] }) => {
-          setPreviousPost(response.items[0]);
-        });
-    }
-  }, [currentPostDate]);
+    setPreviousPost(null);
+    setNextPost(null);
+
+    fetch(`/api/snippet/${category}/${slug}/prev`)
+      .then((res) => res.json())
+      .then((response: BlogPostResponse[]) => {
+        if (response[0]) {
+          setPreviousPost(response[0]);
+        }
+      })
+      .catch((error) => console.log(error));
+
+    fetch(`/api/snippet/${category}/${slug}/next`)
+      .then((res) => res.json())
+      .then((response: BlogPostResponse[]) => {
+        if (response[0]) {
+          setNextPost(response[0]);
+        }
+      })
+      .catch((error) => console.log(error));
+  }, [category, slug]);
 
   return { previousPost, nextPost };
-}
+};
+
+export default usePostNavigation;

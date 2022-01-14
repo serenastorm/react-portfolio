@@ -28,7 +28,7 @@ const BlogCategoryPage = () => {
       <motion.h1 variants={scrollAnimationVariants({})}>
         {tag || subcategory ? (
           <>
-            Snippets tagged:{" "}
+            Snippets {tag ? "tagged" : "in"}:{" "}
             <span className="italic medium">
               {(tag && getCategory(tag).label) ||
                 (subcategory && getCategory(subcategory).label)}
