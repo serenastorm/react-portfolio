@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { BlogPostResponse, BlogPosts } from "infrastructure/blog/types";
 
 import { getAllPosts } from "infrastructure/blog/contentful";
@@ -21,13 +21,13 @@ export default function usePosts({
   const [isEmpty, setIsEmpty] = useState<boolean>(true);
 
   useEffect(() => {
-    const shouldFilterByCategory = !!category;
-    const shouldFilterBySubCategory = !!subcategory;
-    const shouldFilterByTag = !!tag;
-
     promise.then((blogPosts: BlogPostResponse[]) => {
+      const shouldFilterByCategory = !!category;
+      const shouldFilterBySubCategory = !!subcategory;
+      const shouldFilterByTag = !!tag;
+
       const filteredPostsByCategory = shouldFilterByCategory
-        ? blogPosts?.filter(
+        ? blogPosts.filter(
             (post: BlogPostResponse) => post.fields.category === category
           )
         : blogPosts;
@@ -48,7 +48,7 @@ export default function usePosts({
       setLoading(false);
       setIsEmpty(filteredPostsByTag.length === 0);
     });
-  }, []);
+  }, [category, subcategory, tag]);
 
   return { posts, isLoading, isEmpty };
 }

@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
-import { Link, useLocation, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { NewTabLink, Page, Pill, Pills } from "Main/components";
-import { LandingPageFooter } from "Main/components/LandingPageFooter";
-import { scrollAnimationVariants } from "helpers/animations";
-import { usePosts } from "infrastructure/hooks";
+import { Pills } from "Main/components";
+import {
+  scrollAnimationVariants,
+  scrollAnimationWrapperProps,
+} from "helpers/animations";
 import { BlogPostResponse, BlogPosts } from "infrastructure/blog/types";
 import { GoToLinkIcon } from "CaseStudy/assets/Icons/Actions";
 import { getCategory } from "Main/pages/BlogCategory/constants";
@@ -48,31 +49,45 @@ const BlogArticleLink = ({ posts, isLoading, isEmpty }: BlogPosts) => {
   if (isLoading) return <p className="italic medium">Loading...</p>;
 
   return isEmpty ? (
-    <motion.li
-      className="blogPost"
-      variants={scrollAnimationVariants({ delay: 0.25 })}
-    >
+    <li className="blogPost">
       No posts to show.{" "}
       <Link to={routes.blog.snippets.url} className="semibold">
         All snippets <GoToLinkIcon />
       </Link>
-    </motion.li>
+    </li>
   ) : (
     <>
       {posts.map((post: BlogPostResponse, postIndex: number) => (
         <motion.li
           key={post.fields.slug}
           className="blogPost"
-          variants={scrollAnimationVariants({ delay: (postIndex + 1) * 0.25 })}
+          {...scrollAnimationWrapperProps}
         >
           <Link to={`/${post.fields.category}/${post.fields.slug}`}>
-            <h3>
+            <motion.h3
+              variants={scrollAnimationVariants({
+                delay: (postIndex + 1) * 0.25,
+              })}
+            >
               {post.fields.title} <GoToLinkIcon />
-            </h3>
+            </motion.h3>
           </Link>
-          {post.fields.shortText && <p>{post.fields.shortText}</p>}
+          {post.fields.shortText && (
+            <motion.p
+              variants={scrollAnimationVariants({
+                delay: (postIndex + 1) * 0.25,
+              })}
+            >
+              {post.fields.shortText}
+            </motion.p>
+          )}
 
-          <div className="blogArticle-meta">
+          <motion.div
+            className="blogArticle-meta"
+            variants={scrollAnimationVariants({
+              delay: (postIndex + 1) * 0.25,
+            })}
+          >
             <time dateTime={new Date(post.fields.date).toISOString()}>
               <p className="semibold">
                 {formatRelativeTime(new Date(post.fields.date))}
@@ -94,7 +109,7 @@ const BlogArticleLink = ({ posts, isLoading, isEmpty }: BlogPosts) => {
               </p>
             </time>
             {post.fields.tags && <Pills types={post.fields.tags} />}
-          </div>
+          </motion.div>
         </motion.li>
       ))}
     </>

@@ -7,6 +7,7 @@
     flex-wrap: wrap;
     list-style-type: none;
     padding: 0;
+    margin-bottom: 0;
 
     @include breakpoint(0, 399.98) {
       gap: 0.4rem;

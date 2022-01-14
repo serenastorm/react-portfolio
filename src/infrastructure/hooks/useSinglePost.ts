@@ -17,12 +17,17 @@ export default function useSinglePost(category: string, slug: string): Post {
   const [isEmpty, setIsEmpty] = useState<boolean>(true);
 
   useEffect(() => {
-    promise.then((result: BlogPostResponse[]) => {
-      setPost(result[0]?.fields);
-      setLoading(false);
-      setIsEmpty(result.length === 0);
-    });
-  }, []);
+    if (!post || post.category !== category || post.slug !== slug) {
+      setLoading(true);
+      setIsEmpty(true);
+
+      promise.then((result: BlogPostResponse[]) => {
+        setPost(result[0]?.fields);
+        setLoading(false);
+        setIsEmpty(result.length === 0);
+      });
+    }
+  }, [post, promise, category, slug]);
 
   return { post, isLoading, isEmpty };
 }

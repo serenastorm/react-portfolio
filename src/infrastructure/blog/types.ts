@@ -8,6 +8,7 @@ export type BlogPost = {
   date: Date;
   topics?: string[];
   codeSandboxId?: string;
+  codeSandboxSettings?: string;
   shortText?: string;
 };
 
@@ -17,4 +18,9 @@ export type BlogPosts = {
   posts: BlogPostResponse[];
   isLoading: boolean;
   isEmpty: boolean;
+};
+
+export type NavigationBlogPosts = {
+  previousPost: BlogPostResponse | null;
+  nextPost: BlogPostResponse | null;
 };

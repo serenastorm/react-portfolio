@@ -6,7 +6,7 @@ import rehypeHighlight from "rehype-highlight";
 import remarkGfm from "remark-gfm";
 import rehypeRaw from "rehype-raw";
 import { NewTabLink, Page, Pill, Pills } from "Main/components";
-import { useSinglePost } from "infrastructure/hooks";
+import { usePostNavigation, useSinglePost } from "infrastructure/hooks";
 import { routes } from "infrastructure/routes/constants";
 import {
   scrollAnimationWrapperProps,
@@ -19,18 +19,26 @@ import "./BlogArticle.scss";
 const BlogArticlePage = () => {
   const category = "snippets";
   const { slug }: { slug: string } = useParams();
-
   const { post, isLoading, isEmpty } = useSinglePost(category, slug);
+  const {
+    title,
+    subcategory,
+    content,
+    tags,
+    codeSandboxId,
+    codeSandboxSettings,
+    date,
+  } = post || {};
+  const { previousPost, nextPost } = usePostNavigation(date);
 
   const hideNavigation = true;
   const forceRefresh = true;
   const hideDevTools = true;
-  const modules = "/src/App.tsx,/src/styles/demo.scss";
 
   useEffect(() => {
     if (post?.title) {
       document.title = `${post.title}${
-        post.subcategory ? ` | ${getCategory(post.subcategory).label}` : ""
+        subcategory ? ` | ${getCategory(subcategory).label}` : ""
       }`;
     }
   }, [post]);
@@ -38,8 +46,6 @@ const BlogArticlePage = () => {
   if (isLoading) {
     return null;
   }
-
-  const { title, subcategory, content, tags, codeSandboxId } = post || {};
 
   return (
     <>
@@ -49,6 +55,7 @@ const BlogArticlePage = () => {
       <Page className="blog blogPage blogArticle">
         <motion.div
           className="blogArticle-meta"
+          key={`${subcategory}/${slug}/meta`}
           {...scrollAnimationWrapperProps}
         >
           <motion.p variants={scrollAnimationVariants({})}>
@@ -71,62 +78,66 @@ const BlogArticlePage = () => {
           {tags && <Pills types={tags} />}
         </motion.div>
         {isEmpty || !content ? (
-          <>
-            <motion.h1 variants={scrollAnimationVariants({})}>
-              No article here.
-            </motion.h1>
-          </>
+          <motion.h1 variants={scrollAnimationVariants({})}>
+            No article here.
+          </motion.h1>
         ) : (
-          <motion.main id="mainContent" {...scrollAnimationWrapperProps}>
+          <motion.main
+            id="mainContent"
+            key={`${subcategory}/${slug}/mainContent`}
+            {...scrollAnimationWrapperProps}
+          >
             <motion.h1 variants={scrollAnimationVariants({})}>
               {title}
             </motion.h1>
-            <ReactMarkdown
-              children={content}
-              remarkPlugins={[remarkGfm]}
-              rehypePlugins={[rehypeHighlight, rehypeRaw]}
-              components={{
-                code({ node, inline, className, children, ...props }) {
-                  const match = /language-(\w+)/.exec(className || "");
-                  const renderSnippet = () => (
-                    <code className={className} {...props}>
-                      {children}
-                    </code>
-                  );
-                  return inline ? (
-                    renderSnippet()
-                  ) : (
-                    <pre>
-                      {match && <Pill type={match[1]} />}
-                      {renderSnippet()}
-                    </pre>
-                  );
-                },
-                pre({ children }) {
-                  return <>{children}</>;
-                },
-                a({ children, node, href, ...props }) {
-                  const indexOfExternalLink = node.children.findIndex(
-                    (child) =>
-                      child.type === "text" &&
-                      child.value === "View full criteria"
-                  );
+            <motion.div variants={scrollAnimationVariants({ delay: 0.5 })}>
+              <ReactMarkdown
+                children={content}
+                remarkPlugins={[remarkGfm]}
+                rehypePlugins={[rehypeHighlight, rehypeRaw]}
+                components={{
+                  code({ node, inline, className, children, ...props }) {
+                    const match = /language-(\w+)/.exec(className || "");
+                    const renderSnippet = () => (
+                      <code className={className} {...props}>
+                        {children}
+                      </code>
+                    );
+                    return inline ? (
+                      renderSnippet()
+                    ) : (
+                      <pre>
+                        {match && <Pill type={match[1]} />}
+                        {renderSnippet()}
+                      </pre>
+                    );
+                  },
+                  pre({ children }) {
+                    return <>{children}</>;
+                  },
+                  a({ children, node, href, ...props }) {
+                    const indexOfExternalLink = node.children.findIndex(
+                      (child) =>
+                        child.type === "text" &&
+                        child.value === "View full criteria"
+                    );
 
-                  const isExternalLink = indexOfExternalLink > -1;
+                    const isExternalLink = indexOfExternalLink > -1;
 
-                  return isExternalLink && href ? (
-                    <NewTabLink
-                      copy={node.children[indexOfExternalLink].value}
-                      to={href}
-                      shouldOpenInNewTab
-                      className="bold"
-                    />
-                  ) : (
-                    <a {...props}>{children}</a>
-                  );
-                },
-              }}
-            />
+                    return isExternalLink && href ? (
+                      <NewTabLink
+                        copy={node.children[indexOfExternalLink].value}
+                        to={href}
+                        shouldOpenInNewTab
+                        className="bold"
+                      />
+                    ) : (
+                      <a {...props}>{children}</a>
+                    );
+                  },
+                }}
+              />
+            </motion.div>
             {codeSandboxId && (
               <>
                 <motion.h2 variants={scrollAnimationVariants({})}>
@@ -139,7 +150,7 @@ const BlogArticlePage = () => {
                     hideNavigation ? 1 : 0
                   }&forcerefresh=${forceRefresh ? 1 : 0}&hidedevtools=${
                     hideDevTools ? 1 : 0
-                  }&theme=light&module=${modules}`}
+                  }&theme=light${codeSandboxSettings}`}
                   style={{
                     width: "100%",
                     height: "70vh",
@@ -154,6 +165,46 @@ const BlogArticlePage = () => {
             )}
           </motion.main>
         )}
+        <div className="blogArticle-nav">
+          <motion.div
+            className="blogArticle-navLink"
+            key={`${subcategory}/${slug}/prevLink`}
+            {...scrollAnimationWrapperProps}
+          >
+            {previousPost && (
+              <>
+                <motion.p variants={scrollAnimationVariants({})}>
+                  Previous post
+                </motion.p>
+                <Link
+                  to={`/${previousPost.fields.category}/${previousPost.fields.slug}`}
+                >
+                  <motion.h2
+                    variants={scrollAnimationVariants({ delay: 0.25 })}
+                  >
+                    {previousPost.fields.title}
+                  </motion.h2>
+                </Link>
+              </>
+            )}
+          </motion.div>
+          {nextPost && (
+            <motion.div
+              className="blogArticle-navLink"
+              key={`${subcategory}/${slug}/nextLink`}
+              {...scrollAnimationWrapperProps}
+            >
+              <motion.p variants={scrollAnimationVariants({})}>
+                Next post
+              </motion.p>
+              <Link to={`/${nextPost.fields.category}/${nextPost.fields.slug}`}>
+                <motion.h2 variants={scrollAnimationVariants({ delay: 0.25 })}>
+                  {nextPost.fields.title}
+                </motion.h2>
+              </Link>
+            </motion.div>
+          )}
+        </div>
       </Page>
     </>
   );

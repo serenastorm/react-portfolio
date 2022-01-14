@@ -22,6 +22,30 @@ $task-list-checkmark-size: 2.4rem;
     }
   }
 
+  .blogArticle-nav {
+    display: flex;
+    margin-top: 8rem;
+    gap: 1.6rem;
+
+    .blogArticle-navLink {
+      flex: 1;
+
+      &:nth-of-type(2) {
+        text-align: right;
+      }
+
+      h2 {
+        margin: 0.8rem 0;
+      }
+
+      a {
+        @include onHoverAndFocus {
+          color: var(--link);
+        }
+      }
+    }
+  }
+
   h1,
   h2 {
     font-weight: var(--font-weight-medium);
@@ -35,7 +59,13 @@ $task-list-checkmark-size: 2.4rem;
     border-radius: 0.4rem;
 
     code {
-      font-size: 1.6rem;
+      @include breakpoint(0, 1199.98) {
+        font-size: 1.4rem;
+      }
+
+      @include breakpoint(1200) {
+        font-size: 1.6rem;
+      }
     }
 
     .pill {

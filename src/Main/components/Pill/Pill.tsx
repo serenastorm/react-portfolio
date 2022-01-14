@@ -104,7 +104,7 @@ export const Pills = ({ types }: { types: string[] }) => {
           type={type}
           as="li"
           key={type}
-          animationDelay={pillIndex * 0.05}
+          animationDelay={(pillIndex + 1) * 0.1}
         />
       ))}
     </motion.ul>

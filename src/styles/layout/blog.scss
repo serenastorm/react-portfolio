@@ -103,8 +103,20 @@
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
     gap: 1.6rem;
+
+    & > p {
+      flex: 1;
+    }
+
+    time {
+      flex: 1;
+
+      p::first-letter {
+        text-transform: capitalize;
+      }
+    }
 
     p {
       color: var(--text-light);
