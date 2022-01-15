@@ -98,12 +98,14 @@ const BlogArticleLink = ({ fields, sys, postIndex }: BlogPost) => {
               </>
             )}
           </p>
-          <LikeButton
-            total={totalLikes}
-            add={addLike}
-            remove={removeLike}
-            articleId={sys.id}
-          />
+          {!likesAreLoading && (
+            <LikeButton
+              total={totalLikes}
+              add={addLike}
+              remove={removeLike}
+              articleId={sys.id}
+            />
+          )}
         </time>
         {fields.tags && <Pills types={fields.tags} />}
       </motion.div>
