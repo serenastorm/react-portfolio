@@ -21,6 +21,7 @@ $link-rgb: hexToRGB($link);
 
   // TODO: Add fallback fonts
   --type-paragraph: "IBM Plex Sans", sans-serif;
+  --type-serif: "EB Garamond", serif;
   --type-code: "Ubuntu Mono", monospace;
   // Use a monospace font for numbers
   --type-numbers: "Azeret Mono", monospace;

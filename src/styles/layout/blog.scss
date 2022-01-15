@@ -87,7 +87,7 @@
 
   h1,
   h2 {
-    font-family: "EB Garamond", serif;
+    font-family: var(--type-serif);
   }
 
   h1 {
@@ -135,6 +135,11 @@
       flex: 1;
     }
 
+    & > p,
+    time > p {
+      font-family: var(--type-serif);
+    }
+
     time {
       flex: 1;
 
@@ -146,7 +151,6 @@
     p {
       color: var(--text-light);
       margin: 0;
-      font-family: "EB Garamond", serif;
 
       a {
         --underline-color: currentColor;

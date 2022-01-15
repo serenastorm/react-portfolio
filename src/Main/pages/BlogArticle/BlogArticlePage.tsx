@@ -155,7 +155,7 @@ const BlogArticlePage = () => {
                     hideNavigation ? 1 : 0
                   }&forcerefresh=${forceRefresh ? 1 : 0}&hidedevtools=${
                     hideDevTools ? 1 : 0
-                  }&theme=light${codeSandboxSettings}`}
+                  }&theme=dark${codeSandboxSettings}`}
                   style={{
                     width: "100%",
                     height: "70vh",

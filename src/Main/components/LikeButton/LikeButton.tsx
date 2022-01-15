@@ -156,7 +156,7 @@ const LikeButton = ({
         </g>
       </svg>
       <p>
-        {total > 0 ? total : "No"}
+        {total > 0 ? <span className="medium">{total}</span> : "No"}
         {fixed ? ` like${total > 1 || total === 0 ? "s" : ""}` : ""}
       </p>
     </div>
