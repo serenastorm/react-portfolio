@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import { motion } from "framer-motion";
 import { BlogArticleLink, Page } from "Main/components";
@@ -22,6 +23,14 @@ const BlogCategoryPage = () => {
     subcategory,
     tag: tag ? getCategory(tag).value : null,
   });
+
+  useEffect(() => {
+    const tagSubtitle = tag && getCategory(tag).label;
+    const subcategorySubtitle = subcategory && getCategory(subcategory).label;
+    const subtitle = tagSubtitle || subcategorySubtitle;
+
+    document.title = `${subtitle ? `${subtitle} | ` : ""}Snippets`;
+  }, [tag, subcategory]);
 
   return (
     <Page className="blog blogPage blogCategory">

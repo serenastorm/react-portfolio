@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { BlogArticleLink, NewTabLink, Page } from "Main/components";
@@ -87,6 +88,10 @@ const LandingPage = () => {
     category: "snippets",
   });
   const postsToDisplay = posts[0];
+
+  useEffect(() => {
+    document.title = "Portfolio | Serena Antonetti";
+  }, []);
 
   return (
     <Page className="landingPage">

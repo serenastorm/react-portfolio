@@ -9,7 +9,7 @@ const PageTitle = () => {
   useEffect(() => {
     document.title = isCaseStudyPage
       ? "myqr | Case Study"
-      : "Serena Antonetti | Portfolio";
+      : "Portfolio | Serena Antonetti";
   }, [isCaseStudyPage]);
 
   return null;
