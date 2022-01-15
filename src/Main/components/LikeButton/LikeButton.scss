@@ -6,19 +6,24 @@
 
   position: fixed;
   z-index: 50;
-  bottom: 1.6rem;
-  right: 1.6rem;
+
   display: flex;
   justify-content: center;
   align-items: center;
-  width: var(--like-button-width);
-  height: var(--like-button-width);
   background-color: var(--light-gray);
   color: var(--link);
   border-radius: 0.4rem;
-  padding: 0.2rem 0.6rem;
-  min-width: max-content;
-  gap: 0.2rem;
+  padding: 0 0.6rem 0 0.4rem;
+
+  @include breakpoint(0, 1199.98) {
+    top: 1.6rem;
+    left: 1.6rem;
+  }
+
+  @include breakpoint(1200) {
+    bottom: 1.6rem;
+    right: 1.6rem;
+  }
 
   input {
     position: absolute;
@@ -47,7 +52,6 @@
   p {
     @extend %landing-paragraph;
     color: var(--text);
-    min-width: max-content;
     margin: 0;
     font-size: 1.4rem;
   }
