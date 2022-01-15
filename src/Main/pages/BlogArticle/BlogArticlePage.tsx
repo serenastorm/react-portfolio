@@ -210,8 +210,8 @@ const BlogArticlePage = () => {
             </motion.div>
           )}
         </div>
+        {sys?.id && <LikeButton {...likes} articleId={sys.id} fixed />}
       </Page>
-      {sys?.id && <LikeButton {...likes} articleId={sys.id} />}
     </>
   );
 };

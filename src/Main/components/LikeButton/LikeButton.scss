@@ -1,174 +1,184 @@
 @import "~styles/modules/mixins.scss";
 @import "~styles/modules/placeholders.scss";
 
-.likeButton {
-  --like-button-width: 4rem;
+.blog {
+  .likeButton {
+    --like-button-width: 4rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--link);
+    border-radius: 0.4rem;
 
-  position: fixed;
-  z-index: 50;
+    &.likeButton-isFixed {
+      --heart-size: 3.2rem;
+      position: fixed;
+      z-index: 50;
+      background-color: var(--light-gray);
+      padding: 0 0.8rem 0 0;
 
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: var(--light-gray);
-  color: var(--link);
-  border-radius: 0.4rem;
-  padding: 0 0.6rem 0 0.4rem;
+      @include breakpoint(0, 1199.98) {
+        top: 1.6rem;
+        left: 1.6rem;
+      }
 
-  @include breakpoint(0, 1199.98) {
-    top: 1.6rem;
-    left: 1.6rem;
-  }
-
-  @include breakpoint(1200) {
-    bottom: 1.6rem;
-    right: 1.6rem;
-  }
-
-  input {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    opacity: 0;
-    cursor: pointer;
-
-    @include onHoverAndFocus {
-      & + svg {
-        transform: scale(1.2);
+      @include breakpoint(1200) {
+        bottom: 1.6rem;
+        right: 1.6rem;
       }
     }
-  }
 
-  svg {
-    width: 3.2rem;
-    height: 3.2rem;
-    min-width: 3.2rem;
-    pointer-events: none;
-    overflow: visible;
-    transition: 0.25s transform;
-  }
+    &:not(.likeButton-isFixed) {
+      --heart-size: 2.4rem;
+      position: relative;
+      padding: 0.2rem;
+    }
 
-  p {
-    @extend %landing-paragraph;
-    color: var(--text);
-    margin: 0;
-    font-size: 1.4rem;
-  }
+    input {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      cursor: pointer;
 
-  #heart {
-    transform-origin: center;
-    animation: animateHeartOut 0.3s linear forwards;
-  }
+      @include onHoverAndFocus {
+        & + svg {
+          transform: scale(1.2);
+        }
+      }
+    }
 
-  #main-circle {
-    transform-origin: 20px 20px;
-  }
+    svg {
+      width: var(--heart-size);
+      height: var(--heart-size);
+      min-width: var(--heart-size);
+      pointer-events: none;
+      overflow: visible;
+      transition: 0.25s transform;
+    }
 
-  input:checked + svg {
+    p {
+      @extend %landing-paragraph;
+      color: var(--text);
+      margin: 0;
+      font-size: 1.4rem;
+    }
+
     #heart {
-      transform: scale(0.2);
-      animation: animateHeart 0.3s linear forwards 0.25s;
+      transform-origin: center;
+      animation: animateHeartOut 0.3s linear forwards;
     }
 
     #main-circle {
-      transition: all 2s;
-      animation: animateCircle 0.3s linear forwards;
-      opacity: 1;
+      transform-origin: 20px 20px;
     }
 
-    #heart1 {
-      transition: 0.5s transform 0.3s;
-    }
+    input:checked + svg {
+      #heart {
+        transform: scale(0.2);
+        animation: animateHeart 0.3s linear forwards 0.25s;
+      }
 
-    #heart2 {
-      transition: 1.5s transform 0.3s;
-    }
+      #main-circle {
+        transition: all 2s;
+        animation: animateCircle 0.3s linear forwards;
+        opacity: 1;
+      }
 
-    #heart1,
-    #heart2 {
-      transform-origin: center;
-    }
-
-    #heartgroup1 {
       #heart1 {
-        transform: scale(0) translate(0, -5px);
+        transition: 0.5s transform 0.3s;
       }
 
       #heart2 {
-        transform: scale(0) translate(5px, -20px);
-      }
-    }
-
-    #heartgroup2 {
-      #heart1 {
-        transform: scale(0) translate(10px, 0);
+        transition: 1.5s transform 0.3s;
       }
 
+      #heart1,
       #heart2 {
-        transform: scale(0) translate(20px, 10px);
-      }
-    }
-
-    #heartgroup3 {
-      #heart1 {
-        transform: scale(0) translate(-10px, -5px);
+        transform-origin: center;
       }
 
-      #heart2 {
-        transform: scale(0) translate(-20px, 10px);
-      }
-    }
+      #hearts1 {
+        #heart1 {
+          transform: scale(0) translate(0, -5px);
+        }
 
-    #heartgroup4 {
-      #heart1 {
-        transform: scale(0) translate(5px, -5px);
-      }
-
-      #heart2 {
-        transform: scale(0) translate(20px, -20px);
-      }
-    }
-
-    #heartgroup5 {
-      #heart1 {
-        transform: scale(0) translate(10px, -0);
+        #heart2 {
+          transform: scale(0) translate(5px, -20px);
+        }
       }
 
-      #heart2 {
-        transform: scale(0) translate(20px, 10px);
-      }
-    }
+      #hearts2 {
+        #heart1 {
+          transform: scale(0) translate(10px, 0);
+        }
 
-    #heartgroup6 {
-      #heart1 {
-        transform: scale(0) translate(-10px, -10px);
-      }
-
-      #heart2 {
-        transform: scale(0) translate(-20px, -20px);
-      }
-    }
-
-    #heartgroup7 {
-      #heart1 {
-        transform: scale(0) translate(-5px, -10px);
+        #heart2 {
+          transform: scale(0) translate(20px, 10px);
+        }
       }
 
-      #heart2 {
-        transform: scale(0) translate(-15px, -25px);
-      }
-    }
+      #hearts3 {
+        #heart1 {
+          transform: scale(0) translate(-10px, -5px);
+        }
 
-    #heartgroup1,
-    #heartgroup2,
-    #heartgroup3,
-    #heartgroup4,
-    #heartgroup5,
-    #heartgroup6,
-    #heartgroup7 {
-      opacity: 1;
-      transition: 0.1s opacity 0.3s;
+        #heart2 {
+          transform: scale(0) translate(-20px, 10px);
+        }
+      }
+
+      #hearts4 {
+        #heart1 {
+          transform: scale(0) translate(5px, -5px);
+        }
+
+        #heart2 {
+          transform: scale(0) translate(20px, -20px);
+        }
+      }
+
+      #hearts5 {
+        #heart1 {
+          transform: scale(0) translate(10px, -0);
+        }
+
+        #heart2 {
+          transform: scale(0) translate(20px, 10px);
+        }
+      }
+
+      #hearts6 {
+        #heart1 {
+          transform: scale(0) translate(-10px, -10px);
+        }
+
+        #heart2 {
+          transform: scale(0) translate(-20px, -20px);
+        }
+      }
+
+      #hearts7 {
+        #heart1 {
+          transform: scale(0) translate(-5px, -10px);
+        }
+
+        #heart2 {
+          transform: scale(0) translate(-15px, -25px);
+        }
+      }
+
+      #hearts1,
+      #hearts2,
+      #hearts3,
+      #hearts4,
+      #hearts5,
+      #hearts6,
+      #hearts7 {
+        opacity: 1;
+        transition: 0.1s opacity 0.3s;
+      }
     }
   }
 }

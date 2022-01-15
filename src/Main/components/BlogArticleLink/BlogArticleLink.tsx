@@ -9,10 +9,17 @@ import { BlogPostResponse, BlogPosts } from "infrastructure/blog/types";
 import { GoToLinkIcon } from "CaseStudy/assets/Icons/Actions";
 import { getCategory } from "Main/pages/BlogCategory/constants";
 import { routes } from "infrastructure/routes/constants";
+import { useLikes } from "infrastructure/hooks";
 
 import "./BlogArticleLink.scss";
+import { LikeButton } from "../LikeButton";
 
-const BlogArticleLink = ({ posts, isLoading, isEmpty }: BlogPosts) => {
+type BlogPost = BlogPostResponse & {
+  postIndex: number;
+};
+
+const BlogArticleLink = ({ fields, sys, postIndex }: BlogPost) => {
+  const { totalLikes, likesAreLoading, addLike, removeLike } = useLikes(sys.id);
   const relativeTimeFormatter = new Intl.RelativeTimeFormat("en", {
     numeric: "auto",
   });
@@ -45,6 +52,66 @@ const BlogArticleLink = ({ posts, isLoading, isEmpty }: BlogPosts) => {
     }
   };
 
+  return (
+    <motion.li className="blogPost" {...scrollAnimationWrapperProps}>
+      <Link to={`/${fields.category}/${fields.slug}`}>
+        <motion.h3
+          variants={scrollAnimationVariants({
+            delay: (postIndex + 1) * 0.25,
+          })}
+        >
+          {fields.title} <GoToLinkIcon />
+        </motion.h3>
+      </Link>
+      {fields.shortText && (
+        <motion.p
+          variants={scrollAnimationVariants({
+            delay: (postIndex + 1) * 0.25,
+          })}
+        >
+          {fields.shortText}
+        </motion.p>
+      )}
+
+      <motion.div
+        className="blogArticle-meta"
+        variants={scrollAnimationVariants({
+          delay: (postIndex + 1) * 0.25,
+        })}
+      >
+        <time dateTime={new Date(fields.date).toISOString()}>
+          <p className="semibold">
+            {formatRelativeTime(new Date(fields.date))}
+            {fields.subcategory && (
+              <>
+                {"  "}
+                in{" "}
+                <Link
+                  to={{
+                    pathname: routes.blog.snippets.url,
+                    search: `?cat=${fields.subcategory}`,
+                  }}
+                  className="medium"
+                >
+                  {getCategory(fields.subcategory).label}
+                </Link>
+              </>
+            )}
+          </p>
+          <LikeButton
+            total={totalLikes}
+            add={addLike}
+            remove={removeLike}
+            articleId={sys.id}
+          />
+        </time>
+        {fields.tags && <Pills types={fields.tags} />}
+      </motion.div>
+    </motion.li>
+  );
+};
+
+const BlogArticleLinks = ({ posts, isLoading, isEmpty }: BlogPosts) => {
   if (isLoading) return <p className="loading">Loading...</p>;
 
   return isEmpty ? (
@@ -57,62 +124,10 @@ const BlogArticleLink = ({ posts, isLoading, isEmpty }: BlogPosts) => {
   ) : (
     <>
       {posts.map((post: BlogPostResponse, postIndex: number) => (
-        <motion.li
-          key={post.fields.slug}
-          className="blogPost"
-          {...scrollAnimationWrapperProps}
-        >
-          <Link to={`/${post.fields.category}/${post.fields.slug}`}>
-            <motion.h3
-              variants={scrollAnimationVariants({
-                delay: (postIndex + 1) * 0.25,
-              })}
-            >
-              {post.fields.title} <GoToLinkIcon />
-            </motion.h3>
-          </Link>
-          {post.fields.shortText && (
-            <motion.p
-              variants={scrollAnimationVariants({
-                delay: (postIndex + 1) * 0.25,
-              })}
-            >
-              {post.fields.shortText}
-            </motion.p>
-          )}
-
-          <motion.div
-            className="blogArticle-meta"
-            variants={scrollAnimationVariants({
-              delay: (postIndex + 1) * 0.25,
-            })}
-          >
-            <time dateTime={new Date(post.fields.date).toISOString()}>
-              <p className="semibold">
-                {formatRelativeTime(new Date(post.fields.date))}
-                {post.fields.subcategory && (
-                  <>
-                    {"  "}
-                    in{" "}
-                    <Link
-                      to={{
-                        pathname: routes.blog.snippets.url,
-                        search: `?cat=${post.fields.subcategory}`,
-                      }}
-                      className="medium"
-                    >
-                      {getCategory(post.fields.subcategory).label}
-                    </Link>
-                  </>
-                )}
-              </p>
-            </time>
-            {post.fields.tags && <Pills types={post.fields.tags} />}
-          </motion.div>
-        </motion.li>
+        <BlogArticleLink postIndex={postIndex} key={post.sys.id} {...post} />
       ))}
     </>
   );
 };
 
-export default BlogArticleLink;
+export default BlogArticleLinks;

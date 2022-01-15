@@ -30,7 +30,7 @@ function useLocalStorage(key: string, initialValue: string) {
     }
   };
 
-  return [storedValue, setValue];
+  return { storedValue, setValue };
 }
 
 export default useLocalStorage;

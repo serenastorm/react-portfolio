@@ -7,16 +7,28 @@ type LikeButtonProps = {
   add: () => void;
   remove: () => void;
   articleId: string;
+  fixed?: boolean;
 };
 
-const LikeButton = ({ total, add, remove, articleId }: LikeButtonProps) => {
-  const [userHasLikedArticle, setUserHasLikedArticle] = useLocalStorage(
-    `${articleId}-liked`,
+const LikeButton = ({
+  total,
+  add: addLike,
+  remove: removeLike,
+  articleId,
+  fixed,
+}: LikeButtonProps) => {
+  const localStorageKey = `${articleId}-liked`;
+  const { setValue: setUserHasLikedArticle } = useLocalStorage(
+    localStorageKey,
     "false"
   );
 
+  const localStorageItem = window.localStorage.getItem(localStorageKey);
+
+  const inputShouldBeChecked = JSON.parse(localStorageItem || "") === "true";
+
   return (
-    <div className="likeButton">
+    <div className={`likeButton${fixed ? " likeButton-isFixed" : ""}`}>
       <p id="likeButtonLabel" className="screenReaderText">
         Like this article
       </p>
@@ -24,13 +36,13 @@ const LikeButton = ({ total, add, remove, articleId }: LikeButtonProps) => {
         name="isGoing"
         type="checkbox"
         aria-labelledby="likeButtonLabel"
-        checked={userHasLikedArticle === "true"}
-        onChange={(e) => {
-          if (userHasLikedArticle === "true") {
-            remove();
+        checked={inputShouldBeChecked}
+        onChange={() => {
+          if (inputShouldBeChecked) {
+            removeLike();
             setUserHasLikedArticle("false");
           } else {
-            add();
+            addLike();
             setUserHasLikedArticle("true");
           }
         }}
@@ -44,7 +56,7 @@ const LikeButton = ({ total, add, remove, articleId }: LikeButtonProps) => {
         preserveAspectRatio="xMidYMid meet"
       >
         <path
-          fill={userHasLikedArticle === "true" ? "currentColor" : "none"}
+          fill={inputShouldBeChecked ? "currentColor" : "none"}
           stroke="currentColor"
           strokeLinecap="round"
           strokeLinejoin="round"
@@ -58,7 +70,7 @@ const LikeButton = ({ total, add, remove, articleId }: LikeButtonProps) => {
           id="main-circle"
           d="M20.035 21.105c.57 0 1.034-.471 1.034-1.052 0-.582-.463-1.053-1.034-1.053-.572 0-1.035.471-1.035 1.053 0 .581.463 1.052 1.035 1.052z"
         ></path>
-        <g opacity="0" id="heartgroup7">
+        <g opacity="0" id="hearts7">
           <path
             id="heart1"
             fill="#9C2BAD"
@@ -70,7 +82,7 @@ const LikeButton = ({ total, add, remove, articleId }: LikeButtonProps) => {
             d="M8.276 7.018c.762 0 1.38-.629 1.38-1.404 0-.775-.618-1.403-1.38-1.403-.762 0-1.38.628-1.38 1.403s.618 1.404 1.38 1.404z"
           ></path>
         </g>
-        <g opacity="0" id="heartgroup6">
+        <g opacity="0" id="hearts6">
           <path
             id="heart1"
             fill="#D31E66"
@@ -82,7 +94,7 @@ const LikeButton = ({ total, add, remove, articleId }: LikeButtonProps) => {
             d="M2.069 22.456c.762 0 1.38-.628 1.38-1.403 0-.776-.618-1.404-1.38-1.404-.762 0-1.38.628-1.38 1.404 0 .775.618 1.403 1.38 1.403z"
           ></path>
         </g>
-        <g opacity="0" id="heartgroup5">
+        <g opacity="0" id="hearts5">
           <path
             id="heart1"
             fill="#067A6F"
@@ -94,7 +106,7 @@ const LikeButton = ({ total, add, remove, articleId }: LikeButtonProps) => {
             d="M38.62 22.456c.763 0 1.38-.628 1.38-1.403 0-.776-.617-1.404-1.38-1.404-.761 0-1.378.628-1.378 1.404 0 .775.617 1.403 1.379 1.403z"
           ></path>
         </g>
-        <g opacity="0" id="heartgroup4">
+        <g opacity="0" id="hearts4">
           <path
             id="heart1"
             fill="#0078A1"
@@ -106,7 +118,7 @@ const LikeButton = ({ total, add, remove, articleId }: LikeButtonProps) => {
             d="M31.724 7.018c.762 0 1.38-.629 1.38-1.404 0-.775-.618-1.403-1.38-1.403-.762 0-1.38.628-1.38 1.403s.618 1.404 1.38 1.404z"
           ></path>
         </g>
-        <g opacity="0" id="heartgroup3">
+        <g opacity="0" id="hearts3">
           <path
             id="heart1"
             fill="#CA3214"
@@ -118,7 +130,7 @@ const LikeButton = ({ total, add, remove, articleId }: LikeButtonProps) => {
             d="M11.035 37.895c.761 0 1.379-.629 1.379-1.404 0-.775-.618-1.403-1.38-1.403-.761 0-1.379.628-1.379 1.403s.618 1.404 1.38 1.404z"
           ></path>
         </g>
-        <g opacity="0" id="heartgroup2">
+        <g opacity="0" id="hearts2">
           <path
             id="heart1"
             fill="#18794E"
@@ -130,7 +142,7 @@ const LikeButton = ({ total, add, remove, articleId }: LikeButtonProps) => {
             d="M25.517 37.895c.762 0 1.38-.629 1.38-1.404 0-.775-.618-1.403-1.38-1.403-.761 0-1.38.628-1.38 1.403s.619 1.404 1.38 1.404z"
           ></path>
         </g>
-        <g opacity="0" id="heartgroup1">
+        <g opacity="0" id="hearts1">
           <path
             id="heart1"
             fill="#5746AF"
@@ -144,7 +156,8 @@ const LikeButton = ({ total, add, remove, articleId }: LikeButtonProps) => {
         </g>
       </svg>
       <p>
-        {total > 0 ? total : "No"} like{total > 1 || total === 0 ? "s" : ""}
+        {total > 0 ? total : "No"}
+        {fixed ? ` like${total > 1 || total === 0 ? "s" : ""}` : ""}
       </p>
     </div>
   );
