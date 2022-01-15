@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { BlogPostResponse, BlogPosts } from "infrastructure/blog/types";
+import { apiUrl } from "infrastructure/routes/constants";
 
 type BlogPostFilters = {
   category?: string | null;
@@ -17,7 +18,7 @@ export default function usePosts({
   const [isEmpty, setIsEmpty] = useState<boolean>(true);
 
   useEffect(() => {
-    fetch(`https://antonettiserena-api.herokuapp.com/api/${category}/all`)
+    fetch(`${apiUrl}/${category}/all`)
       .then((res) => res.json())
       .then((blogPosts: BlogPostResponse[]) => {
         const shouldFilterByCategory = !!category;

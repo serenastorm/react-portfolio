@@ -1,5 +1,13 @@
 import { SectionName, SectionTitle } from "./types";
 
+const api = {
+  dev: "http://localhost:5000/api",
+  prod: "https://antonettiserena-api.herokuapp.com/api",
+};
+
+export const apiUrl =
+  process.env.NODE_ENV === "production" ? api.prod : api.dev;
+
 const baseUrl = "/";
 const caseStudyBaseUrl = `${baseUrl}myqr`;
 const caseStudySectionUrl = (section?: SectionName) =>

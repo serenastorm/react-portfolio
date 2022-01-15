@@ -1,4 +1,5 @@
 export { default as useCopyToClipboard } from "./useCopyToClipboard";
+export { default as useLocalStorage } from "./useLocalStorage";
 export { default as usePrefersReducedMotion } from "./usePrefersReducedMotion";
 export { default as useSlider } from "./useSlider";
 export { default as useStepsAnimation } from "./useStepsAnimation";

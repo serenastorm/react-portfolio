@@ -5,7 +5,7 @@ import ReactMarkdown from "react-markdown";
 import rehypeHighlight from "rehype-highlight";
 import remarkGfm from "remark-gfm";
 import rehypeRaw from "rehype-raw";
-import { NewTabLink, Page, Pill, Pills } from "Main/components";
+import { LikeButton, NewTabLink, Page, Pill, Pills } from "Main/components";
 import { usePostNavigation, useSinglePost } from "infrastructure/hooks";
 import { routes } from "infrastructure/routes/constants";
 import {
@@ -20,8 +20,10 @@ import "./BlogArticle.scss";
 const BlogArticlePage = () => {
   const category = "snippets";
   const { slug }: { slug: string } = useParams();
-  const { post, isLoading, isEmpty } = useSinglePost(category, slug);
+  const { post, isLoading, isEmpty, likes } = useSinglePost(category, slug);
   const { previousPost, nextPost } = usePostNavigation(category, slug);
+  const { fields, sys } = post || {};
+
   const {
     title,
     subcategory,
@@ -29,7 +31,7 @@ const BlogArticlePage = () => {
     tags,
     codeSandboxId,
     codeSandboxSettings,
-  } = post || {};
+  } = fields || {};
 
   const hideNavigation = true;
   const forceRefresh = true;
@@ -209,6 +211,7 @@ const BlogArticlePage = () => {
           )}
         </div>
       </Page>
+      {sys?.id && <LikeButton {...likes} articleId={sys.id} />}
     </>
   );
 };

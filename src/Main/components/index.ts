@@ -1,4 +1,5 @@
 export { BlogArticleLink } from "./BlogArticleLink";
+export { LikeButton } from "./LikeButton";
 export { NavButton } from "./NavButton";
 export { NewTabLink } from "./NewTabLink";
 export { default as Page } from "./Page";

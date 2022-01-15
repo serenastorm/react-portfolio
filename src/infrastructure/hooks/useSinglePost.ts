@@ -1,22 +1,29 @@
 import { useEffect, useState } from "react";
-import { BlogPost, BlogPostResponse } from "infrastructure/blog/types";
+import { BlogPostResponse } from "infrastructure/blog/types";
+import { apiUrl } from "infrastructure/routes/constants";
 
 type Post = {
-  post: BlogPost | null;
+  post: BlogPostResponse | null;
   isLoading: boolean;
   isEmpty: boolean;
+  likes: {
+    total: number;
+    add: () => void;
+    remove: () => void;
+  };
 };
 
 export default function useSinglePost(category: string, slug: string): Post {
-  const [post, setPost] = useState<BlogPost | null>(null);
+  const [post, setPost] = useState<BlogPostResponse | null>(null);
   const [isLoading, setLoading] = useState<boolean>(true);
+  const [currentLikes, setCurrentLikes] = useState<number>(0);
   const [isEmpty, setIsEmpty] = useState<boolean>(true);
 
   useEffect(() => {
-    fetch(`https://antonettiserena-api.herokuapp.com/api/snippet/${category}/${slug}`)
+    fetch(`${apiUrl}/snippet/${category}/${slug}`)
       .then((res) => res.json())
       .then((blogPosts: BlogPostResponse[]) => {
-        setPost(blogPosts[0]?.fields);
+        setPost(blogPosts[0]);
         setLoading(false);
         setIsEmpty(blogPosts.length === 0);
       })
@@ -26,5 +33,32 @@ export default function useSinglePost(category: string, slug: string): Post {
       });
   }, [category, slug]);
 
-  return { post, isLoading, isEmpty };
+  useEffect(() => {
+    if (post?.sys.id) {
+      fetch(`${apiUrl}/snippetDoc/${post.sys.id}/likes`)
+        .then((res) => res.json())
+        .then((doc: { likes: number }) => {
+          setCurrentLikes(doc.likes);
+        })
+        .catch((error) => console.log(error));
+    }
+  }, [post]);
+
+  const likes = {
+    total: currentLikes > 0 ? currentLikes : 0,
+    add: () =>
+      post?.sys.id
+        ? fetch(`${apiUrl}/snippetDoc/${post.sys.id}/likes/add`)
+            .then((res) => res.json())
+            .then((doc) => setCurrentLikes(doc.likes))
+        : {},
+    remove: () =>
+      post?.sys.id
+        ? fetch(`${apiUrl}/snippetDoc/${post.sys.id}/likes/remove`)
+            .then((res) => res.json())
+            .then((doc) => setCurrentLikes(doc.likes))
+        : {},
+  };
+
+  return { post, isLoading, isEmpty, likes };
 }

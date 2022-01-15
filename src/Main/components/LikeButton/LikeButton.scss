@@ -1,0 +1,246 @@
+@import "~styles/modules/mixins.scss";
+@import "~styles/modules/placeholders.scss";
+
+.likeButton {
+  --like-button-width: 4rem;
+
+  position: fixed;
+  z-index: 50;
+  bottom: 1.6rem;
+  right: 1.6rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: var(--like-button-width);
+  height: var(--like-button-width);
+  background-color: var(--light-gray);
+  color: var(--link);
+  border-radius: 0.4rem;
+  padding: 0.2rem 0.6rem;
+  min-width: max-content;
+  gap: 0.2rem;
+
+  input {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+
+    @include onHoverAndFocus {
+      & + svg {
+        transform: scale(1.2);
+      }
+    }
+  }
+
+  svg {
+    width: 3.2rem;
+    height: 3.2rem;
+    min-width: 3.2rem;
+    pointer-events: none;
+    overflow: visible;
+    transition: 0.25s transform;
+  }
+
+  p {
+    @extend %landing-paragraph;
+    color: var(--text);
+    min-width: max-content;
+    margin: 0;
+    font-size: 1.4rem;
+  }
+
+  #heart {
+    transform-origin: center;
+    animation: animateHeartOut 0.3s linear forwards;
+  }
+
+  #main-circle {
+    transform-origin: 20px 20px;
+  }
+
+  input:checked + svg {
+    #heart {
+      transform: scale(0.2);
+      animation: animateHeart 0.3s linear forwards 0.25s;
+    }
+
+    #main-circle {
+      transition: all 2s;
+      animation: animateCircle 0.3s linear forwards;
+      opacity: 1;
+    }
+
+    #heart1 {
+      transition: 0.5s transform 0.3s;
+    }
+
+    #heart2 {
+      transition: 1.5s transform 0.3s;
+    }
+
+    #heart1,
+    #heart2 {
+      transform-origin: center;
+    }
+
+    #heartgroup1 {
+      #heart1 {
+        transform: scale(0) translate(0, -5px);
+      }
+
+      #heart2 {
+        transform: scale(0) translate(5px, -20px);
+      }
+    }
+
+    #heartgroup2 {
+      #heart1 {
+        transform: scale(0) translate(10px, 0);
+      }
+
+      #heart2 {
+        transform: scale(0) translate(20px, 10px);
+      }
+    }
+
+    #heartgroup3 {
+      #heart1 {
+        transform: scale(0) translate(-10px, -5px);
+      }
+
+      #heart2 {
+        transform: scale(0) translate(-20px, 10px);
+      }
+    }
+
+    #heartgroup4 {
+      #heart1 {
+        transform: scale(0) translate(5px, -5px);
+      }
+
+      #heart2 {
+        transform: scale(0) translate(20px, -20px);
+      }
+    }
+
+    #heartgroup5 {
+      #heart1 {
+        transform: scale(0) translate(10px, -0);
+      }
+
+      #heart2 {
+        transform: scale(0) translate(20px, 10px);
+      }
+    }
+
+    #heartgroup6 {
+      #heart1 {
+        transform: scale(0) translate(-10px, -10px);
+      }
+
+      #heart2 {
+        transform: scale(0) translate(-20px, -20px);
+      }
+    }
+
+    #heartgroup7 {
+      #heart1 {
+        transform: scale(0) translate(-5px, -10px);
+      }
+
+      #heart2 {
+        transform: scale(0) translate(-15px, -25px);
+      }
+    }
+
+    #heartgroup1,
+    #heartgroup2,
+    #heartgroup3,
+    #heartgroup4,
+    #heartgroup5,
+    #heartgroup6,
+    #heartgroup7 {
+      opacity: 1;
+      transition: 0.1s opacity 0.3s;
+    }
+  }
+}
+
+@keyframes animateHeart {
+  0% {
+    transform: scale(0.2);
+  }
+
+  40% {
+    transform: scale(1.2);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes animateHeartOut {
+  0% {
+    transform: scale(1.4);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes animateCircle {
+  40% {
+    transform: scale(10);
+    opacity: 1;
+    fill: #dd4688;
+  }
+
+  55% {
+    transform: scale(11);
+    opacity: 1;
+    fill: #d46abf;
+  }
+
+  65% {
+    transform: scale(12);
+    opacity: 1;
+    fill: #cc8ef5;
+  }
+
+  75% {
+    transform: scale(13);
+    opacity: 1;
+    fill: transparent;
+    stroke: #cc8ef5;
+    stroke-width: 0.5;
+  }
+
+  85% {
+    transform: scale(17);
+    opacity: 1;
+    fill: transparent;
+    stroke: #cc8ef5;
+    stroke-width: 0.2;
+  }
+
+  95% {
+    transform: scale(18);
+    opacity: 1;
+    fill: transparent;
+    stroke: #cc8ef5;
+    stroke-width: 0.1;
+  }
+
+  100% {
+    transform: scale(19);
+    opacity: 1;
+    fill: transparent;
+    stroke: #cc8ef5;
+    stroke-width: 0;
+  }
+}

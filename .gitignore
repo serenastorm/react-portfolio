@@ -24,3 +24,6 @@ yarn-error.log*
 
 ## Secrets
 /src/infrastructure/blog/constants.ts
+
+# Local Netlify folder
+.netlify

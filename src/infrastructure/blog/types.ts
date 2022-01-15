@@ -12,7 +12,11 @@ export type BlogPost = {
   shortText?: string;
 };
 
-export type BlogPostResponse = { fields: BlogPost };
+export type BlogPostMeta = {
+  id: string;
+};
+
+export type BlogPostResponse = { fields: BlogPost; sys: BlogPostMeta };
 
 export type BlogPosts = {
   posts: BlogPostResponse[];
