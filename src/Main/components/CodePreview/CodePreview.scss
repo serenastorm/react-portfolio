@@ -1,0 +1,51 @@
+@import "~styles/modules/mixins.scss";
+@import "~styles/modules/placeholders.scss";
+
+.blogArticle {
+  .sp-customNav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: var(--sp-colors-bg-default);
+    padding-right: var(--sp-space-4);
+    font-family: var(--type-paragraph);
+
+    .sp-customNavBtns {
+      display: flex;
+      gap: 0.8rem;
+    }
+
+    button,
+    a {
+      cursor: pointer;
+    }
+
+    .sp-customNavBtn {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      background-color: transparent;
+      border-width: 0;
+      padding: 0.4rem 0.8rem;
+      border-radius: 0.4rem;
+
+      @include onHoverAndFocus {
+        background-color: var(--sp-colors-bg-active);
+      }
+
+      svg {
+        width: 1.2rem;
+        height: auto;
+
+        path {
+          fill: var(--pink);
+        }
+      }
+    }
+  }
+
+  .cm-scroller {
+    font-family: var(--type-code);
+    font-size: 1.2em;
+  }
+}

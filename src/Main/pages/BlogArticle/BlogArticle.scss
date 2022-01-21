@@ -11,7 +11,7 @@ $task-list-checkmark-size: 2.4rem;
   h1 {
     text-align: center;
 
-    & + p {
+    & + .markdown > p:first-of-type {
       &::first-letter {
         font-family: var(--type-serif);
         float: left;
@@ -88,7 +88,8 @@ $task-list-checkmark-size: 2.4rem;
   p,
   pre,
   ul,
-  .codeTabs {
+  .codeTabs,
+  div {
     & + h2 {
       margin-top: 6.4rem;
     }
@@ -141,10 +142,10 @@ $task-list-checkmark-size: 2.4rem;
   }
 
   .new-tab-link {
-    --arrow-bg-color: #d5cdcf;
-    --arrow-pointer-color: var(--text);
+    --arrow-bg-color: rgba(0, 106, 220, 0.3);
+    --arrow-pointer-color: var(--blue);
     --arrow-bg-color-hover: #f8c0d8;
-    --arrow-pointer-color-hover: var(--link);
+    --arrow-pointer-color-hover: var(--blue);
   }
 
   .task-list-item {
@@ -232,6 +233,25 @@ $task-list-checkmark-size: 2.4rem;
       .hljs-string {
         color: var(--blue);
       }
+    }
+  }
+}
+
+.markdown {
+  a {
+    color: var(--blue);
+    background: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0) 25%,
+      var(--blue-bg) 25%
+    );
+    background-repeat: no-repeat;
+    background-size: 100% 200%;
+    background-position: 0% 0%;
+    transition: all 150ms ease;
+
+    @include onHoverAndFocus {
+      background-position: center bottom;
     }
   }
 }

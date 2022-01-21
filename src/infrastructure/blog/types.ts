@@ -7,9 +7,9 @@ export type BlogPost = {
   content: string;
   date: Date;
   topics?: string[];
-  codeSandboxId?: string;
-  codeSandboxSettings?: string;
   shortText?: string;
+  sandpackContent?: string;
+  sandpackSettings?: any;
 };
 
 export type BlogPostMeta = {

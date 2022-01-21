@@ -5,7 +5,14 @@ import ReactMarkdown from "react-markdown";
 import rehypeHighlight from "rehype-highlight";
 import remarkGfm from "remark-gfm";
 import rehypeRaw from "rehype-raw";
-import { LikeButton, NewTabLink, Page, Pill, Pills } from "Main/components";
+import {
+  LikeButton,
+  NewTabLink,
+  Page,
+  Pill,
+  Pills,
+  Sandpack,
+} from "Main/components";
 import { usePostNavigation, useSinglePost } from "infrastructure/hooks";
 import { routes } from "infrastructure/routes/constants";
 import {
@@ -29,13 +36,9 @@ const BlogArticlePage = () => {
     subcategory,
     content,
     tags,
-    codeSandboxId,
-    codeSandboxSettings,
+    sandpackContent,
+    sandpackSettings,
   } = fields || {};
-
-  const hideNavigation = true;
-  const forceRefresh = true;
-  const hideDevTools = true;
 
   useEffect(() => {
     if (title) {
@@ -93,11 +96,14 @@ const BlogArticlePage = () => {
             <motion.div variants={scrollAnimationVariants({ delay: 0.5 })}>
               <ReactMarkdown
                 children={content}
+                key="main"
+                className="markdown"
                 remarkPlugins={[remarkGfm]}
                 rehypePlugins={[rehypeHighlight, rehypeRaw]}
                 components={{
                   code({ node, inline, className, children, ...props }) {
                     const match = /language-(\w+)/.exec(className || "");
+
                     const renderSnippet = () => (
                       <code className={className} {...props}>
                         {children}
@@ -134,7 +140,8 @@ const BlogArticlePage = () => {
                         copy={linkCopy}
                         to={href}
                         shouldOpenInNewTab
-                        className="bold"
+                        className="medium"
+                        withUnderline={false}
                       />
                     ) : (
                       <a {...props}>{children}</a>
@@ -143,29 +150,12 @@ const BlogArticlePage = () => {
                 }}
               />
             </motion.div>
-            {codeSandboxId && (
+            {sandpackContent && sandpackSettings && (
               <>
                 <motion.h2 variants={scrollAnimationVariants({})}>
                   Demo
                 </motion.h2>
-                <motion.iframe
-                  variants={scrollAnimationVariants({})}
-                  title={codeSandboxId}
-                  src={`https://codesandbox.io/embed/${codeSandboxId}?codemirror=1&editorsize=0&hidenavigation=${
-                    hideNavigation ? 1 : 0
-                  }&forcerefresh=${forceRefresh ? 1 : 0}&hidedevtools=${
-                    hideDevTools ? 1 : 0
-                  }&theme=dark${codeSandboxSettings}`}
-                  style={{
-                    width: "100%",
-                    height: "70vh",
-                    border: 0,
-                    borderRadius: "0.4rem",
-                    overflow: "hidden",
-                  }}
-                  allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
-                  sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
-                />
+                <Sandpack markdown={sandpackContent} setup={sandpackSettings} />
               </>
             )}
           </motion.main>
@@ -193,22 +183,28 @@ const BlogArticlePage = () => {
               </>
             )}
           </motion.div>
-          {nextPost && (
-            <motion.div
-              className="blogArticle-navLink"
-              key={`${subcategory}/${slug}/nextLink`}
-              {...scrollAnimationWrapperProps}
-            >
-              <motion.p variants={scrollAnimationVariants({})}>
-                Next post
-              </motion.p>
-              <Link to={`/${nextPost.fields.category}/${nextPost.fields.slug}`}>
-                <motion.h2 variants={scrollAnimationVariants({ delay: 0.25 })}>
-                  {nextPost.fields.title}
-                </motion.h2>
-              </Link>
-            </motion.div>
-          )}
+          <motion.div
+            className="blogArticle-navLink"
+            key={`${subcategory}/${slug}/nextLink`}
+            {...scrollAnimationWrapperProps}
+          >
+            {nextPost && (
+              <>
+                <motion.p variants={scrollAnimationVariants({})}>
+                  Next post
+                </motion.p>
+                <Link
+                  to={`/${nextPost.fields.category}/${nextPost.fields.slug}`}
+                >
+                  <motion.h2
+                    variants={scrollAnimationVariants({ delay: 0.25 })}
+                  >
+                    {nextPost.fields.title}
+                  </motion.h2>
+                </Link>
+              </>
+            )}
+          </motion.div>
         </div>
         {sys?.id && <LikeButton {...likes} articleId={sys.id} fixed />}
       </Page>

@@ -48,13 +48,17 @@ export default function useSinglePost(category: string, slug: string): Post {
     total: currentLikes > 0 ? currentLikes : 0,
     add: () =>
       post?.sys.id
-        ? fetch(`${apiUrl}/snippetDoc/${post.sys.id}/likes/add`)
+        ? fetch(`${apiUrl}/snippetDoc/${post.sys.id}/likes/add`, {
+            method: "POST",
+          })
             .then((res) => res.json())
             .then((doc) => setCurrentLikes(doc.likes))
         : {},
     remove: () =>
       post?.sys.id
-        ? fetch(`${apiUrl}/snippetDoc/${post.sys.id}/likes/remove`)
+        ? fetch(`${apiUrl}/snippetDoc/${post.sys.id}/likes/remove`, {
+            method: "POST",
+          })
             .then((res) => res.json())
             .then((doc) => setCurrentLikes(doc.likes))
         : {},

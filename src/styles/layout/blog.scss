@@ -163,9 +163,9 @@
         }
 
         @include onHoverAndFocus {
-          background-color: #e1f0ff;
+          background-color: var(--blue-bg);
           color: #006adc;
-          border-bottom-color: #006adc;
+          border-bottom-color: var(--blue);
 
           &::after {
             opacity: 1;
