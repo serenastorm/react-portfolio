@@ -25,7 +25,12 @@ const LikeButton = ({
 
   const localStorageItem = window.localStorage.getItem(localStorageKey);
 
-  const inputShouldBeChecked = JSON.parse(localStorageItem || "") === "true";
+  const inputShouldBeChecked = JSON.parse(localStorageItem || "{}") === "true";
+
+  const minLikes = inputShouldBeChecked ? 1 : 0;
+
+  const likes = total > minLikes ? total : minLikes;
+  const likesCount = likes === minLikes && fixed ? "No" : likes;
 
   return (
     <div className={`likeButton${fixed ? " likeButton-isFixed" : ""}`}>
@@ -156,7 +161,7 @@ const LikeButton = ({
         </g>
       </svg>
       <p>
-        {total > 0 ? <span className="medium">{total}</span> : "No"}
+        {likesCount}
         {fixed ? ` like${total > 1 || total === 0 ? "s" : ""}` : ""}
       </p>
     </div>

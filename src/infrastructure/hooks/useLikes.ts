@@ -26,12 +26,16 @@ export default function useLikes(postId: string): Likes {
   }, [postId]);
 
   const addLike = () =>
-    fetch(`${apiUrl}/snippetDoc/${postId}/likes/add`)
+    fetch(`${apiUrl}/snippetDoc/${postId}/likes/add`, {
+      method: "POST",
+    })
       .then((res) => res.json())
       .then((doc) => setTotalLikes(doc.likes));
 
   const removeLike = () =>
-    fetch(`${apiUrl}/snippetDoc/${postId}/likes/remove`)
+    fetch(`${apiUrl}/snippetDoc/${postId}/likes/remove`, {
+      method: "POST",
+    })
       .then((res) => res.json())
       .then((doc) => setTotalLikes(doc.likes));
 
