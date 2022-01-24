@@ -52,8 +52,8 @@ const BlogArticlePage = () => {
           Skip to main content
         </a>
       )}
-      <Page className="blog blogPage blogArticle">
-        <motion.div
+      <Page className="blog blogPage blogArticle" as="article">
+        <motion.header
           className="blogArticle-meta"
           key={`${subcategory}/${slug}/meta`}
           {...scrollAnimationWrapperProps}
@@ -76,7 +76,7 @@ const BlogArticlePage = () => {
             )}
           </motion.p>
           {tags && <Pills types={tags} />}
-        </motion.div>
+        </motion.header>
         {isEmpty || !content || isLoading ? (
           <motion.h1 variants={scrollAnimationVariants({})}>
             {isLoading ? "Loading..." : "No article here."}
@@ -93,11 +93,14 @@ const BlogArticlePage = () => {
             <motion.div variants={scrollAnimationVariants({ delay: 0.5 })}>
               <ReactMarkdown
                 children={content}
+                key="main"
+                className="markdown"
                 remarkPlugins={[remarkGfm]}
                 rehypePlugins={[rehypeHighlight, rehypeRaw]}
                 components={{
                   code({ node, inline, className, children, ...props }) {
                     const match = /language-(\w+)/.exec(className || "");
+
                     const renderSnippet = () => (
                       <code className={className} {...props}>
                         {children}
@@ -134,7 +137,8 @@ const BlogArticlePage = () => {
                         copy={linkCopy}
                         to={href}
                         shouldOpenInNewTab
-                        className="bold"
+                        className="medium"
+                        withUnderline={false}
                       />
                     ) : (
                       <a {...props}>{children}</a>
@@ -165,12 +169,12 @@ const BlogArticlePage = () => {
                   }}
                   allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
                   sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
-                />
+                />{" "}
               </>
             )}
           </motion.main>
         )}
-        <div className="blogArticle-nav">
+        <footer className="blogArticle-nav">
           <motion.div
             className="blogArticle-navLink"
             key={`${subcategory}/${slug}/prevLink`}
@@ -193,23 +197,29 @@ const BlogArticlePage = () => {
               </>
             )}
           </motion.div>
-          {nextPost && (
-            <motion.div
-              className="blogArticle-navLink"
-              key={`${subcategory}/${slug}/nextLink`}
-              {...scrollAnimationWrapperProps}
-            >
-              <motion.p variants={scrollAnimationVariants({})}>
-                Next post
-              </motion.p>
-              <Link to={`/${nextPost.fields.category}/${nextPost.fields.slug}`}>
-                <motion.h2 variants={scrollAnimationVariants({ delay: 0.25 })}>
-                  {nextPost.fields.title}
-                </motion.h2>
-              </Link>
-            </motion.div>
-          )}
-        </div>
+          <motion.div
+            className="blogArticle-navLink"
+            key={`${subcategory}/${slug}/nextLink`}
+            {...scrollAnimationWrapperProps}
+          >
+            {nextPost && (
+              <>
+                <motion.p variants={scrollAnimationVariants({})}>
+                  Next post
+                </motion.p>
+                <Link
+                  to={`/${nextPost.fields.category}/${nextPost.fields.slug}`}
+                >
+                  <motion.h2
+                    variants={scrollAnimationVariants({ delay: 0.25 })}
+                  >
+                    {nextPost.fields.title}
+                  </motion.h2>
+                </Link>
+              </>
+            )}
+          </motion.div>
+        </footer>
         {sys?.id && <LikeButton {...likes} articleId={sys.id} fixed />}
       </Page>
     </>
