@@ -1,6 +1,5 @@
 # Serena Antonetti | Portfolio
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/bedaab4c-f384-40df-8775-79dbc64d6a52/deploy-status)](https://app.netlify.com/sites/zealous-visvesvaraya-033757/deploys)
 [![License: AGPL v3](https://img.shields.io/badge/License-AGPL_v3-blue.svg)](https://www.gnu.org/licenses/agpl-3.0)
 [![TypeScript](https://img.shields.io/badge/%3C%2F%3E-TypeScript-%230074c1.svg)](http://www.typescriptlang.org/)
 
