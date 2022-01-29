@@ -36,8 +36,8 @@ const BlogArticlePage = () => {
     subcategory,
     content,
     tags,
-    sandpackContent,
     sandpackSettings,
+    sandpackContent,
   } = fields || {};
 
   useEffect(() => {

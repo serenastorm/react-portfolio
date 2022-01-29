@@ -3,6 +3,16 @@ import ReactDOM from "react-dom";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 
+// replace console.* to disable logs on production
+if (
+  process.env.NODE_ENV === "production" &&
+  process.env.DISABLE_LOGS === "true"
+) {
+  console.log = () => {};
+  console.error = () => {};
+  console.debug = () => {};
+}
+
 ReactDOM.render(
   <StrictMode>
     <App />

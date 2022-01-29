@@ -1,16 +1,6 @@
-/* TODO: Need to find a way to import remote .MDX
-files then clean this code + CodePreview folder
-If you're reading this it's a work in progress don't judge me */
-
-// import { useEffect, useState, Fragment } from "react";
 import { SandpackSetup } from "@codesandbox/sandpack-react";
-// import rehypeMetaAsAttributes from "./rehype-meta-as-attributes";
-// import * as reactRuntime from "react/jsx-runtime.js";
-// import { RunnerOptions } from "@mdx-js/mdx/lib/util/resolve-evaluate-options";
-// import { compile, run } from "@mdx-js/mdx";
-import { MDXProvider } from "@mdx-js/react";
-import { CodePreview } from "..";
-import SandPackMarkdown from "Main/pages/BlogArticle/SandPackContent.mdx";
+import { SandpackWrapper } from "./SandpackWrapper";
+import { CodeSnippetProps } from "./types";
 
 import "./Sandpack.scss";
 
@@ -21,46 +11,52 @@ const Sandpack = ({
   markdown: string;
   setup: SandpackSetup;
 }) => {
-  // const [mdxModule, setMdxModule] = useState<any | null>(null);
-  // const SandpackContent = mdxModule?.default || Fragment;
+  /* This is definitely not the best code I've written 
+  Basically using @mdx-js to compile and run the markdown
+  renders a single child which doesn't work with our
+  SandpackWrapper component so we need to manually separate
+  our code files 
+  The only libraries that current work with remote .mdx 
+  files are all for NextJS so migrating would be a more
+  elegant solution but a bit overkill for now */
 
-  // useEffect(() => {
-  //   const runtime = reactRuntime as RunnerOptions;
+  const preTags = markdown
+    .split("```")
+    ?.filter((tag) => !!tag && tag !== "\n\n" && tag !== "\n");
 
-  //   const compileCode = async () =>
-  //     String(
-  //       await compile(markdown, {
-  //         outputFormat: "function-body",
-  //         // rehypePlugins: [rehypeMetaAsAttributes],
-  //         format: "mdx",
-  //         // jsx: true,
-  //         // jsxRuntime: "classic",
-  //         // jsxImportSource: "@mdx-js/react",
-  //         // useDynamicImport: true,
-  //       })
-  //     );
+  const preTagsObjectArray = (): CodeSnippetProps[] => {
+    let result: CodeSnippetProps[] = [];
 
-  //   compileCode().then(async (compiledCode) => {
-  //     console.log(compiledCode);
-  //     setMdxModule(await run(compiledCode, runtime));
-  //   });
-  // }, [markdown]);
+    for (let i = 0; i < preTags.length; i++) {
+      const preTag = preTags[i];
+      const firstLine: string[] = preTag.match(/^.*$/m) || [];
+      const metastring = firstLine[0]?.match(/meta:/)
+        ? firstLine[0].slice("meta:".length)
+        : null;
 
-  // if (!mdxModule || !mdxModule.default) {
-  //   return null;
-  // }
+      if (metastring) {
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
+        const [language, name, ...params] = metastring.split(" ");
+        const hidden = metastring.includes("hidden");
+        const active = metastring.includes("active");
+        const filePath = "/" + name;
 
-  return (
-    <MDXProvider
-      components={{
-        wrapper: (p) => <CodePreview setup={setup} {...p} />,
-        pre: (p) => <pre {...p} />,
-        code: (p) => <code {...p} />,
-      }}
-    >
-      <SandPackMarkdown />
-    </MDXProvider>
-  );
+        result.push({
+          language,
+          metastring,
+          hidden,
+          active,
+          filePath,
+          code: preTag.substring(preTag.indexOf("\n") + 1),
+        });
+      } else {
+        console.log(`metastring not found for code block ${preTag}`);
+      }
+    }
+    return result;
+  };
+
+  return <SandpackWrapper setup={setup} codeSnippets={preTagsObjectArray()} />;
 };
 
 export default Sandpack;

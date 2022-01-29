@@ -12,13 +12,14 @@ $link-hover-gradient: linear-gradient(125deg, var(--link), var(--link-sm));
   }
 
   padding-top: var(--landing-padding-top);
+  padding-bottom: var(--landing-padding-top);
   // Also theme-color in index.html
   background-color: var(--light-gray);
   min-height: 100%;
 
   display: grid;
   grid-template-columns: 1fr var(--max-text-width) 1fr;
-  grid-template-rows: max-content auto max-content;
+  grid-template-rows: max-content auto;
 
   & > *:not(footer) {
     grid-column: 2;

@@ -2,18 +2,17 @@ import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { BlogArticleLink, NewTabLink, Page } from "Main/components";
-import { LandingPageFooter } from "Main/components/LandingPageFooter";
 import {
   scrollAnimationVariants,
   scrollAnimationWrapperProps,
 } from "helpers/animations";
+import { GoToLinkIcon } from "CaseStudy/assets/Icons/Actions";
+import { routes } from "infrastructure/routes/constants";
 import { projectLinks } from "./constants";
 import { usePosts } from "infrastructure/hooks";
 import { AnimatedLinkProps, LinkProps, ScreenReaderLinkProps } from "./types";
 
 import "./LandingPage.scss";
-import { GoToLinkIcon } from "CaseStudy/assets/Icons/Actions";
-import { routes } from "infrastructure/routes/constants";
 
 const ProjectLink = ({
   animationDelay,
@@ -148,8 +147,6 @@ const LandingPage = () => {
           />
         </motion.ul>
       </div>
-
-      <LandingPageFooter />
     </Page>
   );
 };
