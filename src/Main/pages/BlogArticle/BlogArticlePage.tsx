@@ -55,8 +55,8 @@ const BlogArticlePage = () => {
           Skip to main content
         </a>
       )}
-      <Page className="blog blogPage blogArticle">
-        <motion.div
+      <Page className="blog blogPage blogArticle" as="article">
+        <motion.header
           className="blogArticle-meta"
           key={`${subcategory}/${slug}/meta`}
           {...scrollAnimationWrapperProps}
@@ -79,7 +79,7 @@ const BlogArticlePage = () => {
             )}
           </motion.p>
           {tags && <Pills types={tags} />}
-        </motion.div>
+        </motion.header>
         {isEmpty || !content || isLoading ? (
           <motion.h1 variants={scrollAnimationVariants({})}>
             {isLoading ? "Loading..." : "No article here."}
@@ -160,7 +160,7 @@ const BlogArticlePage = () => {
             )}
           </motion.main>
         )}
-        <div className="blogArticle-nav">
+        <footer className="blogArticle-nav">
           <motion.div
             className="blogArticle-navLink"
             key={`${subcategory}/${slug}/prevLink`}
@@ -205,7 +205,7 @@ const BlogArticlePage = () => {
               </>
             )}
           </motion.div>
-        </div>
+        </footer>
         {sys?.id && <LikeButton {...likes} articleId={sys.id} fixed />}
       </Page>
     </>
