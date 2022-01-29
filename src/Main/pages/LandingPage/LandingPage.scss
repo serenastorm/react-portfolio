@@ -113,13 +113,14 @@ $link-hover-gradient: linear-gradient(125deg, var(--link), var(--link-sm));
   margin-top: 8vh;
   margin-bottom: 8vh;
   max-width: 140rem;
-  display: flex;
-  flex-wrap: wrap;
-  align-content: flex-start;
-  gap: var(--project-gap);
   border-top: 1px solid #b6a4a4;
   border-bottom: 1px solid #b6a4a4;
   padding: 4rem 0;
+
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: var(--project-gap);
 
   @include breakpoint(0, 859.98) {
     --project-gap: 1.6rem;
@@ -131,16 +132,8 @@ $link-hover-gradient: linear-gradient(125deg, var(--link), var(--link-sm));
 }
 
 .project {
-  --project-width: calc(
-    (
-      (100% - (#{var(--project-gap)} * (#{var(--projects-per-row)} - 1))) / #{var(
-          --projects-per-row
-        )}
-    )
-  );
   position: relative;
   display: flex;
-  width: var(--project-width);
   gap: var(--project-padding);
   padding: var(--project-padding);
   border-radius: var(--project-radius);
