@@ -47,6 +47,9 @@ export default function usePosts({
         setPosts(filteredPostsByTag);
         setLoading(false);
         setIsEmpty(filteredPostsByTag.length === 0);
+      })
+      .catch((error) => {
+        console.log(error);
       });
   }, [category, subcategory, tag]);
 
