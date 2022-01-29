@@ -52,4 +52,12 @@
   .sp-wrapper {
     --sp-layout-height: 500px;
   }
+
+  .sp-cube-wrapper {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    right: initial;
+    bottom: initial;
+  }
 }
