@@ -22,6 +22,31 @@ $task-list-checkmark-size: 2.4rem;
     }
   }
 
+  table {
+    width: 100%;
+    max-width: max-content;
+    font-family: var(--type-paragraph);
+    font-size: 1.6rem;
+
+    thead tr,
+    tbody tr:not(:last-of-type) {
+      border-bottom: 1px solid var(--light-gray);
+    }
+
+    th,
+    td {
+      padding: 0.8rem;
+
+      &:not(:last-of-type) {
+        border-right: 1px solid var(--light-gray);
+      }
+    }
+
+    tr:nth-of-type(even) {
+      background-color: var(--light-gray);
+    }
+  }
+
   .blogArticle-nav {
     display: flex;
     margin-top: 8rem;
@@ -57,6 +82,7 @@ $task-list-checkmark-size: 2.4rem;
     // max-width: max-content;
     padding: 1.2rem 1.6rem;
     border-radius: 0.4rem;
+    color: var(--text-light);
 
     code {
       @include breakpoint(0, 1199.98) {
@@ -89,7 +115,8 @@ $task-list-checkmark-size: 2.4rem;
   pre,
   ul,
   .codeTabs,
-  div {
+  div,
+  table {
     & + h2 {
       margin-top: 6.4rem;
     }
@@ -149,7 +176,6 @@ $task-list-checkmark-size: 2.4rem;
   }
 
   .task-list-item {
-    display: flex;
     gap: 0.25em;
 
     input {
@@ -214,6 +240,43 @@ $task-list-checkmark-size: 2.4rem;
 
       .hljs-comment {
         opacity: 0.7;
+      }
+    }
+
+    &.language-tsx {
+      color: var(--blue);
+
+      .hljs-keyword,
+      .hljs-attr {
+        color: var(--plum);
+      }
+
+      .hljs-function {
+        color: var(--cyan);
+      }
+
+      .hljs-class,
+      .hljs-built_in {
+        color: var(--yellow);
+      }
+
+      .hljs-literal,
+      .hljs-params,
+      .hljs-comment {
+        color: var(--text-light);
+      }
+
+      .hljs-tag {
+        color: var(--blue);
+      }
+
+      .hljs-name,
+      .hljs-number {
+        color: var(--amber);
+      }
+
+      .hljs-string {
+        color: var(--grass);
       }
     }
 

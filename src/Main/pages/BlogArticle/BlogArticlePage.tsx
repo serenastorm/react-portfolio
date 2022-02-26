@@ -125,7 +125,8 @@ const BlogArticlePage = () => {
                     const indexOfExternalLink = node.children.findIndex(
                       (child) =>
                         child.type === "text" &&
-                        child.value === "View full criteria"
+                        (child.value === "View full criteria" ||
+                          child.value === "View design pattern")
                     );
 
                     const isExternalLink = indexOfExternalLink > -1;
