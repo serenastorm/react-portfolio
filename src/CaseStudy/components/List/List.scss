@@ -4,11 +4,11 @@
   list-style-type: none;
 
   li {
-    font-family: var(--myqr-type-paragraph);
+    font-family: var(--type-paragraph);
 
     & > p {
       &:first-child {
-        color: var(--myqr-text);
+        color: var(--text);
       }
     }
   }

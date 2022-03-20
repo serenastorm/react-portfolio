@@ -15,7 +15,7 @@
   }
 
   .listItem {
-    color: var(--myqr-text);
+    color: var(--text);
   }
 
   .icons-category {
@@ -92,7 +92,7 @@
     svg {
       path,
       circle {
-        fill: var(--myqr-text-light);
+        fill: var(--text-light);
       }
     }
   }
@@ -103,7 +103,7 @@
   width: 0.8rem;
   bottom: 0;
   height: 40%;
-  background-color: var(--myqr-primary);
+  background-color: var(--primary);
   border-radius: 10%;
   position: absolute;
   transform-origin: bottom center;

@@ -6,13 +6,13 @@
   .caseStudyPage-intro p,
   .text-isFullScreen p,
   .listItem {
-    color: rgba(#{var(--myqr-primary-light-rgb)}, 0.85);
+    color: rgba(#{var(--primary-light-rgb)}, 0.85);
   }
 
   .section-hasHeader h1,
   .text-isFullScreen h1,
   .contentRow h1 {
-    color: var(--myqr-primary-light);
+    color: var(--primary-light);
   }
 
   .caseStudyPage-header-isSticky {
@@ -21,7 +21,7 @@
 
   .caseStudyPage-header:not(.caseStudyPage-header-isSticky) {
     h1 {
-      color: var(--myqr-gray-100);
+      color: var(--gray-100);
     }
   }
 
@@ -31,15 +31,15 @@
 
     h1,
     .caseStudyPage-nav-caret {
-      color: var(--myqr-primary-light);
+      color: var(--primary-light);
     }
 
     .caseStudyPage-nav-button {
       @include onHoverAndFocus {
         & ~ header {
           .caseStudyPage-nav-caret {
-            background-color: var(--myqr-primary);
-            color: var(--myqr-text);
+            background-color: var(--primary);
+            color: var(--text);
           }
         }
       }
@@ -47,14 +47,14 @@
 
     .progressIndicator {
       .progressIndicator-track {
-        stroke: var(--myqr-primary-light);
+        stroke: var(--primary-light);
         opacity: 0.2;
       }
     }
   }
 
   .caseStudyPage-sectionId {
-    color: var(--myqr-primary);
+    color: var(--primary);
   }
 
   .toggletip-container {
@@ -62,6 +62,6 @@
   }
 
   .text-isFullScreen {
-    background-color: var(--myqr-primary);
+    background-color: var(--primary);
   }
 }

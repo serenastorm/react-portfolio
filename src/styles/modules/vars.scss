@@ -1,17 +1,92 @@
-@import "~styles/modules/functions.scss";
+@import "typography.scss";
+@import "mixins.scss";
+@import "functions.scss";
 
 $link: #ed5497;
 $link-rgb: hexToRGB($link);
 
+$text: #1d1a5a;
+$text-rgb: hexToRGB($text);
+
+$primary: #3365ff;
+$primary-rgb: hexToRGB($primary);
+$primary-hover: darken($primary, 5%);
+$primary-light: #e0e8ff;
+$primary-light-rgb: hexToRGB($primary-light);
+
+$danger: #e70853;
+$danger-rgb: hexToRGB($danger);
+$danger-hover: darken($danger, 5%);
+$danger-light: #fee7ef;
+$danger-light-rgb: hexToRGB($danger-light);
+
+$success: #0da67b;
+$success-rgb: hexToRGB($success);
+$success-hover: darken($success, 5%);
+
 :root {
+  --container-padding-sides: calc((100vw - #{var(--max-text-width)}) / 2);
+
+  // Spacing
+  @include breakpoint(0, 799.98) {
+    --container-padding-top: 4rem;
+    --page-padding-sides: 1.6rem;
+    --max-text-width: calc(100vw - (#{var(--page-padding-sides)} * 2));
+  }
+
+  @include breakpoint(800) {
+    --container-padding-top: 8vw;
+    --page-padding-sides: 3vw;
+  }
+
+  @include breakpoint(800, 1199.98) {
+    --page-padding-sides: 2vw;
+    --max-text-width: 85vw;
+  }
+
+  @include breakpoint(1200) {
+    --page-padding-sides: 3vw;
+    --max-text-width: 110rem; /* Roughly 65ch for paragraphs */
+  }
+
   // Colors
   --white: #ffffff;
-  --light-gray: #f5f7fb;
-  --text: #5e5252;
-  --text-light: #856b6b;
+
   --link: #{$link};
   --link-rgb: #{$link-rgb};
   --link-sm: #833deb;
+
+  --primary-light: #e0e8ff;
+  --primary: #{$primary};
+  --primary-hover: #{$primary-hover};
+  --primary-rgb: #{$primary-rgb};
+  --primary-light: #{$primary-light};
+  --primary-light-rgb: #{$primary-light-rgb};
+
+  --text: #{$text};
+  --text-rgb: #{$text-rgb};
+  --text-light: #4f4d7f;
+
+  --bg-light: #f5f7fb;
+  --gray-100: #f4f6f8;
+  --gray-200: #eaf0f5;
+  --gray-300: #99a1b3;
+  --gray-400: #868d9e;
+
+  --danger: #{$danger};
+  --danger-rgb: #{$danger-rgb};
+  --danger-hover: #{$danger-hover};
+  --danger-light: #{$danger-light};
+  --danger-light-rgb: #{$danger-light-rgb};
+
+  --success-rgb: #{$success-rgb};
+  --success-hover: #{$success-hover};
+
+  --page-background: var(--white);
+
+  // Focus states
+  --focus-bg: #b21d91;
+  --focus-shadow: 0 0 0 0.2rem rgba(178, 29, 145, 0.3);
 
   // Typography
   --font-weight-regular: 400;
@@ -20,10 +95,34 @@ $link-rgb: hexToRGB($link);
   --font-weight-bold: 700;
 
   // TODO: Add fallback fonts
-  --type-paragraph: "IBM Plex Sans", sans-serif;
   --type-serif: "EB Garamond", serif;
-  --type-code: "Ubuntu Mono", monospace;
   // Use a monospace font for numbers
   --type-numbers: "Azeret Mono", monospace;
-  --type-italic: "Cormorant Garamond", serif;
+  --type-paragraph: "Cabin", sans-serif;
+  --type-sans-serif: "Rubik", sans-serif;
+  --type-code: "Inconsolata", monospace;
+
+  // Box shadows
+  --container-shadow-sm: 0px 1rem 1rem 0px rgba(176, 181, 244, 0.1);
+  --container-shadow-md: 0px 2rem 2rem 0px rgba(176, 181, 244, 0.2);
+  --img-shadow: drop-shadow(31.6799px 63.5404px 76px rgba(0, 0, 0, 0.02))
+    drop-shadow(16.038px 32.1673px 33.1312px rgba(0, 0, 0, 0.0135))
+    drop-shadow(6.33599px 12.7081px 12.35px rgba(0, 0, 0, 0.01))
+    drop-shadow(1.386px 2.77989px 4.39375px rgba(0, 0, 0, 0.0065));
+  --img-container-shadow: 31.6799px 63.5404px 76px rgba(0, 0, 0, 0.02),
+    16.038px 32.1673px 33.1312px rgba(0, 0, 0, 0.0135),
+    6.33599px 12.7081px 12.35px rgba(0, 0, 0, 0.01),
+    1.386px 2.77989px 4.39375px rgba(0, 0, 0, 0.0065);
+
+  // Dimensions
+  --header-height: 5.4rem;
+
+  // Borders
+  @include breakpoint(0, 799.98) {
+    --border-radius-md: 0.4rem;
+  }
+
+  @include breakpoint(800) {
+    --border-radius-md: 0.8rem;
+  }
 }

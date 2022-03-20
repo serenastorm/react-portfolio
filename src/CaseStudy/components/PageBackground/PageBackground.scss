@@ -3,30 +3,21 @@
 }
 
 .caseStudyPage-bg {
-  // --myqr-page-background: var(--white);
-
   position: fixed;
   z-index: 0;
   width: 100vw;
   height: 100vh;
   inset: 0;
-  // transition: background-color 500ms ease;
 
   &.caseStudyPage-bg[data-theme="none"] {
-    // background-color: var(--white);
-    // --myqr-page-background: var(--white);
-
     & ~ .caseStudyPage {
-      --myqr-page-background: var(--white);
+      --page-background: var(--white);
     }
   }
 
   &.caseStudyPage-bg[data-theme="light"] {
-    // background-color: var(--myqr-primary-light);
-    // --myqr-page-background: var(--myqr-primary-light);
-
     & ~ .caseStudyPage {
-      --myqr-page-background: var(--myqr-primary-light);
+      --page-background: var(--primary-light);
     }
 
     &::before {
@@ -47,11 +38,8 @@
   }
 
   &.caseStudyPage-bg[data-theme="dark"] {
-    // background-color: #00003c;
-    // --myqr-page-background: #00003c;
-
     & ~ .caseStudyPage {
-      --myqr-page-background: #00003c;
+      --page-background: #00003c;
     }
   }
 }

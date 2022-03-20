@@ -5,7 +5,7 @@
 $button-transition-duration: 0.15s;
 
 .button {
-  font-family: var(--myqr-type-sans-serif);
+  font-family: var(--type-sans-serif);
   font-weight: var(--font-weight-regular);
   line-height: normal;
   border-radius: 0.4rem;
@@ -52,9 +52,9 @@ $button-transition-duration: 0.15s;
     @include removeFocusOutline;
 
     @include onKeyboardFocus {
-      background-color: var(--myqr-focus-bg);
-      border-color: var(--myqr-focus-bg);
-      box-shadow: var(--myqr-focus-shadow);
+      background-color: var(--focus-bg);
+      border-color: var(--focus-bg);
+      box-shadow: var(--focus-shadow);
       color: var(--white);
     }
 
@@ -82,21 +82,21 @@ $button-transition-duration: 0.15s;
 }
 
 .button-dark {
-  --background-color: var(--myqr-text-rgb);
-  --border-color: var(--myqr-text-rgb);
-  --background-color-hover: var(--myqr-text);
-  --border-color-hover: var(--myqr-text);
+  --background-color: var(--text-rgb);
+  --border-color: var(--text-rgb);
+  --background-color-hover: var(--text);
+  --border-color-hover: var(--text);
   --text-color: var(--white);
   --text-color-hover: var(--white);
 
-  --myqr-focus-bg: var(--myqr-primary);
-  --myqr-focus-shadow: 0 0 0 0.2rem rgba(var(--myqr-primary-rgb), 0.3);
+  --focus-bg: var(--primary);
+  --focus-shadow: 0 0 0 0.2rem rgba(var(--primary-rgb), 0.3);
 
   // &:not(:disabled) {
   //   @include onMouseFocus {
-  //     background-color: var(--myqr-primary);
-  //     border-color: var(--myqr-primary);
-  //     box-shadow: 0 0 0 0.2rem rgba(var(--myqr-primary-rgb), 0.3);
+  //     background-color: var(--primary);
+  //     border-color: var(--primary);
+  //     box-shadow: 0 0 0 0.2rem rgba(var(--primary-rgb), 0.3);
   //   }
   // }
 }

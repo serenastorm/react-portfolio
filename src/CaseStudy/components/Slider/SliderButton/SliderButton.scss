@@ -68,7 +68,7 @@
     }
 
     path {
-      fill: var(--myqr-text-light);
+      fill: var(--text-light);
     }
 
     circle {
@@ -81,9 +81,9 @@
   .imgSlider-button-text {
     position: absolute;
     z-index: 3;
-    color: var(--myqr-primary);
+    color: var(--primary);
     top: 50%;
-    font-family: var(--myqr-type-paragraph);
+    font-family: var(--type-paragraph);
     font-weight: 600;
     font-size: 1.4rem;
     letter-spacing: 0.04em;
@@ -111,14 +111,14 @@
 
     path {
       transition: inherit;
-      fill: var(--myqr-primary);
+      fill: var(--primary);
     }
 
     circle {
       transition: inherit;
 
       &:not([stroke="#fff"]) {
-        stroke: var(--myqr-primary);
+        stroke: var(--primary);
         stroke-dashoffset: var(--progress-dashoffset-min);
       }
     }
@@ -195,7 +195,7 @@
       svg {
         circle {
           &[stroke="#fff"] {
-            stroke: var(--myqr-primary);
+            stroke: var(--primary);
             fill: var(--white);
           }
         }
@@ -210,7 +210,7 @@
       svg {
         circle {
           &[stroke="#fff"] {
-            fill: rgba(var(--myqr-text-rgb), 0.9);
+            fill: rgba(var(--text-rgb), 0.9);
           }
         }
       }

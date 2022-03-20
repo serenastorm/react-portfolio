@@ -33,7 +33,7 @@
     --focus-color: 51, 101, 255;
 
     &:checked {
-      background-color: var(--myqr-primary);
+      background-color: var(--primary);
 
       &::after {
         transform: translateY(-50%)
@@ -65,7 +65,7 @@
     }
 
     @include onKeyboardFocus {
-      box-shadow: 0 0 0 0.4rem rgba(var(--myqr-primary-rgb), 0.3);
+      box-shadow: 0 0 0 0.4rem rgba(var(--primary-rgb), 0.3);
     }
   }
 }

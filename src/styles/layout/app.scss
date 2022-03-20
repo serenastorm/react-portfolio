@@ -16,3 +16,14 @@ body,
 #webpack-dev-server-client-overlay {
   display: none;
 }
+
+::-moz-selection {
+  /* Code for Firefox */
+  color: var(--white);
+  background: var(--primary);
+}
+
+::selection {
+  color: var(--white);
+  background: var(--primary);
+}

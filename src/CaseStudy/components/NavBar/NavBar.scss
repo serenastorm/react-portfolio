@@ -1,4 +1,4 @@
-@import "~CaseStudy/styles/modules/placeholders.scss";
+@import "~styles/modules/placeholders.scss";
 @import "~styles/modules/mixins.scss";
 
 $link-hover-transition: all 250ms ease;
@@ -52,10 +52,10 @@ nav {
   position: fixed;
   z-index: 35;
   width: 100vw;
-  height: calc(100vh - #{var(--myqr-header-height)});
+  height: calc(100vh - #{var(--header-height)});
   left: 0;
-  top: var(--myqr-header-height);
-  background-color: var(--myqr-gray-100);
+  top: var(--header-height);
+  background-color: var(--gray-100);
   padding: 8vh calc((100vw - #{var(--max-text-width)}) / 2);
   display: flex;
   gap: 3.2rem;
@@ -79,9 +79,9 @@ nav {
     padding: 0 var(--page-padding-sides);
 
     .caseStudyPage-navLink {
-      @extend %myqr-paragraph;
+      @extend %paragraph;
       counter-increment: nav-counter;
-      color: var(--myqr-text);
+      color: var(--text);
       font-weight: var(--font-weight-bold);
 
       @media (max-height: 559.98px) {
@@ -113,7 +113,7 @@ nav {
       }
 
       &:nth-of-type(n + 2) {
-        border-top: 1px solid var(--myqr-gray-100);
+        border-top: 1px solid var(--gray-100);
       }
 
       a {
@@ -131,7 +131,7 @@ nav {
           margin-right: 1.6rem;
           background-image: linear-gradient(
             90deg,
-            var(--myqr-primary-light) 49.99%,
+            var(--primary-light) 49.99%,
             rgba(255, 255, 255, 0) 50%
           );
           background-repeat: no-repeat;
@@ -150,12 +150,12 @@ nav {
         margin-left: 1.6rem;
 
         .arrowIcon-circle {
-          stroke: var(--myqr-primary);
+          stroke: var(--primary);
         }
       }
 
       &[aria-current="page"] {
-        color: var(--myqr-gray-400);
+        color: var(--gray-400);
 
         .icon-goToLink {
           opacity: 0;
@@ -164,7 +164,7 @@ nav {
         .caseStudyPage-navLink-label[data-completed="true"]::after {
           background-image: linear-gradient(
             90deg,
-            var(--myqr-gray-400) 49.99%,
+            var(--gray-400) 49.99%,
             rgba(255, 255, 255, 0) 50%
           );
         }
@@ -175,7 +175,7 @@ nav {
           @include onHoverAndFocus {
             &::before {
               background-position: 0% 100%;
-              color: var(--myqr-primary);
+              color: var(--primary);
             }
 
             .arrowIcon-circle {
@@ -231,7 +231,7 @@ nav {
     height: 2px;
     background: linear-gradient(
       90deg,
-      var(--myqr-primary) 49.99%,
+      var(--primary) 49.99%,
       rgba(255, 255, 255, 0) 50%
     );
     background-size: 200% 100%;
@@ -259,8 +259,8 @@ nav {
   @include onHoverAndFocus {
     & ~ header {
       .caseStudyPage-nav-caret {
-        background-color: var(--myqr-primary-light);
-        color: var(--myqr-primary);
+        background-color: var(--primary-light);
+        color: var(--primary);
 
         &[data-direction="down"] {
           transform: rotate(0deg) translateY(0.1rem);
@@ -301,7 +301,7 @@ header {
   width: 100vw;
   top: 0;
   left: 0;
-  height: var(--myqr-header-height);
+  height: var(--header-height);
   background-color: rgba(255, 255, 255, 0.85);
   backdrop-filter: blur(0.6rem);
 
@@ -342,7 +342,7 @@ header {
     }
 
     .caseStudyPage-sectionId {
-      color: var(--myqr-primary);
+      color: var(--primary);
     }
   }
 

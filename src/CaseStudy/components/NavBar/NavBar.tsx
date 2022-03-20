@@ -19,6 +19,7 @@ import {
 } from "helpers/animations";
 import { routes } from "infrastructure/routes/constants";
 import { addSection } from "infrastructure/redux/caseStudyCompletedSectionsReducer";
+import type { RouteProps } from "infrastructure/routes/types";
 
 import "./NavBar.scss";
 
@@ -27,12 +28,32 @@ type NavBarProps = {
   currentPageSectionIndex: number;
 };
 
+const NavLink = ({
+  sectionIsCompleted,
+  label,
+}: {
+  sectionIsCompleted: boolean;
+  label: string;
+}) => {
+  return (
+    <>
+      <span
+        className="caseStudyPage-navLink-label"
+        data-completed={sectionIsCompleted ? "true" : "false"}
+      >
+        {label}
+      </span>
+      <GoToLinkIcon />
+    </>
+  );
+};
+
 const NavBar = ({ currentPageTitle, currentPageSectionIndex }: NavBarProps) => {
   const { pathname } = useLocation();
 
   const routesArray = [
-    ...Object.values(routes.myqr),
-    { url: "/", title: "Back to main site" },
+    ...Object.values(routes),
+    { url: "https://www.antonettiserena.com", title: "Back to main site" },
   ];
   const routesWithoutCurrentRoute = routesArray.filter((route) => {
     const match = matchPath(pathname, {
@@ -154,6 +175,23 @@ const NavBar = ({ currentPageTitle, currentPageSectionIndex }: NavBarProps) => {
     "aria-label": "Toggle main menu" as AriaAttributes["aria-label"],
   };
 
+  const navLinkProps = (
+    route: RouteProps,
+    routeIndex: number,
+    isCurrentRoute: boolean,
+    routeIndexFromInactiveRouteArray: number
+  ) => {
+    return {
+      onClick: () => setIsNavExpanded(false),
+      tabIndex:
+        focusedNavLinkIndex === routeIndexFromInactiveRouteArray ? 0 : -1,
+      ref: (el: HTMLAnchorElement) =>
+        (navLinksRefs.current[routeIndexFromInactiveRouteArray] = el),
+      onKeyDown: (event: KeyboardEvent<HTMLAnchorElement>) =>
+        onNavLinkKeyPressed(event, routeIndexFromInactiveRouteArray),
+    };
+  };
+
   return (
     <FocusTrap active={isNavExpanded}>
       <div
@@ -216,35 +254,37 @@ const NavBar = ({ currentPageTitle, currentPageSectionIndex }: NavBarProps) => {
                         exitTransition: { duration: 0.25, delay: 0 },
                       })}
                     >
-                      <Link
-                        to={isCurrentRoute ? "#" : route.url}
-                        onClick={() => setIsNavExpanded(false)}
-                        tabIndex={
-                          focusedNavLinkIndex ===
-                          routeIndexFromInactiveRouteArray
-                            ? 0
-                            : -1
-                        }
-                        ref={(el: HTMLAnchorElement) =>
-                          (navLinksRefs.current[
+                      {routeIndex === routesArray.length - 1 ? (
+                        <a
+                          href={route.url}
+                          {...navLinkProps(
+                            route,
+                            routeIndex,
+                            isCurrentRoute,
                             routeIndexFromInactiveRouteArray
-                          ] = el)
-                        }
-                        onKeyDown={(event: KeyboardEvent<HTMLAnchorElement>) =>
-                          onNavLinkKeyPressed(
-                            event,
-                            routeIndexFromInactiveRouteArray
-                          )
-                        }
-                      >
-                        <span
-                          className="caseStudyPage-navLink-label"
-                          data-completed={sectionIsCompleted ? "true" : "false"}
+                          )}
                         >
-                          {route.title}
-                        </span>
-                        <GoToLinkIcon />
-                      </Link>
+                          <NavLink
+                            sectionIsCompleted={sectionIsCompleted}
+                            label={route.title}
+                          />
+                        </a>
+                      ) : (
+                        <Link
+                          to={isCurrentRoute ? "#" : route.url}
+                          {...navLinkProps(
+                            route,
+                            routeIndex,
+                            isCurrentRoute,
+                            routeIndexFromInactiveRouteArray
+                          )}
+                        >
+                          <NavLink
+                            sectionIsCompleted={sectionIsCompleted}
+                            label={route.title}
+                          />
+                        </Link>
+                      )}
                     </motion.li>
                   );
                 })}

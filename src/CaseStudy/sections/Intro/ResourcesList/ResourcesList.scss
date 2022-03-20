@@ -1,5 +1,5 @@
 @import "~styles/modules/mixins.scss";
-@import "~CaseStudy/styles/modules/placeholders.scss";
+@import "~styles/modules/placeholders.scss";
 
 .resources-list {
   padding: var(--container-padding-top) var(--container-padding-sides);
@@ -10,10 +10,10 @@
   }
 
   li {
-    @extend %myqr-paragraph;
+    @extend %paragraph;
     line-height: 180%;
     font-weight: var(--font-weight-semibold);
-    color: var(--myqr-text);
+    color: var(--text);
 
     @include breakpoint(0, 799.98) {
       font-size: 1.8rem;

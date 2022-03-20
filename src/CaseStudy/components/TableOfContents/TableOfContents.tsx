@@ -13,7 +13,7 @@ import "./TableOfContents.scss";
 const TableOfContents = () => {
   const { pathname } = useLocation();
 
-  const routesArray = Object.values(routes.myqr);
+  const routesArray = Object.values(routes);
   const routesWithoutCurrentRoute = routesArray.filter((route) => {
     const match = matchPath(pathname, {
       path: route.url,

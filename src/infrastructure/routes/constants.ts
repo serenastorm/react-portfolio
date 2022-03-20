@@ -9,11 +9,7 @@ export const apiUrl =
   process.env.NODE_ENV === "production" ? api.prod : api.dev;
 
 const baseUrl = "/";
-const caseStudyBaseUrl = `${baseUrl}myqr`;
-const caseStudySectionUrl = (section?: SectionName) =>
-  `${caseStudyBaseUrl}/${section}`;
-const codeSnippetsBaseUrl = `${baseUrl}snippets`;
-const codeSnippetUrl = (slug: string) => `${codeSnippetsBaseUrl}/${slug}`;
+const caseStudySectionUrl = (section?: SectionName) => `${baseUrl}${section}`;
 
 export const caseStudySectionsTitles = {
   marketing: "Marketing" as SectionTitle,
@@ -32,38 +28,25 @@ const caseStudySections = {
 };
 
 export const routes = {
-  home: baseUrl,
-  myqr: {
-    intro: { title: "Intro", url: caseStudyBaseUrl },
-    designSystem: {
-      title: caseStudySectionsTitles.designSystem,
-      url: caseStudySectionUrl(caseStudySections.designSystem),
-    },
-    marketing: {
-      title: caseStudySectionsTitles.marketing,
-      url: caseStudySectionUrl(caseStudySections.marketing),
-    },
-    dashboard: {
-      title: caseStudySectionsTitles.dashboard,
-      url: caseStudySectionUrl(caseStudySections.dashboard),
-    },
-    accessibility: {
-      title: caseStudySectionsTitles.accessibility,
-      url: caseStudySectionUrl(caseStudySections.accessibility),
-    },
-    features: {
-      title: caseStudySectionsTitles.features,
-      url: caseStudySectionUrl(caseStudySections.features),
-    },
+  intro: { title: "Intro", url: baseUrl },
+  designSystem: {
+    title: caseStudySectionsTitles.designSystem,
+    url: caseStudySectionUrl(caseStudySections.designSystem),
   },
-  blog: {
-    snippet: {
-      title: "Snippet",
-      url: (slug: string = ":slug") => codeSnippetUrl(slug),
-    },
-    snippets: {
-      title: "Snippets",
-      url: codeSnippetsBaseUrl,
-    },
+  marketing: {
+    title: caseStudySectionsTitles.marketing,
+    url: caseStudySectionUrl(caseStudySections.marketing),
+  },
+  dashboard: {
+    title: caseStudySectionsTitles.dashboard,
+    url: caseStudySectionUrl(caseStudySections.dashboard),
+  },
+  accessibility: {
+    title: caseStudySectionsTitles.accessibility,
+    url: caseStudySectionUrl(caseStudySections.accessibility),
+  },
+  features: {
+    title: caseStudySectionsTitles.features,
+    url: caseStudySectionUrl(caseStudySections.features),
   },
 };

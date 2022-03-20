@@ -1,4 +1,4 @@
-@import "~CaseStudy/styles/modules/placeholders.scss";
+@import "~styles/modules/placeholders.scss";
 @import "~styles/modules/mixins.scss";
 
 .text-isFullScreen {
@@ -7,12 +7,12 @@
   .new-tab-link {
     svg {
       path[fill="#EAF0F5"] {
-        fill: rgba(var(--myqr-text-rgb), 0.2);
+        fill: rgba(var(--text-rgb), 0.2);
       }
 
       .icon-arrow {
         path {
-          fill: var(--myqr-text);
+          fill: var(--text);
         }
       }
     }
@@ -20,7 +20,7 @@
     @include onFocus {
       svg {
         path[fill="#EAF0F5"] {
-          fill: rgba(var(--myqr-primary-rgb), 0.4);
+          fill: rgba(var(--primary-rgb), 0.4);
         }
       }
     }

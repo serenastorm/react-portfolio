@@ -22,8 +22,8 @@
       position: absolute;
       top: calc(100% + #{var(--button-caption-spacing)});
       content: attr(data-caption);
-      color: var(--myqr-text-light);
-      font-family: var(--myqr-type-paragraph);
+      color: var(--text-light);
+      font-family: var(--type-paragraph);
       font-size: var(--button-caption-height);
       text-transform: uppercase;
       letter-spacing: 0.06em;
@@ -52,71 +52,71 @@
 }
 
 .button-focus {
-  background-color: var(--myqr-focus-bg);
-  border-color: var(--myqr-focus-bg);
-  box-shadow: var(--myqr-focus-shadow);
+  background-color: var(--focus-bg);
+  border-color: var(--focus-bg);
+  box-shadow: var(--focus-shadow);
   color: var(--white);
 }
 
 .button-primary {
-  --background-color: var(--myqr-primary-rgb);
-  --border-color: var(--myqr-primary-rgb);
-  --background-color-hover: var(--myqr-text);
-  --border-color-hover: var(--myqr-text);
+  --background-color: var(--primary-rgb);
+  --border-color: var(--primary-rgb);
+  --background-color-hover: var(--text);
+  --border-color-hover: var(--text);
   --text-color: var(--white);
   --text-color-hover: var(--white);
 }
 
 .button-primary-light {
-  --background-color: var(--myqr-primary-light-rgb);
-  --border-color: var(--myqr-primary-light-rgb);
-  --background-color-hover: var(--myqr-primary);
-  --border-color-hover: var(--myqr-primary);
-  --text-color: var(--myqr-primary);
+  --background-color: var(--primary-light-rgb);
+  --border-color: var(--primary-light-rgb);
+  --background-color-hover: var(--primary);
+  --border-color-hover: var(--primary);
+  --text-color: var(--primary);
   --text-color-hover: var(--white);
 }
 
 .button-outline-primary {
   --background-color: transparent;
-  --border-color: var(--myqr-primary-rgb);
-  --background-color-hover: #{var(--myqr-primary-light)};
-  --border-color-hover: var(--myqr-primary-hover);
-  --text-color: var(--myqr-primary);
-  --text-color-hover: var(--myqr-primary-hover);
+  --border-color: var(--primary-rgb);
+  --background-color-hover: #{var(--primary-light)};
+  --border-color-hover: var(--primary-hover);
+  --text-color: var(--primary);
+  --text-color-hover: var(--primary-hover);
 }
 
 .button-outline-dark {
   --background-color: transparent;
-  --border-color: #{var(--myqr-text-rgb)};
-  --background-color-hover: #{var(--myqr-gray-100)};
-  --border-color-hover: #{var(--myqr-text)};
-  --text-color: #{var(--myqr-text)};
-  --text-color-hover: #{var(--myqr-text)};
+  --border-color: #{var(--text-rgb)};
+  --background-color-hover: #{var(--gray-100)};
+  --border-color-hover: #{var(--text)};
+  --text-color: #{var(--text)};
+  --text-color-hover: #{var(--text)};
 }
 
 .button-success {
-  --background-color: var(--myqr-success-rgb);
-  --border-color: var(--myqr-success-rgb);
-  --background-color-hover: var(--myqr-success-hover);
-  --border-color-hover: var(--myqr-success-hover);
+  --background-color: var(--success-rgb);
+  --border-color: var(--success-rgb);
+  --background-color-hover: var(--success-hover);
+  --border-color-hover: var(--success-hover);
   --text-color: var(--white);
   --text-color-hover: var(--white);
 }
 
 .button-danger {
-  --background-color: var(--myqr-danger-rgb);
-  --border-color: var(--myqr-danger-rgb);
-  --background-color-hover: var(--myqr-danger-hover);
-  --border-color-hover: var(--myqr-danger-hover);
+  --background-color: var(--danger-rgb);
+  --border-color: var(--danger-rgb);
+  --background-color-hover: var(--danger-hover);
+  --border-color-hover: var(--danger-hover);
   --text-color: var(--white);
   --text-color-hover: var(--white);
 }
 
 .button-danger-light {
-  --background-color: var(--myqr-danger-light-rgb);
-  --border-color: var(--myqr-danger-light-rgb);
-  --background-color-hover: var(--myqr-danger);
-  --border-color-hover: var(--myqr-danger);
-  --text-color: var(--myqr-danger);
+  --background-color: var(--danger-light-rgb);
+  --border-color: var(--danger-light-rgb);
+  --background-color-hover: var(--danger);
+  --border-color-hover: var(--danger);
+  --text-color: var(--danger);
   --text-color-hover: var(--white);
 }

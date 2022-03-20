@@ -17,7 +17,7 @@ $scroll-icon-container-height: calc(
   .icon-scroll {
     width: 2rem;
     height: $scroll-icon-height;
-    border: 1px solid var(--myqr-primary);
+    border: 1px solid var(--primary);
     border-radius: 1.25rem;
     position: absolute;
     bottom: $scroll-icon-margin-bottom;
@@ -28,7 +28,7 @@ $scroll-icon-container-height: calc(
       display: block;
       width: 0.3rem;
       height: 0.3rem;
-      background: var(--myqr-primary);
+      background: var(--primary);
       top: 0.8rem;
       border-radius: 50%;
       animation: scroll 1.5s infinite;

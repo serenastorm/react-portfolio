@@ -1,5 +1,5 @@
 @import "~styles/modules/mixins.scss";
-@import "~CaseStudy/styles/modules/placeholders.scss";
+@import "~styles/modules/placeholders.scss";
 
 .caseStudyPage {
   overflow-y: hidden;
@@ -27,15 +27,15 @@
 
     .endNote-link {
       @include onFocus {
-        color: var(--myqr-primary);
-        background-color: var(--myqr-primary-light);
+        color: var(--primary);
+        background-color: var(--primary-light);
       }
     }
   }
 }
 
 .caseStudyPage-sectionId {
-  color: var(--myqr-primary-light);
+  color: var(--primary-light);
   font-family: var(--type-numbers);
   font-weight: var(--font-weight-medium);
 }
@@ -53,11 +53,11 @@
   }
 
   li {
-    @extend %myqr-paragraph;
+    @extend %paragraph;
 
     position: relative;
     font-size: 1.6rem;
-    color: var(--myqr-gray-400);
+    color: var(--gray-400);
 
     &::before {
       content: attr(data-emoji);
@@ -74,7 +74,7 @@
 
       @include onFocus {
         opacity: 1;
-        color: var(--myqr-primary);
+        color: var(--primary);
       }
     }
   }

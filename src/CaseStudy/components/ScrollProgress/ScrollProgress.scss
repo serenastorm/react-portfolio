@@ -26,11 +26,11 @@ $progress-transition-duration: 350ms;
   }
 
   .progressIndicator-track {
-    stroke: var(--myqr-primary-light);
+    stroke: var(--primary-light);
   }
 
   .progressIndicator-thumb {
-    stroke: var(--myqr-primary);
+    stroke: var(--primary);
   }
 
   &[data-complete="true"] {

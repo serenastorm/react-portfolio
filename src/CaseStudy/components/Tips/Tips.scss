@@ -1,4 +1,4 @@
-@import "~CaseStudy/styles/modules/placeholders.scss";
+@import "~styles/modules/placeholders.scss";
 @import "~styles/modules/mixins.scss";
 
 .tips {
@@ -7,8 +7,8 @@
   margin: 0 auto var(--container-padding-top) auto;
   padding: calc(#{var(--icon-size)} * 1.25) var(--icon-size);
   border-radius: 0 0.4rem 0.4rem 0;
-  background-color: var(--myqr-primary-light);
-  border-left: 0.3rem solid var(--myqr-primary);
+  background-color: var(--primary-light);
+  border-left: 0.3rem solid var(--primary);
 
   @include breakpoint(0, 799.98) {
     --icon-size: 2rem;
@@ -39,8 +39,8 @@
   top: 0;
   left: 0;
   transform: translate(-50%, -50%);
-  color: var(--myqr-primary);
-  background-color: var(--myqr-page-background);
+  color: var(--primary);
+  background-color: var(--page-background);
   border-radius: 50%;
   padding: calc(#{var(--icon-size)} / 3);
 
@@ -55,7 +55,7 @@
     background-color: rgba(255, 255, 255, 0.1);
 
     p {
-      color: rgba(var(--myqr-primary-light-rgb), 0.85);
+      color: rgba(var(--primary-light-rgb), 0.85);
     }
   }
 }

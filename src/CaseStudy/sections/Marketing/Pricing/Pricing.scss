@@ -13,7 +13,7 @@
   overflow: hidden;
   background-color: var(--white);
   border-radius: var(--img-border-radius);
-  box-shadow: var(--myqr-img-container-shadow);
+  box-shadow: var(--img-container-shadow);
 
   @include breakpoint(0, 799.98) {
     order: 2;

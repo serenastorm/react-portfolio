@@ -13,7 +13,7 @@ $flex-gap: 0.8rem;
     transition: all 500ms ease-in-out;
     /* TODO: find a way to add a shadow that doesn't 
     break framer-motion in Safari + Firefox */
-    // filter: var(--myqr-img-shadow);
+    // filter: var(--img-shadow);
     will-change: transform;
   }
 

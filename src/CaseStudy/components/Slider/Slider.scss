@@ -57,19 +57,19 @@
 .imgContainer-isFullScreen[data-bg="dark"] {
   .imgSlider-button {
     .imgSlider-button-text {
-      color: var(--myqr-primary-light);
+      color: var(--primary-light);
     }
 
     circle {
       &[stroke="#fff"] {
-        stroke: var(--myqr-primary-light);
+        stroke: var(--primary-light);
         stroke-opacity: 0.2;
       }
     }
 
     @include onHoverAndFocus {
       path {
-        fill: var(--myqr-primary-light);
+        fill: var(--primary-light);
       }
     }
   }

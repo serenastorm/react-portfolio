@@ -1,7 +1,6 @@
 import { useEffect } from "react";
 import { Switch, Route, useHistory, Redirect } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
-import { BlogArticlePage, BlogCategoryPage, LandingPage } from "Main/pages";
 import {
   AccessibilityPage,
   DesignSystemPage,
@@ -32,59 +31,41 @@ const Routes = () => {
           <Switch location={location}>
             <Route
               exact
-              path={routes.home}
-              component={LandingPage}
-              key="landingPage"
-            />
-            <Route
-              exact
-              path={routes.myqr.intro.url}
+              path={routes.intro.url}
               component={IntroPage}
               key="caseStudyIntro"
             />
             <Route
               exact
-              path={routes.myqr.designSystem.url}
+              path={routes.designSystem.url}
               component={DesignSystemPage}
               key="caseStudyDesignSystem"
             />
             <Route
               exact
-              path={routes.myqr.dashboard.url}
+              path={routes.dashboard.url}
               component={UserFlowsPage}
               key="caseStudyDashboard"
             />
             <Route
               exact
-              path={routes.myqr.marketing.url}
+              path={routes.marketing.url}
               component={MarketingPage}
               key="caseStudyMarketing"
             />
             <Route
               exact
-              path={routes.myqr.accessibility.url}
+              path={routes.accessibility.url}
               component={AccessibilityPage}
               key="caseStudyAccessibility"
             />
             <Route
               exact
-              path={routes.myqr.features.url}
+              path={routes.features.url}
               component={FeaturesPage}
               key="caseStudyFeatures"
             />
-            <Route
-              exact
-              path={routes.blog.snippets.url}
-              component={BlogCategoryPage}
-              key="blogCategory"
-            />
-            <Route
-              exact
-              path={routes.blog.snippet.url()}
-              component={BlogArticlePage}
-              key="blogArticle"
-            />
-            <Redirect to={routes.home} />
+            <Redirect to={routes.intro.url} />
           </Switch>
         </AnimatePresence>
       )}

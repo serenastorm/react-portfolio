@@ -1,9 +1,9 @@
-# Serena Antonetti | Portfolio
+# Serena Antonetti | Case Study
 
 [![License: AGPL v3](https://img.shields.io/badge/License-AGPL_v3-blue.svg)](https://www.gnu.org/licenses/agpl-3.0)
 [![TypeScript](https://img.shields.io/badge/%3C%2F%3E-TypeScript-%230074c1.svg)](http://www.typescriptlang.org/)
 
-The portfolio of product designer & front-end developer [Serena Antonetti](http://antonettiserena.com), with selected works.\
+Case study from product designer & front-end developer [Serena Antonetti](http://antonettiserena.com).\
 Made with [React](https://reactjs.org/) & published with [Netlify](https://www.netlify.com/) ♥
 
 ## Contents
@@ -32,11 +32,6 @@ Builds the app for production to the `build` folder.
 ## Project structure
 
     .
-    ├── Main                    # Main site
-    │   ├── components          # Shared components and main site components
-    │   ├── pages               # Main site pages (landing, about, etc)
-    │   └── fonts               # Fonts used only in main site
-    │
     ├── CaseStudy               # Case study files
     │   ├── assets              # Case study assets, organised by sections (see below)
     │   ├── components          # Case study shared components (e.g image wrappers, navbar)

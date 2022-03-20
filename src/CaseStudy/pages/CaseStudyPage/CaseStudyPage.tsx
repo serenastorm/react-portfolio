@@ -9,7 +9,6 @@ import { routes } from "infrastructure/routes/constants";
 import { NavBar, NextPageLink, ProjectLink } from "CaseStudy/components";
 import { Page } from "Main/components";
 
-import "CaseStudy/styles/styles.scss";
 import "./CaseStudyPage.scss";
 
 type PageProps = {
@@ -33,16 +32,16 @@ const CaseStudyPage = ({
   title,
 }: PageProps) => {
   const { pathname } = useLocation();
-  const routesArray = Object.values(routes.myqr);
+  const routesArray = Object.values(routes);
 
   const isIntroPage = matchPath(pathname, {
-    path: routes.myqr.intro.url,
+    path: routes.intro.url,
     exact: true,
     strict: false,
   });
 
   const isFinalPage = matchPath(pathname, {
-    path: routes.myqr.features.url,
+    path: routes.features.url,
     exact: true,
     strict: false,
   });

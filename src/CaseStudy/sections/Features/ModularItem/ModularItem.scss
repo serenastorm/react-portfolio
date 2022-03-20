@@ -5,9 +5,9 @@ $steps: 4;
 
   .imgWrapper {
     overflow: hidden;
-    background-color: var(--myqr-bg-light);
+    background-color: var(--bg-light);
     border-radius: var(--img-border-radius);
-    box-shadow: var(--myqr-img-container-shadow);
+    box-shadow: var(--img-container-shadow);
     position: relative;
 
     .img-modularItem-choice {

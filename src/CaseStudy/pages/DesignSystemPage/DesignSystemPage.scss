@@ -1,5 +1,5 @@
 @import "~styles/modules/mixins.scss";
-@import "~CaseStudy/styles/modules/placeholders.scss";
+@import "~styles/modules/placeholders.scss";
 
 .designSystem-section {
   width: var(--max-text-width);
@@ -34,8 +34,8 @@
   }
 
   legend {
-    @extend %myqr-paragraph;
-    color: var(--myqr-text);
+    @extend %paragraph;
+    color: var(--text);
     font-weight: var(--font-weight-semibold);
 
     @include breakpoint(0, 799.98) {
@@ -67,7 +67,7 @@
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
-  background-color: var(--myqr-gray-100);
+  background-color: var(--gray-100);
   border-radius: 4px;
   gap: 0.8rem;
 

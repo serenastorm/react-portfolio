@@ -1,7 +1,6 @@
 import { createElement, ReactNode } from "react";
 import { motion, HTMLMotionProps, ForwardRefComponent } from "framer-motion";
 import { scrollAnimationWrapperProps } from "helpers/animations";
-import { NavButton } from ".";
 
 type PageContainerType = "div" | "article";
 
@@ -21,10 +20,7 @@ const Page = ({ as = "div", children, className = "" }: PageProps) => {
       ...scrollAnimationWrapperProps,
       className,
     },
-    <>
-      <NavButton />
-      {children}
-    </>
+    children
   );
 };
 

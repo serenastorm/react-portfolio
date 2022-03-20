@@ -1,5 +1,5 @@
 @import "~styles/modules/mixins.scss";
-@import "~CaseStudy/styles/modules/placeholders.scss";
+@import "~styles/modules/placeholders.scss";
 
 $toggletip-transition: all 250ms ease;
 
@@ -10,8 +10,8 @@ $toggletip-transition: all 250ms ease;
     background-color: var(--white);
     border-width: 0;
     border-radius: 50%;
-    box-shadow: var(--myqr-img-container-shadow);
-    color: var(--myqr-primary);
+    box-shadow: var(--img-container-shadow);
+    color: var(--primary);
     cursor: help;
 
     @include removeFocusOutline;
@@ -34,7 +34,7 @@ $toggletip-transition: all 250ms ease;
   }
 
   .toggletip-bubble {
-    @extend %myqr-paragraph;
+    @extend %paragraph;
 
     z-index: 20;
     position: absolute;
@@ -42,9 +42,9 @@ $toggletip-transition: all 250ms ease;
     bottom: calc(100% + 8px);
     padding: 0.8rem;
     background-color: var(--white);
-    border: 1px solid var(--myqr-gray-100);
+    border: 1px solid var(--gray-100);
     border-radius: 0.4rem;
-    box-shadow: var(--myqr-img-container-shadow);
+    box-shadow: var(--img-container-shadow);
     width: max-content;
     max-width: 32rem;
     font-size: 1.6rem;

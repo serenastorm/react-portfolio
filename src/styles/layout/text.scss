@@ -1,7 +1,6 @@
 @import "~styles/modules/placeholders.scss";
 
 h1 {
-  // @extend %myqr-paragraph;
   line-height: 140%;
   color: var(--text);
 
@@ -65,11 +64,6 @@ abbr[title] {
   }
 }
 
-.italic {
-  font-style: italic;
-  font-family: var(--type-italic);
-}
-
 .regular {
   font-weight: var(--font-weight-regular);
 }
@@ -94,4 +88,114 @@ abbr[title] {
     stroke-dasharray: 1500;
     stroke-dashoffset: 1500;
   }
+}
+
+p,
+label:not(.form-label) {
+  @extend %paragraph;
+  color: var(--text-light);
+
+  @include breakpoint(0, 1199.98) {
+    font-size: 1.8rem;
+  }
+
+  @include breakpoint(1200) {
+    font-size: 2.4rem;
+  }
+}
+
+p {
+  line-height: 180%;
+}
+
+h1 {
+  @extend %paragraph;
+}
+
+h2 {
+  @extend %paragraph;
+  line-height: 140%;
+  color: var(--text);
+
+  @include breakpoint(0, 1199.98) {
+    font-size: 2.4rem;
+  }
+
+  @include breakpoint(1200) {
+    font-size: 3.2rem;
+  }
+}
+
+h3 {
+  @extend %paragraph;
+  line-height: 140%;
+  color: var(--primary);
+
+  @include breakpoint(0, 1199.98) {
+    font-size: 2rem;
+  }
+
+  @include breakpoint(1200) {
+    font-size: 2.8rem;
+  }
+}
+
+h5 {
+  @extend %paragraph;
+  font-size: 2rem;
+  line-height: 180%;
+  text-transform: uppercase;
+  color: var(--primary);
+}
+
+code {
+  font-family: var(--type-code);
+  font-weight: var(--font-weight-medium);
+  padding: 0 0.8rem;
+
+  @include breakpoint(0, 1199.98) {
+    font-size: 1.4rem;
+  }
+
+  @include breakpoint(1200) {
+    font-size: 1.6rem;
+  }
+}
+
+dd {
+  @extend %paragraph;
+  line-height: 180%;
+  color: var(--text-light);
+
+  @include breakpoint(0, 1199.98) {
+    font-size: 2rem;
+  }
+
+  @include breakpoint(1200) {
+    font-size: 2.4rem;
+  }
+}
+
+dt {
+  @extend %paragraph;
+  font-size: 1.6rem;
+  color: var(--text);
+  font-weight: var(--font-weight-semibold);
+}
+
+.underline-link {
+  @include onFocus {
+    color: var(--primary);
+  }
+}
+
+.new-tab-link {
+  --arrow-bg-color: var(--gray-200);
+  --arrow-pointer-color: var(--gray-400);
+  --arrow-bg-color-hover: var(--primary-light);
+  --arrow-pointer-color-hover: var(--primary);
+}
+
+abbr[title] {
+  --underline-hover-color: var(--primary);
 }

@@ -14,7 +14,7 @@ import { usePrefersReducedMotion } from "infrastructure/hooks";
 const PageBackground = () => {
   const userPrefersReducedMotion = usePrefersReducedMotion();
   const { pathname } = useLocation();
-  const caseStudyRoutes = Object.values(routes.myqr);
+  const caseStudyRoutes = Object.values(routes);
 
   const getCurrentRoute = () => {
     const currentRoute = caseStudyRoutes.find((route) => {
@@ -53,10 +53,6 @@ const PageBackground = () => {
 
     existingMetaTag.setAttribute("content", currentBackground.hex);
   }, [pathname, currentBackground]);
-
-  if (!pathname.startsWith("/myqr")) {
-    return null;
-  }
 
   return (
     <motion.div

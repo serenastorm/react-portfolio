@@ -1,7 +1,7 @@
 @import "~styles/modules/mixins.scss";
 
 .text-isFullScreen {
-  background-color: var(--myqr-primary-light);
+  background-color: var(--primary-light);
   width: calc(100vw - (#{var(--page-padding-sides)} * 2));
   margin-left: var(--page-padding-sides);
   padding: 4rem var(--container-padding-sides);
